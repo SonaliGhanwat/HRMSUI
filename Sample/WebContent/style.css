@@ -1,0 +1,30 @@
+@CHARSET "ISO-8859-1";
+.label-name{
+	font-size: 20px;
+	font-weight: bold;
+	color: black;
+	margin-left: 30px
+}
+.lable-size{
+	font-size: =15px;
+	font-weight: bold;
+	margin-left: 30px;
+	position: absolute;
+	left: 40px;
+	
+}
+.cancel-btn{
+	margin-left: 20px;
+}
+.employee-form{
+	padding-left: 50px;
+}
+.emp-details-form{
+	width: 65%;
+	padding-top: 5%;
+	padding-bottom: 5%;
+	margin-left: 13%;
+}
+.user-type{
+	margin-left: 40ox;
+}
