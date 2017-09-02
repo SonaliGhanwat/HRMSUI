@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>EmployeeRegistrationForm</title>
+<style type="text/css">
+table {table-collapse:collapse; border-spacing:0}
+td {border:2px groove black; padding:7px; }
+th {border:2px groove black; padding:7px; }
+.ctr {text-align:center}
+</style>
+</head>
+<body>
+<head>
+<meta charset="ISO-8859-1">
+<title>EmployeeRegistrationForm</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script type="text/javascript" src="js/Validation.js"></script>
+<script type="text/javascript" src="js/CreateEmployee.js"></script>
+
+
+</head>
+<body >
+<h1 align="center">Employee Registration Form</h1>
+<fieldset class="emp-details-form">
+<p id="data"></p> 
+<form action="#" name="Employee"  class="employee-form" onsubmit="return addEmployee();" method="POST" >
+  
+   <span>
+      <span>
+         <label  class="label-name"> UserId:</label>
+         <input type="text" id="userid" name="userid" class="label-size" style="margin-left: 75px" >
+      </span>
+      <span>
+         <label  class="label-name"> Password:</label>
+         <input type="password" id="password" name="password" class="label-size" style="margin-left: 34px">
+      </span>
+    </span>
+  <br>
+  <br>
+   <span>
+      <span>
+         <label  class="label-name"> First Name:</label>
+         <input type="text" id="firstName" name="firstName" class="label-size" style="margin-left: 40px">
+      </span>
+      <span>
+         <label  class="label-name"> Last Name:</label>
+         <input type="text" id="lastName" name="lastName" class="label-size" style="margin-left: 22px">
+      </span>
+    </span>
+  <br>
+  <br>
+  <span>
+      <span>
+         <label  class="label-name"> PhoneNumber:</label>
+         <input type="number" id="phoneNumber" name="phoneNumber" class="label-size" style="margin-left: 12px">
+      </span>
+      <span>
+         <label  class="label-name"> EmailId:</label>
+         <input type="text" id="emailid" name="emailid" class="label-size" style="margin-left: 45px">
+      </span>
+    </span>
+  <br>
+  <br>
+  <span>
+      <span>
+         <label  class="label-name" >DateOfJoining:</label>
+         <input type="date" id="dateOfJoining" name="dateOfJoining" class="label-size" style="margin-left: 10px">
+      </span>
+      <span>
+         <label  class="label-name"> DateOfBirth:</label>
+         <input type="date" id="dateOfBirth" name="dateOfBirth" class="label-size" style="margin-left: 37px">
+      </span>
+    </span>
+  <br>
+  <br>
+  <span>
+      <span>
+         <label  class="label-name">Address:</label>
+         <input type="text" id="address" name="address" class="label-size" style="margin-left: 65px">
+      </span>
+      <span>
+         <label  class="label-name"> Department:</label>
+         <input type="text" id="department" name="department" class="label-size" style="margin-left: 16px">
+      </span>
+    </span>
+  <br>
+  <br>
+  <span>
+      <span>
+         <label  class="label-name">Salary:</label>
+         <input type="text" id="salary" name="salary" class="label-size" style="margin-left: 78px">
+      </span>
+      <span>
+         <label  class="label-name"> UserType:</label>
+         <input type="number" id="usertype" name="usertype" class="label-size" style="margin-left: 40px">
+         <!-- <select class="label-size" style="margin-left: 40px">
+  			<option value="volvo">HR</option>
+  			<option value="saab">MANAGER</option>
+ 			 <option value="mercedes">TEAM LEADER</option>
+  			<option value="audi">EMPLOYEE</option>
+		</select> -->
+      </span>
+    </span>
+  <br>
+  <br>
+  <div align="center" style="margin-top: 2%">
+ <input type="submit" value="Submit" class="label-size">
+<input type="button" value="CANCEL" class="cancel-btn"> <br> <br>
+</div>
+</form>
+</fieldset> 
+</body>
+</html>
