@@ -96,8 +96,8 @@ function Validatephonenumber(phoneNumber)
 		return false;
 	}
 }*/
-/*function ValidateDate(dateOfJoining) {
-var dateformat = /[0-9]{4})-([0-1]{1}[1-9]{1})-([0-2][0-9]||3[0-1]/ ;
+function ValidateDate(dateOfJoining) {
+var dateformat = /[0-9]{2})-([0-9]{2})-([0-9]{4}/ ;
 if(dateOfJoining.match(dateformat)){
 	return true;
 }else {
@@ -107,7 +107,7 @@ if(dateOfJoining.match(dateformat)){
 }
 
 return false;
-}*/
+}
 function ValidateDate(dateOfBirth) {
 	var dateformat = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/ ;
 	if(dateOfBirth.match(dateformat)){

@@ -1,6 +1,7 @@
 function addEmployee() {
 	
 	validate();
+	
 	var http = new XMLHttpRequest();
 	
 	var url = "http://localhost:8085/HRMS/employee/create";

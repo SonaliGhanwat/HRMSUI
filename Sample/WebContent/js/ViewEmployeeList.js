@@ -4,6 +4,7 @@ function getEmployeeFromUI() {
 	  
 	  if (this.readyState == 4 && this.status == 200) {
 		    document.getElementById("demo").innerHTML = "";
+		   
 		    var empData = JSON.parse(this.responseText);
 		    var tbody="";
 		    
@@ -49,17 +50,18 @@ function getEmployeeFromUI() {
 		         tbody += "<td>" + salary + "</td>"
 		         var usertype=empData[data].usertype;
 		         tbody += "<td>" + usertype + "</td>"
-		         tbody += "</table>"   
+		         tbody += "</table>" 
+		        
 		         
 		                document.getElementById("matchData").innerHTML = tbody;
 		    }
 		        console.log(empData);
-		    
 	  }
   };
  
   xhttp.open("GET", "http://localhost:8085/HRMS/employee/list", true);
   xhttp.send();
+  alert(xhttp.responseText);
  
 }
 
