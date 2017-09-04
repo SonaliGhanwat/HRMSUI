@@ -41,5 +41,40 @@
 	font-size: =15px;
 	font-weight: bold;
 	color: black;
-	
+}
+.userid{
+	margin-left: 75px;
+}
+.password{
+	margin-left: 34px;
+}
+.firstName{
+	margin-left: 40px;
+}
+.lastName{
+	margin-left: 22px;
+}
+.phoneNumber{
+	margin-left: 12px;
+}
+.emailid{
+	margin-left: 45px;
+}
+.dateofjoining{
+	margin-left: 10px;
+}
+.dateofbirth{
+	margin-left: 37px;
+}
+.address{
+	margin-left: 65px;
+}
+.department{
+	margin-left: 16px
+}
+.salary{
+	margin-left: 78px;
+}
+.usertype{
+	margin-left: 40px;
 }

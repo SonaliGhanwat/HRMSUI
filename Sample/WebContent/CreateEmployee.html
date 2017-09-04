@@ -16,7 +16,7 @@ th {border:2px groove black; padding:7px; }
 <title>EmployeeRegistrationForm</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script type="text/javascript" src="js/Validation.js"></script>
-<script type="text/javascript" src="js/CreateEmployee.js"></script>
+<script type="text/javascript" src="js/employee-operations.js"></script>
 
 
 </head>
@@ -24,16 +24,16 @@ th {border:2px groove black; padding:7px; }
 <h1 align="center">Employee Registration Form</h1>
 <fieldset class="emp-details-form">
 <p id="data"></p> 
-<form action="#" name="Employee"  class="employee-form" onsubmit="return addEmployee();" method="POST" >
+<form action="#" name="Employee"  class="employee-form" onsubmit="return createEmployee();" method="POST" >
   
    <span>
       <span>
          <label  class="label-name"> UserId:</label>
-         <input type="text" id="userid" name="userid" class="label-size" style="margin-left: 75px" >
+         <input type="text" id="userid" name="userid" class="label-size userid" >
       </span>
       <span>
          <label  class="label-name"> Password:</label>
-         <input type="password" id="password" name="password" class="label-size" style="margin-left: 34px">
+         <input type="password" id="password" name="password" class="label-size password">
       </span>
     </span>
   <br>
@@ -41,11 +41,11 @@ th {border:2px groove black; padding:7px; }
    <span>
       <span>
          <label  class="label-name"> First Name:</label>
-         <input type="text" id="firstName" name="firstName" class="label-size" style="margin-left: 40px">
+         <input type="text" id="firstName" name="firstName" class="label-size firstName">
       </span>
       <span>
          <label  class="label-name"> Last Name:</label>
-         <input type="text" id="lastName" name="lastName" class="label-size" style="margin-left: 22px">
+         <input type="text" id="lastName" name="lastName" class="label-size lastName">
       </span>
     </span>
   <br>
@@ -53,11 +53,11 @@ th {border:2px groove black; padding:7px; }
   <span>
       <span>
          <label  class="label-name"> PhoneNumber:</label>
-         <input type="number" id="phoneNumber" name="phoneNumber" class="label-size" style="margin-left: 12px">
+         <input type="number" id="phoneNumber" name="phoneNumber" class="label-size phoneNumber">
       </span>
       <span>
          <label  class="label-name"> EmailId:</label>
-         <input type="text" id="emailid" name="emailid" class="label-size" style="margin-left: 45px">
+         <input type="text" id="emailid" name="emailid" class="label-size emailid">
       </span>
     </span>
   <br>
@@ -65,11 +65,11 @@ th {border:2px groove black; padding:7px; }
   <span>
       <span>
          <label  class="label-name" >DateOfJoining:</label>
-         <input type="date" id="dateOfJoining" name="dateOfJoining" class="label-size" style="margin-left: 10px">
+         <input type="date" id="dateOfJoining" name="dateOfJoining" class="label-size dateofjoining">
       </span>
       <span>
          <label  class="label-name"> DateOfBirth:</label>
-         <input type="date" id="dateOfBirth" name="dateOfBirth" class="label-size" style="margin-left: 37px">
+         <input type="date" id="dateOfBirth" name="dateOfBirth" class="label-size dateofbirth">
       </span>
     </span>
   <br>
@@ -77,11 +77,11 @@ th {border:2px groove black; padding:7px; }
   <span>
       <span>
          <label  class="label-name">Address:</label>
-         <input type="text" id="address" name="address" class="label-size" style="margin-left: 65px">
+         <input type="text" id="address" name="address" class="label-size address">
       </span>
       <span>
          <label  class="label-name"> Department:</label>
-         <input type="text" id="department" name="department" class="label-size" style="margin-left: 16px">
+         <input type="text" id="department" name="department" class="label-size department">
       </span>
     </span>
   <br>
@@ -89,11 +89,11 @@ th {border:2px groove black; padding:7px; }
   <span>
       <span>
          <label  class="label-name">Salary:</label>
-         <input type="text" id="salary" name="salary" class="label-size" style="margin-left: 78px">
+         <input type="text" id="salary" name="salary" class="label-size salary">
       </span>
       <span>
          <label  class="label-name"> UserType:</label>
-         <input type="number" id="usertype" name="usertype" class="label-size" style="margin-left: 40px">
+         <input type="number" id="usertype" name="usertype" class="label-size usertype">
          <!-- <select class="label-size" style="margin-left: 40px">
   			<option value="volvo">HR</option>
   			<option value="saab">MANAGER</option>
