@@ -13,8 +13,8 @@ function displayEmployeeList() {
 				tbody += "<td>" + id + "</td>"
 				var userid = empData[data].userid;
 				tbody += "<td>" + userid + "</td>"
-				var password = empData[data].password;
-				tbody += "<td>" + password + "</td>"
+				/*var password = empData[data].password;
+				tbody += "<td>" + password + "</td>"*/
 				var firstName = empData[data].firstName;
 				tbody += "<td>" + firstName + "</td>"
 				var lastName = empData[data].lastName;
@@ -40,6 +40,8 @@ function displayEmployeeList() {
 
 				tbody += "<td>" + "<button  value='Delete' onclick='deleteEmployee (this)' >Delete</button>"
 						+ "</td>";
+				tbody += "<td>" + "<button  value='Edit' onclick='editEmployee(this)' >Edit</button>"
+				+ "</td>";
 				tbody += "<tr>"
 
 			}
@@ -52,6 +54,7 @@ function displayEmployeeList() {
 	xhttp.send();
 
 }
+
 
 function addEmployee() {
 	validate();
@@ -100,7 +103,6 @@ function addEmployee() {
 	}
 
 	http.send(myJSON);
-
 }
 
 function deleteEmployee(index) {
@@ -120,8 +122,7 @@ function deleteEmployee(index) {
 						alert(this.rowIndex + 1);
 					}
 				}
-			}
-			;
+			};
 
 			document.getElementById("createTable").innerHTML = "";
 			var empData = JSON.parse(this.responseText);
@@ -134,4 +135,60 @@ function deleteEmployee(index) {
 
 	xhttp.open("GET", "http://localhost:8085/HRMS/employee/list", true);
 	xhttp.send();
+}
+
+function editEmployee(index){
+	var http = new XMLHttpRequest();
+	
+	
+
+	var url = "http://localhost:8085/HRMS/employee/create";
+	
+	var userid = document.getElementsByName("userid");
+	var password = document.getElementsByName("password");
+	var firstName = document.getElementsByName("firstName");
+	var lastName = document.getElementsByName("lastName");
+	var phoneNumber = document.getElementsByName("phoneNumber");
+	var emailid = document.getElementsByName("emailid");
+	var dateOfJoining = document.getElementsByName("dateOfJoining");
+	var dateOfBirth = document.getElementsByName("dateOfBirth");
+	var address = document.getElementsByName("address");
+	var department = document.getElementsByName("department");
+	var salary = document.getElementsByName("salary");
+	// var usertype = document.getElementsByName("usertype")[0].value;
+
+	var data = {
+		
+		userid : userid,
+		password : password,
+		firstName : firstName,
+		lastName : lastName,
+		phoneNumber : phoneNumber,
+		emailid : emailid,
+		dateOfJoining : dateOfJoining,
+		dateOfBirth : dateOfBirth,
+		address : address,
+		department : department,
+		salary : salary,
+		usertype : 2
+	}
+
+	var myJSON = JSON.stringify(data);
+	console.log(myJSON);
+
+	http.open("POST", url, true);
+
+	http.setRequestHeader("Content-Type", "application/json; charset=utf8");
+	http.onreadystatechange = function() {// Call a function when the state
+											// changes.
+		if (http.readyState == 4 && http.status == 200) {
+			alert(http.responseText);
+		}
+	}
+
+	http.send(myJSON);
+	
+	http.open("PUT", "http://localhost:8085/HRMS/employee/update", true);
+	http.send();
+	
 }
