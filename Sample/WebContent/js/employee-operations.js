@@ -138,12 +138,9 @@ function deleteEmployee(index) {
 }
 
 function editEmployee(index){
+	
 	var http = new XMLHttpRequest();
-	
-	
-
 	var url = "http://localhost:8085/HRMS/employee/create";
-	
 	var userid = document.getElementsByName("userid");
 	var password = document.getElementsByName("password");
 	var firstName = document.getElementsByName("firstName");

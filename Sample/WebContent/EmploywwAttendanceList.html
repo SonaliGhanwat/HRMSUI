@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Attendance List</title>
+<style type="text/css">
+table {table-collapse:collapse; border-spacing:0}
+td {border:2px groove black; padding:7px; }
+th {border:2px groove black; padding:7px; }
+.ctr {text-align:center}
+</style>
+</head>
+<body>
+<h2>Employee Attendance List</h2>
+<script type="text/javascript" src="js/employeeAttendance-operation.js"></script>
+<body onload="displayEmployeeAttendanceList() " >
+<p id="createTable"></p> 
+<table>
+<tr>
+         <th>Id</th>
+		<th>EmployeeId</th>
+		<th>InTime</th>
+		<th>OutTime</th>
+		<th>TotalTime</th>
+		<th>Date</th>
+		<th>Status</th>
+		<th>Delete</th>
+		<th>Edit</th>
+		</tr> 
+<tbody id="displayList"></tbody>
+
+</table>
+</body>
+</html>

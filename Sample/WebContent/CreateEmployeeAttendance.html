@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Registration Form</title>
+<style type="text/css">
+table {table-collapse:collapse; border-spacing:0}
+td {border:2px groove black; padding:7px; }
+th {border:2px groove black; padding:7px; }
+.ctr {text-align:center}
+</style>
+</head>
+<body>
+<head>
+<meta charset="ISO-8859-1">
+<title>EmployeeAttendanceForm</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script type="text/javascript" src="js/Validation.js"></script>
+<script type="text/javascript" src="js/employeeAttendance-operation.js"></script>
+</head>
+<body >
+<h1 align="center">Employee Attendance Form</h1>
+<fieldset class="emp-details-form">
+<p id="data"></p> 
+<form action="#" name="Employee"  class="employee-form" onsubmit="return addEmployeeAttendance();" method="POST" >
+  <span>
+      <span>
+         <label  class="label-name"> InTime:</label>
+         <input type="text" id="intime" name="intime" class="label-size intime" >
+      </span>
+      <span>
+         <label  class="label-name"> OutTime:</label>
+         <input type="text" id="outtime" name="outtime" class="label-size password">
+      </span>
+    </span>
+  <br>
+  <br>
+  <br>
+  <span>
+      <span>
+         <label  class="label-name"> Date:</label>
+         <input type="date" id="date" name="date" class="label-size firstName">
+      </span>
+       </span>
+         <label  class="label-name"> EmployeeId:</label>
+         
+      <!--  <input type="number" id="employee" name="employee" class="label-size usertype">  
+         <div id="list" onclick="dropDownList(this)"></div> -->
+        <select  id="list" onclick="dropDownList()" id="option">
+		</select>  
+    
+    <!-- <div id="list" onclick="dropDownList(this)"></div>  -->
+    
+    <div align="center" style="margin-top: 3%">
+ <input type="submit" value="Submit" class="label-size">
+<input type="button" value="CANCEL" class="cancel-btn"> <br> <br>
+</div>
+</form>
+</fieldset> 
+</body>
+</html>
