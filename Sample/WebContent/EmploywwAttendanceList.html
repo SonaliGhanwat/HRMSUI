@@ -5,19 +5,20 @@
 <title>Employee Attendance List</title>
 <style type="text/css">
 table {table-collapse:collapse; border-spacing:0}
-td {border:2px groove black; padding:7px; }
-th {border:2px groove black; padding:7px; }
+td {border:1px groove black; padding:7px; }
+th {border:1px groove black; padding:7px; }
 .ctr {text-align:center}
 </style>
 </head>
 <body>
+
 <h2>Employee Attendance List</h2>
 <script type="text/javascript" src="js/employeeAttendance-operation.js"></script>
 <body onload="displayEmployeeAttendanceList() " >
 <p id="createTable"></p> 
 <table>
 <tr>
-         <th>Id</th>
+         
 		<th>EmployeeId</th>
 		<th>InTime</th>
 		<th>OutTime</th>
@@ -28,7 +29,62 @@ th {border:2px groove black; padding:7px; }
 		<th>Edit</th>
 		</tr> 
 <tbody id="displayList"></tbody>
-
 </table>
+ <h2>Employee Attendance List By Date</h2>
+  <!-- <body onsubmit="return displayEmployeeAttendanceByDate(Date)" > -->
+<form action="#" name="Employee" onchange="return displayEmployeeAttendanceByDate(Date)" method="GET" > 
+ 
+ <p id="createAttendanceTable"></p> 
+    <label  class="label-name"> Date:</label>
+    <input type="text" id=Date value=""/><br><br>
+  <!-- <input type="submit" class="empAtt"/><br><br> -->
+<table>
+<tr>
+         
+		<th>EmployeeId</th>
+		<th>InTime</th>
+		<th>OutTime</th>
+		<th>TotalTime</th>
+		<th>Date</th>
+		<th>Status</th>
+		</tr> 
+		
+<tbody id="displayAttendanceList"></tbody>
+    </table>
+ </form>   
+ 
+ <br>
+ <h2>Employee Attendance List By Id and Date</h2>
+  <!-- <body onsubmit="return displayEmployeeAttendanceByDate(Date)" > -->
+<form action="#" name="Employee" onsubmit="return displayEmployeeAttendanceByIdandDate(Date)" method="GET" > 
+ 
+ <p id="createAttendanceTableByIdandDate"></p> 
+    <span>
+      <span>
+         <label  class="label-name"> ID:</label>
+         <input type="text" id="id" name="id" class="label-size intime" >
+      </span>
+      <span>
+         <label  class="label-name"> Date:</label>
+         <input type="text" id="date" name="date" class="label-size password">
+      </span>
+    </span>
+  <br>
+  <br>
+  <input type="submit" /><br><br>
+<table>
+<tr>
+		<th>EmployeeId</th>
+		<th>InTime</th>
+		<th>OutTime</th>
+		<th>TotalTime</th>
+		<th>Date</th>
+		<th>Status</th>
+		</tr> 
+		
+<tbody id="displayAttendanceListByIdandDate"></tbody>
+    </table>
+ </form>   
+ 
 </body>
 </html>

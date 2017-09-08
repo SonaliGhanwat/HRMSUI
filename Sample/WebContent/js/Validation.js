@@ -1,4 +1,4 @@
-function validate() {
+function validateEmployee() {
 	var userid = document.Employee.userid;
 	var password = document.Employee.password;
 	var firstname = document.Employee.firstName;

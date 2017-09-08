@@ -9,8 +9,8 @@ function displayEmployeeList() {
 
 			for ( var data in empData) {
 				tbody += "<tr>"
-				var id = empData[data].id;
-				tbody += "<td>" + id + "</td>"
+				/*var id = empData[data].id;
+				tbody += "<td>" + id + "</td>"*/
 				var userid = empData[data].userid;
 				tbody += "<td>" + userid + "</td>"
 				/*var password = empData[data].password;
@@ -38,7 +38,7 @@ function displayEmployeeList() {
 				 * usertype + "</td>"
 				 */
 
-				tbody += "<td>" + "<button  value='Delete' onclick='deleteEmployee (this)' >Delete</button>"
+				tbody += "<td>" + "<button  value='Delete' onclick='deleteEmployee (this.id)' >Delete</button>"
 						+ "</td>";
 				tbody += "<td>" + "<button  value='Edit' onclick='editEmployee(this)' >Edit</button>"
 				+ "</td>";
@@ -57,9 +57,8 @@ function displayEmployeeList() {
 
 
 function addEmployee() {
-	validate();
+	//validateEmployee()();
 	var http = new XMLHttpRequest();
-
 	var url = "http://localhost:8085/HRMS/employee/create";
 	var userid = document.getElementsByName("userid")[0].value;
 	var password = document.getElementsByName("password")[0].value;
