@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee List</title>
+<style type="text/css">
+table {table-collapse:collapse; border-spacing:0}
+td {border:2px groove black; padding:7px; }
+th {border:2px groove black; padding:7px; }
+.ctr {text-align:center}
+</style>
+</head>
+<body>
+<h2>Employee Daily Task List</h2>
+<script type="text/javascript" src="js/employeeDailyTask-operation.js"></script>
+<body onload="displayEmployeeDailyTaskList() " >
+<p id="createTable"></p> 
+<table>
+<tr>
+        
+		<th>Employeeid</th>
+		<th>Date</th>
+		<th>TaskName</th>
+		<th>EstimationTime</th>
+		<th>StartTime</th>
+		<th>EndTime</th>
+		<th>TakenTime</th>
+		<th>Delete</th>
+		<th>Edit</th>
+		
+		</tr> 
+<tbody id="displayList"></tbody>
+
+</table>
+</body>
+</html>

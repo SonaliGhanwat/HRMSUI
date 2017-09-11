@@ -43,17 +43,12 @@ function displayEmployeeAttendanceList() {
 }
 
 function addEmployeeAttendance() {
-	
 	var http = new XMLHttpRequest();
-
 	var url = "http://localhost:8085/HRMS/employeeattendance/create";
 	var intime = document.getElementsByName("intime")[0].value;
 	var outtime = document.getElementsByName("outtime")[0].value;
 	var date = document.getElementsByName("date")[0].value;
-	//var employee = document.getElementsByName("employee")[0].value;
-	
-	
-
+	var employee = document.getElementsByName("employee")[0].value;
 	var data = {
 			intime : intime,
 			outtime : outtime,
@@ -76,6 +71,7 @@ function addEmployeeAttendance() {
 
 	http.send(myJSON);
 }
+
 function deleteEmployeeAttendance(index) {
 	var xhttp = new XMLHttpRequest();
 	console.log("index:", index);
@@ -94,7 +90,6 @@ function deleteEmployeeAttendance(index) {
 					}
 				}
 			};
-
 			document.getElementById("createTable").innerHTML = "";
 			var empData = JSON.parse(this.responseText);
 			
@@ -107,6 +102,7 @@ function deleteEmployeeAttendance(index) {
 	xhttp.open("GET", "http://localhost:8085/HRMS/employeeattendance/list", true);
 	xhttp.send();
 }
+
 function displayEmployeeAttendanceByDate(index){
 	var xhttp = new XMLHttpRequest();
 	var dateVal = document.getElementById("Date").value;
@@ -118,7 +114,6 @@ function displayEmployeeAttendanceByDate(index){
 			document.getElementById("createAttendanceTable").innerHTML = "";
 			var empData = JSON.parse(this.responseText);
 			var tbody = "";
-
 			for ( var list in empData) {
 				tbody += "<tr>"
 				/*var id = empData[list].id;
@@ -199,22 +194,19 @@ function displayEmployeeAttendanceByIdandDate(index){
 function dropDownList(index){
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
-
 		if (this.readyState == 4 && this.status == 200) {
 			document.getElementById("data").innerHTML = "";
 			var empData = JSON.parse(this.responseText);
-			//var selectMenu="";
-			var selectMenu ='<select name="dropDown" >';
+			var selectMenu="";
+			//var selectMenu ='<select name="dropDown" >';
 			for(var i = 0; i < empData.length; i++) {
 				selectMenu+='<option name="'+empData[i].userid +'">'+empData[i].userid +'</option>'+"<br>";
 				console.log("empData[i].userid:",empData[i].userid)
 				console.log("selectMenu:",selectMenu);
-				
 				//document.getElementById("list").innerHTML.selectedIndex = selectMenu;
 			}
-			selectMenu+='</select>';
+			//selectMenu+='</select>';
 			document.getElementById("list").innerHTML = selectMenu;
-			
 		}
 	};
 

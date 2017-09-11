@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Daily Task  Form</title>
+<style type="text/css">
+table {table-collapse:collapse; border-spacing:0}
+td {border:2px groove black; padding:7px; }
+th {border:2px groove black; padding:7px; }
+.ctr {text-align:center}
+</style>
+</head>
+<body>
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<!-- <script type="text/javascript" src="js/Validation.js"></script> -->
+<script type="text/javascript" src="js/employeeDailyTask-operation.js"></script>
+</head>
+<body >
+<h1 align="center">Employee Daily Task  Form</h1>
+<fieldset class="emp-details-form">
+<p id="data"></p> 
+<form action="#" name="Employee"  class="employee-form" onsubmit="return addEmployeeDailyTask();" method="POST" >
+  <span>
+      <span>
+         <label  class="label-name"> Date:</label>
+         <input type="date" id="date" name="date" class="label-size date" >
+      </span>
+      <span>
+         <label  class="label-name"> TaskName:</label>
+         <input type="text" id="taskName" name="taskName" class="label-size outtime">
+      </span>
+    </span>
+  <br>
+  <br>
+  <br>
+  <span>
+      <span>
+         <label  class="label-name"> EstimationTime:</label>
+         <input type="text" id="estimationTime" name="estimationTime" class="label-size estimation-time">
+      </span>
+       <span>
+         <label  class="label-name"> StartTime:</label>
+         <input type="text" id="starttime" name="starttime" class="label-size starttime">
+      </span>
+     </span>
+      <br>
+  <br>
+  <br>
+  <span>
+      <span>
+         <label  class="label-name"> EndTime:</label>
+         <input type="text" id="endtime" name="endtime" class="label-size endtime">
+      </span>
+       
+     </span>
+         <label  class="label-name"> EmployeeId:</label>
+         
+      <!--  <input type="number" id="employee" name="employee" class="label-size usertype">  
+         <div id="list" onclick="dropDownList(this)"></div> -->
+        <select  id="list" onclick="dropDownList()" id="option">
+		</select>  
+    
+    <div align="center" style="margin-top: 3%">
+ <input type="submit" value="Submit" class="label-size">
+<input type="button" value="CANCEL" class="cancel-btn"> <br> <br>
+</div>
+</form>
+</fieldset> 
+</body>
+</html>
