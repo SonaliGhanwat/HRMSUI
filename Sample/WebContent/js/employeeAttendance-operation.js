@@ -5,36 +5,8 @@ function displayEmployeeAttendanceList() {
 		if (this.readyState == 4 && this.status == 200) {
 			document.getElementById("createTable").innerHTML = "";
 			var empData = JSON.parse(this.responseText);
-			var tbody = "";
-
-			for ( var data in empData) {
-				tbody += "<tr>"
-				/*var id = empData[data].id;
-				tbody += "<td>" + id + "</td>"*/
-				var employeeid = empData[data].employee.userid;
-				tbody += "<td>" + employeeid + "</td>"
-				/*var password = empData[data].password;
-				tbody += "<td>" + password + "</td>"*/
-				var inTime = empData[data].intime;
-				tbody += "<td>" + inTime + "</td>"
-				var outTime = empData[data].outtime;
-				tbody += "<td>" + outTime + "</td>"
-				var totalTime = empData[data].totaltime;
-				tbody += "<td>" + totalTime + "</td>"
-				var date = empData[data].date;
-				tbody += "<td>" + date + "</td>"
-				var status = empData[data].status;
-				tbody += "<td>" + status + "</td>"
-				tbody += "<td>" + "<button  value='Delete' onclick='deleteEmployeeAttendance (this)' >Delete</button>"
-						+ "</td>";
-				tbody += "<td>" + "<button  value='Edit' onclick='editEmployee(this)' >Edit</button>"
-				+ "</td>";
-				tbody += "<tr>"
-
+	         createEmployeeTable(empData)
 			}
-			tbody += "</table>"
-			document.getElementById("displayList").innerHTML = tbody;
-		}
 	};
 
 	xhttp.open("GET", "http://localhost:8085/HRMS/employeeattendance/list", true);
@@ -44,27 +16,17 @@ function displayEmployeeAttendanceList() {
 
 function addEmployeeAttendance() {
 	var http = new XMLHttpRequest();
-	var url = "http://localhost:8085/HRMS/employeeattendance/create";
-	var intime = document.getElementsByName("intime")[0].value;
-	var outtime = document.getElementsByName("outtime")[0].value;
-	var date = document.getElementsByName("date")[0].value;
-	var employee = document.getElementsByName("employee")[0].value;
-	var data = {
-			intime : intime,
-			outtime : outtime,
-			date : date,
-			employee : 2,
-	}
 
-	var myJSON = JSON.stringify(data);
+	var employee=createEmployeeAttendance(data);
+	var myJSON = JSON.stringify(employee);
 	console.log(myJSON);
-
+	
 	http.open("POST", "http://localhost:8085/HRMS/employeeattendance/create", true);
 
 	http.setRequestHeader("Content-Type", "application/json; charset=utf8");
 	http.onreadystatechange = function() {// Call a function when the state
-											// changes.
 		if (http.readyState == 4 && http.status == 200) {
+			
 			alert(http.responseText);
 		}
 	}
@@ -72,35 +34,19 @@ function addEmployeeAttendance() {
 	http.send(myJSON);
 }
 
-function deleteEmployeeAttendance(index) {
+function deleteEmployeeAttendance(id) {
 	var xhttp = new XMLHttpRequest();
-	console.log("index:", index);
 
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			
-			var tbodies= document.getElementsByTagName('tr')
-			for (var i = tbodies.length - 1; i >= 0; i--) {
-
-				var rows = tbodies[i].getElementsByTagName('tr');
-
-				for (var j = rows.length - 1; j >= 0; j--) {
-					rows[j].onclick = function() {
-						alert(this.rowIndex + 1);
-					}
-				}
-			};
-			document.getElementById("createTable").innerHTML = "";
 			var empData = JSON.parse(this.responseText);
-			
-			xhttp.open("DELETE", "http://localhost:8085/HRMS/employeeattendance/delete/"
-					+ index.parentElement.parentElement.children[0].textContent, true);
-			xhttp.send();
 		}
 	}
-
-	xhttp.open("GET", "http://localhost:8085/HRMS/employeeattendance/list", true);
+	xhttp.open("DELETE", "http://localhost:8085/HRMS/employeeattendance/delete/"
+			+ id, true);
 	xhttp.send();
+
 }
 
 function displayEmployeeAttendanceByDate(index){
@@ -109,37 +55,14 @@ function displayEmployeeAttendanceByDate(index){
 	console.log("dateVal:",dateVal);
 	xhttp.onreadystatechange = function() {
 		
-
 		if (this.readyState == 4 && this.status == 200) {
 			document.getElementById("createAttendanceTable").innerHTML = "";
 			var empData = JSON.parse(this.responseText);
-			var tbody = "";
-			for ( var list in empData) {
-				tbody += "<tr>"
-				/*var id = empData[list].id;
-				tbody += "<td>" + id + "</td>"*/
-				var employeeid = empData[list].employee.userid;
-				tbody += "<td>" + employeeid + "</td>"
-				var inTime = empData[list].intime;
-				tbody += "<td>" + inTime + "</td>"
-				var outTime = empData[list].outtime;
-				tbody += "<td>" + outTime + "</td>"
-				var totalTime = empData[list].totaltime;
-				tbody += "<td>" + totalTime + "</td>"
-				var date = empData[list].date;
-				tbody += "<td>" + date + "</td>"
-				var status = empData[list].status;
-				tbody += "<td>" + status + "</td>"
-				/*tbody += "<td>" + "<button  value='Delete' onclick='deleteEmployeeAttendance (this)' >Delete</button>"
-						+ "</td>";
-				tbody += "<td>" + "<button  value='Edit' onclick='editEmployee(this)' >Edit</button>"
-				+ "</td>";*/
-				tbody += "<tr>"
-			}
-			tbody += "</table>"
-				document.getElementById("displayAttendanceList").innerHTML = tbody;
+			var tbody =  displayTable(empData);
+			document.getElementById("displayAttendanceList").innerHTML = tbody;
 			
 		}
+		
 	};
 
 	xhttp.open("GET", "http://localhost:8085/HRMS/employeeattendance/getAttendanceByDate/"+dateVal, true);
@@ -157,33 +80,10 @@ function displayEmployeeAttendanceByIdandDate(index){
 		if (this.readyState == 4 && this.status == 200) {
 			document.getElementById("createAttendanceTableByIdandDate").innerHTML = "";
 			var empData = JSON.parse(this.responseText);
-			var tbody = "";
-
-			for ( var list in empData) {
-				tbody += "<tr>"
-				/*var id = empData[list].id;
-				tbody += "<td>" + id + "</td>"*/
-				var employeeid = empData[list].employee.userid;
-				tbody += "<td>" + employeeid + "</td>"
-				var inTime = empData[list].intime;
-				tbody += "<td>" + inTime + "</td>"
-				var outTime = empData[list].outtime;
-				tbody += "<td>" + outTime + "</td>"
-				var totalTime = empData[list].totaltime;
-				tbody += "<td>" + totalTime + "</td>"
-				var date = empData[list].date;
-				tbody += "<td>" + date + "</td>"
-				var status = empData[list].status;
-				tbody += "<td>" + status + "</td>"
-				/*tbody += "<td>" + "<button  value='Delete' onclick='deleteEmployeeAttendance (this)' >Delete</button>"
-						+ "</td>";
-				tbody += "<td>" + "<button  value='Edit' onclick='editEmployee(this)' >Edit</button>"
-				+ "</td>";*/
-				tbody += "<tr>"
-			}
-			tbody += "</table>"
-				document.getElementById("displayAttendanceListByIdandDate").innerHTML = tbody;
+			var tbody =  displayTable(empData);
+			document.getElementById("displayAttendanceListByIdandDate").innerHTML = tbody;
 		}
+		
 	};
 
 	xhttp.open("GET", "http://localhost:8085/HRMS/employeeattendance/getAttendance/" +id +"/" +dateVal, true);
@@ -200,7 +100,7 @@ function dropDownList(index){
 			var selectMenu="";
 			//var selectMenu ='<select name="dropDown" >';
 			for(var i = 0; i < empData.length; i++) {
-				selectMenu+='<option name="'+empData[i].userid +'">'+empData[i].userid +'</option>'+"<br>";
+				selectMenu+='<option value='+empData[i].id +'>'+empData[i].userid +'</option>'+"<br>";
 				console.log("empData[i].userid:",empData[i].userid)
 				console.log("selectMenu:",selectMenu);
 				//document.getElementById("list").innerHTML.selectedIndex = selectMenu;
@@ -212,5 +112,80 @@ function dropDownList(index){
 
 	xhttp.open("GET", "http://localhost:8085/HRMS/employee/list", true);
 	xhttp.send();
+}
+function createEmployeeAttendance(data){
+	var url = "http://localhost:8085/HRMS/employeeattendance/create";
+	var employee = document.getElementById("list").value;
+	var id = parseInt(employee);
+	var intime = document.getElementsByName("intime")[0].value;
+	var outtime = document.getElementsByName("outtime")[0].value;
+	var date = document.getElementsByName("date")[0].value;
+	
+	var data = {
+			employee:id,
+			intime:intime,
+			outtime:outtime,
+			date:date
+
+			
+	}
+	 return data
+}
+
+function createEmployeeTable(empData){
+	var tbody = "";
+
+	for ( var data in empData) {
+		tbody += "<tr>"
+		var id = empData[data].id;
+		//tbody += "<td>" + id + "</td>"
+		var employeeid = empData[data].employee.userid;
+		tbody += "<td>" + employeeid + "</td>"
+		/*var password = empData[data].password;
+		tbody += "<td>" + password + "</td>"*/
+		var inTime = empData[data].intime;
+		tbody += "<td>" + inTime + "</td>"
+		var outTime = empData[data].outtime;
+		tbody += "<td>" + outTime + "</td>"
+		var totalTime = empData[data].totaltime;
+		tbody += "<td>" + totalTime + "</td>"
+		var date = empData[data].date;
+		tbody += "<td>" + date + "</td>"
+		var status = empData[data].status;
+		tbody += "<td>" + status + "</td>"
+		tbody += "<td>" + "<button  value='Delete' onclick='deleteEmployeeAttendance ("+id+")' >Delete</button>"
+				+ "</td>";
+		tbody += "<td>" + "<button  value='Edit' onclick='editEmployee(this)' >Edit</button>"
+		+ "</td>";
+		tbody += "<tr>"
+
+	}
+	tbody += "</table>"
+	document.getElementById("displayList").innerHTML = tbody;
+	return empData
+}
+
+function displayTable(empData){
+	var tbody = "";
+	for ( var list in empData) {
+		tbody += "<tr>"
+		/*var id = empData[list].id;
+		tbody += "<td>" + id + "</td>"*/
+		var employeeid = empData[list].employee.userid;
+		tbody += "<td>" + employeeid + "</td>"
+		var inTime = empData[list].intime;
+		tbody += "<td>" + inTime + "</td>"
+		var outTime = empData[list].outtime;
+		tbody += "<td>" + outTime + "</td>"
+		var totalTime = empData[list].totaltime;
+		tbody += "<td>" + totalTime + "</td>"
+		var date = empData[list].date;
+		tbody += "<td>" + date + "</td>"
+		var status = empData[list].status;
+		tbody += "<td>" + status + "</td>"
+		tbody += "<tr>"
+	}
+	tbody += "</table>"
+		return tbody
 	
 }

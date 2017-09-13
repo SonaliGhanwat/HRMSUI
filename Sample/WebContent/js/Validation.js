@@ -1,134 +1,111 @@
 function validateEmployee() {
-	var userid = document.Employee.userid;
-	var password = document.Employee.password;
-	var firstname = document.Employee.firstName;
-	var lastname = document.Employee.lastName;
-	var phoneNumber = document.Employee.phoneNumber;
-	var emailid = document.Employee.emailid;
-	var dateOfJoining = document.Employee.dateOfJoining;
-	var dateOfBirth = document.Employee.dateOfBirth;
-	var address = document.Employee.address;
-	var department = document.Employee.department;
-	var salary = document.Employee.salary;
-	if (userid_validation(userid, 5, 12)) {
-		if (password_validation(password, 7, 12)) {
-			if (firstname_validation(firstname)) {
-				if (ValidateLetter(lastname)) {
-					if(Validatephonenumber(phoneNumber))  {
-					//if(ValidateEmail(emailid))  {
-						//if(ValidateDate(dateOfJoining))  {
-							//if(Validatesalary(salary)){
-								
-							//}
-							
-								
-							//}
-							
-						//}
-					}
+	var userid = document.Employee.userid.value;
+	var password = document.Employee.password.value;
+	var firstName = document.Employee.firstName.value;
+	var lastName = document.Employee.lastName.value;
+	var phoneNumber = document.Employee.phoneNumber.value;
+	var emailid = document.Employee.emailid.value;
+	var dateOfJoining = document.Employee.dateOfJoining.value;
+	var dateOfBirth = document.Employee.dateOfBirth.value;
+	var address = document.Employee.address.value;
+	var department = document.Employee.department.value;
+	var salary = document.Employee.salary.value;
+	var valid = true;
 
-				}
+	var userid = document.getElementById("userid");
 
-			}
-		}
-
-	}
-	return false; 
-}
-function userid_validation(userid, mx, my) {
-	var userid_len = userid.value.length;
-	if (userid_len == 0 || userid_len >= my || userid_len < mx) {
-		alert("User Id should not be empty / length be between " + 5 + " to "+ 12);
+	if (userid.value == "") {
+		alert("Please enter userid");
 		userid.focus();
 		return false;
 	}
-	return true;
-}
-function password_validation(password, mx, my) {
+
+	var password = document.getElementById("password");
 	var password_len = password.value.length;
-	if (password_len == 0 || password_len >= my || password_len < mx) {
-		alert("Password should not be empty / length be between " + 7 + " to "+ 12);
+	if (password_len == 0 || password_len >= 12 || password_len < 7) {
+		alert("Password should not be empty / length be between " + 7 + " to "
+				+ 12);
 		password.focus();
 		return false;
 	}
-	return true;
-}
-function firstname_validation(firstname) {
+
+	var firstName = document.getElementById("firstName");
+	if (firstName.value == "") {
+		alert("Please enter firstName");
+		firstName.focus();
+		return false;
+	}
 	var letters = /[a-zA-Z\\s]+$/;
-	if (firstname.value.match(letters)) {
-		return true;
+	if (firstName.value.match(letters)) {
 	} else {
 		alert('First Name must have alphabet characters only');
-		firstname.focus();
+		firstName.focus();
 		return false;
 	}
-}
-function ValidateLetter(lastname) {
-	var letters = /^[A-Za-z]+$/;
-	if (lastname.value.match(letters)) {
-		return true;
-	} else {
-		alert('Last Name must have alphabet characters only');
-		lastname.focus();
-		return false;
-	}
-}
 
-function Validatephonenumber(phoneNumber)  
-{  
-  var phoneno = /^\d{10}$/;  
-  if((phoneNumber.value.match(phoneno)))
-        {  
-      return true;  
-        }  else  {  
-        alert("Phone Number must have 10 number only");  
-        phoneNumber.focus();
-        return false;  
-        }  
-}  
-/*function ValidateEmail(emailid) {
-	var mailformat = /[a-zA-Z0-9\\.]+@[a-zA-Z0-9\\-\\_\\.]+\\.[a-zA-Z0-9]{3}/;
-	if (emailid.value.match(mailformat)) {
-		return true;
-	} else {
-		alert("You have entered an invalid email address!");
-		emailid.focus();
+	var lastName = document.getElementById("lastName");
+	if (lastName.value == "") {
+		alert("Please enter firstName");
+		lastName.focus();
 		return false;
 	}
-}*/
-function ValidateDate(dateOfJoining) {
-var dateformat = /[0-9]{2})-([0-9]{2})-([0-9]{4}/ ;
-if(dateOfJoining.match(dateformat)){
-	return true;
-}else {
-	alert('You have entered an invalid email address!');
-	dateOfJoining.focus();
-	return false;
-}
+	var letters = /[a-zA-Z\\s]+$/;
+	if (lastName.value.match(letters)) {
+	} else {
+		alert('First Name must have alphabet characters only');
+		lastName.focus();
+		return false;
+	}
 
-return false;
-}
-function ValidateDate(dateOfBirth) {
-	var dateformat = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/ ;
-	if(dateOfBirth.match(dateformat)){
-		return true;
-	}else {
-		alert('You have entered an invalid Date!');
+	var phoneNumber = document.getElementById("phoneNumber");
+	var phoneno = /^\d{10}$/;
+	if ((phoneNumber.value.match(phoneno))) {
+	} else {
+		alert("Phone Number must have 10 number only");
+		phoneNumber.focus();
+		return false;
+	}
+
+	/*
+	 * var emailid = document.getElementById("emailid"); if (emailid.value ==
+	 * "") { alert("Please re-enter email"); emailid.focus(); return false; }
+	 * var mailformat =
+	 * /[a-zA-Z0-9\\.]+@[a-zA-Z0-9\\-\\_\\.]+\\.[a-zA-Z0-9]{3}/; if
+	 * (emailid.value.match(mailformat)) { return true; } else { alert("You have
+	 * entered an invalid email address!"); emailid.focus(); return false; }
+	 */
+
+	var dateOfJoining = document.getElementById("dateOfJoining");
+	if (dateOfJoining.value == "") {
+		alert("Please enter dateOfJoining");
+		dateOfJoining.focus();
+		return false;
+	}
+
+	var dateOfBirth = document.getElementById("dateOfBirth");
+	if (dateOfBirth.value == "") {
+		alert("Please enter dateOfBirth");
 		dateOfBirth.focus();
 		return false;
 	}
 
-	return false;
+	var address = document.getElementById("address");
+	if (address.value == "") {
+		alert("Please enter address");
+		address.focus();
+		return false;
 	}
-
-
-function Validatesalary(salary){
-	var salary=/{10}/;
-	if(salary.value.match(salary)){
-		return true
-	}else{
-		alert("salary must number only")
+	var department = document.getElementById("department");
+	if (department.value == "") {
+		alert("Please enter department");
+		department.focus();
+		return false;
+	}
+	var salary = document.getElementById("salary");
+	if (salary.value == "") {
+		alert("Please enter department");
 		salary.focus();
 		return false;
 	}
+
 }

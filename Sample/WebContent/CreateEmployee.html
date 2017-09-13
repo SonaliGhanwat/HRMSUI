@@ -17,12 +17,13 @@ th {border:2px groove black; padding:7px; }
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script type="text/javascript" src="js/Validation.js"></script>
 <script type="text/javascript" src="js/employee-operations.js"></script>
+<body onload="dropDownList()" >
 </head>
 <body >
 <h1 align="center">Employee Registration Form</h1>
 <fieldset class="emp-details-form">
 <p id="data"></p> 
-<form action="#" name="Employee"  class="employee-form" onsubmit="return addEmployee();" method="POST" >
+<form action="#" name="Employee"  class="employee-form" onsubmit="return validateEmployee(),addEmployee();" method="POST" >
   
    <span>
       <span>
@@ -90,14 +91,12 @@ th {border:2px groove black; padding:7px; }
          <input type="text" id="salary" name="salary" class="label-size salary">
       </span>
       <span>
-         <label  class="label-name"> UserType:</label>
-         <input type="number" id="usertype" name="usertype" class="label-size usertype">
-         <!-- <select class="label-size" style="margin-left: 40px">
-  			<option value="volvo">HR</option>
-  			<option value="saab">MANAGER</option>
- 			<option value="mercedes">TEAM LEADER</option>
-  			<option value="audi">EMPLOYEE</option>
-		</select> -->
+         <label  class="label-name user-type"> UserType:</label>
+         
+      <!--  <input type="number" id="employee" name="employee" class="label-size usertype">  
+         <div id="list" onclick="dropDownList(this)"></div> -->
+        <select  id="list" >
+		</select>  
       </span>
     </span>
   <br>

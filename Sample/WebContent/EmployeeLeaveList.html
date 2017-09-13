@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Leave List</title>
+<style type="text/css">
+table {table-collapse:collapse; border-spacing:0}
+td {border:2px groove black; padding:7px; }
+th {border:2px groove black; padding:7px; }
+.ctr {text-align:center}
+</style>
+</head>
+<body>
+<h2>Employee Leave List</h2>
+<script type="text/javascript" src="js/EmployeeLeave-operation.js"></script>
+<body onload="displayEmployeeLeaveList() " >
+<p id="createTable"></p> 
+<table>
+<tr>
+        
+		
+		<th>EmployeeId</th>
+		<th>Subject</th>
+		<th>LeaveDate</th>
+		<th>AfterLeaveJoininigDate</th>
+		<th>Delete</th>
+		<th>Edit</th>
+		
+		</tr> 
+<tbody id="displayList"></tbody>
+
+</table>
+<h2>Employee Leave List By Date</h2>
+  <!-- <body onsubmit="return displayEmployeeAttendanceByDate(Date)" > -->
+<form action="#" name="Employee" onchange="return displayEmployeeLeaveByDate(Date)" method="GET" > 
+ 
+ <p id="createLeaveTable"></p> 
+    <label  class="label-name"> Date:</label>
+    <input type="text" id=Date value=""/><br><br>
+  <!-- <input type="submit" class="empAtt"/><br><br> -->
+<table>
+<tr>
+         
+		<th>EmployeeId</th>
+		<th>Subject</th>
+		<th>LeaveDate</th>
+		<th>AfterLeaveJoiningDate</th>
+		</tr> 
+		
+<tbody id="displayLeaveList"></tbody>
+    </table>
+ </form>   
+ 
+ <br>
+</body>
+</html>
