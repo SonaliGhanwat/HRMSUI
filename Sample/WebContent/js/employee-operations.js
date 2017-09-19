@@ -19,20 +19,25 @@ function displayEmployeeList() {
 function addEmployee() {
 	
 	var http = new XMLHttpRequest();
-	var employee = createEmployee(data);
-	var myJSON = JSON.stringify(employee);
-	console.log(employee);
-	http.open("POST", "http://localhost:8085/HRMS/employee/create", true);
-
-	http.setRequestHeader("Content-Type", "application/json; charset=utf8");
-	http.onreadystatechange = function() {// Call a function when the state
-											// changes.
-		if (http.readyState == 4 && http.status == 200) {
-			alert(http.responseText);
+	var employee = getEmployeeDataFromUI(data);
+	
+	//validate
+	
+	if(validateEmployee(employee)){
+		var myJSON = JSON.stringify(employee);
+		console.log(employee);
+		http.open("POST", "http://localhost:8085/HRMS/employee/create", true);
+	
+		http.setRequestHeader("Content-Type", "application/json; charset=utf8");
+		http.onreadystatechange = function() {// Call a function when the state
+												// changes.
+			if (http.readyState == 4 && http.status == 200) {
+				alert(http.responseText);
+			}
 		}
+	
+		http.send(myJSON);
 	}
-
-	http.send(myJSON);
 }
 
 function deleteEmployee(id) {
@@ -41,6 +46,7 @@ function deleteEmployee(id) {
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			var empData = JSON.parse(this.responseText);
+			alert(xhttp.responseText);
 		}
 	}
 	xhttp.open("DELETE", "http://localhost:8085/HRMS/employee/delete/"
@@ -71,7 +77,7 @@ function editEmployee(index){
 	http.open("PUT", "http://localhost:8085/HRMS/employee/update", true);
 	http.send();
 }
-function createEmployee(data){
+function getEmployeeDataFromUI(){
 	var url = "http://localhost:8085/HRMS/employee/create";
 	var userid = document.getElementsByName("userid")[0].value;
 	var password = document.getElementsByName("password")[0].value;
@@ -157,12 +163,21 @@ function createEmployeeTable(empData){
 		tbody += "<td>" + salary + "</td>"
 		tbody += "<td>" + "<button  value='Delete' onclick='deleteEmployee (" +id+ ")' >Delete</button>"
 				+ "</td>";
-		tbody += "<td>" + "<button  value='Edit' onclick='editEmployee("+ empData[data] +")' >Edit</button>"
+		tbody += "<td>" + "<button  value='Edit' onclick='editEmployee("+ empData[data]+")' >Edit</button>"
 		+ "</td>";
-		tbody += "<tr>"
+		tbody += "<tr>";
 
 	}
-	tbody += "</table>"
+	tbody += "</table>";
 		return tbody
-	
+}
+function clearForm() {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+
+		if (this.readyState == 4 && this.status == 200) {
+			 document.getElementById("data").reset();
+		}
+	};
+   
 }

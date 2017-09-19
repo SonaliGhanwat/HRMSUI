@@ -15,47 +15,49 @@ th {border:2px groove black; padding:7px; }
 <meta charset="ISO-8859-1">
 <title>EmployeeAttendanceForm</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
-<!-- <script type="text/javascript" src="js/Validation.js"></script> -->
+<script type="text/javascript" src="js/AttendanceValidation.js"></script>
 <script type="text/javascript" src="js/employeeAttendance-operation.js"></script>
-<body onload="dropDownList()" >
+<body onload="dropDownList();" style="background-color:#F8F8FF;" >
 </head>
 <body >
-<h1 align="center">Employee Attendance Form</h1>
+<h1 align="center" style="color: blue;">Employee Attendance Form</h1>
 <fieldset class="emp-details-form">
  <p id="data"></p> 
-<form action="#" name="Employee"  class="employee-form" onsubmit="return addEmployeeAttendance();"  method="POST" >
+<form action="" name="Employee"  class="employee-form"   method="POST" >
  
-  <span>
-  <label  class="label-name"> EmployeeId:</label>
+  <div class="cartbox ">
+  <div class="content">
+  <label  class="label-name required"> EmployeeId:</label>
          
       <!--  <input type="number" id="employee" name="employee" class="label-size usertype">  
          <div id="list" onclick="dropDownList(this)"></div> -->
-        <select  id="list" name=employee>
+        <select  id="list" name=employee class=" textbox empAttlable">
 		</select>  
-     
-      <span>
-         <label  class="label-name"> InTime:</label>
-         <input type="text" id="intime" name="intime" class="label-size outtime">
-      </span>
-    </span>
+     </div>
+      <div class="sidebar">
+         <label  class="label-name required"> InTime:</label>
+         <input type="time" id="intime" name="intime" class="label-size outtime textbox empAttlable" step="2">
+         <div id="intime_validation" class="passvalidation"></div>
+      </div>
+    </div>
   <br>
   <br>
   <br>
-  <span>
-   <span>
-         <label  class="label-name"> OutTime:</label>
-         <input type="text" id="outtime" name="outtime" class="label-size intime" >
-      </span>
-      <span>
-         <label  class="label-name"> Date:</label>
-         <input type="date" id="date" name="date" class="label-size firstName">
-      </span>
-       </span>
-         
-    
+  <div class="cartbox ">
+   <div class="content">
+         <label  class="label-name required"> OutTime:</label>
+         <input type="time" id="outtime" name="outtime" class="label-size intime textbox empAttlable" step="2">
+         <div id="outtime_validation" class="error"></div>
+      </div>
+      <div class="sidebar">
+         <label  class="label-name required"> Date:</label>
+         <input type="date" id="date" name="date" class="label-size empattDate textbox empAttlable">
+         <div id="date_validation" class="passvalidation"></div>
+      </div>
+       </div>
     <div align="center" style="margin-top: 3%">
- <input type="submit" value="Submit" class="label-size">
-<input type="button" value="CANCEL" class="cancel-btn"> <br> <br>
+ <input type="button" value="Submit" class="label-size submit-button" onclick="addEmployeeAttendance()">
+<input type="button" value="CANCEL" class="cancel-btn submit-button"> <br> <br>
 </div>
 </form>
 </fieldset> 

@@ -4,10 +4,24 @@
 <meta charset="ISO-8859-1">
 <title>Employee Registration Form</title>
 <style type="text/css">
-table {table-collapse:collapse; border-spacing:0}
-td {border:2px groove black; padding:7px; }
-th {border:2px groove black; padding:7px; }
-.ctr {text-align:center}
+table {
+	table-collapse: collapse;
+	border-spacing: 0
+}
+
+td {
+	border: 2px groove black;
+	padding: 7px;
+}
+
+th {
+	border: 2px groove black;
+	padding: 7px;
+}
+
+.ctr {
+	text-align: center
+}
 </style>
 </head>
 <body>
@@ -17,95 +31,106 @@ th {border:2px groove black; padding:7px; }
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script type="text/javascript" src="js/Validation.js"></script>
 <script type="text/javascript" src="js/employee-operations.js"></script>
-<body onload="dropDownList()" >
+<body onload="dropDownList()" style="background-color:#F8F8FF;">
 </head>
-<body >
-<h1 align="center">Employee Registration Form</h1>
-<fieldset class="emp-details-form">
-<p id="data"></p> 
-<form action="#" name="Employee"  class="employee-form" onsubmit="return validateEmployee(),addEmployee();" method="POST" >
-  
-   <span>
-      <span>
-         <label  class="label-name"> UserId:</label>
-         <input type="text" id="userid" name="userid" class="label-size userid" >
-      </span>
-      <span>
-         <label  class="label-name"> Password:</label>
-         <input type="password" id="password" name="password" class="label-size password">
-      </span>
-    </span>
-  <br>
-  <br>
-   <span>
-      <span>
-         <label  class="label-name"> First Name:</label>
-         <input type="text" id="firstName" name="firstName" class="label-size firstName">
-      </span>
-      <span>
-         <label  class="label-name"> Last Name:</label>
-         <input type="text" id="lastName" name="lastName" class="label-size lastName">
-      </span>
-    </span>
-  <br>
-  <br>
-  <span>
-      <span>
-         <label  class="label-name"> PhoneNumber:</label>
-         <input type="number" id="phoneNumber" name="phoneNumber" class="label-size phoneNumber">
-      </span>
-      <span>
-         <label  class="label-name"> EmailId:</label>
-         <input type="text" id="emailid" name="emailid" class="label-size emailid">
-      </span>
-    </span>
-  <br>
-  <br>
-  <span>
-      <span>
-         <label  class="label-name" >DateOfJoining:</label>
-         <input type="date" id="dateOfJoining" name="dateOfJoining" class="label-size dateofjoining">
-      </span>
-      <span>
-         <label  class="label-name"> DateOfBirth:</label>
-         <input type="date" id="dateOfBirth" name="dateOfBirth" class="label-size dateofbirth">
-      </span>
-    </span>
-  <br>
-  <br>
-  <span>
-      <span>
-         <label  class="label-name">Address:</label>
-         <input type="text" id="address" name="address" class="label-size address">
-      </span>
-      <span>
-         <label  class="label-name"> Department:</label>
-         <input type="text" id="department" name="department" class="label-size department">
-      </span>
-    </span>
-  <br>
-  <br>
-  <span>
-      <span>
-         <label  class="label-name">Salary:</label>
-         <input type="text" id="salary" name="salary" class="label-size salary">
-      </span>
-      <span>
-         <label  class="label-name user-type"> UserType:</label>
-         
-      <!--  <input type="number" id="employee" name="employee" class="label-size usertype">  
-         <div id="list" onclick="dropDownList(this)"></div> -->
-        <select  id="list" >
-		</select>  
-      </span>
-    </span>
-  <br>
-  <br>
-  <div align="center" style="margin-top: 2%">
- <input type="submit" value="Submit" class="label-size">
-<input type="button" value="CANCEL" class="cancel-btn"> <br> <br>
-</div>
-</form>
-</fieldset> 
+<body>
+	<h1 align="center" style="color: blue;">Employee Registration Form</h1>
+	<fieldset class="emp-details-form">
+		<p id="data"></p>
+		<form action="" name="Employee" class="employee-form" method="POST">
+
+			<div class="cartbox">
+				<div class="content">
+					<label class="label-name required "> UserId</label> <input type="text"
+						id="userid" name="userid" class="label-size userid textbox" placeholder="Userid" > <div
+						id="userid_validation" class="error"></div>
+				</div>
+
+				<div class="sidebar">
+					<label class="label-name required "> Password</label> <input
+						type="password" id="password" name="password"
+						class="label-size password textbox " placeholder="Password" > <div
+						id="password_validation" class="passvalidation"></div>
+				</div>
+			</div>
+<br>
+			<div class="cartbox ">
+				<div class="content">
+					<label class="label-name required "> First Name</label> <input type="text"
+						id="firstName" name="firstName" class="label-size firstName textbox" placeholder="First Name" >
+					<div id="firstName_validation" class="error"></div>
+				</div>
+				<div class="sidebar">
+					<label class="label-name required"> Last Name</label> <input type="text"
+						id="lastName" name="lastName" class="label-size lastName textbox" placeholder="Last Name" >
+					<div id="lastName_validation" class="passvalidation"></div>
+				</div>
+			</div>
+			<br>
+
+			<div class="cartbox">
+				<div class="content phonumber">
+					<label class="label-name required"> PhoneNumber</label> <input
+						type="number" id="phoneNumber" name="phoneNumber"
+						class="label-size phoneNumber" style=" height: 25px ;width: 220px;" placeholder="PhoneNumber"> 
+						<div id="phoneNumber_validation" class="error"></div>
+				</div>
+				<div class="sidebar">
+					<label class="label-name required"> EmailId</label> <input type="text"
+						id="emailid" name="emailid" class="label-size emailid textbox" placeholder="Emailid" > 
+						<div id="emailid_validation" class="passvalidation"></div>
+				</div>
+			</div>
+			<br>
+			<div class="cartbox">
+				<div class="content">
+					<label class="label-name required">DateOfJoining</label> <input
+						type="date" id="dateOfJoining" name="dateOfJoining"
+						class="label-size dateofjoining textbox" placeholder="dateOfJoining" >
+						<div id="dateOfJoining_validation" class="error"></div>
+				</div>
+				<div class="sidebar">
+					<label class="label-name required"> DateOfBirth</label> <input type="date"
+						id="dateOfBirth" name="dateOfBirth" class="label-size dateofbirth textbox" placeholder="dateOfBirth">
+						<div id="dateOfBirth_validation" class="passvalidation" ></div>
+				</div>
+			</div>
+			<br>
+			<div class="cartbox">
+				<div class="content">
+					<label class="label-name required">Address</label> <input type="text"
+						id="address" name="address" class="label-size address textbox" placeholder="Address"  >
+						<div id="address_validation" class="error"></div>
+				</div>
+				<div class="sidebar">
+					<label class="label-name required"> Department</label> <input type="text"
+						id="department" name="department" class="label-size department textbox" placeholder="Department">
+						<div id="department_validation" class="passvalidation"></div>
+				</div>
+			</div>
+			<br>
+			<div class="cartbox">
+				<div class="content">
+					<label class="label-name required">Salary</label> <input type="text"
+						id="salary" name="salary" class="label-size salary textbox" placeholder="Salary">
+						<div id="salary_validation" class="error" ></div>
+				</div>
+				<div class="sidebar">
+					<label class="label-name usertype"> UserType</label> <select
+						id="list" class="usertype textbox" >
+					</select>
+				</div>
+			</div>
+			<br>
+
+			<div align="center" style="margin-top: 4%">
+				<input type="button" value="Submit" class="label-size submit-button"
+					onclick="addEmployee()"> <input type="button"
+					value="CANCEL"   class="cancel-btn submit-button" onclick="clearForm()"> <br> <br>
+			</div>
+			
+			
+		</form>
+	</fieldset>
 </body>
 </html>

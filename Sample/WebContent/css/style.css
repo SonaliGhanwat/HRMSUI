@@ -6,77 +6,76 @@
 	margin-left: 30px
 }
 .lable-size{
-	font-size: =15px;
+	font-size: =20px;
 	font-weight: bold;
-	margin-left: 30px;
+	margin-left: 20px;
 	position: absolute;
 	left: 40px;
-	
 }
 .cancel-btn{
 	margin-left: 20px;
 }
 .employee-form{
-	padding-left: 50px;
+	padding-left: 65px;
 }
 .emp-details-form{
 	width: 65%;
 	padding-top: 5%;
 	padding-bottom: 5%;
-	margin-left: 13%;
+	margin-left: 16%;
 }
 .user-type{
-	margin-left: 40ox;
+	margin-left: 40px;
 }
 .head-name{
 	color: black;
     font-weight: bold; 
     font-size: 50px;
 }
-.index-form{
-	width: 65%;
-	padding-top: 5%;
-	padding-bottom: 5%;
-	margin-left: 15%;
-	font-size: =15px;
+ .index-form{
+	width: 30%;
+	padding-top: 0%;
+	padding-bottom: 2%;
+	margin-left: 2%;
+	font-size: =25px;
 	font-weight: bold;
 	color: black;
-}
+} 
 .userid{
-	margin-left: 75px;
+	margin-left: 30px;
 }
 .password{
-	margin-left: 34px;
+	margin-left: 30px;
 }
 .firstName{
-	margin-left: 40px;
+	margin-left: 30px;
 }
 .lastName{
-	margin-left: 22px;
+	margin-left: 30px;
 }
 .phoneNumber{
-	margin-left: 12px;
+	margin-left: 30px;
 }
 .emailid{
-	margin-left: 45px;
+	margin-left: 30px;
 }
 .dateofjoining{
-	margin-left: 10px;
+	margin-left: 30px;
 }
 .dateofbirth{
-	margin-left: 37px;
+	margin-left: 30px;
 }
 .address{
-	margin-left: 65px;
+	margin-left: 30px;
 }
 .department{
-	margin-left: 16px
+	margin-left: 30px
 }
 .salary{
-	margin-left: 78px;
+	margin-left: 30px;
 }
 .usertype{
-	margin-left: 40px;
+	margin-left: 30px;
 }
 .intime{
 	margin-left: 90px;
@@ -85,7 +84,7 @@
 	margin-left: 20px;
 }
 .outtime{
-	margin-left: 20px;
+	margin-left: 40px;
 }
 .estimation-time{
 	margin-left: 15px;
@@ -102,6 +101,66 @@
 .subject{
 	margin-left: 153px;
 }
-.user-type{
+/* .user-type{
 	margin-left: 20px;
+} */
+.error {
+  color:red;
+ margin-left: 30px;
 }
+.passvalidation {
+    color:red;
+ margin-left: 30px;
+}
+
+.content {
+  width: 300px;
+  float: left;
+  margin-left: 20px;
+}     
+
+.sidebar {
+  width: 350px;
+  float:left;
+  padding-left: 60px;
+ 
+}
+.cartbox {
+    display: inline-block;
+}
+.required:after {
+  content: '*';
+  color: #EF5F5F;
+}
+.submit-button {
+background: #0066A2;
+color: white;
+border-style: outset;
+border-color: #0066A2;
+height: 40px;
+width: 80px;
+font: bold 15px arial, sans-serif;
+text-shadow:none;
+margin-right: 50px;
+}
+.textbox{
+	height: 25px;
+    width: 220px;
+}
+.employeeDisp{
+	margin-left: 40px;
+}
+.empAttlable{
+	margin-left: 30px;
+}
+.empattDate{
+	  margin-left: 35px;
+}
+.empattenhead{
+	  color: blue;
+	   margin-right: 300px;
+}
+.empform{
+	background-color:#F8F8FF;
+}
+

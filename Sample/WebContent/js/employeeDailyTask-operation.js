@@ -34,9 +34,9 @@ function deleteEmployeeDailyTask(id) {
 function addEmployeeDailyTask() {
 	
 	var http = new XMLHttpRequest();
-	var employee=createEmployeeDailyTask(data)
-	var myJSON = JSON.stringify(employee);
-	console.log(employee);
+	var employeeDailyTask=getEmployeeDailyTaskDataFromUI(data)
+	var myJSON = JSON.stringify(employeeDailyTask);
+	console.log(employeeDailyTask);
 
 	http.open("POST", "http://localhost:8085/HRMS/employeedailytask/create", true);
 
@@ -105,7 +105,7 @@ function createTable(empData){
 		return tbody
 	
 }
-function createEmployeeDailyTask(data){
+function getEmployeeDailyTaskDataFromUI(data){
 	var url = "http://localhost:8085/HRMS/employeedailytask/create";
 	var date = document.getElementsByName("date")[0].value;
 	var taskName = document.getElementsByName("taskName")[0].value;

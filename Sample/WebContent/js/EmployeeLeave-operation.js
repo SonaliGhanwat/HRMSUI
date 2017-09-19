@@ -16,8 +16,8 @@ function displayEmployeeLeaveList() {
 function addEmployeeLeave() {
 	
 	var http = new XMLHttpRequest();
-	var employee = createEmployeeLeave(data)
-	var myJSON = JSON.stringify(employee);
+	var employeeLeave = getEmployeeLeaveDataFromUI(data)
+	var myJSON = JSON.stringify(employeeLeave);
 	console.log(myJSON);
 
 	http.open("POST", "http://localhost:8085/HRMS/employeeleave/create", true);
@@ -104,7 +104,7 @@ function dropDownListEmployee(index){
 	xhttp.open("GET", "http://localhost:8085/HRMS/employee/list", true);
 	xhttp.send();
 }
-function createEmployeeLeave(data){
+function getEmployeeLeaveDataFromUI(data){
 	var url = "http://localhost:8085/HRMS/employeeleave/create";
 	var subject = document.getElementsByName("subject")[0].value;
 	var leavedate = document.getElementsByName("leavedate")[0].value;

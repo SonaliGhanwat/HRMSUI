@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="empform">
 <head>
 <meta charset="ISO-8859-1">
 <title>Employee Attendance List</title>
@@ -10,11 +10,11 @@ th {border:1px groove black; padding:7px; }
 .ctr {text-align:center}
 </style>
 </head>
-<body>
+<body >
 
-<h2>Employee Attendance List</h2>
+<h1 align="center" style="color: blue; margin-right: 300px" >Employee Attendance List</h1>
 <script type="text/javascript" src="js/employeeAttendance-operation.js"></script>
-<body onload="displayEmployeeAttendanceList() " >
+<body onload="displayEmployeeAttendanceList() " style=" margin-left: 350px;" >
 <p id="createTable"></p> 
 <table>
 <tr>
@@ -30,14 +30,14 @@ th {border:1px groove black; padding:7px; }
 		</tr> 
 <tbody id="displayList"></tbody>
 </table>
- <h2>Employee Attendance List By Date</h2>
-  <!-- <body onsubmit="return displayEmployeeAttendanceByDate(Date)" > -->
+<!--  <h2>Employee Attendance List By Date</h2>
+  <body onsubmit="return displayEmployeeAttendanceByDate(Date)" >
 <form action="#" name="Employee" onchange="return displayEmployeeAttendanceByDate(Date)" method="GET" > 
  
  <p id="createAttendanceTable"></p> 
     <label  class="label-name"> Date:</label>
     <input type="text" id=Date value=""/><br><br>
-  <!-- <input type="submit" class="empAtt"/><br><br> -->
+  <input type="submit" class="empAtt"/><br><br>
 <table>
 <tr>
          
@@ -55,7 +55,7 @@ th {border:1px groove black; padding:7px; }
  
  <br>
  <h2>Employee Attendance List By Id and Date</h2>
-  <!-- <body onsubmit="return displayEmployeeAttendanceByDate(Date)" > -->
+  <body onsubmit="return displayEmployeeAttendanceByDate(Date)" >
 <form action="#" name="Employee" onsubmit="return displayEmployeeAttendanceByIdandDate(Date)" method="GET" > 
  
  <p id="createAttendanceTableByIdandDate"></p> 
@@ -85,6 +85,6 @@ th {border:1px groove black; padding:7px; }
 <tbody id="displayAttendanceListByIdandDate"></tbody>
     </table>
  </form>   
- 
+  -->
 </body>
 </html>
