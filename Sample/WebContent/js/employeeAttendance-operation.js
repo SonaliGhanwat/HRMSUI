@@ -5,7 +5,7 @@ function displayEmployeeAttendanceList() {
 		if (this.readyState == 4 && this.status == 200) {
 			document.getElementById("createTable").innerHTML = "";
 			var empData = JSON.parse(this.responseText);
-	         createEmployeeTable(empData)
+	         createEmployeeTable(empData);
 			}
 	};
 
@@ -28,7 +28,7 @@ function addEmployeeAttendance() {
 	http.onreadystatechange = function() {// Call a function when the state
 		if (http.readyState == 4 && http.status == 200) {
 			
-			alert(http.responseText);
+			alert("Employee Attendance Added Successfully");
 		}
 	}
 
@@ -41,8 +41,8 @@ function deleteEmployeeAttendance(id) {
 
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-			
 			var empData = JSON.parse(this.responseText);
+			alert("Employee Attendance Deleted Successfully");
 		}
 	}
 	xhttp.open("DELETE", "http://localhost:8085/HRMS/employeeattendance/delete/"
@@ -52,19 +52,52 @@ function deleteEmployeeAttendance(id) {
 }
 
 function editEmployeeAttendance(id) {
-	var http = new XMLHttpRequest();
-	var list = document.getElementById("displayList"); 
+	var xhttp = new XMLHttpRequest();
+
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			var empData = JSON.parse(this.responseText);
+			//updatedisplayTable(empData);
+			var data = {
+					 employee:empData.id,
+					intime:empData.intime,
+					outtime:empData.outtime,
+					date:empData.date
+					
+			};
+			var inTime= data.intime;
+			console.log("inTime",inTime);
+			window.location="EditEmployeeattendance.html";
+			//alert("Employee Attendance Deleted Successfully");
+			xhttp.open("PUT", "http://localhost:8085/HRMS/employeeattendance/update", true);
+			xhttp.send();
+		}
+	}
+	xhttp.open("GET", "http://localhost:8085/HRMS/employeeattendance/"+id, true);
+	xhttp.send();
+	/*var http = new XMLHttpRequest();
+	var list = document.getElementById("myBtn").value;
+	console.log("empData:",list);
+	var data = list.valueid;
+	console.log("empData:",data);
+	for(var i=0; i<=list.length;i++){
+		if(id===list[i].id){
+			console.log("if block");
+		}else{
+			console.log("else block");
+		}
+	}
 	window.location="CreateEmployeeAttendance.html";
 	console.log("data:", list);
-	/*for(var i = 0, row; row = list.rows[i]; i++){
+	for(var i = 0, row; row = list.rows[i]; i++){
 		console.log("empData:",list);
 		//if(data==empData.id)
 		for (var j = 0, col; col = row.cells[j]; j++) {
 			console.log("empData:",col);
 		}
-	}
-	*/
+	}*/
 }
+
 
 function displayEmployeeAttendanceByDate(index){
 	var xhttp = new XMLHttpRequest();
@@ -132,7 +165,6 @@ function getEmployeeAttendanceDataFromUI(){
 	var intime = document.getElementsByName("intime")[0].value;
 	var outtime = document.getElementsByName("outtime")[0].value;
 	var date = document.getElementsByName("date")[0].value;
-	
 	var data = {
 			employee:id,
 			intime:intime,
@@ -165,9 +197,10 @@ function createEmployeeTable(empData){
 		tbody += "<td>" + status + "</td>"
 		tbody += "<td>" + "<button  value='Delete' onclick='deleteEmployeeAttendance ("+id+")' >Delete</button>"
 				+ "</td>";
-		tbody += "<td>" + "<button  value='Edit' onclick='editEmployeeAttendance("+id+")' >Edit</button>"
+		tbody += "<td>" + "<button id= 'myBtn' value=("+id+") onclick='editEmployeeAttendance("+id+")' >Edit</button>"
 		+ "</td>";
 		tbody += "<tr>"
+		
 	}
 	tbody += "</table>"
 	document.getElementById("displayList").innerHTML = tbody;
@@ -196,5 +229,25 @@ function displayTable(empData){
 	}
 	tbody += "</table>"
 		return tbody
-	
 }
+
+/*function updatedisplayTable(empData){
+	var tbody = "";
+	
+		tbody += "<tr>"
+		var id = empData.id;
+		//tbody += "<td>" + id + "</td>"
+		var employeeid = empData[list].employee.userid;
+		tbody += "<td>" + employeeid + "</td>"
+		var inTime = empData.intime;
+		tbody += "<td>" + inTime + "</td>"
+		var outTime = empData.outtime;
+		tbody += "<td>" + outTime + "</td>"
+		var date = empData.date;
+		tbody += "<td>" + date + "</td>"
+		tbody += "<tr>"
+	
+	tbody += "</table>"
+		document.getElementById("updateList").innerHTML = tbody;
+		return tbody
+}*/

@@ -137,7 +137,7 @@ function isValidEmailid(emailid) {
 function isValidDateofJoining() {
 	var dateOfJoining = document.getElementById("dateOfJoining");
 	if (dateOfJoining.value == "") {
-		document.getElementById("dateOfJoining_validation").innerHTML = "dateOfJoining Required";
+		document.getElementById("dateOfJoining_validation").innerHTML = "DateOfJoining Required";
 		dateOfJoining.style.borderColor = "red";
 		dateOfJoining.focus();
 		return false;
@@ -152,7 +152,7 @@ function isValidDateofJoining() {
 function isValidDateofBirth() {
 	 var dateOfBirth = document.getElementById("dateOfBirth");
 	if (dateOfBirth.value == "") {
-		document.getElementById("dateOfBirth_validation").innerHTML = "dateOfBirth Required";
+		document.getElementById("dateOfBirth_validation").innerHTML = "DateOfBirth Required";
 		dateOfBirth.style.borderColor = "red";
 		dateOfBirth.focus();
 		return false;
@@ -166,7 +166,7 @@ function isValidDateofBirth() {
 function isValidAddress() {
 	 var address = document.getElementById("address");
 	if (address.value == "") {
-		document.getElementById("address_validation").innerHTML = "address Required";
+		document.getElementById("address_validation").innerHTML = "Address Required";
 		address.style.borderColor = "red";
 		address.focus();
 		return false;
@@ -180,7 +180,7 @@ function isValidAddress() {
 function isValidDepartment() {
 	var department = document.getElementById("department");
 	if (department.value == "") {
-		document.getElementById("department_validation").innerHTML = "department Required";
+		document.getElementById("department_validation").innerHTML = "Department Required";
 		department.style.borderColor = "red";
 		department.focus();
 		return false;
@@ -193,7 +193,7 @@ function isValidDepartment() {
 function isValidSalary() {
 	var salary = document.getElementById("salary");
 	if (salary.value == "") {
-		document.getElementById("salary_validation").innerHTML = "salary Required";
+		document.getElementById("salary_validation").innerHTML = "Salary Required";
 		salary.style.borderColor = "red";
 		salary.focus();
 		return false;

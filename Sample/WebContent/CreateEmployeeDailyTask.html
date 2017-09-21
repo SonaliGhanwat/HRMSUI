@@ -14,58 +14,62 @@ th {border:2px groove black; padding:7px; }
 <head>
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" type="text/css" href="css/style.css">
-<!-- <script type="text/javascript" src="js/Validation.js"></script> -->
+ <script type="text/javascript" src="js/DailyTaskValidation.js"></script> 
 <script type="text/javascript" src="js/employeeDailyTask-operation.js"></script>
-<body onload="dropDownList()" >
+<body onload="dropDownList()" style="background-color:#F8F8FF;" >
 </head>
 <body >
 <h1 align="center">Employee Daily Task  Form</h1>
 <fieldset class="emp-details-form">
 <p id="data"></p> 
-<form action="#" name="Employee"  class="employee-form" onsubmit="return addEmployeeDailyTask();" method="POST" >
-  <span>
-      <span>
-         <label  class="label-name"> Date:</label>
-         <input type="date" id="date" name="date" class="label-size date" >
-      </span>
-      <span>
-         <label  class="label-name"> TaskName:</label>
-         <input type="text" id="taskName" name="taskName" class="label-size outtime">
-      </span>
-    </span>
+<form action="" name="Employee"  class="employee-form"  method="POST" >
+  <div class="cartbox ">
+  <div class="content">
+         <label  class="label-name required"> Date:</label>
+         <input type="date" id="date" name="date" class="label-size date textbox" >
+         <div id="date_validation" class="error"></div>
+      </div>
+      <div class="sidebar">
+         <label  class="label-name required"> TaskName:</label>
+         <input type="text" id="taskName" name="taskName" class="label-size date textbox" placeholder="Task Name">
+         <div id="taskName_validation" class="passvalidation"></div>
+      </div>
+    </div>
   <br>
   <br>
   <br>
-  <span>
-      <span>
-         <label  class="label-name"> EstimationTime:</label>
-         <input type="text" id="estimationTime" name="estimationTime" class="label-size estimation-time">
-      </span>
-       <span>
-         <label  class="label-name"> StartTime:</label>
-         <input type="text" id="starttime" name="starttime" class="label-size starttime">
-      </span>
-     </span>
+  <div class="cartbox ">
+  <div class="content">
+         <label  class="label-name required"> EstimationTime:</label>
+         <input type="time" id="estimationTime" name="estimationTime" class="label-size estimation-time textbox" step="2">
+         <div id="estimationTime_validation" class="error"></div>
+      </div>
+       <div class="sidebar">
+         <label  class="label-name required"> StartTime:</label>
+         <input type="time" id="starttime" name="starttime" class="label-size starttime textbox" step="2">
+         <div id="starttime_validation" class="passvalidation"></div>
+      </div>
+     </div>
       <br>
   <br>
   <br>
-  <span>
-      <span>
-         <label  class="label-name"> EndTime:</label>
-         <input type="text" id="endtime" name="endtime" class="label-size endtime">
-      </span>
+  <div class="cartbox ">
+  <div class="content">
+         <label  class="label-name required"> EndTime:</label>
+         <input type="time" id="endtime" name="endtime" class="label-size endtime textbox" step="2">
+         <div id="endtime_validation" class="error"></div>
+      </div>
        
-     </span>
-         <label  class="label-name"> EmployeeId:</label>
-         
-      <!--  <input type="number" id="employee" name="employee" class="label-size usertype">  
-         <div id="list" onclick="dropDownList(this)"></div> -->
-        <select  id="list" >
+     <div class="sidebar">
+         <label  class="label-name required"> EmployeeId:</label>
+        <select  id="list" class=" textbox empAttlable" >
 		</select>  
+		</div>
+		</div>
     
-    <div align="center" style="margin-top: 3%">
- <input type="submit" value="Submit" class="label-size">
-<input type="button" value="CANCEL" class="cancel-btn"> <br> <br>
+    <div align="center" class="submit">
+ <input type="button" value="Submit" class="label-size submit-button" onclick="addEmployeeDailyTask()">
+<input type="reset" value="CANCEL" class="cancel-btn submit-button"> <br> <br>
 </div>
 </form>
 </fieldset> 

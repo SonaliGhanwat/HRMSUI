@@ -19,10 +19,8 @@ function deleteEmployeeDailyTask(id) {
 
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-			
 			var empData = JSON.parse(this.responseText);
-			
-			
+			alert("Employee Daily Task Deleted Successfully");
 		}
 	}
 	xhttp.open("DELETE", "http://localhost:8085/HRMS/employeedailytask/delete/"
@@ -34,7 +32,10 @@ function deleteEmployeeDailyTask(id) {
 function addEmployeeDailyTask() {
 	
 	var http = new XMLHttpRequest();
-	var employeeDailyTask=getEmployeeDailyTaskDataFromUI(data)
+	var employeeDailyTask=getEmployeeDailyTaskDataFromUI(data);
+	
+	if(validateEmployeeDailyTask(employeeDailyTask)){
+		
 	var myJSON = JSON.stringify(employeeDailyTask);
 	console.log(employeeDailyTask);
 
@@ -44,11 +45,12 @@ function addEmployeeDailyTask() {
 	http.onreadystatechange = function() {// Call a function when the state
 											// changes.
 		if (http.readyState == 4 && http.status == 200) {
-			alert(http.responseText);
+			alert("Employee Daily Task Added Successfully");
 		}
 	}
 
 	http.send(myJSON);
+	}
 }
 function dropDownList(index){
 	var xhttp = new XMLHttpRequest();

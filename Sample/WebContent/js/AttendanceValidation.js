@@ -10,7 +10,7 @@ function validateEmployeeAttendance(employeeAttendence) {
 function isValidInTime(intime) {
 	var intime = document.getElementById("intime");
 	if (intime.value == "") {
-		document.getElementById("intime_validation").innerHTML = "intime Required";
+		document.getElementById("intime_validation").innerHTML = "InTime Required";
 		intime.style.borderColor = "red";
 		intime.focus();
 		return false;
@@ -22,7 +22,7 @@ function isValidInTime(intime) {
 function isValidOutTime(outtime) {
 	var outtime = document.getElementById("outtime");
 	if (outtime.value == "") {
-		document.getElementById("outtime_validation").innerHTML = "outtime Required";
+		document.getElementById("outtime_validation").innerHTML = "OutTime Required";
 		outtime.style.borderColor = "red";
 		outtime.focus();
 		return false;
@@ -35,7 +35,7 @@ function isValidOutTime(outtime) {
 function isValidDate(date) {
 	var date = document.getElementById("date");
 	if (date.value == "") {
-		document.getElementById("date_validation").innerHTML = "date Required";
+		document.getElementById("date_validation").innerHTML = "Date Required";
 		date.style.borderColor = "red";
 		date.focus();
 		return false;
@@ -51,11 +51,11 @@ function intimeValidation(){
 	if (intime <= outtime) {
 		console.log("if block")
 	} else if(outtime <= intime){
-		document.getElementById("outtime_validation").innerHTML = "Invalid tme!! outtime  should be greater then intime";
+		document.getElementById("outtime_validation").innerHTML = "Invalid tme!! OutTime  should be greater then InTime";
 		return false;
 	}
 	else {
-		document.getElementById("intime_validation").innerHTML = "Invalid tme!! intime  should be greater then outtime";
+		document.getElementById("intime_validation").innerHTML = "Invalid tme!! InTime  should be greater then OutTime";
 		return false;
 	}
 	return true;
