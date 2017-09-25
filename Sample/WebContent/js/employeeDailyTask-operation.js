@@ -109,22 +109,24 @@ function createTable(empData){
 }
 function getEmployeeDailyTaskDataFromUI(data){
 	var url = "http://localhost:8085/HRMS/employeedailytask/create";
+	var employee = document.getElementById("list").value;
+	var id = parseInt(employee);
 	var date = document.getElementsByName("date")[0].value;
 	var taskName = document.getElementsByName("taskName")[0].value;
 	var estimationTime = document.getElementsByName("estimationTime")[0].value;
 	var starttime = document.getElementsByName("starttime")[0].value;
 	var endtime = document.getElementsByName("endtime")[0].value;
-	var employee = document.getElementById("list").value;
-	var id = parseInt(employee);
+	
 	
 	
 	var data = {
+			employee:id,
 			date : date,
 			taskName : taskName,
 			estimationTime : estimationTime,
 			starttime : starttime,
-			endtime : endtime,
-			employee:id
+			endtime : endtime
+			
 	}
 	return data
 	

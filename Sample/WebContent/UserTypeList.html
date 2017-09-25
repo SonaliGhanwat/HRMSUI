@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html >
 <head>
 <meta charset="ISO-8859-1">
 <title>Employee List</title>
@@ -9,25 +9,22 @@ td {border:1px groove black; padding:7px; }
 th {border:1px groove black; padding:7px; }
 .ctr {text-align:center}
 </style>
-<link rel="stylesheet" type="text/css" href="css/style.css">
-<script type="text/javascript" src="js/employeeDailyTask-operation.js"></script>
-</head>
 
-<h1 align="center" style="color: blue; margin-right: 200px">Employee Daily Task List</h1>
-<body onload="displayEmployeeDailyTaskList() " class="empdailyback">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script type="text/javascript" src="js/usertype-operation.js"></script>
+</head>
+<h1 align="center" style="color: blue; margin-right: 490px">User Type List</h1>
+<body onload="displayUserTypeList() " style="background-color:#F8F8FF; margin-left: 450px;" >
 <p id="createTable"></p> 
 <table>
 <tr>
         
-		<th>Employeeid</th>
-		<th>Date</th>
-		<th>TaskName</th>
-		<th>EstimationTime</th>
-		<th>StartTime</th>
-		<th>EndTime</th>
-		<th>TakenTime</th>
+		
+		<th>UserType Name</th>
+		<th>Description</th>
 		<th>Delete</th>
 		<th>Edit</th>
+		
 		
 		</tr> 
 <tbody id="displayList"></tbody>

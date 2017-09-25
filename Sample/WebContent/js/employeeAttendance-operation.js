@@ -1,3 +1,7 @@
+
+
+var employeeData = "";
+console.log("empData",employeeData);
 function displayEmployeeAttendanceList() {
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
@@ -27,8 +31,7 @@ function addEmployeeAttendance() {
 	http.setRequestHeader("Content-Type", "application/json; charset=utf8");
 	http.onreadystatechange = function() {// Call a function when the state
 		if (http.readyState == 4 && http.status == 200) {
-			
-			alert("Employee Attendance Added Successfully");
+			alert(this.responseText);
 		}
 	}
 
@@ -52,50 +55,28 @@ function deleteEmployeeAttendance(id) {
 }
 
 function editEmployeeAttendance(id) {
+	
 	var xhttp = new XMLHttpRequest();
-
 	xhttp.onreadystatechange = function() {
+		window.location="EditEmployeeattendance.html";
 		if (this.readyState == 4 && this.status == 200) {
 			var empData = JSON.parse(this.responseText);
 			//updatedisplayTable(empData);
-			var data = {
+			var employeeData = {
 					 employee:empData.id,
 					intime:empData.intime,
 					outtime:empData.outtime,
 					date:empData.date
-					
 			};
-			var inTime= data.intime;
-			console.log("inTime",inTime);
-			window.location="EditEmployeeattendance.html";
-			//alert("Employee Attendance Deleted Successfully");
-			xhttp.open("PUT", "http://localhost:8085/HRMS/employeeattendance/update", true);
-			xhttp.send();
+			//return employeeData;
+			document.getElementById("intime").value(empData.intime);
+			document.getElementById("outtime").value(empData.outtime);
+			document.getElementById("date").value(empData.date);
+			document.getElementById("list").value(empData.id);
 		}
 	}
 	xhttp.open("GET", "http://localhost:8085/HRMS/employeeattendance/"+id, true);
 	xhttp.send();
-	/*var http = new XMLHttpRequest();
-	var list = document.getElementById("myBtn").value;
-	console.log("empData:",list);
-	var data = list.valueid;
-	console.log("empData:",data);
-	for(var i=0; i<=list.length;i++){
-		if(id===list[i].id){
-			console.log("if block");
-		}else{
-			console.log("else block");
-		}
-	}
-	window.location="CreateEmployeeAttendance.html";
-	console.log("data:", list);
-	for(var i = 0, row; row = list.rows[i]; i++){
-		console.log("empData:",list);
-		//if(data==empData.id)
-		for (var j = 0, col; col = row.cells[j]; j++) {
-			console.log("empData:",col);
-		}
-	}*/
 }
 
 
@@ -138,7 +119,8 @@ function displayEmployeeAttendanceByIdandDate(index){
 }
 
 
-function dropDownList(index){
+function dropDownList(employeeData){
+	
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
@@ -179,6 +161,7 @@ function createEmployeeTable(empData){
 
 	for ( var data in empData) {
 		tbody += "<tr>"
+	
 		var id = empData[data].id;
 		//tbody += "<td>" + id + "</td>"
 		var employeeid = empData[data].employee.userid;
@@ -197,7 +180,7 @@ function createEmployeeTable(empData){
 		tbody += "<td>" + status + "</td>"
 		tbody += "<td>" + "<button  value='Delete' onclick='deleteEmployeeAttendance ("+id+")' >Delete</button>"
 				+ "</td>";
-		tbody += "<td>" + "<button id= 'myBtn' value=("+id+") onclick='editEmployeeAttendance("+id+")' >Edit</button>"
+		tbody += "<td>" + "<button id= 'myBtn' value='edit' onclick='editEmployeeAttendance("+id+")' >Edit</button>"
 		+ "</td>";
 		tbody += "<tr>"
 		

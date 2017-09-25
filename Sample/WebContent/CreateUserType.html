@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Registration Form</title>
+<meta charset="ISO-8859-1">
+<title>EmployeeRegistrationForm</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<!-- <script type="text/javascript" src="js/Validation.js"></script> -->
+<script type="text/javascript" src="js/usertype-operation.js"></script>
+</head>
+<body  style="background-color:#F8F8FF;">
+
+
+	<h1 align="center" style="color: blue;">User Type Form</h1>
+	<fieldset class="emp-details-form">
+		<p id="data"></p>
+		<form action="" name="Employee" class="employee-form" method="POST">
+		<div class="displaylable ">
+				<div class="lablesize">
+					<label class="label-name required "> UserType Name</label> <input type="text"
+						id="usertypeName" name="usertypeName" class="label-size lable-margin textbox" placeholder="UserType Name" >
+					<div id="usertypeName_validation" class="error"></div>
+				</div>
+				<div class="leftlablesize">
+					<label class="label-name required"> Description</label> <input type="text"
+						id="description" name="description" class="label-size lable-margin textbox" placeholder="Description" >
+					<div id="Description_validation" class="passvalidation"></div>
+				</div>
+			</div>
+			<div align="center" class="submit">
+				<input type="button" value="Submit" class="label-size submit-button"
+					onclick="addUserType()"> <input type="reset"
+					value="CANCEL"   class="cancel-btn submit-button" onclick="clearForm()"> <br> <br>
+			</div>
+</form>
+</fieldset>
+</body>
+</html>

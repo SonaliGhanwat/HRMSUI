@@ -23,30 +23,56 @@ function validateEmployee(employee) {
 
 function isValidUserid(userid) {
 	var userid = document.getElementById("userid");
-	if (userid.value == "") {
+	/*if (userid.value == "") {
 		document.getElementById("userid_validation").innerHTML = "Userid Required";
 		userid.style.borderColor = "red";
 		userid.focus();
 		return false;
+	}*/
+	var userid_len = userid.value.length;
+	if (userid_len == 0 || userid_len >= 5 || userid_len < 12) {
+		document.getElementById("userid_validation").innerHTML="User Id should not be empty / length be between " + 5 + " to "+ 12;
+		userid.focus();
+		return false;
 	}
+	
 	document.getElementById("userid_validation").innerHTML = "";
 	userid.style.borderColor = "#F8F8FF";
 	return true;
 }
+function onChangeUserId(){
+	var userid = document.getElementById("userid");
+	document.getElementById("userid_validation").innerHTML = "";
+	userid.style.borderColor = "";
+	userid.focus();
+	
+};
 
 function isValidPassword(password) {
 	var password = document.getElementById("password");
-	if (password.value == "") {
+	/*if (password.value == "") {
 		document.getElementById("password_validation").innerHTML = "Password Required";
 		password.style.borderColor = "red";
 		password.focus();
+		return false;
+	}*/
+	var password_len = userid.value.length;
+	if (password_len == 0 || password_len >= 5 || password_len < 12) {
+		document.getElementById("password_validation").innerHTML="password should not be empty / length be between " + 5 + " to "+ 12;
+		userid.focus();
 		return false;
 	}
 	document.getElementById("password_validation").innerHTML = "";
 	password.style.borderColor = "#F8F8FF";
 	return true;
-
 }
+function onChangePassword(){
+	var password = document.getElementById("password");
+	document.getElementById("password_validation").innerHTML = "";
+	password.style.borderColor = "";
+	password.focus();
+	
+};
 
 function isValidFirstName(firstName) {
 	 var firstName = document.getElementById("firstName");

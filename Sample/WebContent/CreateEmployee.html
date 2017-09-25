@@ -3,126 +3,145 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Employee Registration Form</title>
-<style type="text/css">
-table {
-	table-collapse: collapse;
-	border-spacing: 0
-}
-
-td {
-	border: 2px groove black;
-	padding: 7px;
-}
-
-th {
-	border: 2px groove black;
-	padding: 7px;
-}
-
-.ctr {
-	text-align: center
-}
-</style>
-</head>
-<body>
-<head>
 <meta charset="ISO-8859-1">
 <title>EmployeeRegistrationForm</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script type="text/javascript" src="js/Validation.js"></script>
 <script type="text/javascript" src="js/employee-operations.js"></script>
-<body onload="dropDownList()" style="background-color:#F8F8FF;">
 </head>
-<body>
+<header style="background: #00bfff;" >
+	
+	<div align="center" class="head-name" style="color: wheat;">NexTech HRMS</div >
+	<ul>
+   <li>
+            <a href="#">Employee &#9662;</a>
+            <ul class="dropdown">
+                <li><a href="CreateEmployee.html">Add Employee</a></li>
+                <li><a href="EmployeeList.html">View employee</a></li>
+            </ul>
+        </li>
+        
+         <li>
+            <a href="#">Attendance &#9662;</a>
+            <ul class="dropdown">
+                <li><a href="CreateEmployeeAttendance.html">Add Employee Attendance</a></li>
+                <li><a href="EmployeeAttendanceList.html">View Employee Attendance</a></li>
+            </ul>
+        </li>
+         <li>
+            <a href="#">Daily Task &#9662;</a>
+            <ul class="dropdown">
+                <li><a href="CreateEmployeeDailyTask.html">Add Employee Daily Task</a></li>
+                <li><a href="EmployeeDailyTaskList.html">View Employee Daily Task</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">Leave &#9662;</a>
+            <ul class="dropdown">
+                <li><a href="CreateEmployeeLeave.html">Add Employee Leave</a></li>
+                <li><a href="EmployeeLeaveList.html">View Employee Leave</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">User Type &#9662;</a>
+            <ul class="dropdown">
+                <li><a href="CreateUserType.html">Add User Type</a></li>
+                <li><a href="UserTypeList.htmll">View User Type</a></li>
+            </ul>
+        </li>
+
+</ul>
+</header>
+<body onload="dropDownList()" style="background-color:#F8F8FF;">
+
 	<h1 align="center" style="color: blue;">Employee Registration Form</h1>
 	<fieldset class="emp-details-form">
 		<p id="data"></p>
 		<form action="" name="Employee" class="employee-form" method="POST">
 
-			<div class="cartbox">
-				<div class="content">
-					<label class="label-name required "> UserId</label> <input type="text"
-						id="userid" name="userid" class="label-size userid textbox" placeholder="Userid" > <div
-						id="userid_validation" class="error"></div>
+			<div class="displaylable">
+				<div class="lablesize">
+					<label class="label-name required "> UserId</label> <br>
+					<input type="text" id="userid" name="userid" class="label-size lable-margin textbox" placeholder="Userid" onchange="onChangeUserId()"> 
+					<div id="userid_validation" class="error"></div>
 				</div>
 
-				<div class="sidebar">
-					<label class="label-name required "> Password</label> <input
-						type="password" id="password" name="password"
-						class="label-size password textbox " placeholder="Password" > <div
-						id="password_validation" class="passvalidation"></div>
+				<div class="leftlablesize">
+					<label class="label-name required "> Password</label> 
+					<input type="password" id="password" name="password" class="label-size lable-margin textbox " placeholder="Password" onchange="onChangePassword()"> 
+					<div id="password_validation" class="passvalidation"></div>
 				</div>
 			</div>
 <br>
 <br>
-			<div class="cartbox ">
-				<div class="content">
+			<div class="displaylable ">
+				<div class="lablesize">
 					<label class="label-name required "> First Name</label> <input type="text"
-						id="firstName" name="firstName" class="label-size firstName textbox" placeholder="First Name" >
+						id="firstName" name="firstName" class="label-size lable-margin textbox" placeholder="First Name" >
 					<div id="firstName_validation" class="error"></div>
 				</div>
-				<div class="sidebar">
+				<div class="leftlablesize">
 					<label class="label-name required"> Last Name</label> <input type="text"
-						id="lastName" name="lastName" class="label-size lastName textbox" placeholder="Last Name" >
+						id="lastName" name="lastName" class="label-size lable-margin textbox" placeholder="Last Name" >
 					<div id="lastName_validation" class="passvalidation"></div>
 				</div>
 			</div>
 			<br>
 			<br>
 
-			<div class="cartbox">
-				<div class="content phonumber">
+			<div class="displaylable">
+				<div class="lablesize ">
 					<label class="label-name required"> PhoneNumber</label> <input
 						type="number" id="phoneNumber" name="phoneNumber"
-						class="label-size phoneNumber" style=" height: 25px ;width: 220px;" placeholder="PhoneNumber"> 
+						class="label-size lable-margin textbox" style=" height: 25px ;width: 220px;" placeholder="PhoneNumber"> 
 						<div id="phoneNumber_validation" class="error"></div>
 				</div>
-				<div class="sidebar">
+				<div class="leftlablesize">
 					<label class="label-name required"> EmailId</label> <input type="text"
-						id="emailid" name="emailid" class="label-size emailid textbox" placeholder="Emailid" > 
+						id="emailid" name="emailid" class="label-size lable-margin textbox" placeholder="Emailid" > 
 						<div id="emailid_validation" class="passvalidation"></div>
 				</div>
 			</div>
 			<br>
 			<br>
-			<div class="cartbox">
-				<div class="content">
+			<div class="displaylable">
+				<div class="lablesize">
 					<label class="label-name required">DateOfJoining</label> <input
 						type="date" id="dateOfJoining" name="dateOfJoining"
-						class="label-size dateofjoining textbox" placeholder="dateOfJoining" >
+						class="label-size lable-margin textbox" placeholder="dateOfJoining" >
 						<div id="dateOfJoining_validation" class="error"></div>
 				</div>
-				<div class="sidebar">
+				<div class="leftlablesize">
 					<label class="label-name required"> DateOfBirth</label> <input type="date"
-						id="dateOfBirth" name="dateOfBirth" class="label-size dateofbirth textbox" placeholder="dateOfBirth">
+						id="dateOfBirth" name="dateOfBirth" class="label-size lable-margin textbox" placeholder="dateOfBirth">
 						<div id="dateOfBirth_validation" class="passvalidation" ></div>
 				</div>
 			</div>
 			<br>
 			<br>
-			<div class="cartbox">
-				<div class="content">
+			<div class="displaylable">
+				<div class="lablesize">
 					<label class="label-name required">Address</label> <input type="text"
-						id="address" name="address" class="label-size address textbox" placeholder="Address"  >
+						id="address" name="address" class="label-size lable-margin textbox" placeholder="Address"  >
 						<div id="address_validation" class="error"></div>
 				</div>
-				<div class="sidebar">
+				<div class="leftlablesize">
 					<label class="label-name required"> Department</label> <input type="text"
-						id="department" name="department" class="label-size department textbox" placeholder="Department">
+						id="department" name="department" class="label-size lable-margin textbox" placeholder="Department">
 						<div id="department_validation" class="passvalidation"></div>
 				</div>
 			</div>
 			<br>
 			<br>
-			<div class="cartbox">
-				<div class="content">
+			<div class="displaylable">
+				<div class="lablesize">
 					<label class="label-name required">Salary</label> <input type="text"
-						id="salary" name="salary" class="label-size salary textbox" placeholder="Salary">
+						id="salary" name="salary" class="label-size lable-margin textbox" placeholder="Salary">
 						<div id="salary_validation" class="error" ></div>
 				</div>
-				<div class="sidebar">
+				<div class="leftlablesize">
 					<label class="label-name usertype"> UserType</label> <select
-						id="list" class="usertype textbox" >
+						id="list" class="lable-margin textbox" >
 					</select>
 				</div>
 			</div>
@@ -130,7 +149,7 @@ th {
 			<div align="center" class="submit">
 				<input type="button" value="Submit" class="label-size submit-button"
 					onclick="addEmployee()"> <input type="reset"
-					value="CANCEL"   class="cancel-btn submit-button" onclick="clearForm()"> <br> <br>
+					value="CANCEL"   class="cancel-btn submit-button" > <br> <br>
 			</div>
 			
 			

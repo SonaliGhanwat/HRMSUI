@@ -3,15 +3,6 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Employee Registration Form</title>
-<style type="text/css">
-table {table-collapse:collapse; border-spacing:0}
-td {border:2px groove black; padding:7px; }
-th {border:2px groove black; padding:7px; }
-.ctr {text-align:center}
-</style>
-</head>
-<body>
-<head>
 <meta charset="ISO-8859-1">
 <title>EmployeeAttendanceForm</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -25,8 +16,8 @@ th {border:2px groove black; padding:7px; }
  <p id="data"></p> 
 <form action="" name="Employee"  class="employee-form"   method="POST" >
  
-  <div class="cartbox ">
-  <div class="content">
+  <div class="displaylable ">
+  <div class="lablesize">
   <label  class="label-name required"> EmployeeId:</label>
          
       <!--  <input type="number" id="employee" name="employee" class="label-size usertype">  
@@ -34,7 +25,7 @@ th {border:2px groove black; padding:7px; }
         <select  id="list" name=employee class=" textbox empAttlable">
 		</select>  
      </div>
-      <div class="sidebar">
+      <div class="leftlablesize">
          <label  class="label-name required"> InTime:</label>
          <input type="time" id="intime" name="intime" class="label-size outtime textbox empAttlable" step="2">
          <div id="intime_validation" class="passvalidation"></div>
@@ -43,13 +34,13 @@ th {border:2px groove black; padding:7px; }
   <br>
   <br>
   <br>
-  <div class="cartbox ">
-   <div class="content">
+  <div class="displaylable ">
+   <div class="lablesize">
          <label  class="label-name required"> OutTime:</label>
          <input type="time" id="outtime" name="outtime" class="label-size intime textbox empAttlable" step="2">
          <div id="outtime_validation" class="error"></div>
       </div>
-      <div class="sidebar">
+      <div class="leftlablesize">
          <label  class="label-name required"> Date:</label>
          <input type="date" id="date" name="date" class="label-size empattDate textbox empAttlable">
          <div id="date_validation" class="passvalidation"></div>

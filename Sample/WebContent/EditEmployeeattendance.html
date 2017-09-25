@@ -17,7 +17,8 @@ th {border:2px groove black; padding:7px; }
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script type="text/javascript" src="js/AttendanceValidation.js"></script>
 <script type="text/javascript" src="js/employeeAttendance-operation.js"></script>
-<body onload="dropDownList();" style="background-color:#F8F8FF;" >
+
+<body onload="dropDownList(employeeData);" style="background-color:#F8F8FF;" >
 </head>
 <body >
 <h1 align="center" style="color: blue;">Employee Attendance Form</h1>
@@ -36,7 +37,7 @@ th {border:2px groove black; padding:7px; }
      </div>
       <div class="sidebar">
          <label  class="label-name required"> InTime:</label>
-         <input type="text" id="intime" name="intime" class="label-size outtime textbox empAttlable" >
+         <input type="text" id="intime" name="intime" class="label-size outtime textbox empAttlable" value="">
          <div id="intime_validation" class="passvalidation"></div>
       </div>
     </div>
@@ -46,7 +47,7 @@ th {border:2px groove black; padding:7px; }
   <div class="cartbox ">
    <div class="content">
          <label  class="label-name required"> OutTime:</label>
-         <input type="time" id="outtime" name="outtime" class="label-size intime textbox empAttlable" step="2">
+         <input type="text" id="outtime" name="outtime" class="label-size intime textbox empAttlable"value="" >
          <div id="outtime_validation" class="error"></div>
       </div>
       <div class="sidebar">

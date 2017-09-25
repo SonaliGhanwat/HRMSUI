@@ -3,33 +3,23 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Employee Daily Task  Form</title>
-<style type="text/css">
-table {table-collapse:collapse; border-spacing:0}
-td {border:2px groove black; padding:7px; }
-th {border:2px groove black; padding:7px; }
-.ctr {text-align:center}
-</style>
-</head>
-<body>
-<head>
-<meta charset="ISO-8859-1">
 <link rel="stylesheet" type="text/css" href="css/style.css">
  <script type="text/javascript" src="js/DailyTaskValidation.js"></script> 
 <script type="text/javascript" src="js/employeeDailyTask-operation.js"></script>
 <body onload="dropDownList()" style="background-color:#F8F8FF;" >
 </head>
 <body >
-<h1 align="center">Employee Daily Task  Form</h1>
+<h1 align="center" style="color: blue;">Employee Daily Task  Form</h1>
 <fieldset class="emp-details-form">
 <p id="data"></p> 
 <form action="" name="Employee"  class="employee-form"  method="POST" >
-  <div class="cartbox ">
-  <div class="content">
+  <div class="displaylable ">
+  <div class="lablesize">
          <label  class="label-name required"> Date:</label>
          <input type="date" id="date" name="date" class="label-size date textbox" >
          <div id="date_validation" class="error"></div>
       </div>
-      <div class="sidebar">
+      <div class="leftlablesize">
          <label  class="label-name required"> TaskName:</label>
          <input type="text" id="taskName" name="taskName" class="label-size date textbox" placeholder="Task Name">
          <div id="taskName_validation" class="passvalidation"></div>
@@ -38,13 +28,13 @@ th {border:2px groove black; padding:7px; }
   <br>
   <br>
   <br>
-  <div class="cartbox ">
-  <div class="content">
+  <div class="displaylable ">
+  <div class="lablesize">
          <label  class="label-name required"> EstimationTime:</label>
          <input type="time" id="estimationTime" name="estimationTime" class="label-size estimation-time textbox" step="2">
          <div id="estimationTime_validation" class="error"></div>
       </div>
-       <div class="sidebar">
+       <div class="leftlablesize">
          <label  class="label-name required"> StartTime:</label>
          <input type="time" id="starttime" name="starttime" class="label-size starttime textbox" step="2">
          <div id="starttime_validation" class="passvalidation"></div>
@@ -53,14 +43,14 @@ th {border:2px groove black; padding:7px; }
       <br>
   <br>
   <br>
-  <div class="cartbox ">
-  <div class="content">
+  <div class="displaylable ">
+  <div class="lablesize">
          <label  class="label-name required"> EndTime:</label>
          <input type="time" id="endtime" name="endtime" class="label-size endtime textbox" step="2">
          <div id="endtime_validation" class="error"></div>
       </div>
        
-     <div class="sidebar">
+     <div class="leftlablesize">
          <label  class="label-name required"> EmployeeId:</label>
         <select  id="list" class=" textbox empAttlable" >
 		</select>  
