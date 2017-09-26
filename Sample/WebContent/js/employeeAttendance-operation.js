@@ -119,7 +119,7 @@ function displayEmployeeAttendanceByIdandDate(index){
 }
 
 
-function dropDownList(employeeData){
+function dropDownList(){
 	
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
@@ -214,23 +214,3 @@ function displayTable(empData){
 		return tbody
 }
 
-/*function updatedisplayTable(empData){
-	var tbody = "";
-	
-		tbody += "<tr>"
-		var id = empData.id;
-		//tbody += "<td>" + id + "</td>"
-		var employeeid = empData[list].employee.userid;
-		tbody += "<td>" + employeeid + "</td>"
-		var inTime = empData.intime;
-		tbody += "<td>" + inTime + "</td>"
-		var outTime = empData.outtime;
-		tbody += "<td>" + outTime + "</td>"
-		var date = empData.date;
-		tbody += "<td>" + date + "</td>"
-		tbody += "<tr>"
-	
-	tbody += "</table>"
-		document.getElementById("updateList").innerHTML = tbody;
-		return tbody
-}*/

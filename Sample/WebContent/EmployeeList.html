@@ -3,19 +3,17 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Employee List</title>
-<style type="text/css">
-table {table-collapse:collapse; border-spacing:0}
-td {border:1px groove black; padding:7px; }
-th {border:1px groove black; padding:7px; }
-.ctr {text-align:center}
-</style>
 
 <link rel="stylesheet" type="text/css" href="css/style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/employee-operations.js"></script>
 </head>
 <header style="background: #00bfff;" >
 	
-	<div align="center" class="head-name" style="color: wheat;">NexTech HRMS</div >
+	<div align="center" class="head-name" style="color: wheat; ">NexTech HRMS</div >
 	<ul>
    <li>
             <a href="#">Employee &#9662;</a>
@@ -56,10 +54,10 @@ th {border:1px groove black; padding:7px; }
 
 </ul>
 </header>
-<h1 align="center" style="color: blue;">Employee List</h1>
+<h1 align="center" style="color: blue;" class="well">Employee List</h1>
 <body onload="displayEmployeeList() " style="background-color:#F8F8FF;" >
 <p id="createTable"></p> 
-<table style="margin-left: 40px;">
+<table  class="table table-bordered">
 <tr>
         
 		<th>UserId</th>

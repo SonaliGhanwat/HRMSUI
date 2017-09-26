@@ -21,23 +21,24 @@ function validateEmployee(employee) {
 		return isEmployeeDataValid;
 	}
 
-function isValidUserid(userid) {
+function isValidUserid() {
 	var userid = document.getElementById("userid");
-	/*if (userid.value == "") {
+	if (userid.value == "") {
 		document.getElementById("userid_validation").innerHTML = "Userid Required";
 		userid.style.borderColor = "red";
 		userid.focus();
 		return false;
-	}*/
+	}
 	var userid_len = userid.value.length;
-	if (userid_len == 0 || userid_len >= 5 || userid_len < 12) {
-		document.getElementById("userid_validation").innerHTML="User Id should not be empty / length be between " + 5 + " to "+ 12;
+	if (userid_len > 5 && userid_len < 8) {
+	}else{
+		document.getElementById("userid_validation").innerHTML="User Id length between " + 5 + " to "+ 8;
 		userid.focus();
 		return false;
 	}
 	
 	document.getElementById("userid_validation").innerHTML = "";
-	userid.style.borderColor = "#F8F8FF";
+	userid.style.borderColor = "";
 	return true;
 }
 function onChangeUserId(){
@@ -50,20 +51,21 @@ function onChangeUserId(){
 
 function isValidPassword(password) {
 	var password = document.getElementById("password");
-	/*if (password.value == "") {
+	if (password.value == "") {
 		document.getElementById("password_validation").innerHTML = "Password Required";
 		password.style.borderColor = "red";
 		password.focus();
 		return false;
-	}*/
-	var password_len = userid.value.length;
-	if (password_len == 0 || password_len >= 5 || password_len < 12) {
-		document.getElementById("password_validation").innerHTML="password should not be empty / length be between " + 5 + " to "+ 12;
+	}
+	var password_len = password.value.length;
+	if (password_len > 5 && password_len < 8) {
+	}else{
+		document.getElementById("password_validation").innerHTML="password length between " + 5 + " to "+ 8;
 		userid.focus();
 		return false;
 	}
 	document.getElementById("password_validation").innerHTML = "";
-	password.style.borderColor = "#F8F8FF";
+	password.style.borderColor = "";
 	return true;
 }
 function onChangePassword(){
@@ -91,9 +93,16 @@ function isValidFirstName(firstName) {
 		return false;
 	}
 	document.getElementById("firstName_validation").innerHTML = "";
-	firstName.style.borderColor = "#F8F8FF";
+	firstName.style.borderColor = "";
 	return true;
 }
+function onChangeFirstName(){
+	var firstName = document.getElementById("firstName");
+	document.getElementById("firstName_validation").innerHTML = "";
+	firstName.style.borderColor = "";
+	firstName.focus();
+	
+};
 
 function isValidLastName(lastName) {
 	 var lastName = document.getElementById("lastName");
@@ -112,9 +121,16 @@ function isValidLastName(lastName) {
 		return false;
 	}
 	document.getElementById("lastName_validation").innerHTML = "";
-	lastName.style.borderColor = "#F8F8FF";
+	lastName.style.borderColor = "";
 	return true;
 }
+function onChangeLastName(){
+	var lastName = document.getElementById("lastName");
+	document.getElementById("lastName_validation").innerHTML = "";
+	lastName.style.borderColor = "";
+	lastName.focus();
+	
+};
 
 function isValidPhoneNumber() {
 	 var phoneNumber = document.getElementById("phoneNumber");
@@ -133,8 +149,15 @@ function isValidPhoneNumber() {
 		return false;
 	}
 	document.getElementById("phoneNumber_validation").innerHTML = "";
-	phoneNumber.style.borderColor = "#F8F8FF";
+	phoneNumber.style.borderColor = "";
 	return true;
+}
+function onChangePhoneNumber(){
+	var phoneNumber = document.getElementById("phoneNumber");
+	document.getElementById("phoneNumber_validation").innerHTML = "";
+	phoneNumber.style.borderColor = "";
+	phoneNumber.focus();
+	
 }
 
 function isValidEmailid(emailid) {
@@ -154,10 +177,14 @@ function isValidEmailid(emailid) {
 		return false;
 	}
 	document.getElementById("emailid_validation").innerHTML = "";
-	emailid
-	
-	.style.borderColor = "#F8F8FF";
+	emailid.style.borderColor = "";
 	return true;
+}
+function onChangeEmailid(){
+	var emailid= document.getElementById("emailid");
+	document.getElementById("emailid_validation").innerHTML = "";
+	emailid.style.borderColor = "";
+	emailid.focus();
 }
 
 function isValidDateofJoining() {
