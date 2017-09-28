@@ -17,32 +17,32 @@ function validSubject(){
 		return false;
 	}
 	document.getElementById("subject_validation").innerHTML = "";
-	subject.style.borderColor = "#F8F8FF";
+	subject.style.borderColor = "";
 	return true;
 }
 function isValidLeaveDate(date) {
 	var leavedate = document.getElementById("leavedate");
 	if (leavedate.value == "") {
-		document.getElementById("leavedate_validation").innerHTML = "LeaveDate Required";
+		document.getElementById("leavedate_validation").innerHTML = "Leave Date Required";
 		leavedate.style.borderColor = "red";
 		leavedate.focus();
 		return false;
 	}
 	document.getElementById("leavedate_validation").innerHTML = "";
-	leavedate.style.borderColor = "#F8F8FF";
+	leavedate.style.borderColor = "";
 	return true;
 }
 
 function isValidAfetrLeaveJoiningDate(){
 	var afterleavejoiningdate = document.getElementById("afterleavejoiningdate");
 	if (afterleavejoiningdate.value == "") {
-		document.getElementById("afterleavejoiningdate_validation").innerHTML = "LeaveDate Required";
+		document.getElementById("afterleavejoiningdate_validation").innerHTML = "Leave Date Required";
 		afterleavejoiningdate.style.borderColor = "red";
 		afterleavejoiningdate.focus();
 		return false;
 	}
 	document.getElementById("afterleavejoiningdate_validation").innerHTML = "";
-	afterleavejoiningdate.style.borderColor = "#F8F8FF";
+	afterleavejoiningdate.style.borderColor = "";
 	return true;
 	
 }
@@ -56,7 +56,7 @@ function leaveDateValidation(){
 		return false;
 	}
 	else {
-		document.getElementById("leavedate_validation").innerHTML = "Invalid tme!! InTime  should be greater then OutTime";
+		document.getElementById("leavedate_validation").innerHTML = "Invalid Date!! Leave Date  should be greater then After leave joining date";
 		return false;
 	}
 	return true;

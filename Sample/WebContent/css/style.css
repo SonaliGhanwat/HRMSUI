@@ -59,7 +59,7 @@
 	margin-left: 20px;
 }
 .employee-form{
-	padding-left: 200px;
+	padding-left: 230px;
 }
 .emp-details-form{
 	width: 65%;
@@ -98,7 +98,10 @@
 .outtime{
 	margin-left: 40px;
 }
-.estimation-time{
+.empdailytasklable{
+	margin-left: 30px;
+}
+/* .estimation-time{
 	margin-left: 30px;
 }
 .date{
@@ -112,7 +115,7 @@
 }
 .subject{
 	margin-left: 30px;
-}
+} */
 .error {
   color:red;
  margin-left: 30px;
@@ -215,4 +218,5 @@ padding-left: 300px;
      padding: 6px 12px;
     border-radius: 4px;
 }
+
 

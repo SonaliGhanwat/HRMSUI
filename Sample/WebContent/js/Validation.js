@@ -1,3 +1,4 @@
+
 function validateEmployee(employee) {
 		var isEmployeeDataValid = true;
 		isEmployeeDataValid = isValidUserid(employee.userid) && isEmployeeDataValid;
@@ -13,10 +14,6 @@ function validateEmployee(employee) {
 		isEmployeeDataValid = isValidAddress(employee.address) && isEmployeeDataValid ;
 		isEmployeeDataValid = isValidDepartment(employee.department) && isEmployeeDataValid ;
 		isEmployeeDataValid = isValidSalary(employee.salary) && isEmployeeDataValid ;
-		
-		
-
-
 		console.log('isEmployeeDataValid : ', isEmployeeDataValid );
 		return isEmployeeDataValid;
 	}
@@ -24,15 +21,15 @@ function validateEmployee(employee) {
 function isValidUserid() {
 	var userid = document.getElementById("userid");
 	if (userid.value == "") {
-		document.getElementById("userid_validation").innerHTML = "Userid Required";
+		document.getElementById("userid_validation").innerHTML = "User Id Required";
 		userid.style.borderColor = "red";
 		userid.focus();
 		return false;
 	}
 	var userid_len = userid.value.length;
-	if (userid_len > 5 && userid_len < 8) {
+	if (userid_len >= 5) {
 	}else{
-		document.getElementById("userid_validation").innerHTML="User Id length between " + 5 + " to "+ 8;
+		document.getElementById("userid_validation").innerHTML="User Id should be 5 character"  ;
 		userid.focus();
 		return false;
 	}
@@ -41,42 +38,29 @@ function isValidUserid() {
 	userid.style.borderColor = "";
 	return true;
 }
-function onChangeUserId(){
-	var userid = document.getElementById("userid");
-	document.getElementById("userid_validation").innerHTML = "";
-	userid.style.borderColor = "";
-	userid.focus();
-	
-};
 
-function isValidPassword(password) {
-	var password = document.getElementById("password");
+function isValidPassword() {
+	 var password = document.getElementById("password");
 	if (password.value == "") {
-		document.getElementById("password_validation").innerHTML = "Password Required";
+		document.getElementById("password_validation").innerHTML = "password Required";
 		password.style.borderColor = "red";
 		password.focus();
 		return false;
 	}
 	var password_len = password.value.length;
-	if (password_len > 5 && password_len < 8) {
+	if (password_len >= 3 && password_len <= 8) {
 	}else{
-		document.getElementById("password_validation").innerHTML="password length between " + 5 + " to "+ 8;
-		userid.focus();
+		document.getElementById("password_validation").innerHTML="Password should be  3 to 8 character";
+		password.focus();
 		return false;
 	}
 	document.getElementById("password_validation").innerHTML = "";
 	password.style.borderColor = "";
 	return true;
 }
-function onChangePassword(){
-	var password = document.getElementById("password");
-	document.getElementById("password_validation").innerHTML = "";
-	password.style.borderColor = "";
-	password.focus();
-	
-};
 
-function isValidFirstName(firstName) {
+
+function isValidFirstName() {
 	 var firstName = document.getElementById("firstName");
 	if (firstName.value == "") {
 		document.getElementById("firstName_validation").innerHTML = "First Name Required";
@@ -84,11 +68,10 @@ function isValidFirstName(firstName) {
 		firstName.focus();
 		return false;
 	}
-	var letters = /[a-zA-Z\\s]+$/;
-	if (firstName.value.match(letters)) {
-	} else {
-		document.getElementById("firstName_validation").innerHTML = "First Name must have alphabet characters only";
-		firstName.style.borderColor = "red";
+	var firstName_len = firstName.value.length;
+	if (firstName_len >= 3) {
+	}else{
+		document.getElementById("firstName_validation").innerHTML="First Name should be 3 character";
 		firstName.focus();
 		return false;
 	}
@@ -96,27 +79,20 @@ function isValidFirstName(firstName) {
 	firstName.style.borderColor = "";
 	return true;
 }
-function onChangeFirstName(){
-	var firstName = document.getElementById("firstName");
-	document.getElementById("firstName_validation").innerHTML = "";
-	firstName.style.borderColor = "";
-	firstName.focus();
-	
-};
 
-function isValidLastName(lastName) {
+
+function isValidLastName() {
 	 var lastName = document.getElementById("lastName");
 	if (lastName.value == "") {
-		document.getElementById("lastName_validation").innerHTML = "lastName Required";
+		document.getElementById("lastName_validation").innerHTML = "Last Name Required";
 		lastName.style.borderColor = "red";
 		lastName.focus();
 		return false;
 	}
-	var letters = /[a-zA-Z\\s]+$/;
-	if (lastName.value.match(letters)) {
-	} else {
-		document.getElementById("lastName_validation").innerHTML = "lastName must have alphabet characters only";
-		lastName.style.borderColor = "red";
+	var lastName_len = lastName.value.length;
+	if (lastName_len >= 3) {
+	}else{
+		document.getElementById("lastName_validation").innerHTML="Last Name should be 3 character";
 		lastName.focus();
 		return false;
 	}
@@ -124,13 +100,7 @@ function isValidLastName(lastName) {
 	lastName.style.borderColor = "";
 	return true;
 }
-function onChangeLastName(){
-	var lastName = document.getElementById("lastName");
-	document.getElementById("lastName_validation").innerHTML = "";
-	lastName.style.borderColor = "";
-	lastName.focus();
-	
-};
+
 
 function isValidPhoneNumber() {
 	 var phoneNumber = document.getElementById("phoneNumber");
@@ -152,15 +122,9 @@ function isValidPhoneNumber() {
 	phoneNumber.style.borderColor = "";
 	return true;
 }
-function onChangePhoneNumber(){
-	var phoneNumber = document.getElementById("phoneNumber");
-	document.getElementById("phoneNumber_validation").innerHTML = "";
-	phoneNumber.style.borderColor = "";
-	phoneNumber.focus();
-	
-}
 
-function isValidEmailid(emailid) {
+
+function isValidEmailid() {
 	 var emailid = document.getElementById("emailid");
 	if (emailid.value == "") {
 		document.getElementById("emailid_validation").innerHTML = "EmailId  Required";
@@ -180,23 +144,19 @@ function isValidEmailid(emailid) {
 	emailid.style.borderColor = "";
 	return true;
 }
-function onChangeEmailid(){
-	var emailid= document.getElementById("emailid");
-	document.getElementById("emailid_validation").innerHTML = "";
-	emailid.style.borderColor = "";
-	emailid.focus();
-}
+
 
 function isValidDateofJoining() {
 	var dateOfJoining = document.getElementById("dateOfJoining");
 	if (dateOfJoining.value == "") {
-		document.getElementById("dateOfJoining_validation").innerHTML = "DateOfJoining Required";
+		document.getElementById("dateOfJoining_validation").innerHTML = "Date Of Joining Required";
 		dateOfJoining.style.borderColor = "red";
 		dateOfJoining.focus();
 		return false;
 	}
+
 	document.getElementById("dateOfJoining_validation").innerHTML = "";
-	dateOfJoining.style.borderColor = "#F8F8FF";
+	dateOfJoining.style.borderColor = "";
 	validate_date();
 	return true;
 	
@@ -205,13 +165,13 @@ function isValidDateofJoining() {
 function isValidDateofBirth() {
 	 var dateOfBirth = document.getElementById("dateOfBirth");
 	if (dateOfBirth.value == "") {
-		document.getElementById("dateOfBirth_validation").innerHTML = "DateOfBirth Required";
+		document.getElementById("dateOfBirth_validation").innerHTML = "Date Of Birth Required";
 		dateOfBirth.style.borderColor = "red";
 		dateOfBirth.focus();
 		return false;
 	}
 	document.getElementById("dateOfBirth_validation").innerHTML = "";
-	dateOfBirth.style.borderColor = "#F8F8FF";
+	dateOfBirth.style.borderColor = "";
 	dateOfBirthValidation();
 	return true;
 }
@@ -224,8 +184,15 @@ function isValidAddress() {
 		address.focus();
 		return false;
 	}
+	var address_len = address.value.length;
+	if (address_len >= 4) {
+	}else{
+		document.getElementById("address_validation").innerHTML="Address should be 4 character";
+		address.focus();
+		return false;
+	}
 	document.getElementById("address_validation").innerHTML = "";
-	address.style.borderColor = "#F8F8FF";
+	address.style.borderColor = "";
 	return true;
 
 }
@@ -239,7 +206,7 @@ function isValidDepartment() {
 		return false;
 	}
 	document.getElementById("department_validation").innerHTML = "";
-	department.style.borderColor = "#F8F8FF";
+	department.style.borderColor = "";
 	return true;
 }
 
@@ -252,7 +219,7 @@ function isValidSalary() {
 		return false;
 	}
 	document.getElementById("salary_validation").innerHTML = "";
-	salary.style.borderColor = "#F8F8FF";
+	salary.style.borderColor = "";
 	return true;
 }
 function validate_date() {
@@ -267,7 +234,7 @@ function validate_date() {
 	if (maxAge <= total) {
 		console.log("if block")
 	} else {
-		document.getElementById("dateOfJoining_validation").innerHTML = "Invalid date!! Joining date should be 18 year greater then Birth date";
+		document.getElementById("dateOfJoining_validation").innerHTML = " Joining date should be 18 year greater then Birth date";
 		return false;
 	}
 	return true;
@@ -283,7 +250,8 @@ function dateOfBirthValidation(){
 	}
 	else
 	{
-		document.getElementById("dateOfBirth_validation").innerHTML ="Invalid date!! Birth date should be 18 year old ";
+		document.getElementById("dateOfBirth_validation").innerHTML =" Birth date should be 18 year old ";
+		
 		return false;
 	}
 	return true;

@@ -4,44 +4,94 @@
 <meta charset="ISO-8859-1">
 <title>Employee Leave  Form</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/EmployeeLeaveValidation.js"></script> 
 <script type="text/javascript" src="js/EmployeeLeave-operation.js"></script>
 <body onload="dropDownListEmployee()"style="background-color:#F8F8FF;" >
 </head>
-<body >
+<header style="background: #00bfff;" >
+	
+	<div align="center" class="head-name" style="color: wheat;" >NexTech HRMS</div >
+	<ul>
+   <li>
+            <a href="#">Employee &#9662;</a>
+            <ul class="dropdown">
+                <li><a href="CreateEmployee.html">Add Employee</a></li>
+                <li><a href="EmployeeList.html">View employee</a></li>
+            </ul>
+        </li>
+        
+         <li>
+            <a href="#">Attendance &#9662;</a>
+            <ul class="dropdown">
+                <li><a href="CreateEmployeeAttendance.html">Add Employee Attendance</a></li>
+                <li><a href="EmployeeAttendanceList.html">View Employee Attendance</a></li>
+            </ul>
+        </li>
+         <li>
+            <a href="#">Daily Task &#9662;</a>
+            <ul class="dropdown">
+                <li><a href="CreateEmployeeDailyTask.html">Add Employee Daily Task</a></li>
+                <li><a href="EmployeeDailyTaskList.html">View Employee Daily Task</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">Leave &#9662;</a>
+            <ul class="dropdown">
+                <li><a href="CreateEmployeeLeave.html">Add Employee Leave</a></li>
+                <li><a href="EmployeeLeaveList.html">View Employee Leave</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">User Type &#9662;</a>
+            <ul class="dropdown">
+                <li><a href="CreateUserType.html">Add User Type</a></li>
+                <li><a href="UserTypeList.htmll">View User Type</a></li>
+            </ul>
+        </li>
 
-<h1 align="center" style="color: blue;">Employee Leave Form</h1>
-<fieldset class="emp-details-form">
+</ul>
+</header>
+<div class="container">
+<h1 align="center" style="color: blue;" class = "well">Employee Leave Form</h1>
+<div class = "row">
+	<div class = "col-lg-12 well">
+<fieldset>
 <p id="data"></p> 
 <form action="" name="Employee"  class="employee-form"  method="POST" >
-  <div class="displaylable ">
-  <div class="lablesize">
-      <label  class="label-name required"> EmployeeId:</label>
+  <div class="row">
+  <div class="col-lg-4">
+      <label  class="label-name required"> Employee Id:</label>
          
       <!--  <input type="number" id="employee" name="employee" class="label-size usertype">  
          <div id="list" onclick="dropDownList(this)"></div> -->
-        <select  id="list" class=" textbox empAttlable">
+        <select  id="list" class=" textbox empAttlable form-control">
 		</select>  
 		</div>
-      <div class="leftlablesize">
+      <div class="col-lg-offset-5">
+				<div class="col-lg-7">
          <label  class="label-name subject required"> Subject:</label>
-         <input type="text" id="subject" name="subject" class="label-size starttime textbox">
+         <input type="text" id="subject" name="subject" class="label-size empdailytasklable textbox form-control" onkeyup="validSubject()"onclick="validSubject()">
          <div id="subject_validation" class="passvalidation"></div>
+         </div>
       </div>
     </div>
   <br>
   <br>
-  <br>
-  <div class="displaylable ">
-  <div class="lablesize">
-         <label  class="label-name required"> LeaveDate:</label>
-         <input type="date" id="leavedate" name="leavedate" class="label-size estimation-time textbox">
+  <div class="row">
+	<div class="col-lg-4">
+         <label  class="label-name required"> Leave Date:</label>
+         <input type="date" id="leavedate" name="leavedate" class="label-size empdailytasklable textbox form-control" onclick="isValidLeaveDate()" onchange="isValidLeaveDate()" >
          <div id="leavedate_validation" class="passvalidation"></div>
       </div>
-       <div class="leftlablesize">
-         <label  class="label-name required"> AfterLeaveJoiningDate:</label>
-         <input type="date" id="afterleavejoiningdate" name="afterleavejoiningdate" class="label-size starttime textbox">
+       <div class="col-lg-offset-5">
+				<div class="col-lg-7">
+         <label  class="label-name required"> After Leave Joining Date:</label>
+         <input type="date" id="afterleavejoiningdate" name="afterleavejoiningdate" class="label-size empdailytasklable textbox form-control" onclick="isValidAfetrLeaveJoiningDate();leaveDateValidation()" onchange="isValidAfetrLeaveJoiningDate();leaveDateValidation()">
          <div id="afterleavejoiningdate_validation" class="passvalidation"></div>
+         </div>
       </div>
      </div>
       <br>
@@ -52,5 +102,8 @@
 </div>
 </form>
 </fieldset> 
+</div>
+</div>
+</div>
 </body>
 </html>

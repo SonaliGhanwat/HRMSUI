@@ -17,54 +17,61 @@ function isValidDate(date){
 		return false;
 	}
 	document.getElementById("date_validation").innerHTML = "";
-	date.style.borderColor = "#F8F8FF";
+	date.style.borderColor = "";
 	return true;
 }
 function isValidTaskName(taskName){
 	var taskName = document.getElementById("taskName");
 	if (taskName.value == "") {
-		document.getElementById("taskName_validation").innerHTML = "TaskName Required";
+		document.getElementById("taskName_validation").innerHTML = "Task Name Required";
 		taskName.style.borderColor = "red";
 		taskName.focus();
 		return false;
 	}
+	var taskName_len = taskName.value.length;
+	if (taskName_len >= 8) {
+	}else{
+		document.getElementById("taskName_validation").innerHTML="Task Name should be 8 character";
+		taskName.focus();
+		return false;
+	}
 	document.getElementById("taskName_validation").innerHTML = "";
-	taskName.style.borderColor = "#F8F8FF";
+	taskName.style.borderColor = "";
 	return true;
 }
 function isValidEstimationTime(estimationTime){
 	var estimationTime = document.getElementById("estimationTime");
 	if (estimationTime.value == "") {
-		document.getElementById("estimationTime_validation").innerHTML = "EstimationTime Required";
+		document.getElementById("estimationTime_validation").innerHTML = "Estimation Time Required";
 		estimationTime.style.borderColor = "red";
 		estimationTime.focus();
 		return false;
 	}
 	document.getElementById("estimationTime_validation").innerHTML = "";
-	estimationTime.style.borderColor = "#F8F8FF";
+	estimationTime.style.borderColor = "";
 	return true;
 }
 function isValidStartTime(starttime){
 	var starttime = document.getElementById("starttime");
 	if (starttime.value == "") {
-		document.getElementById("starttime_validation").innerHTML = "StartTime Required";
+		document.getElementById("starttime_validation").innerHTML = "Start Time Required";
 		starttime.style.borderColor = "red";
 		starttime.focus();
 		return false;
 	}
 	document.getElementById("starttime_validation").innerHTML = "";
-	starttime.style.borderColor = "#F8F8FF";
+	starttime.style.borderColor = "";
 	return true;
 }
 function isValidEndTime(endtime){
 	var endtime = document.getElementById("endtime");
 	if (endtime.value == "") {
-		document.getElementById("endtime_validation").innerHTML = "EndTime Required";
+		document.getElementById("endtime_validation").innerHTML = "End Time Required";
 		endtime.style.borderColor = "red";
 		endtime.focus();
 		return false;
 	}
 	document.getElementById("endtime_validation").innerHTML = "";
-	endtime.style.borderColor = "#F8F8FF";
+	endtime.style.borderColor = "";
 	return true;
 }
