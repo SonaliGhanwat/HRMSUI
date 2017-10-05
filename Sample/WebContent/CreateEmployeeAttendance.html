@@ -3,18 +3,25 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Employee Registration Form</title>
+</head>
+<body>
+<head>
 <meta charset="ISO-8859-1">
 <title>EmployeeAttendanceForm</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"></link>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.js">
+        </script>
 <script type="text/javascript" src="js/AttendanceValidation.js"></script>
 <script type="text/javascript" src="js/employeeAttendance-operation.js"></script>
-<body onload="dropDownList();" style="background-color:#F8F8FF;" >
+
+<body onload="dropDownList(flag);" style="background-color:#F8F8FF;" >
 </head>
-<body >
-<header style="background: #00bfff;" >
+<div class="fixed-header">
+ <header style="background: #00bfff;" >
 	
 	<div align="center" class="head-name" style="color: wheat;" >NexTech HRMS</div >
 	<ul>
@@ -56,18 +63,20 @@
         </li>
 
 </ul>
-</header>
+</header> 
+</div>
+
 <div class="container">
-<h1 align="center" style="color: blue;" class="well">Employee Attendance Form</h1>
+<h1 align="center" style="color: blue;">Employee Attendance Form</h1>
 <div class = "row">
-<div class = "col-lg-12 well">
-<fieldset >
+	<div class = "col-lg-12 well">
+<fieldset>
  <p id="data"></p> 
 <form action="" name="Employee"  class="employee-form"   method="POST" >
  
-  <div class="row">
-				<div class="col-lg-4">
-  <label  class="label-name required"> Employee Id:</label>
+ <div class="row">
+ <div class=" form-group col-lg-4">
+  <label  class="label-name required"> EmployeeId:</label>
          
       <!--  <input type="number" id="employee" name="employee" class="label-size usertype">  
          <div id="list" onclick="dropDownList(this)"></div> -->
@@ -75,24 +84,23 @@
 		</select>  
      </div>
       <div class="col-lg-offset-5">
-				<div class="col-lg-7">
-         <label  class="label-name required"> In Time:</label>
-         <input type="time" id="intime" name="intime" class="label-size outtime textbox empAttlable form-control" step="2" onkeyup="isValidInTime()" onclick="isValidInTime()">
+	  <div class=" form-group col-lg-7">
+         <label  class="label-name required"> InTime:</label>
+         <input type="time" id="intime" name="intime" class="label-size outtime textbox empAttlable form-control" step="2" onclick="isValidInTime()"onchange="isValidInTime">
          <div id="intime_validation" class="passvalidation"></div>
          </div>
       </div>
     </div>
   <br>
   <br>
-  
-   <div class="row">
-	<div class="col-lg-4">
-         <label  class="label-name required"> Out Time:</label>
-         <input type="time" id="outtime" name="outtime" class="label-size intime textbox empAttlable form-control" step="2" onclick="isValidOutTime();intimeValidation()"onmouseup="isValidOutTime();intimeValidation()">
+ <div class="row">
+ <div class=" form-group col-lg-4">
+         <label  class="label-name required"> OutTime:</label>
+         <input type="time" id="outtime" name="outtime" class="label-size intime textbox empAttlable form-control" step="2" onclick="isValidOutTime();intimeValidation()"onchange="isValidOutTime();intimeValidation()" >
          <div id="outtime_validation" class="error"></div>
       </div>
-      <div class="col-lg-offset-5">
-				<div class="col-lg-7">
+     <div class="col-lg-offset-5">
+	  <div class=" form-group col-lg-7">
          <label  class="label-name required"> Date:</label>
          <input type="date" id="date" name="date" class="label-size empattDate textbox empAttlable form-control" onclick="isValidDate()" onchange="isValidDate()">
          <div id="date_validation" class="passvalidation"></div>
@@ -100,7 +108,7 @@
       </div>
        </div>
     <div align="center" class="submit">
- <input type="button" value="Submit" class="label-size submit-button" onclick="addEmployeeAttendance()">
+ <input type="reset" value="Submit" class="label-size submit-button" onclick="addEmployeeAttendance()">
 <input type="reset" value="CANCEL" class="cancel-btn submit-button"> <br> <br>
 </div>
 </form>

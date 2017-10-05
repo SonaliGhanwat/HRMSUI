@@ -3,9 +3,11 @@
 
 <head>
   <link rel="stylesheet" type="text/css" href="css/style.css"> 
+  <script type="text/javascript" src="js/employeeAttendance-operation.js"></script>
 <title>NexTech HRMS</title>
 </head>
 <body>
+<div data-role="header" data-position="fixed">
 <header style="background: #00bfff;" >
 	
 	<div align="center" class="head-name" style="color: wheat;">NexTech HRMS</div >
@@ -21,7 +23,7 @@
          <li>
             <a href="#">Attendance </a>
             <ul class="dropdown">
-                <li><a href="CreateEmployeeAttendance.html">Add Employee Attendance</a></li>
+                <li><a onclick="addEmployeeattendance(flag=0);" >Add Employee Attendance</a></li>
                 <li><a href="EmployeeAttendanceList.html">View Employee Attendance</a></li>
             </ul>
         </li>
@@ -49,6 +51,7 @@
 
 </ul>
 </header>
+</div>
 
 
 <!-- <footer style="background: #00bfff;" class="futer">
