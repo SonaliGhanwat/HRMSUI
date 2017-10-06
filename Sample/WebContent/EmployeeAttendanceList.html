@@ -3,12 +3,12 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Employee Attendance List</title>
-<!-- <style type="text/css">
+ <style type="text/css">
 table {table-collapse:collapse; border-spacing:0}
 td {border:1px groove black; padding:7px; }
 th {border:1px groove black; padding:7px; }
 .ctr {text-align:center}
-</style> -->
+</style> 
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -80,25 +80,15 @@ th {border:1px groove black; padding:7px; }
 <tbody id="displayList"></tbody>
 </table>
 <p id="updateTable"></p> 
-<table>
-<!-- <tr>
-         
-		<th>InTime</th>
-		<th>OutTime</th>
-		<th>Date</th>
-		
-		</tr>  -->
-		
-<tbody id="updateList"></tbody>
-</table>
-<!--  <h2>Employee Attendance List By Date</h2>
-  <body onsubmit="return displayEmployeeAttendanceByDate(Date)" >
-<form action="#" name="Employee" onchange="return displayEmployeeAttendanceByDate(Date)" method="GET" > 
+
+  <h2>Employee Attendance List By Date</h2>
+  <!-- <body onsubmit=" displayEmployeeAttendanceByDate(Date)" > -->
+<form action="#" name="Employee" onchange="displayEmployeeAttendanceByDate(Date)" method="GET" > 
  
  <p id="createAttendanceTable"></p> 
     <label  class="label-name"> Date:</label>
     <input type="text" id=Date value=""/><br><br>
-  <input type="submit" class="empAtt"/><br><br>
+  <input type="submit" class="empAtt" onclick =" displayEmployeeAttendanceByDate(Date)" ><br><br>
 <table>
 <tr>
          
@@ -115,9 +105,10 @@ th {border:1px groove black; padding:7px; }
  </form>   
  
  <br>
+<!--  <body onsubmit=" displayEmployeeAttendanceByDate(Date)" > -->
  <h2>Employee Attendance List By Id and Date</h2>
-  <body onsubmit="return displayEmployeeAttendanceByDate(Date)" >
-<form action="#" name="Employee" onsubmit="return displayEmployeeAttendanceByIdandDate(Date)" method="GET" > 
+  
+<form action="#" name="Employee" method="GET" > 
  
  <p id="createAttendanceTableByIdandDate"></p> 
     <span>
@@ -132,7 +123,7 @@ th {border:1px groove black; padding:7px; }
     </span>
   <br>
   <br>
-  <input type="submit" /><br><br>
+  <input type="submit" onclick="displayEmployeeAttendanceByIdandDate(Date)"><br><br>
 <table>
 <tr>
 		<th>EmployeeId</th>
@@ -146,8 +137,7 @@ th {border:1px groove black; padding:7px; }
 <tbody id="displayAttendanceListByIdandDate"></tbody>
     </table>
  </form>   
-  -->
+  
   </div>
-  </form>
 </body>
 </html>

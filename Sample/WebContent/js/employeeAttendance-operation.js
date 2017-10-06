@@ -1,6 +1,6 @@
 
 
-//var flag = 1;
+var isEdit = true;
 function displayEmployeeAttendanceList() {
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
@@ -8,7 +8,7 @@ function displayEmployeeAttendanceList() {
 		if (this.readyState == 4 && this.status == 200) {
 			document.getElementById("createTable").innerHTML = "";
 			var empData = JSON.parse(this.responseText);
-	         createEmployeeTable(empData);
+			createEmployeeAttendanceTable(empData);
 			}
 	};
 
@@ -64,13 +64,13 @@ function editEmployeeAttendance(id,flag) {
 			//updatedisplayTable(empData);
 			var employeeData = {
 					id:empData.id,
-					employee:empData.userid,
+					employee:empData.employee.id,
 					intime:empData.intime,
 					outtime:empData.outtime,
 					date:empData.date
 			};
 			sessionStorage.setItem("empData.id", empData.id)
-			//sessionStorage.setItem("empData.userid", empData.employee.userid)
+			sessionStorage.setItem("empData.userid", empData.employee.id)
 			sessionStorage.setItem("empData.intime", empData.intime);
 			sessionStorage.setItem("empData.outtime", empData.outtime);
 			sessionStorage.setItem("empData.date", empData.date);
@@ -81,14 +81,34 @@ function editEmployeeAttendance(id,flag) {
 	xhttp.send();
 }
 
-function addEmployeeattendance(flag){
+/*function addEmployeeattendance(flag){
 	//var flag = 1;
 	if(flag==0){
 		window.location="CreateEmployeeAttendance.html";
+		
 	}
-}
+}*/
+/*function updateEmployeeattendance(flag){
+	var http = new XMLHttpRequest();
+	//var employeeAttendence = getEmployeeAttendanceDataFromUI(data);
+	
+	//if(validateEmployeeAttendance(employeeAttendence)){
+		
+	var myJSON = JSON.stringify(data);
+	console.log(myJSON);
+	
+	http.open("PUT", "http://localhost:8085/HRMS/employeeattendance/update", true);
 
+	http.setRequestHeader("Content-Type", "application/json; charset=utf8");
+	http.onreadystatechange = function() {// Call a function when the state
+		if (http.readyState == 4 && http.status == 200) {
+			alert(this.responseText);
+		}
+	}
 
+	http.send(myJSON);
+	//}
+}*/
 function displayEmployeeAttendanceByDate(index){
 	var xhttp = new XMLHttpRequest();
 	var dateVal = document.getElementById("Date").value;
@@ -128,14 +148,12 @@ function displayEmployeeAttendanceByIdandDate(index){
 }
 
 
-function dropDownList(flag){
-	//var flag=1;
-	//isEdit = false;
+function dropDownList(){
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 		
 		if (this.readyState == 4 && this.status == 200) {
-			if(flag==0){
+			//if(flag==0){
 			document.getElementById("data").innerHTML = "";
 			var empData = JSON.parse(this.responseText);
 			var selectMenu="";
@@ -147,14 +165,16 @@ function dropDownList(flag){
 			}
 			selectMenu+='</select>';
 			document.getElementById("list").innerHTML = selectMenu;
-			}else if(flag==1){
-				document.getElementById("list").value = sessionStorage.getItem("empData.id");
-				//document.getElementById("list").value = sessionStorage.getItem("empData.userid");
-				document.getElementById("intime").value = sessionStorage.getItem("empData.intime");
-				document.getElementById("outtime").value = sessionStorage.getItem("empData.outtime");
-				document.getElementById("date").value = sessionStorage.getItem("empData.date");
+			if(isEdit==true){
+			document.getElementById("data").value = sessionStorage.getItem("empData.id");
+			document.getElementById("list").value = sessionStorage.getItem("empData.userid");
+			document.getElementById("intime").value = sessionStorage.getItem("empData.intime");
+			document.getElementById("outtime").value = sessionStorage.getItem("empData.outtime");
+			document.getElementById("date").value = sessionStorage.getItem("empData.date");
 			}
+			sessionStorage.clear();
 		}
+		
 	};
 
 	xhttp.open("GET", "http://localhost:8085/HRMS/employee/list", true);
@@ -162,9 +182,7 @@ function dropDownList(flag){
 }
 
 
-/*function updateEmployeeattendance(){
-		window.location="CreateEmployeeAttendance.html";
-}*/
+
 function getEmployeeAttendanceDataFromUI(){
 	var url = "http://localhost:8085/HRMS/employeeattendance/create";
 	var employee = document.getElementById("list").value;
@@ -181,7 +199,7 @@ function getEmployeeAttendanceDataFromUI(){
 	 return data;
 }
 
-function createEmployeeTable(empData){
+function createEmployeeAttendanceTable(empData){
 	var tbody = "";
 
 	for ( var data in empData) {
