@@ -6,34 +6,99 @@
 <meta charset="ISO-8859-1">
 <title>EmployeeRegistrationForm</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
-<!-- <script type="text/javascript" src="js/Validation.js"></script> -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"></link>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/UserTypeValidation.js"></script> 
 <script type="text/javascript" src="js/usertype-operation.js"></script>
+<body onload="getUserTypeIdFromHtml();">
 </head>
-<body  style="background-color:#F8F8FF;">
+<div class="fixed-header">
+ <header style="background: #00bfff;" >
+	
+	<div  class="head-name" style="color: wheat;" >NexTech HRMS</div >
+	<ul>
+   <li>
+            <a href="#">Employee &#9662;</a>
+            <ul class="dropdown">
+                <li><a href="CreateEmployee.html">Add Employee</a></li>
+                <li><a href="EmployeeList.html">View All Employee</a></li>
+            </ul>
+        </li>
+        
+         <li>
+            <a href="#">Attendance &#9662;</a>
+            <ul class="dropdown">
+                <li><a href="CreateEmployeeAttendance.html">Add Employee Attendance</a></li>
+                <li><a href="EmployeeAttendanceList.html">View All Employee Attendance</a></li>
+            </ul>
+        </li>
+         <li>
+            <a href="#">Daily Task &#9662;</a>
+            <ul class="dropdown">
+                <li><a href="CreateEmployeeDailyTask.html">Add Employee Daily Task</a></li>
+                <li><a href="EmployeeDailyTaskList.html">View All Employee Daily Task</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">Leave &#9662;</a>
+            <ul class="dropdown">
+                <li><a href="CreateEmployeeLeave.html">Add Employee Leave</a></li>
+                <li><a href="EmployeeLeaveList.html">View All Employee Leave</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">User Type &#9662;</a>
+            <ul class="dropdown">
+                <li><a href="CreateUserType.html">Add User Type</a></li>
+                <li><a href="UserTypeList.html">View All User Type</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">Holiday &#9662;</a>
+            <ul class="dropdown">
+                <li><a href="CreateHoliday.html">Add Holiday</a></li>
+                <li><a href="HolidayList.html">View All Holiday</a></li>
+            </ul>
+        </li>
 
+</ul>
+</header> 
+</div>
+<body>
 
-	<h1 align="center" style="color: blue;">User Type Form</h1>
-	<fieldset class="emp-details-form">
+<div class="container">
+	<h1 align="center" style="color: blue;" class="well">User Type Form</h1>
+	<div class = "row">
+	<div class = "col-lg-12 well">
+<fieldset>
 		<p id="data"></p>
 		<form action="" name="Employee" class="employee-form" method="POST">
-		<div class="displaylable ">
-				<div class="lablesize">
+		<div class="row">
+            <div class=" form-group col-lg-4">
 					<label class="label-name required "> UserType Name</label> <input type="text"
-						id="usertypeName" name="usertypeName" class="label-size lable-margin textbox" placeholder="UserType Name" >
+						id="usertypeName" name="usertypeName" class="label-size lable-margin textbox form-control" placeholder="UserType Name"onkeyup="isvalidUserTypeName()"onclick="isvalidUserTypeName()" >
 					<div id="usertypeName_validation" class="error"></div>
 				</div>
-				<div class="leftlablesize">
+				
+				<div class="col-lg-offset-5">
+	             <div class=" form-group col-lg-7">
 					<label class="label-name required"> Description</label> <input type="text"
-						id="description" name="description" class="label-size lable-margin textbox" placeholder="Description" >
+						id="description" name="description" class="label-size  lable-margin textbox form-control" placeholder="Description"onkeyup="isvalidUserTypeDescription()"onclick="isvalidUserTypeDescription()" >
 					<div id="Description_validation" class="passvalidation"></div>
+				</div>
 				</div>
 			</div>
 			<div align="center" class="submit">
-				<input type="button" value="Submit" class="label-size submit-button"
-					onclick="addUserType()"> <input type="reset"
-					value="CANCEL"   class="cancel-btn submit-button" onclick="clearForm()"> <br> <br>
+				<input type="reset" value="Submit" class="label-size submit-button"
+					onclick="addOrUpdateUserType()"> <input type="reset"
+					value="Cancel"   class="cancel-btn submit-button" onclick="clearForm()"> <br> <br>
 			</div>
 </form>
 </fieldset>
+</div>
+</div>
+</div>
 </body>
 </html>

@@ -21,17 +21,18 @@
    ul li a:hover{
         background-color: #808080;
         color: white;
+        z-index: 700;
     } 
     ul li ul.dropdown{
-        min-width: 100%; Set width of the dropdown
+        min-width: 100%; 
         background: #c0c0c0;
         display: none;
         position: absolute;
-        z-index: 999;
+        z-index: 700;
         left: 0;
     } 
     ul li:hover ul.dropdown{
-        display: block;	Display the dropdown
+        display: block;	
     } 
      ul li ul.dropdown li{
         display: block;
@@ -71,9 +72,10 @@
 	margin-left: 40px;
 }
 .head-name{
-	color: black;
+	
     font-weight: bold; 
-    font-size: 50px;
+    color: wheat;
+    font-size: 40px;
 }
  .index-form{
 	width: 30%;
@@ -205,4 +207,18 @@ padding-left: 300px;
     border-radius: 4px;
 }
 
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
 
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

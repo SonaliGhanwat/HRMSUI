@@ -3,25 +3,21 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Employee Registration Form</title>
-</head>
-<body>
-<head>
 <meta charset="ISO-8859-1">
-<title>EmployeeAttendanceForm</title>
+<title>EmployeeRegistrationForm</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"></link>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/AttendanceValidation.js"></script>
-<script type="text/javascript" src="js/employeeAttendance-operation.js"></script>
-
- <body onload="dropDownList();" style="background-color:#F8F8FF;" > 
+  <script type="text/javascript" src="js/holidayValidation.js"></script> 
+<script type="text/javascript" src="js/holiday-operation.js"></script>
+<body onload="getHolidayIdFromHtml()">
 </head>
 <div class="fixed-header">
  <header style="background: #00bfff;" >
 	
-	<div class="head-name" style="color: wheat;" >NexTech HRMS</div >
+	<div  class="head-name" style="color: wheat;" >NexTech HRMS</div >
 	<ul>
    <li>
             <a href="#">Employee &#9662;</a>
@@ -70,56 +66,37 @@
 </ul>
 </header> 
 </div>
+<body>
 
 <div class="container">
-<h1 align="center" style="color: blue;" class="well">Employee Attendance Form</h1>
-<div class = "row">
+	<h1 align="center" style="color: blue;" class="well">User Type Form</h1>
+	<div class = "row">
 	<div class = "col-lg-12 well">
 <fieldset>
-
- <p id="data"></p> 
-<form action="" name="Employee"  class="employee-form"   method="POST" >
- 
- <div class="row">
- <div class=" form-group col-lg-4">
-  <label  class="label-name required"> EmployeeId:</label>
-         
-      <!--  <input type="number" id="employee" name="employee" class="label-size usertype">  
-         <div id="list" onclick="dropDownList(this)"></div> -->
-        <select  id="list" name=employee class=" textbox empAttlable form-control" >
-        <option value="">Select EmployeeId</option>
-		</select>  
-     </div>
-      <div class="col-lg-offset-5">
-	  <div class=" form-group col-lg-7">
-         <label  class="label-name required"> InTime:</label>
-         <input type="time" id="intime" name="intime"  class="label-size outtime textbox empAttlable form-control" step="2" onclick="isValidInTime()"onchange="isValidInTime()" >
-         <div id="intime_validation" class="passvalidation"></div>
-         </div>
-      </div>
-    </div>
-  <br>
-  <br>
- <div class="row">
- <div class=" form-group col-lg-4">
-         <label  class="label-name required"> OutTime:</label>
-         <input type="time" id="outtime" name="outtime" class="label-size intime textbox empAttlable form-control" step="2" onclick="isValidOutTime();intimeValidation()"onchange="isValidOutTime();intimeValidation()" >
-         <div id="outtime_validation" class="error"></div>
-      </div>
-     <div class="col-lg-offset-5">
-	  <div class=" form-group col-lg-7">
-         <label  class="label-name required"> Date:</label>
-         <input type="date" id="date" name="date" class="label-size empattDate textbox empAttlable form-control" onclick="isValidDate()" onchange="isValidDate()">
-         <div id="date_validation" class="passvalidation"></div>
-         </div>
-      </div>
-       </div>
-    <div align="center" class="submit">
- <input type="reset" value="Submit" class="label-size submit-button" onclick="addOrUpdateEmployeeAttendance();">
-<input type="reset" value="Cancel" class="cancel-btn submit-button"> <br> <br>
-</div>
+		<p id="data"></p>
+		<form action="" name="Employee" class="employee-form" method="POST">
+		<div class="row">
+            <div class=" form-group col-lg-4">
+					<label class="label-name required "> Holiday Date</label> 
+					<input type="date" id="holidayDate" name="holidayDate" class="label-size lable-margin textbox form-control" onclick="isvalidHolidayDate()" onchange="isvalidHolidayDate()" >
+					<div id="HolidayDate_validation" class="error"></div>
+				</div>
+				
+				<div class="col-lg-offset-5">
+	             <div class=" form-group col-lg-7">
+					<label class="label-name required"> Holiday Name</label> 
+					<input type="text" id="holidayName" name="holidayName" class="label-size  lable-margin textbox form-control" placeholder="Holiday Name" onkeyup="isValidHolidayName()"onclick="isValidHolidayName()">
+					<div id="HolidayName_validation" class="passvalidation"></div>
+				</div>
+				</div>
+			</div>
+			<div align="center" class="submit">
+				<input type="reset" value="Submit" class="label-size submit-button"
+					onclick="addOrUpdateHoliday()"> <input type="reset"
+					value="Cancel"   class="cancel-btn submit-button" > <br> <br>
+			</div>
 </form>
-</fieldset> 
+</fieldset>
 </div>
 </div>
 </div>

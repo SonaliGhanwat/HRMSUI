@@ -18,6 +18,7 @@ function displayEmployeeAttendanceList() {
 
 function addEmployeeAttendance() {
 	var http = new XMLHttpRequest();
+	
 	var employeeAttendence = getEmployeeAttendanceDataFromUI(data);
 	
 	if(validateEmployeeAttendance(employeeAttendence)){
@@ -36,6 +37,7 @@ function addEmployeeAttendance() {
 
 	http.send(myJSON);
 	}
+	
 }
 
 function deleteEmployeeAttendance(id) {
@@ -45,6 +47,8 @@ function deleteEmployeeAttendance(id) {
 		if (this.readyState == 4 && this.status == 200) {
 			var empData = JSON.parse(this.responseText);
 			alert("Employee Attendance Deleted Successfully");
+			displayEmployeeAttendanceList();
+			
 		}
 	}
 	xhttp.open("DELETE", "http://localhost:8085/HRMS/employeeattendance/delete/"
@@ -52,8 +56,18 @@ function deleteEmployeeAttendance(id) {
 	xhttp.send();
 
 }
+function addOrUpdateEmployeeAttendance(){
+	var flag= sessionStorage.getItem("flag");
+	if(flag==null){
+		addEmployeeAttendance();
+	}else if(flag==1){
+		updateEmployeeattendance();
+	}else{
+		
+	}
+}
 
-function editEmployeeAttendance(id,flag) {
+function editEmployeeAttendance(id) {
 	
 	var xhttp = new XMLHttpRequest();
 	
@@ -69,46 +83,53 @@ function editEmployeeAttendance(id,flag) {
 					outtime:empData.outtime,
 					date:empData.date
 			};
+			
+			sessionStorage.setItem("flag", 1)
 			sessionStorage.setItem("empData.id", empData.id)
 			sessionStorage.setItem("empData.userid", empData.employee.id)
 			sessionStorage.setItem("empData.intime", empData.intime);
 			sessionStorage.setItem("empData.outtime", empData.outtime);
 			sessionStorage.setItem("empData.date", empData.date);
 			window.location="CreateEmployeeAttendance.html";
+			
 		}
 	}
 	xhttp.open("GET", "http://localhost:8085/HRMS/employeeattendance/"+id, true);
 	xhttp.send();
 }
 
-/*function addEmployeeattendance(flag){
+/*function addEmployeeattendance(){
 	//var flag = 1;
-	if(flag==0){
-		window.location="CreateEmployeeAttendance.html";
-		
-	}
-}*/
-/*function updateEmployeeattendance(flag){
-	var http = new XMLHttpRequest();
-	//var employeeAttendence = getEmployeeAttendanceDataFromUI(data);
 	
-	//if(validateEmployeeAttendance(employeeAttendence)){
+		window.location="CreateEmployeeAttendance.html";
+		sessionStorage.clear();
+	
+}*/
+function updateEmployeeattendance(){
+	var http = new XMLHttpRequest();
+	var employeeAttendence = getEmployeeAttendanceDataFromUI(data);
+	
+	if(validateEmployeeAttendance(employeeAttendence)){
 		
-	var myJSON = JSON.stringify(data);
+	var myJSON = JSON.stringify(employeeAttendence);
 	console.log(myJSON);
 	
 	http.open("PUT", "http://localhost:8085/HRMS/employeeattendance/update", true);
 
 	http.setRequestHeader("Content-Type", "application/json; charset=utf8");
+	sessionStorage.clear();
 	http.onreadystatechange = function() {// Call a function when the state
 		if (http.readyState == 4 && http.status == 200) {
 			alert(this.responseText);
+			window.location="CreateEmployeeAttendance.html";
+			clearSessionData();
 		}
 	}
 
 	http.send(myJSON);
-	//}
-}*/
+	}
+}
+
 function displayEmployeeAttendanceByDate(index){
 	var xhttp = new XMLHttpRequest();
 	var dateVal = document.getElementById("Date").value;
@@ -171,8 +192,16 @@ function dropDownList(){
 			document.getElementById("intime").value = sessionStorage.getItem("empData.intime");
 			document.getElementById("outtime").value = sessionStorage.getItem("empData.outtime");
 			document.getElementById("date").value = sessionStorage.getItem("empData.date");
+			var flag= sessionStorage.getItem("flag");
+			if(flag==null){
+			}else if(flag==1){
+				document.getElementById("list").disabled = true;
+				document.getElementById("date").disabled = true;
+			}else{
+				
 			}
-			sessionStorage.clear();
+			}
+			//sessionStorage.clear();
 		}
 		
 	};
@@ -181,17 +210,17 @@ function dropDownList(){
 	xhttp.send();
 }
 
-
-
 function getEmployeeAttendanceDataFromUI(){
-	var url = "http://localhost:8085/HRMS/employeeattendance/create";
+	var url = "http://localhost:8085/HRMS/employeeattendance/update";
+	var id=sessionStorage.getItem("empData.id");
 	var employee = document.getElementById("list").value;
-	var id = parseInt(employee);
+	var empid = parseInt(employee);
 	var intime = document.getElementsByName("intime")[0].value;
 	var outtime = document.getElementsByName("outtime")[0].value;
 	var date = document.getElementsByName("date")[0].value;
 	var data = {
-			employee:id,
+			id:id,
+			employee:empid,
 			intime:intime,
 			outtime:outtime,
 			date:date
@@ -223,7 +252,7 @@ function createEmployeeAttendanceTable(empData){
 		tbody += "<td>" + status + "</td>"
 		tbody += "<td>" + "<button  value='Delete' onclick='deleteEmployeeAttendance ("+id+")' >Delete</button>"
 				+ "</td>";
-		tbody += "<td>" + "<button id= 'myBtn' value='edit' onclick='editEmployeeAttendance("+id+",flag=1)' >Edit</button>"
+		tbody += "<td>" + "<button id= 'myBtn' value='edit' onclick='editEmployeeAttendance("+id+")' >Edit</button>"
 		+ "</td>";
 		tbody += "<tr>"
 		
@@ -257,3 +286,9 @@ function displayTable(empData){
 		return tbody
 }
 
+function clearSessionData(){
+	for (var i = 0; i < sessionStorage.length; i++) {
+        var a = sessionStorage.key(i);
+        var b = sessionStorage.removeItem(a);
+    }
+}

@@ -1,3 +1,4 @@
+var isEdit = true;
 function displayEmployeeList() {
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
@@ -30,7 +31,6 @@ function addEmployee() {
 	
 		http.setRequestHeader("Content-Type", "application/json; charset=utf8");
 		http.onreadystatechange = function() {// Call a function when the state
-												// changes.
 			if (http.readyState == 4 && http.status == 200) {
 				alert(this.responseText);
 			}
@@ -47,6 +47,7 @@ function deleteEmployee(id) {
 		if (this.readyState == 4 && this.status == 200) {
 			var empData = JSON.parse(this.responseText);
 			alert("Employee Deleted Successfully");
+			displayEmployeeList();
 		}
 	}
 	xhttp.open("DELETE", "http://localhost:8085/HRMS/employee/delete/"
@@ -55,30 +56,86 @@ function deleteEmployee(id) {
 
 }
 
-function editEmployee(index){
+function editEmployee(id) {
 	
+	var xhttp = new XMLHttpRequest();
+	
+	xhttp.onreadystatechange = function() {
+		//isEdit = true;
+		if (this.readyState == 4 && this.status == 200) {
+			var empData = JSON.parse(this.responseText);
+			//updatedisplayTable(empData);
+			var employeeData = {
+					id:empData.id,
+					userid : empData.userid,
+					password :empData. password,
+					firstName : empData.firstName,
+					lastName : empData.lastName,
+					phoneNumber : empData.phoneNumber,
+					emailid : empData.emailid,
+					dateOfJoining : empData.dateOfJoining,
+					dateOfBirth : empData.dateOfBirth,
+					address : empData.address,
+					department : empData.department,
+					salary : empData.salary,
+					usertype : empData.usertype.id
+			};
+			sessionStorage.setItem("flag", 1)
+			sessionStorage.setItem("id", employeeData.id)
+			sessionStorage.setItem("userid", employeeData.userid)
+			sessionStorage.setItem("password", employeeData.password)
+			sessionStorage.setItem("firstName", employeeData.firstName);
+			sessionStorage.setItem("lastName", employeeData.lastName);
+			sessionStorage.setItem("phoneNumber", employeeData.phoneNumber);
+			sessionStorage.setItem("emailid", employeeData.emailid)
+			sessionStorage.setItem("dateOfJoining", employeeData.dateOfJoining)
+			sessionStorage.setItem("dateOfBirth", employeeData.dateOfBirth);
+			sessionStorage.setItem("address", employeeData.address);
+			sessionStorage.setItem("department", employeeData.department);
+			sessionStorage.setItem("salary", employeeData.salary);
+			sessionStorage.setItem("usertype", employeeData.usertype);
+			window.location="CreateEmployee.html";
+		}
+	}
+	xhttp.open("GET", "http://localhost:8085/HRMS/employee/"+id, true);
+	xhttp.send();
+}
+function updateEmployee(){
 	var http = new XMLHttpRequest();
-	createEmployee(data);
-	var myJSON = JSON.stringify(data);
+	var employee = getEmployeeDataFromUI(data);
+	
+	if(validateEmployee(employee)){
+		
+	var myJSON = JSON.stringify(employee);
 	console.log(myJSON);
-
-	http.open("POST", url, true);
+	
+	http.open("PUT", "http://localhost:8085/HRMS/employee/update", true);
 
 	http.setRequestHeader("Content-Type", "application/json; charset=utf8");
 	http.onreadystatechange = function() {// Call a function when the state
-											// changes.
 		if (http.readyState == 4 && http.status == 200) {
-			alert(http.responseText);
+			alert(this.responseText);
+			window.location="CreateEmployee.html";
+			sessionStorage.clear();
+			
 		}
 	}
 
 	http.send(myJSON);
-	
-	http.open("PUT", "http://localhost:8085/HRMS/employee/update", true);
-	http.send();
+	}
+}
+function addOrUpdateEmployee(){
+	var flag= sessionStorage.getItem("flag");
+	if(flag==null){
+		addEmployee();
+	}else if(flag==1){
+		updateEmployee();
+	}else{
+	}
 }
 function getEmployeeDataFromUI(){
 	var url = "http://localhost:8085/HRMS/employee/create";
+	var id=sessionStorage.getItem("id");
 	var userid = document.getElementsByName("userid")[0].value;
 	var password = document.getElementsByName("password")[0].value;
 	var firstName = document.getElementsByName("firstName")[0].value;
@@ -91,9 +148,10 @@ function getEmployeeDataFromUI(){
 	var department = document.getElementsByName("department")[0].value;
 	var salary = document.getElementsByName("salary")[0].value;
 	var usertype = document.getElementById("list").value;
-	var id = parseInt(usertype);
+	var userTypeid = parseInt(usertype);
 
 	var data = {
+			id:id,
 		userid : userid,
 		password : password,
 		firstName : firstName,
@@ -105,7 +163,7 @@ function getEmployeeDataFromUI(){
 		address : address,
 		department : department,
 		salary : salary,
-		usertype : id
+		usertype : userTypeid
 	}
 	 return data
 }
@@ -118,14 +176,30 @@ function dropDownList(index){
 			document.getElementById("data").innerHTML = "";
 			var empData = JSON.parse(this.responseText);
 			var selectMenu="";
-			//var selectMenu ='<select name="dropDown" >';
+			selectMenu+='<option value="">Select User Type</option>'+"<br>";
 			for(var i = 0; i < empData.length; i++) {
 				selectMenu+='<option value="'+empData[i].id +'">'+empData[i].usertypeName +'</option>'+"<br>";
 				
 				//document.getElementById("list").innerHTML.selectedIndex = selectMenu;
 			}
-			//selectMenu+='</select>';
+			selectMenu+='</select>';
 			document.getElementById("list").innerHTML = selectMenu;
+			if(isEdit==true){
+				document.getElementById("data").value = sessionStorage.getItem("id");
+				document.getElementsByName("userid")[0].value = sessionStorage.getItem("userid");
+				document.getElementsByName("password")[0].value = sessionStorage.getItem("password");
+				document.getElementsByName("firstName")[0].value = sessionStorage.getItem("firstName");
+				document.getElementsByName("lastName")[0].value = sessionStorage.getItem("lastName");
+				document.getElementsByName("phoneNumber")[0].value = sessionStorage.getItem("phoneNumber");
+				document.getElementsByName("emailid")[0].value = sessionStorage.getItem("emailid");
+				document.getElementsByName("dateOfJoining")[0].value = sessionStorage.getItem("dateOfJoining");
+				document.getElementsByName("dateOfBirth")[0].value = sessionStorage.getItem("dateOfBirth");
+				document.getElementsByName("address")[0].value = sessionStorage.getItem("address");
+				document.getElementsByName("department")[0].value = sessionStorage.getItem("department");
+				document.getElementsByName("salary")[0].value = sessionStorage.getItem("salary");
+				document.getElementById("list").value = sessionStorage.getItem("usertype");
+			}
+			
 		}
 	};
 
@@ -159,11 +233,13 @@ function createEmployeeTable(empData){
 		tbody += "<td>" + address + "</td>"
 		var department = empData[data].department;
 		tbody += "<td>" + department + "</td>"
-		var salary = empData[data].salary;
-		tbody += "<td>" + salary + "</td>"
+		/*var salary = empData[data].salary;
+		tbody += "<td>" + salary + "</td>"*/
+		var usertype = empData[data].usertype.usertypeName;
+		tbody += "<td>" + usertype + "</td>"
 		tbody += "<td>" + "<button  value='Delete' onclick='deleteEmployee (" +id+ ")' >Delete</button>"
 				+ "</td>";
-		tbody += "<td>" + "<button  value='Edit' onclick='editEmployee("+ empData[data]+")' >Edit</button>"
+		tbody += "<td>" + "<button  value='Edit' onclick='editEmployee("+id+")' >Edit</button>"
 		+ "</td>";
 		tbody += "<tr>";
 

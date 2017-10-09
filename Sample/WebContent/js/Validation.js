@@ -21,7 +21,7 @@ function validateEmployee(employee) {
 function isValidUserid() {
 	var userid = document.getElementById("userid");
 	if (userid.value == "") {
-		document.getElementById("userid_validation").innerHTML = "User Id Required";
+		//document.getElementById("userid_validation").innerHTML = "User Id Required";
 		userid.style.borderColor = "red";
 		userid.focus();
 		return false;
