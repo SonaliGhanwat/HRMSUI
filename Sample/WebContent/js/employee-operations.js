@@ -1,5 +1,7 @@
 var isEdit = true;
 function displayEmployeeList() {
+	document.getElementById('results').innerHTML = '';
+	openModal(); 
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 
@@ -8,6 +10,7 @@ function displayEmployeeList() {
 			var empData = JSON.parse(this.responseText);
 			var tbody =  createEmployeeTable(empData);
 			document.getElementById("displayList").innerHTML = tbody;
+			closeModal();
 		}
 	};
 
@@ -25,14 +28,19 @@ function addEmployee() {
 	//validate
 	
 	if(validateEmployee(employee)){
+		document.getElementById('results').innerHTML = '';
+		openModal();
 		var myJSON = JSON.stringify(employee);
 		console.log(employee);
 		http.open("POST", "http://localhost:8085/HRMS/employee/create", true);
 	
 		http.setRequestHeader("Content-Type", "application/json; charset=utf8");
-		http.onreadystatechange = function() {// Call a function when the state
+		http.onreadystatechange = function() {
+			closeModal();
 			if (http.readyState == 4 && http.status == 200) {
-				alert(this.responseText);
+				var json = eval("(" + this.responseText + ")");
+				var data = json.message;
+				document.getElementById("response").innerHTML = data;
 			}
 		}
 	
@@ -41,13 +49,19 @@ function addEmployee() {
 }
 
 function deleteEmployee(id) {
+	document.getElementById('results').innerHTML = '';
+	openModal(); 
 	var xhttp = new XMLHttpRequest();
 
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			var empData = JSON.parse(this.responseText);
-			alert("Employee Deleted Successfully");
+			//alert("Employee Deleted Successfully");
+			var json = eval("(" + this.responseText + ")");
+			var data = json.message;
+			document.getElementById("response").innerHTML = data;
 			displayEmployeeList();
+			closeModal();
 		}
 	}
 	xhttp.open("DELETE", "http://localhost:8085/HRMS/employee/delete/"
@@ -114,8 +128,10 @@ function updateEmployee(){
 	http.setRequestHeader("Content-Type", "application/json; charset=utf8");
 	http.onreadystatechange = function() {// Call a function when the state
 		if (http.readyState == 4 && http.status == 200) {
-			alert(this.responseText);
-			window.location="CreateEmployee.html";
+			var json = eval("(" + this.responseText + ")");
+			var data = json.message;
+			document.getElementById("response").innerHTML = data;
+			//window.location="CreateEmployee.html";
 			sessionStorage.clear();
 			
 		}
@@ -248,5 +264,13 @@ function createEmployeeTable(empData){
 		return tbody
 }
 
-   
+function openModal() {
+    document.getElementById('modal').style.display = 'block';
+    document.getElementById('fade').style.display = 'block';
+ 
+}
 
+function closeModal() {
+document.getElementById('modal').style.display = 'none';
+document.getElementById('fade').style.display = 'none';
+}

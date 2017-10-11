@@ -2,37 +2,49 @@
 
 var isEdit = true;
 function displayEmployeeAttendanceList() {
+	document.getElementById('results').innerHTML = '';
+	openModal(); 
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
-
+		
 		if (this.readyState == 4 && this.status == 200) {
 			document.getElementById("createTable").innerHTML = "";
 			var empData = JSON.parse(this.responseText);
 			createEmployeeAttendanceTable(empData);
+			closeModal();
+			
 			}
+		
 	};
 
 	xhttp.open("GET", "http://localhost:8085/HRMS/employeeattendance/list", true);
 	xhttp.send();
+	
 }
 
 function addEmployeeAttendance() {
-	var http = new XMLHttpRequest();
 	
+	var http = new XMLHttpRequest();
 	var employeeAttendence = getEmployeeAttendanceDataFromUI(data);
 	
 	if(validateEmployeeAttendance(employeeAttendence)){
-		
+		document.getElementById('results').innerHTML = '';
+		openModal();
 	var myJSON = JSON.stringify(employeeAttendence);
 	console.log(myJSON);
 	
 	http.open("POST", "http://localhost:8085/HRMS/employeeattendance/create", true);
-
+	
 	http.setRequestHeader("Content-Type", "application/json; charset=utf8");
 	http.onreadystatechange = function() {// Call a function when the state
+		closeModal();
 		if (http.readyState == 4 && http.status == 200) {
-			alert(this.responseText);
+			//alert(this.responseText);
+			var json = eval("(" + this.responseText + ")");
+			var data = json.message;
+			document.getElementById("response").innerHTML = data;
 		}
+		
 	}
 
 	http.send(myJSON);
@@ -41,12 +53,16 @@ function addEmployeeAttendance() {
 }
 
 function deleteEmployeeAttendance(id) {
+	document.getElementById('results').innerHTML = '';
+	openModal(); 
 	var xhttp = new XMLHttpRequest();
-
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
+			closeModal();
 			var empData = JSON.parse(this.responseText);
-			alert("Employee Attendance Deleted Successfully");
+			var json = eval("(" + this.responseText + ")");
+			var data = json.message;
+			document.getElementById("response").innerHTML = data;
 			displayEmployeeAttendanceList();
 			
 		}
@@ -60,6 +76,7 @@ function addOrUpdateEmployeeAttendance(){
 	var flag= sessionStorage.getItem("flag");
 	if(flag==null){
 		addEmployeeAttendance();
+		
 	}else if(flag==1){
 		updateEmployeeattendance();
 	}else{
@@ -110,7 +127,8 @@ function updateEmployeeattendance(){
 	var employeeAttendence = getEmployeeAttendanceDataFromUI(data);
 	
 	if(validateEmployeeAttendance(employeeAttendence)){
-		
+		document.getElementById('results').innerHTML = '';
+		openModal(); 
 	var myJSON = JSON.stringify(employeeAttendence);
 	console.log(myJSON);
 	
@@ -120,12 +138,19 @@ function updateEmployeeattendance(){
 	sessionStorage.clear();
 	http.onreadystatechange = function() {// Call a function when the state
 		if (http.readyState == 4 && http.status == 200) {
-			alert(this.responseText);
-			window.location="CreateEmployeeAttendance.html";
+			/*window.location="CreateEmployeeAttendance.html";
 			clearSessionData();
+			closeModal();*/
+			var json = eval("(" + this.responseText + ")");
+			var data = json.message;
+			document.getElementById("response").innerHTML = data;
+			//window.location="CreateEmployeeAttendance.html";
+			clearSessionData();
+			closeModal();
+			
+			
 		}
 	}
-
 	http.send(myJSON);
 	}
 }
@@ -136,10 +161,10 @@ function displayEmployeeAttendanceByDate(index){
 	console.log("dateVal:",dateVal);
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-			document.getElementById("createAttendanceTable").innerHTML = "";
+			document.getElementById("createTable").innerHTML = "";
 			var empData = JSON.parse(this.responseText);
 			var tbody =  displayTable(empData);
-			document.getElementById("displayAttendanceList").innerHTML = tbody;
+			document.getElementById("displayList").innerHTML = tbody;
 		}
 		
 	};
@@ -197,6 +222,7 @@ function dropDownList(){
 			}else if(flag==1){
 				document.getElementById("list").disabled = true;
 				document.getElementById("date").disabled = true;
+				
 			}else{
 				
 			}
@@ -280,6 +306,10 @@ function displayTable(empData){
 		tbody += "<td>" + date + "</td>"
 		var status = empData[list].status;
 		tbody += "<td>" + status + "</td>"
+		tbody += "<td>" + "<button  value='Delete' onclick='deleteEmployeeAttendance ("+id+")' >Delete</button>"
+		+ "</td>";
+      tbody += "<td>" + "<button id= 'myBtn' value='edit' onclick='editEmployeeAttendance("+id+")' >Edit</button>"
+         + "</td>";
 		tbody += "<tr>"
 	}
 	tbody += "</table>"
@@ -291,4 +321,14 @@ function clearSessionData(){
         var a = sessionStorage.key(i);
         var b = sessionStorage.removeItem(a);
     }
+}
+function openModal() {
+    document.getElementById('modal').style.display = 'block';
+    document.getElementById('fade').style.display = 'block';
+ 
+}
+
+function closeModal() {
+document.getElementById('modal').style.display = 'none';
+document.getElementById('fade').style.display = 'none';
 }

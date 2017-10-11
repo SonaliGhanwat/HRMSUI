@@ -1,6 +1,8 @@
 
 var isEdit=true;
 function displayEmployeeLeaveList() {
+	document.getElementById('results').innerHTML = '';
+	openModal();
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 
@@ -9,6 +11,7 @@ function displayEmployeeLeaveList() {
 			var empData = JSON.parse(this.responseText);
 			var tbody =  createEmployeeLeaveTable(empData)
 			document.getElementById("displayList").innerHTML = tbody;
+			closeModal();
 		}
 	};
 
@@ -20,6 +23,8 @@ function addEmployeeLeave() {
 	var http = new XMLHttpRequest();
 	var employeeLeave = getEmployeeLeaveDataFromUI(data)
 	if(validateEmployeeLeave(employeeLeave)){
+		document.getElementById('results').innerHTML = '';
+		openModal();
 	var myJSON = JSON.stringify(employeeLeave);
 	console.log(myJSON);
 
@@ -29,7 +34,10 @@ function addEmployeeLeave() {
 	http.onreadystatechange = function() {// Call a function when the state
 											// changes.
 		if (http.readyState == 4 && http.status == 200) {
-			alert(this.responseText);
+			var json = eval("(" + this.responseText + ")");
+			var data = json.message;
+			document.getElementById("response").innerHTML = data;
+			closeModal();
 		}
 	}
 
@@ -38,12 +46,18 @@ function addEmployeeLeave() {
 }
 
 function deleteEmployeeLeave(id) {
+	document.getElementById('results').innerHTML = '';
+	openModal();
 	var xhttp = new XMLHttpRequest();
 
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			var empData = JSON.parse(this.responseText);
-			alert("Employee Leave Deleted Successfully");
+			var json = eval("(" + this.responseText + ")");
+			var data = json.message;
+			document.getElementById("response").innerHTML = data;
+			displayEmployeeDailyTaskList();
+			closeModal();
 			displayEmployeeLeaveList();
 		}
 	}
@@ -85,7 +99,8 @@ function updateEmployeeLeave(){
 	var employeeLeave = getEmployeeLeaveDataFromUI(data);
 	
 	if(validateEmployeeLeave(employeeLeave)){
-		
+		document.getElementById('results').innerHTML = '';
+		openModal();
 	var myJSON = JSON.stringify(employeeLeave);
 	console.log(myJSON);
 	
@@ -94,8 +109,12 @@ function updateEmployeeLeave(){
 	http.setRequestHeader("Content-Type", "application/json; charset=utf8");
 	http.onreadystatechange = function() {// Call a function when the state
 		if (http.readyState == 4 && http.status == 200) {
-			alert(this.responseText);
-			window.location="CreateEmployeeLeave.html";
+			var json = eval("(" + this.responseText + ")");
+			var data = json.message;
+			document.getElementById("response").innerHTML = data;
+			
+			closeModal();
+			//window.location="CreateEmployeeLeave.html";
 			sessionStorage.clear();
 		}
 	}
@@ -220,4 +239,14 @@ function createEmployeeLeaveTable(empData){
 	tbody += "</table>"
 		return tbody
 	
+}
+function openModal() {
+    document.getElementById('modal').style.display = 'block';
+    document.getElementById('fade').style.display = 'block';
+ 
+}
+
+function closeModal() {
+document.getElementById('modal').style.display = 'none';
+document.getElementById('fade').style.display = 'none';
 }

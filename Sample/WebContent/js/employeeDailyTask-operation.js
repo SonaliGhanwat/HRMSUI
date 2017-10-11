@@ -1,5 +1,7 @@
 var isEdit=true;
 function displayEmployeeDailyTaskList() {
+	document.getElementById('results').innerHTML = '';
+	openModal(); 
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 
@@ -8,6 +10,7 @@ function displayEmployeeDailyTaskList() {
 			var empData = JSON.parse(this.responseText);
 			var tbody = createTable(empData);
 			document.getElementById("displayList").innerHTML = tbody;
+			closeModal();
 		}
 	};
 
@@ -16,13 +19,18 @@ function displayEmployeeDailyTaskList() {
 }
 
 function deleteEmployeeDailyTask(id) {
+	document.getElementById('results').innerHTML = '';
+	openModal(); 
 	var xhttp = new XMLHttpRequest();
 
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			var empData = JSON.parse(this.responseText);
-			alert("Employee Daily Task Deleted Successfully");
+			var json = eval("(" + this.responseText + ")");
+			var data = json.message;
+			document.getElementById("response").innerHTML = data;
 			displayEmployeeDailyTaskList();
+			closeModal();
 		}
 	}
 	xhttp.open("DELETE", "http://localhost:8085/HRMS/employeedailytask/delete/"
@@ -37,7 +45,8 @@ function addEmployeeDailyTask() {
 	var employeeDailyTask=getEmployeeDailyTaskDataFromUI(data);
 	
 	if(validateEmployeeDailyTask(employeeDailyTask)){
-		
+		document.getElementById('results').innerHTML = '';
+		openModal(); 
 	var myJSON = JSON.stringify(employeeDailyTask);
 	console.log(employeeDailyTask);
 
@@ -45,9 +54,11 @@ function addEmployeeDailyTask() {
 
 	http.setRequestHeader("Content-Type", "application/json; charset=utf8");
 	http.onreadystatechange = function() {// Call a function when the state
-											// changes.
+		closeModal();			// changes.
 		if (http.readyState == 4 && http.status == 200) {
-			alert("Employee Daily Task Added Successfully");
+			var json = eval("(" + this.responseText + ")");
+			var data = json.message;
+			document.getElementById("response").innerHTML = data;
 			
 		}
 	}
@@ -93,7 +104,8 @@ function updateEmployeeDailyTask(){
 	var employeeDailyTask = getEmployeeDailyTaskDataFromUI(data);
 	
 	if(validateEmployeeDailyTask(employeeDailyTask)){
-		
+		document.getElementById('results').innerHTML = '';
+		openModal(); 
 	var myJSON = JSON.stringify(employeeDailyTask);
 	console.log(myJSON);
 	
@@ -102,8 +114,11 @@ function updateEmployeeDailyTask(){
 	http.setRequestHeader("Content-Type", "application/json; charset=utf8");
 	http.onreadystatechange = function() {// Call a function when the state
 		if (http.readyState == 4 && http.status == 200) {
-			alert(this.responseText);
-			window.location="CreateEmployeeDailyTask.html";
+			closeModal();
+			var json = eval("(" + this.responseText + ")");
+			var data = json.message;
+			document.getElementById("response").innerHTML = data;
+			//window.location="CreateEmployeeDailyTask.html";
 			sessionStorage.clear();
 		}
 	}
@@ -219,5 +234,15 @@ function getEmployeeDailyTaskDataFromUI(data){
 	}
 	return data
 	
+}
+function openModal() {
+    document.getElementById('modal').style.display = 'block';
+    document.getElementById('fade').style.display = 'block';
+ 
+}
+
+function closeModal() {
+document.getElementById('modal').style.display = 'none';
+document.getElementById('fade').style.display = 'none';
 }
 

@@ -11,62 +11,72 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/employee-operations.js"></script>
 </head>
+<div data-role="header" data-position="fixed">
 <header style="background: #00bfff;" >
 	
-	<div  class="head-name" style="color: wheat; ">NexTech HRMS</div >
+	<div align="center"  class="head-name" style="color: wheat;">NexTech HRMS</div >
 	<ul>
    <li>
-            <a href="#">Employee &#9662;</a>
-            <ul class="dropdown">
-                <li><a href="CreateEmployee.html">Add Employee</a></li>
-                <li><a href="EmployeeList.html">View employee</a></li>
+            <a href="#">Employee </a>
+            <ul class="dropdown width: 200px;">
+                <li><a href="CreateEmployee.html" style=" min-width: 200px">Add Employee</a></li>
+                <li><a href="EmployeeList.html" style=" min-width: 200px">View All Employee</a></li>
             </ul>
         </li>
         
          <li>
-            <a href="#">Attendance &#9662;</a>
+            <a href="#">Attendance </a>
             <ul class="dropdown">
-                <li><a href="CreateEmployeeAttendance.html">Add Employee Attendance</a></li>
-                <li><a href="EmployeeAttendanceList.html">View Employee Attendance</a></li>
+                <li><a href="CreateEmployeeAttendance.html"style=" min-width: 200px" >Add Employee Attendance</a></li>
+                <li><a href="EmployeeAttendanceList.html"style=" min-width: 200px">View All Employee Attendance</a></li>
             </ul>
         </li>
          <li>
-            <a href="#">Daily Task &#9662;</a>
+            <a href="#">Daily Task </a>
             <ul class="dropdown">
-                <li><a href="CreateEmployeeDailyTask.html">Add Employee Daily Task</a></li>
-                <li><a href="EmployeeDailyTaskList.html">View Employee Daily Task</a></li>
+                <li><a href="CreateEmployeeDailyTask.html"style=" min-width: 200px">Add Employee Daily Task</a></li>
+                <li><a href="EmployeeDailyTaskList.html"style=" min-width: 200px">View All Employee Daily Task</a></li>
             </ul>
         </li>
         <li>
-            <a href="#">Leave &#9662;</a>
+            <a href="#">Leave </a>
             <ul class="dropdown">
-                <li><a href="CreateEmployeeLeave.html">Add Employee Leave</a></li>
-                <li><a href="EmployeeLeaveList.html">View Employee Leave</a></li>
+                <li><a href="CreateEmployeeLeave.html"style=" min-width: 200px">Add Employee Leave</a></li>
+                <li><a href="EmployeeLeaveList.html"style=" min-width: 200px">View All Employee Leave</a></li>
             </ul>
         </li>
         <li>
-            <a href="#">User Type &#9662;</a>
+            <a href="#">User Type </a>
             <ul class="dropdown">
-                <li><a href="CreateUserType.html">Add User Type</a></li>
-                <li><a href="UserTypeList.html">View User Type</a></li>
+                <li><a href="CreateUserType.html"style=" min-width: 200px">Add User Type</a></li>
+                <li><a href="UserTypeList.html"style=" min-width: 200px">View All User Type</a></li>
             </ul>
         </li>
-        <li>
-            <a href="#">Holiday &#9662;</a>
+         <li>
+            <a href="#">Holiday </a>
             <ul class="dropdown">
-                <li><a href="CreateHoliday.html">Add Holiday</a></li>
-                <li><a href="HolidayList.html">View All Holiday</a></li>
+                <li><a href="CreateHoliday.html"style=" min-width: 200px">Add Holiday</a></li>
+                <li><a href="HolidayList.html"style=" min-width: 200px">View All Holiday</a></li>
             </ul>
         </li>
 
 </ul>
 </header>
+</div>
+<div id="results"></div>
+        <div id="fade"></div>
+        <div id="modal">
+            <!-- <img id="loader" src="image/loading.gif" /> -->
+        </div>
 <body onload="displayEmployeeList() " style="background-color:#F8F8FF;" >
+
 <div class="container">
-<h1 align="center" style="color: blue;" class="well">Employee List</h1>
 
 <p id="createTable"></p> 
+<h1 align="center" style="color: blue;" class="well">Employee List</h1>
+ 
 <table  class="table table-bordered table table-hover">
+
 <tr>
         
 		<th>UserId</th>
@@ -84,9 +94,28 @@
 		<th>Edit</th>
 		
 		</tr> 
-<tbody id="displayList"></tbody>
+		
+<tbody id="displayList"data-toggle="modal" data-target="#myModal"></tbody>
 
 </table>
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 class="modal-title" >Employee Attendance</h3>
+        </div>
+            <div class="modal-body">
+             <p id="response" style="font-size: 15px"></p> 
+            </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div> 
+  
 </div>
 </body>
 </html>
