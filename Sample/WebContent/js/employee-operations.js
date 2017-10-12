@@ -1,4 +1,6 @@
 var isEdit = true;
+var employeeData = "";
+var getUIEmployeeData = ""
 function displayEmployeeList() {
 	document.getElementById('results').innerHTML = '';
 	openModal(); 
@@ -40,7 +42,14 @@ function addEmployee() {
 			if (http.readyState == 4 && http.status == 200) {
 				var json = eval("(" + this.responseText + ")");
 				var data = json.message;
-				document.getElementById("response").innerHTML = data;
+				var code = json.code;
+				if(code===1){
+					document.getElementById("response").innerHTML = data;
+				}else if(code===0){
+					document.getElementById("response").innerHTML = data;
+					getDataHtmlFieldId();
+				}
+				
 			}
 		}
 	
@@ -122,7 +131,11 @@ function updateEmployee(){
 		
 	var myJSON = JSON.stringify(employee);
 	console.log(myJSON);
-	
+	getEmployeeDataFromUI();
+	getSessionData();
+	if(JSON.stringify(employeeData) === JSON.stringify(getUIEmployeeData) ){
+		document.getElementById("response").innerHTML ="Please Do Some Changes" ;
+	}else{
 	http.open("PUT", "http://localhost:8085/HRMS/employee/update", true);
 
 	http.setRequestHeader("Content-Type", "application/json; charset=utf8");
@@ -132,11 +145,12 @@ function updateEmployee(){
 			var data = json.message;
 			document.getElementById("response").innerHTML = data;
 			//window.location="CreateEmployee.html";
+			getDataHtmlFieldId();
 			sessionStorage.clear();
 			
 		}
 	}
-
+	}
 	http.send(myJSON);
 	}
 }
@@ -150,7 +164,7 @@ function addOrUpdateEmployee(){
 	}
 }
 function getEmployeeDataFromUI(){
-	var url = "http://localhost:8085/HRMS/employee/create";
+	//var url = "http://localhost:8085/HRMS/employee/create";
 	var id=sessionStorage.getItem("id");
 	var userid = document.getElementsByName("userid")[0].value;
 	var password = document.getElementsByName("password")[0].value;
@@ -166,7 +180,7 @@ function getEmployeeDataFromUI(){
 	var usertype = document.getElementById("list").value;
 	var userTypeid = parseInt(usertype);
 
-	var data = {
+	 getUIEmployeeData = {
 			id:id,
 		userid : userid,
 		password : password,
@@ -181,7 +195,7 @@ function getEmployeeDataFromUI(){
 		salary : salary,
 		usertype : userTypeid
 	}
-	 return data
+	 return getUIEmployeeData
 }
 
 
@@ -273,4 +287,50 @@ function openModal() {
 function closeModal() {
 document.getElementById('modal').style.display = 'none';
 document.getElementById('fade').style.display = 'none';
+}
+function getSessionData(){
+	var id=sessionStorage.getItem("id");
+	var userid = sessionStorage.getItem("userid");
+	var password = sessionStorage.getItem("password");
+	var firstName = sessionStorage.getItem("firstName");
+	var lastName = sessionStorage.getItem("lastName");
+	var phoneNumber = sessionStorage.getItem("phoneNumber");
+	var emailid = sessionStorage.getItem("emailid");
+	var dateOfJoining = sessionStorage.getItem("dateOfJoining");
+	var dateOfBirth = sessionStorage.getItem("dateOfBirth");
+	var address = sessionStorage.getItem("address");
+	var department = sessionStorage.getItem("department");
+	var salary = sessionStorage.getItem("salary");
+	var usertype = sessionStorage.getItem("usertype");
+	var userTypeid = parseInt(usertype);
+	 employeeData = {
+			id:id,
+		userid : userid,
+		password : password,
+		firstName : firstName,
+		lastName : lastName,
+		phoneNumber : phoneNumber,
+		emailid : emailid,
+		dateOfJoining : dateOfJoining,
+		dateOfBirth : dateOfBirth,
+		address : address,
+		department : department,
+		salary : salary,
+		usertype : userTypeid
+	}
+	 return employeeData
+}
+function getDataHtmlFieldId(){
+	document.getElementsByName("userid")[0].value = "";
+	document.getElementsByName("password")[0].value = "";
+	document.getElementsByName("firstName")[0].value = "";
+    document.getElementsByName("lastName")[0].value = "";
+	document.getElementsByName("phoneNumber")[0].value = "";
+    document.getElementsByName("emailid")[0].value = "";
+	document.getElementsByName("dateOfJoining")[0].value = "";
+	document.getElementsByName("dateOfBirth")[0].value = "";
+	document.getElementsByName("address")[0].value = "";
+	document.getElementsByName("department")[0].value = "";
+	document.getElementsByName("salary")[0].value = "";
+	document.getElementById("list")[0].value;
 }

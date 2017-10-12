@@ -77,8 +77,8 @@
 		<form action="" name="Employee" class="employee-form" method="POST">
 		<div class="row">
             <div class=" form-group col-lg-4">
-					<label class="label-name required "> UserType Name</label> <input type="text"
-						id="usertypeName" name="usertypeName" class="label-size lable-margin textbox form-control" placeholder="UserType Name"onkeyup="isvalidUserTypeName()"onclick="isvalidUserTypeName()" >
+					<label class="label-name required "> UserType Name</label> 
+					<input type="text"id="usertypeName" name="usertypeName" class="label-size lable-margin textbox form-control" placeholder="UserType Name"onkeyup="isvalidUserTypeName()"onclick="isvalidUserTypeName()" >
 					<div id="usertypeName_validation" class="error"></div>
 				</div>
 				
@@ -100,7 +100,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h3 class="modal-title" >Employee Attendance</h3>
+          <h3 class="modal-title" >User Type</h3>
         </div>
             <div class="modal-body">
              <p id="response" style="font-size: 15px">Please Enter User Type Information</p> 
@@ -113,7 +113,7 @@
     </div>
   </div> 
 			<div align="center" class="submit">
-			<button type="reset" class="label-size submit-button" data-toggle="modal" data-target="#myModal"onclick="addOrUpdateUserType()">Submit</button> 
+			<button type="button" class="label-size submit-button" data-toggle="modal" data-target="#myModal"onclick="addOrUpdateUserType()">Submit</button> 
 				<!-- <input type="reset" value="Submit" class="label-size submit-button"onclick="addOrUpdateUserType()">  -->
 				<input type="reset"value="Cancel"   class="cancel-btn submit-button" onclick="clearForm()"> <br> <br>
 			</div>

@@ -1,4 +1,5 @@
-
+var listUserTypeData = "";
+var getUIUserTypeData = "";
 function displayUserTypeList() {
 	document.getElementById('results').innerHTML = '';
 	openModal();
@@ -32,12 +33,19 @@ function addUserType() {
 	
 		http.setRequestHeader("Content-Type", "application/json; charset=utf8");
 		http.onreadystatechange = function() {// Call a function when the state
-												// changes.
+			closeModal();				// changes.
 			if (http.readyState == 4 && http.status == 200) {
 				var json = eval("(" + this.responseText + ")");
 				var data = json.message;
-				document.getElementById("response").innerHTML = data;
-				closeModal();
+				var code = json.code;
+				if(code===1){
+					document.getElementById("response").innerHTML = data;
+				}else if(code===0){
+					document.getElementById("response").innerHTML = data;
+					getDataHtmlField();
+				}
+				
+				
 				
 			}
 		}
@@ -100,7 +108,12 @@ function updateUserType(){
 		openModal();
 	var myJSON = JSON.stringify(userType);
 	console.log(myJSON);
-	
+	closeModal();
+	getUserTypeFromUI();
+	getSessionData();
+	if(JSON.stringify(listUserTypeData) === JSON.stringify(getUIUserTypeData) ){
+		document.getElementById("response").innerHTML ="Please Do Some Changes" ;
+	}else{
 	http.open("PUT", "http://localhost:8085/HRMS/usertype/update", true);
 
 	http.setRequestHeader("Content-Type", "application/json; charset=utf8");
@@ -109,11 +122,12 @@ function updateUserType(){
 			var json = eval("(" + this.responseText + ")");
 			var data = json.message;
 			document.getElementById("response").innerHTML = data;
-			closeModal();
+			getDataHtmlField();
 			//window.location="CreateUserType.html";
 			sessionStorage.clear();
 		}
 	
+	}
 	}
 	http.send(myJSON);
 }
@@ -134,20 +148,17 @@ function getUserTypeIdFromHtml(){
 	document.getElementById("description").value = sessionStorage.getItem("description");
 	
 }
-function getUserTypeFromUI(data){
+function getUserTypeFromUI(){
 	//var url = "http://localhost:8085/HRMS/employee/create";
 	var id=sessionStorage.getItem("id");
 	var usertypeName = document.getElementsByName("usertypeName")[0].value;
 	var description = document.getElementsByName("description")[0].value;
-	
-
-	var data = {
+	 getUIUserTypeData = {
 			id:id,
 			usertypeName : usertypeName,
 			description : description,
-		
 	}
-	 return data
+	 return getUIUserTypeData;
 }
 
 function createUserTable(empData){
@@ -177,10 +188,24 @@ function createUserTable(empData){
 function openModal() {
     document.getElementById('modal').style.display = 'block';
     document.getElementById('fade').style.display = 'block';
- 
 }
 
 function closeModal() {
 document.getElementById('modal').style.display = 'none';
 document.getElementById('fade').style.display = 'none';
+}
+function getDataHtmlField(){
+	document.getElementsByName("usertypeName")[0].value="";
+	document.getElementsByName("description")[0].value="";
+}
+function getSessionData(){
+	var id=sessionStorage.getItem("id");
+	var usertypeName = sessionStorage.getItem("usertypeName");
+	var description = sessionStorage.getItem("description");
+	 listUserTypeData={
+			 id:id,
+			 usertypeName:usertypeName,
+			 description:description
+	}	
+	return listUserTypeData;
 }

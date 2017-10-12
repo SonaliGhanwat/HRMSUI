@@ -1,5 +1,6 @@
 
 var isEdit=true;
+var listEmpData = "";
 function displayEmployeeLeaveList() {
 	document.getElementById('results').innerHTML = '';
 	openModal();
@@ -34,10 +35,17 @@ function addEmployeeLeave() {
 	http.onreadystatechange = function() {// Call a function when the state
 											// changes.
 		if (http.readyState == 4 && http.status == 200) {
+			closeModal();
 			var json = eval("(" + this.responseText + ")");
 			var data = json.message;
-			document.getElementById("response").innerHTML = data;
-			closeModal();
+			var code = json.code;
+			if(code===1){
+				document.getElementById("response").innerHTML = data;
+			}else if(code===0){
+				document.getElementById("response").innerHTML = data;
+				getDataHtmlField();
+			}
+			
 		}
 	}
 
@@ -102,7 +110,20 @@ function updateEmployeeLeave(){
 		document.getElementById('results').innerHTML = '';
 		openModal();
 	var myJSON = JSON.stringify(employeeLeave);
-	console.log(myJSON);
+	var subject=employeeLeave.subject;
+	var leavedate= employeeLeave.leavedate;
+	var afterleavejoiningdate=employeeLeave.afterleavejoiningdate;
+	var getUIEmpData={
+			subject:subject,
+			 leavedate:leavedate,
+			 afterleavejoiningdate:afterleavejoiningdate
+	}
+	closeModal();		
+	getSessionData();
+	if(JSON.stringify(listEmpData) === JSON.stringify(getUIEmpData) ){
+		document.getElementById("response").innerHTML ="Please Do Some Changes" ;
+	}else{
+	
 	
 	http.open("PUT", "http://localhost:8085/HRMS/employeeleave/update", true);
 
@@ -112,13 +133,12 @@ function updateEmployeeLeave(){
 			var json = eval("(" + this.responseText + ")");
 			var data = json.message;
 			document.getElementById("response").innerHTML = data;
-			
-			closeModal();
 			//window.location="CreateEmployeeLeave.html";
+			getDataHtmlField();
 			sessionStorage.clear();
 		}
 	}
-
+	}
 	http.send(myJSON);
 	}
 }
@@ -186,7 +206,12 @@ function dropDownListEmployee(index){
 				document.getElementById("subject").value = sessionStorage.getItem("subject");
 				document.getElementById("leavedate").value = sessionStorage.getItem("leavedate");
 				document.getElementById("afterleavejoiningdate").value = sessionStorage.getItem("afterleavejoiningdate");
-				
+				var flag= sessionStorage.getItem("flag");
+				if(flag==null){
+				}else if(flag==1){
+					document.getElementById("list").disabled = true;
+				}else{
+				}
 				}
 		}
 	};
@@ -249,4 +274,22 @@ function openModal() {
 function closeModal() {
 document.getElementById('modal').style.display = 'none';
 document.getElementById('fade').style.display = 'none';
+}
+function getDataHtmlField(){
+	document.getElementById("list").value="";
+	document.getElementsByName("subject")[0].value="";
+	document.getElementsByName("leavedate")[0].value="";
+	document.getElementsByName("afterleavejoiningdate")[0].value="";
+}
+function getSessionData(){
+	var subject = sessionStorage.getItem("subject");
+	var leavedate = sessionStorage.getItem("leavedate");
+	var afterleavejoiningdate = sessionStorage.getItem("afterleavejoiningdate");
+	 listEmpData={
+			 
+			 subject:subject,
+			 leavedate:leavedate,
+			 afterleavejoiningdate:afterleavejoiningdate
+	}	
+	return listEmpData;
 }

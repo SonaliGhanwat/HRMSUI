@@ -1,4 +1,5 @@
 var isEdit=true;
+var listEmpData = "";
 function displayEmployeeDailyTaskList() {
 	document.getElementById('results').innerHTML = '';
 	openModal(); 
@@ -58,7 +59,11 @@ function addEmployeeDailyTask() {
 		if (http.readyState == 4 && http.status == 200) {
 			var json = eval("(" + this.responseText + ")");
 			var data = json.message;
-			document.getElementById("response").innerHTML = data;
+			var code = json.code;
+			if(code===1){
+				document.getElementById("response").innerHTML = data;
+				getDataHtmlField();
+			}
 			
 		}
 	}
@@ -107,8 +112,22 @@ function updateEmployeeDailyTask(){
 		document.getElementById('results').innerHTML = '';
 		openModal(); 
 	var myJSON = JSON.stringify(employeeDailyTask);
-	console.log(myJSON);
 	
+	var taskName=employeeDailyTask.taskName;
+	var estimationTime= employeeDailyTask.estimationTime;
+	var starttime=employeeDailyTask.starttime;
+	var endtime= employeeDailyTask.endtime;
+	var getUIEmpData={
+			taskName:taskName,
+			 estimationTime:estimationTime,
+			 starttime:starttime,
+			 endtime:endtime
+	}
+	closeModal();		
+	getSessionData();
+	if(JSON.stringify(listEmpData) === JSON.stringify(getUIEmpData) ){
+		document.getElementById("response").innerHTML ="Please Do Some Changes" ;
+	}else{
 	http.open("PUT", "http://localhost:8085/HRMS/employeedailytask/update", true);
 
 	http.setRequestHeader("Content-Type", "application/json; charset=utf8");
@@ -119,10 +138,11 @@ function updateEmployeeDailyTask(){
 			var data = json.message;
 			document.getElementById("response").innerHTML = data;
 			//window.location="CreateEmployeeDailyTask.html";
+			getDataHtmlField();
 			sessionStorage.clear();
 		}
 	}
-
+	}
 	http.send(myJSON);
 	}
 }
@@ -246,3 +266,24 @@ document.getElementById('modal').style.display = 'none';
 document.getElementById('fade').style.display = 'none';
 }
 
+function getDataHtmlField(){
+	document.getElementById("list").value="";
+	document.getElementsByName("date")[0].value="";
+	document.getElementsByName("taskName")[0].value="";
+	document.getElementsByName("estimationTime")[0].value="";
+	document.getElementsByName("starttime")[0].value="";
+	document.getElementsByName("endtime")[0].value="";
+}
+function getSessionData(){
+	var taskName = sessionStorage.getItem("taskName");
+	var estimationTime = sessionStorage.getItem("estimationTime");
+	var starttime = sessionStorage.getItem("starttime");
+	var endtime = sessionStorage.getItem("endtime");
+	 listEmpData={
+			 taskName:taskName,
+			 estimationTime:estimationTime,
+			 starttime:starttime,
+			 endtime:endtime
+	}	
+	return listEmpData;
+}

@@ -1,3 +1,5 @@
+var listHolidayData = "";
+var getUIHolidayData = "";
 function displayHolidayList() {
 	document.getElementById('results').innerHTML = '';
 	openModal();
@@ -32,13 +34,16 @@ function addHoliday() {
 	
 		http.setRequestHeader("Content-Type", "application/json; charset=utf8");
 		http.onreadystatechange = function() {// Call a function when the state
-												// changes.
+			closeModal();				// changes.
 			if (http.readyState == 4 && http.status == 200) {
 				myFunction();
 				var json = eval("(" + this.responseText + ")");
 				var data = json.message;
-				document.getElementById("response").innerHTML = data;
-				closeModal();
+				var code = json.code;
+				if(code===1){
+					document.getElementById("response").innerHTML = data;
+					
+				}
 				
 			}
 		}
@@ -101,7 +106,12 @@ function updateHoliday(){
 		openModal();
 	var myJSON = JSON.stringify(holiday);
 	console.log(myJSON);
-	
+	closeModal();
+	getHolidayFromUI();
+	getSessionData();
+	if(JSON.stringify(listHolidayData) === JSON.stringify(getUIHolidayData) ){
+		document.getElementById("response").innerHTML ="Please Do Some Changes" ;
+	}else{
 	http.open("PUT", "http://localhost:8085/HRMS/holiday/update", true);
 
 	http.setRequestHeader("Content-Type", "application/json; charset=utf8");
@@ -110,11 +120,12 @@ function updateHoliday(){
 			var json = eval("(" + this.responseText + ")");
 			var data = json.message;
 			document.getElementById("response").innerHTML = data;
-			closeModal();
+			getDataHtmlField();
 			//window.location="CreateHoliday.html";
 			sessionStorage.clear();
 		}
 	
+	}
 	}
 	http.send(myJSON);
 }
@@ -143,13 +154,13 @@ function getHolidayFromUI(){
 	var holidayName = document.getElementsByName("holidayName")[0].value;
 	
 
-	var data = {
+	 getUIHolidayData = {
 			id:id,
 			holidayDate : holidayDate,
 			holidayName : holidayName,
 		
 	}
-	 return data
+	 return getUIHolidayData
 }
 function createHolidayTable(holidayData){
 	var tbody = "";
@@ -175,9 +186,7 @@ function createHolidayTable(holidayData){
 	tbody += "</table>";
 		return tbody
 }
-function myFunction() {
-    document.getElementById("data").value="";
-}
+
 function openModal() {
     document.getElementById('modal').style.display = 'block';
     document.getElementById('fade').style.display = 'block';
@@ -187,4 +196,17 @@ function openModal() {
 function closeModal() {
 document.getElementById('modal').style.display = 'none';
 document.getElementById('fade').style.display = 'none';
+}
+function getDataHtmlField(){
+	document.getElementsByName("holidayDate")[0].value="";
+	document.getElementsByName("holidayName")[0].value="";
+}
+function getSessionData(){
+	var holidayDate = sessionStorage.getItem("holidayDate");
+	var holidayName = sessionStorage.getItem("holidayName");
+	 listHolidayData={
+			 holidayDate:holidayDate,
+			 holidayName:holidayName
+	}	
+	return listEmpData;
 }
