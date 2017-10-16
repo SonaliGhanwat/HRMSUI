@@ -11,7 +11,7 @@ function displayEmployeeLeaveList() {
 			document.getElementById("createTable").innerHTML = "";
 			var empData = JSON.parse(this.responseText);
 			var tbody =  createEmployeeLeaveTable(empData)
-			document.getElementById("displayList").innerHTML = tbody;
+			
 			closeModal();
 		}
 	};
@@ -158,27 +158,10 @@ function displayEmployeeLeaveByDate(){
 	var dateVal = document.getElementById("Date").value;
 	console.log("dateVal:",dateVal);
 	xhttp.onreadystatechange = function() {
-		
-
 		if (this.readyState == 4 && this.status == 200) {
-			document.getElementById("createLeaveTable").innerHTML = "";
+			document.getElementById("createTable").innerHTML = "";
 			var empData = JSON.parse(this.responseText);
-			var tbody = "";
-			for ( var list in empData) {
-				tbody += "<tr>"
-				var employeeid = empData[list].employee.userid;
-				tbody += "<td>" + employeeid + "</td>"
-				var subject = empData[list].subject;
-				tbody += "<td>" + subject + "</td>"
-				var leavedate = empData[list].leavedate;
-				tbody += "<td>" + leavedate + "</td>"
-				var afterleavejoiningdate = empData[list].afterleavejoiningdate;
-				tbody += "<td>" + afterleavejoiningdate + "</td>"
-				tbody += "<tr>"
-			}
-			tbody += "</table>"
-				document.getElementById("displayLeaveList").innerHTML = tbody;
-			
+			createEmployeeLeaveTable(empData);
 		}
 	};
 
@@ -219,26 +202,6 @@ function dropDownListEmployee(index){
 	xhttp.open("GET", "http://localhost:8085/HRMS/employee/list", true);
 	xhttp.send();
 }
-function getEmployeeLeaveDataFromUI(data){
-	//var url = "http://localhost:8085/HRMS/employeeleave/create";
-	var id=sessionStorage.getItem("id");
-	var employee = document.getElementById("list").value;
-	var empid = parseInt(employee);
-	var subject = document.getElementsByName("subject")[0].value;
-	var leavedate = document.getElementsByName("leavedate")[0].value;
-	var afterleavejoiningdate = document.getElementsByName("afterleavejoiningdate")[0].value;
-	var data = {
-			id:id,
-			employee:empid,
-			subject : subject,
-			leavedate : leavedate,
-			afterleavejoiningdate : afterleavejoiningdate
-			
-	}
-
-	return data
-	
-}
 
 function createEmployeeLeaveTable(empData){
 	var tbody = "";
@@ -261,8 +224,28 @@ function createEmployeeLeaveTable(empData){
 		tbody += "<tr>"
 
 	}
+	
 	tbody += "</table>"
+		document.getElementById("displayList").innerHTML = tbody;
 		return tbody
+	
+}
+function getEmployeeLeaveDataFromUI(data){
+	//var url = "http://localhost:8085/HRMS/employeedailytask/create";
+	var id=sessionStorage.getItem("id");
+	var employee = document.getElementById("list").value;
+	var empid = parseInt(employee);
+	var subject = document.getElementsByName("subject")[0].value;
+	var leavedate = document.getElementsByName("leavedate")[0].value;
+	var afterleavejoiningdate = document.getElementsByName("afterleavejoiningdate")[0].value;
+	var data = {
+			id:id,
+			employee:empid,
+			subject : subject,
+			leavedate : leavedate,
+			afterleavejoiningdate : afterleavejoiningdate
+	}
+	return data
 	
 }
 function openModal() {
@@ -292,4 +275,8 @@ function getSessionData(){
 			 afterleavejoiningdate:afterleavejoiningdate
 	}	
 	return listEmpData;
+}
+function clearEmployeeLeaveForm(){
+	  sessionStorage.clear();
+	  window.location="CreateEmployeeLeave.html";
 }

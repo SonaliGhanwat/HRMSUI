@@ -9,6 +9,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/EmployeeLeave-operation.js"></script>
+
 </head>
 <div data-role="header" data-position="fixed">
 <header style="background: #00bfff;" >
@@ -18,7 +19,7 @@
    <li>
             <a href="#">Employee </a>
             <ul class="dropdown width: 200px;">
-                <li><a href="CreateEmployee.html" style=" min-width: 200px">Add Employee</a></li>
+                <li><a onclick="clearEmployeeForm()" style=" min-width: 200px;cursor:pointer">Add Employee</a></li>
                 <li><a href="EmployeeList.html" style=" min-width: 200px">View All Employee</a></li>
             </ul>
         </li>
@@ -26,28 +27,28 @@
          <li>
             <a href="#">Attendance </a>
             <ul class="dropdown">
-                <li><a href="CreateEmployeeAttendance.html"style=" min-width: 200px" >Add Employee Attendance</a></li>
+                <li><a  onclick="clearAttendanceForm()"style=" min-width: 200px;cursor:pointer" >Add Employee Attendance</a></li>
                 <li><a href="EmployeeAttendanceList.html"style=" min-width: 200px">View All Employee Attendance</a></li>
             </ul>
         </li>
          <li>
             <a href="#">Daily Task </a>
             <ul class="dropdown">
-                <li><a href="CreateEmployeeDailyTask.html"style=" min-width: 200px">Add Employee Daily Task</a></li>
+                <li><a onclick="clearEmployeeDailyTaskForm()"style=" min-width: 200px;cursor:pointer">Add Employee Daily Task</a></li>
                 <li><a href="EmployeeDailyTaskList.html"style=" min-width: 200px">View All Employee Daily Task</a></li>
             </ul>
         </li>
         <li>
             <a href="#">Leave </a>
             <ul class="dropdown">
-                <li><a href="CreateEmployeeLeave.html"style=" min-width: 200px">Add Employee Leave</a></li>
+                <li><a onclick="clearEmployeeLeaveForm()"style=" min-width: 200px;cursor:pointer">Add Employee Leave</a></li>
                 <li><a href="EmployeeLeaveList.html"style=" min-width: 200px">View All Employee Leave</a></li>
             </ul>
         </li>
         <li>
             <a href="#">User Type </a>
             <ul class="dropdown">
-                <li><a href="CreateUserType.html"style=" min-width: 200px">Add User Type</a></li>
+                <li><a href="CreateUserType.html"style=" min-width: 200px;cursor:pointer">Add User Type</a></li>
                 <li><a href="UserTypeList.html"style=" min-width: 200px">View All User Type</a></li>
             </ul>
         </li>
@@ -70,6 +71,13 @@
 <body onload="displayEmployeeLeaveList() ">
 <div class="container">
 <h1 align="center" style="color: blue;" class="well">Employee Leave List</h1>
+<h4 style="margin-left: 15px">Filter by Date</h4>
+<form action="" name="Employee" onchange="displayEmployeeLeaveByDate()" method="GET" > 
+    <div class=" form-group col-lg-4">
+	<!-- <label class="label-name required"> Date :</label> -->
+ <input type="date" id="Date"  class=" textbox form-control" onload =" displayEmployeeLeaveByDate()"><br>
+  <!-- <input type="submit" class="empAtt submit-button"  placeholder="Date"> -->
+  </div>
 <p id="createTable"></p> 
 <table class="table table-bordered table table-hover">
 <tr>
@@ -86,14 +94,14 @@
 <tbody id="displayList" ></tbody>
 </table>
 <div data-toggle="modal" data-target="#myModal"></div>
-<h2>Employee Leave List By Date</h2>
-  <!-- <body onsubmit="return displayEmployeeAttendanceByDate(Date)" > -->
+<!-- <h2>Employee Leave List By Date</h2>
+  <body onsubmit="return displayEmployeeAttendanceByDate(Date)" >
 <form action="#" name="Employee" onclick=" displayEmployeeLeaveByDate()" method="GET" > 
  
  <p id="createLeaveTable"></p> 
     <label  class="label-name"> Date:</label>
     <input type="text" id=Date value=""/><br><br>
-  <!-- <input type="submit" class="empAtt"/><br><br> -->
+  <input type="submit" class="empAtt"/><br><br>
 <table  class="table table-bordered table table-hover">
 <tr>
          
@@ -104,7 +112,7 @@
 		</tr> 
 		
 <tbody id="displayLeaveList"></tbody>
-    </table>
+    </table> -->
     <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">

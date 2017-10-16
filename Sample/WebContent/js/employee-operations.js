@@ -334,3 +334,7 @@ function getDataHtmlFieldId(){
 	document.getElementsByName("salary")[0].value = "";
 	document.getElementById("list")[0].value;
 }
+function clearEmployeeForm(){
+	  sessionStorage.clear();
+	  window.location="CreateEmployee.html";
+}

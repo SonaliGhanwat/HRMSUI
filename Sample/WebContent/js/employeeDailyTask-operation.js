@@ -287,3 +287,7 @@ function getSessionData(){
 	}	
 	return listEmpData;
 }
+function clearEmployeeDailyTaskForm(){
+	  sessionStorage.clear();
+	  window.location="CreateEmployeeDailyTask.html";
+}

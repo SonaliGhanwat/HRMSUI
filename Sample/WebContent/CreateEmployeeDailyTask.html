@@ -10,6 +10,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
  <script type="text/javascript" src="js/DailyTaskValidation.js"></script> 
 <script type="text/javascript" src="js/employeeDailyTask-operation.js"></script>
+
 <body onload="dropDownList()" style="background-color:#F8F8FF;" >
 </head>
 <div data-role="header" data-position="fixed">
@@ -20,7 +21,7 @@
    <li>
             <a href="#">Employee </a>
             <ul class="dropdown width: 200px;">
-                <li><a href="CreateEmployee.html" style=" min-width: 200px">Add Employee</a></li>
+                <li><a href="CreateEmployee.html" style=" min-width: 200px;cursor:pointer">Add Employee</a></li>
                 <li><a href="EmployeeList.html" style=" min-width: 200px">View All Employee</a></li>
             </ul>
         </li>
@@ -28,28 +29,28 @@
          <li>
             <a href="#">Attendance </a>
             <ul class="dropdown">
-                <li><a href="CreateEmployeeAttendance.html"style=" min-width: 200px" >Add Employee Attendance</a></li>
+                <li><a   href="CreateEmployeeAttendance.html"style=" min-width: 200px;cursor:pointer" >Add Employee Attendance</a></li>
                 <li><a href="EmployeeAttendanceList.html"style=" min-width: 200px">View All Employee Attendance</a></li>
             </ul>
         </li>
          <li>
             <a href="#">Daily Task </a>
             <ul class="dropdown">
-                <li><a href="CreateEmployeeDailyTask.html"style=" min-width: 200px">Add Employee Daily Task</a></li>
+                <li><a onclick="clearEmployeeDailyTaskForm()"style=" min-width: 200px;cursor:pointer">Add Employee Daily Task</a></li>
                 <li><a href="EmployeeDailyTaskList.html"style=" min-width: 200px">View All Employee Daily Task</a></li>
             </ul>
         </li>
         <li>
             <a href="#">Leave </a>
             <ul class="dropdown">
-                <li><a href="CreateEmployeeLeave.html"style=" min-width: 200px">Add Employee Leave</a></li>
+                <li><a href="CreateEmployeeLeave.html"style=" min-width: 200px;cursor:pointer">Add Employee Leave</a></li>
                 <li><a href="EmployeeLeaveList.html"style=" min-width: 200px">View All Employee Leave</a></li>
             </ul>
         </li>
         <li>
             <a href="#">User Type </a>
             <ul class="dropdown">
-                <li><a href="CreateUserType.html"style=" min-width: 200px">Add User Type</a></li>
+                <li><a href="CreateUserType.html"style=" min-width: 200px;cursor:pointer">Add User Type</a></li>
                 <li><a href="UserTypeList.html"style=" min-width: 200px">View All User Type</a></li>
             </ul>
         </li>

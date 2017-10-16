@@ -210,3 +210,7 @@ function getSessionData(){
 	}	
 	return listEmpData;
 }
+function clearHolidayForm(){
+	  sessionStorage.clear();
+	  window.location="CreateHoliday.html";
+}

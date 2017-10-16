@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="css/style.css"> 
+  <script type="text/javascript" src="js/employee-operations.js"></script>
+  <script type="text/javascript" src="js/employeeAttendance-operation.js"></script>
+  <script type="text/javascript" src="js/employeeDailyTask-operation.js"></script>
+  <script type="text/javascript" src="js/EmployeeLeave-operation.js"></script>
+  <script type="text/javascript" src="js/usertype-operation.js"></script>
+  <script type="text/javascript" src="js/holiday-operation.js"></script>
+<title>NexTech HRMS</title>
+</head>
+<body>
+<header class="header" >
+<a id="nav-toggle"  href="#">&#9776;</a>
+	<div class="indexhead-name ">NexTech HRMS</div >
+	</header>
+	
+</body>
+<div class="indexside">
+	<ul>
+   <li>
+            <a href="#">Employee <i class="down"></i></a>
+            <ul class="dropdown ">
+                <li><a onclick="clearEmployeeForm()" style=" min-width: 150px;cursor:pointer">Add Employee</a></li>
+                <li><a href="EmployeeList.html" style=" min-width: 150px">View All Employee</a></li>
+            </ul>
+        </li>
+        
+         <li>
+            <a href="#">Attendance <i class="down "style="margin-left: 75px"></i> </a>
+            <ul class="dropdown">
+                <li><a onclick="clearAttendanceForm()" style=" min-width: 150px; cursor:pointer" >Add Employee Attendance</a></li>
+                <li><a href="EmployeeAttendanceList.html"style=" min-width: 150px">View Employee Attendance List</a></li>
+            </ul>
+        </li>
+         <li>
+            <a href="#">Daily Task <i class="down" style="margin-left: 80px"></i></a>
+            <ul class="dropdown">
+                <li><a onclick="clearEmployeeDailyTaskForm()"style=" min-width: 150px;cursor:pointer">Add Employee Daily Task</a></li>
+                <li><a href="EmployeeDailyTaskList.html"style=" min-width: 150px">View Employee Daily Task List</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">Leave <i class="down"style="margin-left: 110px"></i></a>
+            <ul class="dropdown">
+                <li><a onclick="clearEmployeeLeaveForm()"style=" min-width: 150px;cursor:pointer">Add Employee Leave</a></li>
+                <li><a href="EmployeeLeaveList.html"style=" min-width: 150px">View All Employee Leave</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">User Type <i class="down"></i></a>
+            <ul class="dropdown">
+                <li><a href="CreateUserType.html"style=" min-width: 150px;cursor:pointer">Add User Type</a></li>
+                <li><a href="UserTypeList.html"style=" min-width: 150px">View All User Type</a></li>
+            </ul>
+        </li>
+         <li>
+            <a href="#">Holiday <i class="down"style="margin-left: 100px"></i></a>
+            <ul class="dropdown">
+                <li><a onclick="clearHolidayForm()"style=" min-width: 200px;cursor:pointer">Add Holiday</a></li>
+                <li><a href="HolidayList.html"style=" min-width: 200px">View All Holiday</a></li>
+            </ul>
+        </li>
+
+</ul>
+</div>
+
+
+
+<!-- <footer style="background: #00bfff;" class="futer">
+  
+  <p>Contact information: <a href="">someone@example.com</a>.</p>
+</footer> -->
+
+</html>

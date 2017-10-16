@@ -10,7 +10,7 @@ function displayEmployeeAttendanceList() {
 			document.getElementById("createTable").innerHTML = "";
 			var empData = JSON.parse(this.responseText);
 			var tbody =  createEmployeeAttendanceTable(empData)
-			document.getElementById("displayList").innerHTML = tbody;
+			
 			closeModal();
 		}
 	};
@@ -161,42 +161,20 @@ function displayEmployeeAttendanceByDate(){
 	var dateVal = document.getElementById("Date").value;
 	console.log("dateVal:",dateVal);
 	xhttp.onreadystatechange = function() {
-		
-
 		if (this.readyState == 4 && this.status == 200) {
 			document.getElementById("createTable").innerHTML = "";
 			var empData = JSON.parse(this.responseText);
-			var tbody = "";
-			for ( var list in empData) {
-				tbody += "<tr>"
-					var id = empData[list].id;
-				var employeeid = empData[list].employee.userid;
-				tbody += "<td>" + employeeid + "</td>"
-				var intime = empData[list].intime;
-				tbody += "<td>" + intime + "</td>"
-				var outtime = empData[list].outtime;
-				tbody += "<td>" + outtime + "</td>"
-				var totaltime = empData[list].totaltime;
-				tbody += "<td>" + totaltime + "</td>"
-				var date = empData[list].date;
-				tbody += "<td>" + date + "</td>"
-				var status = empData[list].status;
-				tbody += "<td>" + status + "</td>"
-				tbody += "<td>" + "<button  value='Delete' onclick='deleteEmployeeAttendance ("+id+")' >Delete</button>"
-				+ "</td>";
-		        tbody += "<td>" + "<button  value='Edit' onclick='editEmployeeAttendance("+id+")' >Edit</button>"
-		        + "</td>";
-				tbody += "<tr>"
+			createEmployeeAttendanceTable(empData);
+			if(empData==0){
+				var message = document.getElementById("response").innerHTML = "We are sorry. This Employee does not Exist";
+				document.getElementById("response").innerHTML = message;
 			}
-			tbody += "</table>"
-				document.getElementById("displayList").innerHTML = tbody;
-			
 		}
+		
 	};
 
 	xhttp.open("GET", "http://localhost:8085/HRMS/employeeattendance/getAttendanceByDate/"+dateVal, true);
 	xhttp.send();
-
 }
 function dropDownList(){
 	var xhttp = new XMLHttpRequest();
@@ -257,7 +235,6 @@ function getEmployeeAttendanceDataFromUI(data){
 
 function createEmployeeAttendanceTable(empData){
 	var tbody = "";
-var fullday="Fullday"
 	for ( var data in empData) {
 		tbody += "<tr>"
 			var id = empData[data].id;
@@ -280,6 +257,7 @@ var fullday="Fullday"
 		tbody += "<tr>"
 
 	}
+	document.getElementById("displayList").innerHTML = tbody;
 	tbody += "</table>"
 		return tbody
 	
@@ -308,4 +286,8 @@ function getDataHtmlFieldId(){
 	document.getElementsByName("intime")[0].value="";
 	document.getElementsByName("outtime")[0].value="";
 	document.getElementsByName("date")[0].value="";
+}
+function clearAttendanceForm(){
+	  sessionStorage.clear();
+	window.location="CreateEmployeeAttendance.html";
 }
