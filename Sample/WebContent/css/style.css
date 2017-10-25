@@ -17,15 +17,16 @@
         padding: 10px 25px;
          color: white;
         text-decoration: none;
+       
     }
    
-   ul li a:hover{
+   /* ul li a:hover{
         background-color: #808080;
         color: white;
         z-index: 700;
         min-width: 150px;
         text-decoration: none;
-    } 
+    }   */
     ul li ul.dropdown{
         /* min-width: 100%;  */
         background: #c0c0c0;
@@ -35,12 +36,12 @@
         left: 0;
         min-width: 250px;
     } 
-    ul li:hover ul.dropdown{
+   /*  ul li:hover ul.dropdown{
         display: block;	
         width: 150px;
          
          
-    } 
+    }  */
      ul li ul.dropdown li{
         display: block;
        
@@ -52,11 +53,18 @@
 }
 
 
-.label-name{
-	font-size: 20px;
+.label-name {
+	display: inline-block;
+	max-width: 100%;
+	margin-bottom: 5px;
 	font-weight: bold;
-	color: black;
-	margin-left: 30px
+
+	}
+.loginlabel{
+	display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: bold;
 }
 .lable-size{
 	font-size: =20px;
@@ -146,6 +154,9 @@
   color: #EF5F5F;
 }
 .submit-button {
+	display: inline-block;
+	    margin-left: 300px;
+	    margin-top: 20px;
 background: #0066A2;
 color: white;
 border-style: outset;
@@ -270,7 +281,7 @@ padding-left: 300px;
     display: inline;
 }
 .logininside{
-    
+    height: 50px;
     background-color: #d9edf7;
     border-color: #bce8f1;
     color: #31708f;
@@ -281,17 +292,17 @@ padding-left: 300px;
     text-align: center;
     box-sizing: border-box;
     display: block;
-    font-size: 15px;
+    font-size: 12px;
     font-weight: bold;
-     color: #31708f;
+     
 }
 form-group {
     margin-bottom: 15px;
 }
 .loginUserid{
 	 display: block;
-    width: 360px;;
-    height: 34px;
+    width: 380px;;
+    height: 30px;
     padding: 6px 12px;
     font-size: 14px;
     line-height: 1.42857143;
@@ -299,8 +310,8 @@ form-group {
     background-color: #fff;
     background-image: none;
     border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-left: 30px;
+    border-radius: 1px;
+   
 }
 .btncolor {
 	 display: block;
@@ -314,7 +325,7 @@ form-group {
     background-image: none;
     border: 1px solid #ccc;
     border-radius: 4px;
-    margin-left: 10px;
+    margin-left: 15px;
     color: #fff;
     border-color: #21b799;
     background-color: #21b799;
@@ -328,11 +339,10 @@ display: inline-block;
     vertical-align: middle;
     touch-action: manipulation;
     cursor: pointer;
-    background-image: none;
-    white-space: nowrap;
-    padding: 6px 15px;
+    padding: 4px 10px;
     font-size: 14px;
     line-height: 1.42857143;
+        color: #7c6576;
 }
 .signup{
 display: inline-block;
@@ -364,10 +374,9 @@ display: inline-block;
     margin-left: 25px;
 }
 .indexside{
-	background-color: #2f363d ;
+background-color: #2f363d ;
 width: 17%;
 color: white;
-font-weight: bold;
 height: 88%;
 /* overflow-y: scroll; */
 font-size: 15px;
@@ -381,8 +390,7 @@ overflow-x: hidden;
 .indexhead-name{
     font-weight: bold; 
     color: black;
-    font-size: 35px;
-    margin-left: 30px;
+    font-size: 30px;
      display: inline;
 }
 .header{
@@ -394,24 +402,142 @@ background-color: #fff;
    
 }
 
-
 .hammenu {
-    width: 35px;
-    height: 5px;
-    background-color: black;
-    margin: 6px 0;
+    font-size: 25px;
+    color: black;
+     text-decoration: none;
 }
 .down {
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
    
 }
-i {
-  border: solid #f8f8ff;
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 4px;
-  margin-left: 85px;
-  
+.downarrow  {
+	border: solid #f8f8ff;
+	border-width: 0 2px 2px 0;
+	display: inline-block;
+	padding: 4px;
+	right: -30px;
+	position: absolute;
+	margin-right: 100px;
+	}
+.ZPselect {
+    padding: 5px;
+    border: none;
+    outline: 0;
+    background-color: transparent;
+    font-size: 13px;
+    transition: width .3s ease;
+    width: 170px;
 }
+.ZPPimg {
+    float: right !important;
+        width: 44px;
+    height: 44px;
+    border-radius: 0px;
+    cursor: pointer;
+}
+
+.dropbtn  {
+	
+	color: white;
+	z-index: 700;
+	text-decoration: none; 
+	font-size: 16px;
+	cursor: pointer;
+	 min-width: 180px;
+	}
+.dropbtn:hover, .dropbtn:focus  {
+	 background-color: #808080; 
+	z-index: 700;
+	text-decoration: none;
+	}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #808080;
+    overflow: auto;
+    z-index: 700;
+    min-width: 180px;
     
+}
+
+.dropdown-content a {
+    color: white;
+    z-index: 700;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown li a:hover {
+	
+	background-color: #2f363d;
+	width: 200px;
+	
+	}
+
+.show {
+	display:block;
+	}
+
+
+.sidenav {
+    margin-top: 45px;
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: white;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+   color: white;
+    height: 88%;
+    cursor: pointer;
+    max-height: 88%;
+    display: inline-block;
+    
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 0px;
+    font-size: 36px;
+    margin-left: 50px;
+    text-decoration: none;
+}
+
+#myDIV {
+    width: 200px;
+     margin-top: 60px;
+    padding: 50px 0;
+    text-align: center;
+    background-color:  #111;
+        height: 100%;
+}
+.formdownarrow {
+    border: solid #f8f8ff;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 4px;
+    right: -80px;
+    position: absolute;
+    margin-right: 100px;
+}
