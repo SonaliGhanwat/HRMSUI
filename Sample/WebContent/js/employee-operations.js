@@ -261,8 +261,8 @@ function createEmployeeTable(empData){
 		tbody += "<td>" + DateOfBirth + "</td>"
 		var address = empData[data].address;
 		tbody += "<td>" + address + "</td>"
-		var department = empData[data].department;
-		tbody += "<td>" + department + "</td>"
+		/*var department = empData[data].department;
+		tbody += "<td>" + department + "</td>"*/
 		/*var salary = empData[data].salary;
 		tbody += "<td>" + salary + "</td>"*/
 		var usertype = empData[data].usertype.usertypeName;

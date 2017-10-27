@@ -23,7 +23,7 @@ function validSubject(){
 function isValidLeaveDate(date) {
 	var leavedate = document.getElementById("leavedate");
 	if (leavedate.value == "") {
-		document.getElementById("leavedate_validation").innerHTML = "Leave Date Required";
+		document.getElementById("leavedate_validation").innerHTML = "Required";
 		leavedate.style.borderColor = "red";
 		leavedate.focus();
 		return false;

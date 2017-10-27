@@ -169,7 +169,7 @@ function displayEmployeeLeaveByDate(){
 	xhttp.send();
 
 }
-function dropDownListEmployee(index){
+function dropDownList(index){
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 

@@ -12,81 +12,117 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/UserTypeValidation.js"></script> 
 <script type="text/javascript" src="js/usertype-operation.js"></script>
-
+<script type="text/javascript" src="js/index.js"></script>
 <body onload="getUserTypeIdFromHtml();">
+
 </head>
-<div data-role="header" data-position="fixed">
-<header style="background: #00bfff;" >
-	
-	<div align="center"  class="head-name" style="color: wheat;">NexTech HRMS</div >
-	<ul>
+<header class="header" >
+<div id="main">
+<!-- <a id="nav-toggle" class="hammenu active"   href="#">&#9776;</a> -->
+<span style="font-size:30px;cursor:pointer" onclick="sidebar()">&#9776; 
+	NexTech HRMS
+	</span>
+	 <i id="nav-toggle"  style="font-size: 20px;margin-left: 150px">&#x1F50D;</i>
+	 <input type="search" class="ZPselect" id="zpeople_search_box" placeholder="Search Employee" value="" name="Search" >
+	 <img style="height: 44px ; margin-left: 600px;" src="https://contacts.zoho.com/file?ID=654944339&amp;fs=thumb" empid="401583000000111005" imgtype="thumb" aria-expanded="false">
+</div>
+	</header>
+
+ <body onload="dropDownList()" style="background-color:#F8F8FF;" > 
+<div  id="myDIV" class="sidenav " style="margin-top: 45px">
+ 
+	<ul style="margin-top: -10px">
    <li>
-            <a href="#">Employee </a>
-            <ul class="dropdown width: 200px;">
-                <li><a onclick="clearEmployeeForm()" style=" min-width: 200px;cursor:pointer">Add Employee</a></li>
-                <li><a href="EmployeeList.html" style=" min-width: 200px">View All Employee</a></li>
+   <!-- <div style="display: inline-flex; margin-left: 14px;">
+    <img style="height: 20px;margin-top: 10px" src="http://img.freepik.com/free-icon/user_318-112716.jpg?size=338c&ext=jpg" empid="401583000000111005" imgtype="thumb" aria-expanded="false"> -->
+           <div class="dropdown">
+            <a href="#" onclick="employeeFunction()" class="dropbtn">Employee <span class="down formdownarrow" ></span></a>
+            <ul id="employee" class=" dropdown-content">
+                <li><a href="CreateEmployee.html" style=" min-width: 150px;cursor:pointer">Add Employee</a></li>
+                <li><a href="EmployeeList.html" style=" min-width: 150px">View All Employee</a></li>
             </ul>
+           </div> 
         </li>
         
          <li>
-            <a href="#">Attendance </a>
-            <ul class="dropdown">
-                <li><a  onclick="clearAttendanceForm()"style=" min-width: 200px;cursor:pointer" >Add Employee Attendance</a></li>
-                <li><a href="EmployeeAttendanceList.html"style=" min-width: 200px">View All Employee Attendance</a></li>
+        <!--  <div style="display: inline-flex; margin-left: 14px; margin-top: 10px">
+         <img style="height: 20px;margin-top: 10px" src="https://www.google.co.in/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwiIssnvwYjXAhUKs48KHWUeB9IQjRwIBw&url=https%3A%2F%2Fwww.iconfinder.com%2Ficons%2F285670%2Fcalendar_icon&psig=AOvVaw00skbJ-nRFGLczZv_u1Pt0&ust=1508908896917409" empid="401583000000111005" imgtype="thumb" aria-expanded="false"> -->
+            <div class="dropdown">
+            <a href="#" onclick="attendanceFunction()" class="dropbtn"> Attendance <i class="down formdownarrow"></i> </a>
+            <ul id="attendance" class=" dropdown-content">
+                <li><a href="CreateEmployeeAttendance.html"  style=" min-width: 150px; cursor:pointer" >Add Employee Attendance</a></li>
+                <li><a href="EmployeeAttendanceList.html"style=" min-width: 150px">View Employee Attendance List</a></li>
             </ul>
+           </div> 
         </li>
          <li>
-            <a href="#">Daily Task </a>
-            <ul class="dropdown">
-                <li><a onclick="clearEmployeeDailyTaskForm()"style=" min-width: 200px;cursor:pointer">Add Employee Daily Task</a></li>
-                <li><a href="EmployeeDailyTaskList.html"style=" min-width: 200px">View All Employee Daily Task</a></li>
+          <div class="dropdown">
+            <a href="#" onclick="dailyTaskFunction()" class="dropbtn">Daily Task <i class="down formdownarrow" ></i></a>
+            <ul id="dailyTask" class=" dropdown-content">
+                <li><a href="CreateEmployeeDailyTask.html"style=" min-width: 150px;cursor:pointer">Add Employee Daily Task</a></li>
+                <li><a href="EmployeeDailyTaskList.html"style=" min-width: 150px">View Employee Daily Task List</a></li>
             </ul>
+            </div>
         </li>
         <li>
-            <a href="#">Leave </a>
-            <ul class="dropdown">
-                <li><a onclick="clearEmployeeLeaveForm()"style=" min-width: 200px;cursor:pointer">Add Employee Leave</a></li>
-                <li><a href="EmployeeLeaveList.html"style=" min-width: 200px">View All Employee Leave</a></li>
+        <div class="dropdown">
+            <a href="#" onclick="leaveFunction()" class="dropbtn">Leave <i class="down formdownarrow"></i></a>
+            <ul id="leave" class=" dropdown-content">
+                <li><a href="CreateEmployeeLeave.html"style=" min-width: 150px;cursor:pointer">Add Employee Leave</a></li>
+                <li><a href="EmployeeLeaveList.html"style=" min-width: 150px">View All Employee Leave</a></li>
             </ul>
+            </div>
         </li>
         <li>
-            <a href="#">User Type </a>
-            <ul class="dropdown">
-                <li><a href="CreateUserType.html"style=" min-width: 200px;cursor:pointer">Add User Type</a></li>
-                <li><a href="UserTypeList.html"style=" min-width: 200px">View All User Type</a></li>
+         <div class="dropdown">
+            <a href="#"onclick="userTypeFunction()" class="dropbtn">User Type <i class="down formdownarrow"></i></a>
+            <ul id="userType" class=" dropdown-content">
+                <li><a href="CreateUserType.html"style=" min-width: 150px;cursor:pointer">Add User Type</a></li>
+                <li><a href="UserTypeList.html"style=" min-width: 150px">View All User Type</a></li>
             </ul>
+            </div>
         </li>
          <li>
-            <a href="#">Holiday </a>
-            <ul class="dropdown">
-                <li><a href="CreateHoliday.html"style=" min-width: 200px">Add Holiday</a></li>
+          <div class="dropdown">
+            <a href="#"onclick="holidayFunction()" class="dropbtn">Holiday <i class="down formdownarrow"></i></a>
+            <ul id="holiday" class=" dropdown-content">
+                <li><a href="CreateHoliday.html"style=" min-width: 200px;cursor:pointer">Add Holiday</a></li>
                 <li><a href="HolidayList.html"style=" min-width: 200px">View All Holiday</a></li>
             </ul>
+            </div>
         </li>
 
 </ul>
-</header>
 </div>
-<body>
+<div class="scroll">
+<div class="well " style=" height: 65px;">
+<div class="row">
+<h4  style="margin-left: 500px;margin-top: 5px"> Add User Type</h4>
+<button  type="button" class="btn btn-primary " style="margin-left: 1100px;margin-top: -60px;" onclick="location.href='UserTypeList.html'">
+View User Type
+</button>
+</div>
+</div>
 
-<div class="container">
-	<h1 align="center" style="color: blue;" class="well">User Type Form</h1>
-	<div class = "row">
-	<div class = "col-lg-12 well">
 <fieldset>
 		<p id="data"></p>
 		<form action="" name="Employee" class="employee-form" method="POST">
-		<div class="row">
-            <div class=" form-group col-lg-4">
+		 <div class="col-lg-12" >
+<div class=" form-group col-lg-7" style="color: White ">
+<div class=" form-control "style="margin-left: 70px;width: 700px;height: 700px ;border: 1px solid transparent;">
+ <div class="row">
+ <div class=" form-group col-lg-6" style="margin-top: 50px;">
+  <div class="form-group ">
+                   <div class=" form-group col-lg-6"style="margin-left: 100px;">
 					<label class="label-name required "> UserType Name</label> 
-					<input type="text"id="usertypeName" name="usertypeName" class="label-size lable-margin textbox form-control" placeholder="UserType Name"onkeyup="isvalidUserTypeName()"onclick="isvalidUserTypeName()" >
+					<input type="text"id="usertypeName" name="usertypeName" class="loginUserid" placeholder="UserType Name"onkeyup="isvalidUserTypeName()"onclick="isvalidUserTypeName()" >
 					<div id="usertypeName_validation" class="error"></div>
 				</div>
-				
-				<div class="col-lg-offset-5">
-	             <div class=" form-group col-lg-7">
+				</div>
+				 <div class="form-group ">
+                   <div class=" form-group col-lg-6 "style="margin-right: 30px;margin-left: 100px;">
 					<label class="label-name required"> Description</label> <input type="text"
-						id="description" name="description" class="label-size  lable-margin textbox form-control" placeholder="Description"onkeyup="isvalidUserTypeDescription()"onclick="isvalidUserTypeDescription()" >
+						id="description" name="description" class="loginUserid" placeholder="Description"onkeyup="isvalidUserTypeDescription()"onclick="isvalidUserTypeDescription()" >
 					<div id="Description_validation" class="passvalidation"></div>
 				</div>
 				</div>
@@ -113,15 +149,20 @@
       
     </div>
   </div> 
-			<div align="center" class="submit">
-			<button type="button" class="label-size submit-button" data-toggle="modal" data-target="#myModal"onclick="addOrUpdateUserType()">Submit</button> 
-				<!-- <input type="reset" value="Submit" class="label-size submit-button"onclick="addOrUpdateUserType()">  -->
-				<input type="reset"value="Cancel"   class="cancel-btn submit-button" onclick="clearForm()"> <br> <br>
+			<div >
+   <button id="submit" type="button" class="label-size submit-button " data-toggle="modal" data-target="#myModal"onclick="addOrUpdateUserType();">Submit</button> 
+ <!-- <input type="button" value="Submit"data-target="#myModal"data-toggle="modal" class="label-size submit-button" onclick="addOrUpdateEmployeeAttendance();"> -->
+</div>
+<div style="margin-left: 120px;margin-top: -60px;">
+<input type="reset" value="Cancel" class="cancel-btn submit-button"> 
+</div>
+			</div>
+			</div>
+			</div>
 			</div>
 </form>
 </fieldset>
 </div>
-</div>
-</div>
+
 </body>
 </html>

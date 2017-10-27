@@ -202,7 +202,6 @@ function dropDownList(){
 					document.getElementById("list").disabled = true;
 					document.getElementById("date").disabled = true;
 				}else{
-					
 				}
 				
 				}

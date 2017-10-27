@@ -1,4 +1,4 @@
-var listHolidayData = "";
+var listEmpData = "";
 var getUIHolidayData = "";
 function displayHolidayList() {
 	document.getElementById('results').innerHTML = '';
@@ -202,9 +202,11 @@ function getDataHtmlField(){
 	document.getElementsByName("holidayName")[0].value="";
 }
 function getSessionData(){
+	var id=sessionStorage.getItem("id");
 	var holidayDate = sessionStorage.getItem("holidayDate");
 	var holidayName = sessionStorage.getItem("holidayName");
 	 listHolidayData={
+			 id:id,
 			 holidayDate:holidayDate,
 			 holidayName:holidayName
 	}	

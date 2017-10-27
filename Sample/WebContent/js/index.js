@@ -54,7 +54,19 @@ function sidebar() {
     var x = document.getElementById("myDIV");
     if (x.style.display === "none") {
         x.style.display = "block";
+        
        
+    } else {
+        x.style.display = "none";
+        
+    }
+}
+
+function addAttendance() {
+    var x = document.getElementById("MyDIV");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+        
        
     } else {
         x.style.display = "none";

@@ -13,180 +13,235 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/Validation.js"></script>
 <script type="text/javascript" src="js/employee-operations.js"></script>
-
-<body onload="dropDownList()" style="background-color:#F8F8FF;">
-
+ <script type="text/javascript" src="js/index.js"></script>
 </head>
-<div data-role="header" data-position="fixed">
-<header style="background: #00bfff;" >
-	
-	<div align="center"  class="head-name" style="color: wheat;">NexTech HRMS</div >
-	<ul>
+<header class="header" >
+<div id="main">
+<!-- <a id="nav-toggle" class="hammenu active"   href="#">&#9776;</a> -->
+<span style="font-size:30px;cursor:pointer" onclick="sidebar()">&#9776; 
+	NexTech HRMS
+	</span>
+	 <i id="nav-toggle"  style="font-size: 20px;margin-left: 150px">&#x1F50D;</i>
+	 <input type="search" class="ZPselect" id="zpeople_search_box" placeholder="Search Employee" value="" name="Search" >
+	 <img style="height: 44px ; margin-left: 614px;" src="https://contacts.zoho.com/file?ID=654944339&amp;fs=thumb" empid="401583000000111005" imgtype="thumb" aria-expanded="false">
+</div>
+	</header>
+
+ <body onload="dropDownList()" style="background-color:#F8F8FF;" > 
+<div  id="myDIV" class="sidenav " style="margin-top: 45px">
+ 
+	<ul style="margin-top: -10px">
    <li>
-            <a href="#">Employee </a>
-            <ul class="dropdown width: 200px;">
-                <li><a onclick="clearEmployeeForm()" style=" min-width: 200px;cursor:pointer">Add Employee</a></li>
-                <li><a href="EmployeeList.html" style=" min-width: 200px">View All Employee</a></li>
+   <!-- <div style="display: inline-flex; margin-left: 14px;">
+    <img style="height: 20px;margin-top: 10px" src="http://img.freepik.com/free-icon/user_318-112716.jpg?size=338c&ext=jpg" empid="401583000000111005" imgtype="thumb" aria-expanded="false"> -->
+           <div class="dropdown">
+            <a href="#" onclick="employeeFunction()" class="dropbtn">Employee <span class="down formdownarrow" ></span></a>
+            <ul id="employee" class=" dropdown-content">
+                <li><a onclick="clearEmployeeForm()" style=" min-width: 150px;cursor:pointer">Add Employee</a></li>
+                <li><a href="EmployeeList.html" style=" min-width: 150px">View All Employee</a></li>
             </ul>
+           </div> 
         </li>
         
          <li>
-            <a href="#">Attendance </a>
-            <ul class="dropdown">
-                <li><a  href="CreateEmployeeAttendance.html"style=" min-width: 200px;cursor:pointer" >Add Employee Attendance</a></li>
-                <li><a href="EmployeeAttendanceList.html"style=" min-width: 200px">View All Employee Attendance</a></li>
+        <!--  <div style="display: inline-flex; margin-left: 14px; margin-top: 10px">
+         <img style="height: 20px;margin-top: 10px" src="https://www.google.co.in/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwiIssnvwYjXAhUKs48KHWUeB9IQjRwIBw&url=https%3A%2F%2Fwww.iconfinder.com%2Ficons%2F285670%2Fcalendar_icon&psig=AOvVaw00skbJ-nRFGLczZv_u1Pt0&ust=1508908896917409" empid="401583000000111005" imgtype="thumb" aria-expanded="false"> -->
+            <div class="dropdown">
+            <a href="#" onclick="attendanceFunction()" class="dropbtn"> Attendance <i class="down formdownarrow"></i> </a>
+            <ul id="attendance" class=" dropdown-content">
+                <li><a href="CreateEmployeeAttendance.html"  style=" min-width: 150px; cursor:pointer" >Add Employee Attendance</a></li>
+                <li><a href="EmployeeAttendanceList.html"style=" min-width: 150px">View Employee Attendance List</a></li>
             </ul>
+           </div> 
         </li>
          <li>
-            <a href="#">Daily Task </a>
-            <ul class="dropdown">
-                <li><a href="CreateEmployeeDailyTask.html"style=" min-width: 200px;cursor:pointer">Add Employee Daily Task</a></li>
-                <li><a href="EmployeeDailyTaskList.html"style=" min-width: 200px">View All Employee Daily Task</a></li>
+          <div class="dropdown">
+            <a href="#" onclick="dailyTaskFunction()" class="dropbtn">Daily Task <i class="down formdownarrow" ></i></a>
+            <ul id="dailyTask" class=" dropdown-content">
+                <li><a href="CreateEmployeeDailyTask.html"style=" min-width: 150px;cursor:pointer">Add Employee Daily Task</a></li>
+                <li><a href="EmployeeDailyTaskList.html"style=" min-width: 150px">View Employee Daily Task List</a></li>
             </ul>
+            </div>
         </li>
         <li>
-            <a href="#">Leave </a>
-            <ul class="dropdown">
-                <li><a href="CreateEmployeeLeave.html"style=" min-width: 200px;cursor:pointer">Add Employee Leave</a></li>
-                <li><a href="EmployeeLeaveList.html"style=" min-width: 200px">View All Employee Leave</a></li>
+        <div class="dropdown">
+            <a href="#" onclick="leaveFunction()" class="dropbtn">Leave <i class="down formdownarrow"></i></a>
+            <ul id="leave" class=" dropdown-content">
+                <li><a href="CreateEmployeeLeave.html"style=" min-width: 150px;cursor:pointer">Add Employee Leave</a></li>
+                <li><a href="EmployeeLeaveList.html"style=" min-width: 150px">View All Employee Leave</a></li>
             </ul>
+            </div>
         </li>
         <li>
-            <a href="#">User Type </a>
-            <ul class="dropdown">
-                <li><a href="CreateUserType.html"style=" min-width: 200px;cursor:pointer">Add User Type</a></li>
-                <li><a href="UserTypeList.html"style=" min-width: 200px">View All User Type</a></li>
+         <div class="dropdown">
+            <a href="#"onclick="userTypeFunction()" class="dropbtn">User Type <i class="down formdownarrow"></i></a>
+            <ul id="userType" class=" dropdown-content">
+                <li><a href="CreateUserType.html"style=" min-width: 150px;cursor:pointer">Add User Type</a></li>
+                <li><a href="UserTypeList.html"style=" min-width: 150px">View All User Type</a></li>
             </ul>
+            </div>
         </li>
          <li>
-            <a href="#">Holiday </a>
-            <ul class="dropdown">
-                <li><a href="CreateHoliday.html"style=" min-width: 200px">Add Holiday</a></li>
+          <div class="dropdown">
+            <a href="#"onclick="holidayFunction()" class="dropbtn">Holiday <i class="down formdownarrow"></i></a>
+            <ul id="holiday" class=" dropdown-content">
+                <li><a href="CreateHoliday.html"style=" min-width: 200px;cursor:pointer">Add Holiday</a></li>
                 <li><a href="HolidayList.html"style=" min-width: 200px">View All Holiday</a></li>
             </ul>
+            </div>
         </li>
 
 </ul>
-</header>
 </div>
-
-<div class="container">
-	<h1  align = "center" class="well" style="color: blue;">Employee Registration Form</h1>
-	<div class = "row">
-	<div class = "col-lg-12 well">
-	
-	
+<div class="scroll">
+<div class="well " style=" height: 65px;">
+<div class="row">
+<h4  style="margin-left: 500px;margin-top: 5px"> Add Employee </h4>
+<button  type="button" class="btn btn-primary " style="margin-left: 1100px;margin-top: -60px;" onclick="location.href='EmployeeList.html'">
+View Employee
+</button>
+</div>
+</div>
 	<fieldset >
 	
 		<p id="data"></p>
 		<form action="" name="Employee"  class="employee-form " method="POST" data-toggle="validator" role="form">
-<div>
-			<div class="row">
-				<div class=" form-group col-lg-4">
+<div class="col-lg-12" >
+<div class=" form-group col-lg-7" style="color: White ">
+<div class=" form-control "style="margin-left: 70px;width: 700px;height: 1200px ;border: 1px solid transparent;">
+ <h6 class=" form-horizontal">
+ <span class="basicinfo">Basic Info</span>
+ </h6>
+ <div class="row" style="    margin-top: 30px">
+				<div class=" form-group col-lg-6" style="margin-left: 35px;">
 					<label class="label-name required control-label"> User Id</label> <br>
-					<input type="text"   id="userid" name="userid" class="label-size lable-margin textbox form-control" placeholder="Userid" onkeyup="isValidUserid()" onclick="isValidUserid()"> 
+					<input type="text"   id="userid" name="userid" class="loginUserid" style="width: 250px" placeholder="Userid" onkeyup="isValidUserid()" onclick="isValidUserid()"> 
 					<div id="userid_validation" class="error"></div>
 				</div>
 
 				<div class="col-lg-offset-5">
-				<div class=" form-group col-lg-7">
+				<div class=" form-group col-lg-6" >
 					<label class="label-name required control-label "> Password</label> 
-					<input type="password" id="password" name="password" class="label-size lable-margin textbox form-control" placeholder="Password" onkeyup="isValidPassword()"onclick="isValidPassword()" > 
+					<input type="password" id="password" name="password" class="loginUserid" style="width: 250px" placeholder="Password" onkeyup="isValidPassword()"onclick="isValidPassword()" > 
 					<div id="password_validation" class="passvalidation"></div>
 					</div>
 				</div>
 			</div>
-			
 			<div class="row">
-				<div class=" form-group col-lg-4">
+				<div class=" form-group col-lg-6" style="margin-left: 35px;">
 					<label class="label-name required "> First Name</label> <input type="text"
-						id="firstName" name="firstName" class="label-size lable-margin textbox form-control" placeholder="First Name" onkeyup="isValidFirstName()"
+						id="firstName" name="firstName" class="loginUserid" style="width: 250px" placeholder="First Name" onkeyup="isValidFirstName()"
 							onkeypress='return event.charCode >= 65 && event.charCode <= 122'onclick="isValidFirstName()" >
 					<div id="firstName_validation" class="error"></div>
 				</div>
 				<div class="col-lg-offset-5">
-				<div class=" form-group col-lg-7">
+				<div class=" form-group col-lg-6">
 					<label class="label-name required"> Last Name</label> <input type="text"
-						id="lastName" name="lastName" class="label-size lable-margin textbox form-control" placeholder="Last Name" onkeyup="isValidLastName()"onkeypress='return event.charCode >= 65 && event.charCode <= 122'onclick="isValidLastName()">
+						id="lastName" name="lastName" class="loginUserid" style="width: 250px" placeholder="Last Name" onkeyup="isValidLastName()"onkeypress='return event.charCode >= 65 && event.charCode <= 122'onclick="isValidLastName()">
 					<div id="lastName_validation" class="passvalidation"></div>
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class=" form-group col-lg-4">
-					<label class="label-name required"> Phone Number</label> <input
-						type="text" id="phoneNumber" name="phoneNumber" maxlength="10" class="label-size lable-margin textbox form-control"  placeholder="PhoneNumber" onkeyup="isValidPhoneNumber()"onkeypress='return event.charCode >= 48 && event.charCode <= 57'onclick="isValidPhoneNumber()"> 
-						<div id="phoneNumber_validation" class="error"></div>
-				</div>
-				<div class="col-lg-offset-5">
-				<div class=" form-group col-lg-7">
-					<label class="label-name required"> EmailId</label> <input type="text"
-						id="emailid" name="emailid" class="label-size lable-margin textbox form-control" placeholder="Emailid" onkeyup="isValidEmailid()"onclick="isValidEmailid()"> 
+			<div class="row" >
+				<div class=" form-group col-lg-6" style="margin-left: 35px;">
+				<label class="label-name required"> EmailId</label> <input
+						type="text" id="emailid" name="emailid"  class="loginUserid" style="width: 250px"  placeholder="Emailid" onkeyup="isValidEmailid()"onclick="isValidEmailid()"> 
 						<div id="emailid_validation" class="passvalidation"></div>
 						</div>
-				</div>
-			</div>
-			
-			<div class="row">
-			<div class=" form-group col-lg-4">
-					<label class="label-name required"> Date Of Birth</label>
-					 <input type="date" id="dateOfBirth" name="dateOfBirth" class="label-size lable-margin textbox form-control" onclick="isValidDateofBirth();dateOfBirthValidation()"onchange="isValidDateofBirth();dateOfBirthValidation()">
-						<div id="dateOfBirth_validation" class="passvalidation" ></div>
-						
-				</div>
-				<div class="col-lg-offset-5">
-				<div class=" form-group col-lg-7">
-					<label class="label-name required">Date Of Joining</label> 
-					 <input type="date" id="dateOfJoining" name="dateOfJoining" class="label-size lable-margin form-control " onclick="isValidDateofJoining();validate_date()"onchange="isValidDateofJoining();validate_date()">
-						<div id="dateOfJoining_validation" class="error"></div>
 						</div>
-				</div>
-				
-			</div>
-			
-			<div class="row">
-				<div class=" form-group col-lg-4">
-					<label class="label-name required">Address</label> <input type="text"
-						id="address" name="address" class="label-size lable-margin textbox form-control" placeholder="Address" onkeyup="isValidAddress()"onclick="isValidAddress()" >
-						<div id="address_validation" class="error"></div>
-				</div>
-				<div class="col-lg-offset-5">
-				<div class=" form-group col-lg-7">
-					<label class="label-name required"> Department</label> <input type="text"
-						id="department" name="department" class="label-size lable-margin textbox form-control" placeholder="Department" onkeyup="isValidDepartment()"onkeypress='return event.charCode >= 65 && event.charCode <= 122'onclick="isValidDepartment()">
+
+				<h6 class=" form-horizontal">
+				<span class="basicinfo">Work</span>
+			    </h6>
+			    <div class="row" style="    margin-top: 30px">
+				<div class=" form-group col-lg-6" style="margin-left: 35px;">
+				<label class="label-name required"> Department</label> 
+						<input type="text"id="department" name="department" class="loginUserid" style="width: 250px" placeholder="Department" onkeyup="isValidDepartment()"onkeypress='return event.charCode >= 65 && event.charCode <= 122'onclick="isValidDepartment()">
 						<div id="department_validation" class="passvalidation"></div>
 						</div>
+				<div class="col-lg-offset-5">
+				<div class=" form-group col-lg-6" >
+				<label class="label-name  control-label "> Source of hire</label> 
+					<select class="loginUserid" style="width: 250px" >
+                         <option value="volvo">Direct</option>
+                         <option value="saab">Referral</option>
+                         <option value="mercedes">Web</option>
+                         <option value="audi">NewsPaper</option>
+                     </select>
+                     </div>
+                     </div>
+                     </div>
+                <div class="row" >
+				<div class=" form-group col-lg-6" style="margin-left: 35px;">
+				<label class="label-name required "> Date Of Joining</label> 
+					<input type="date" id="dateOfJoining" name="dateOfJoining" class="loginUserid" style="width: 250px;" onclick="isValidDateofJoining();validate_date()"onchange="isValidDateofJoining();validate_date()">
+						<div id="dateOfJoining_validation" class="error"></div>
+						</div>
+				<div class="col-lg-offset-5">
+				<div class=" form-group col-lg-6" >
+				<label class="label-name "> Employee type</label> 
+						<select class="loginUserid" style="width: 250px" >
+                         <option value="">Select</option>
+                         <option value="Permanent">Permanent</option>
+                         <option value="On Contract">On Contract</option>
+                         <option value="Temporary">Temporary</option>
+                          <option value="Trainee">Trainee</option>
+                     </select>
+                  </div>
+                  </div>
+                  </div>
+                 <div class="row" >
+				<div class=" form-group col-lg-6" style="margin-left: 35px;">
+				<label class="label-name "> Work phone</label> <input type="text"
+						id="workphone" name="workphone" class="loginUserid" style="width: 250px" placeholder="work phone" > 
 				</div>
+			 <div class="col-lg-offset-5">
+				<div class=" form-group col-lg-6" >
+				<label class="label-name usertype required"> User Type</label> <select
+						id="list" class="loginUserid" style="width: 250px" >
+					</select>
+			</div>
+			</div>
 			</div>
 			
-			<div class="row">
-				<div class=" form-group col-lg-4">
-					<label class="label-name required">Salary</label> <input type="number"
-						id="salary" name="salary" class="label-size lable-margin textbox form-control" placeholder="Salary" onkeyup="isValidSalary()"onclick="isValidSalary()">
+			<h6 class=" form-horizontal">
+				<span class="basicinfo">Personal</span>
+			    </h6>
+			     <div class="row" >
+				<div class=" form-group col-lg-6" style="margin-left: 35px;">
+				<label class="label-name required"> Mobile Number</label> 
+					<input type="text" id="phoneNumber" name="phoneNumber" maxlength="10" class="loginUserid" style="width: 250px"  placeholder="PhoneNumber" onkeyup="isValidPhoneNumber()"onkeypress='return event.charCode >= 48 && event.charCode <= 57'onclick="isValidPhoneNumber()"> 
+						<div id="phoneNumber_validation" class="error"></div>
+						</div>
+				 <div class="col-lg-offset-5">
+				<div class=" form-group col-lg-6" >
+				<label class="label-name required">Address</label> <input type="text"
+						id="address" name="address" class="loginUserid"style="width: 250px; height: 70px;" placeholder="Address" onkeyup="isValidAddress()"onclick="isValidAddress()" >
+						<div id="address_validation" class="error"></div>
+			  </div>
+			  </div>
+			  </div>
+			  <div class="row" >
+				<div class=" form-group col-lg-6" style="margin-left: 35px;">
+				<label class="label-name required"> Date Of Birth</label>
+					 <input type="date" id="dateOfBirth" name="dateOfBirth" class="loginUserid" style="width: 250px;" onclick="isValidDateofBirth();dateOfBirthValidation()"onchange="isValidDateofBirth();dateOfBirthValidation()">
+						<div id="dateOfBirth_validation" class="passvalidation" ></div>
+						</div>
+			 <div class="col-lg-offset-5">
+				<div class=" form-group col-lg-6" >
+				<label class="label-name required">Salary</label> <input type="number"
+						id="salary" name="salary" class="loginUserid" style="width: 250px;" placeholder="Salary" onkeyup="isValidSalary()"onclick="isValidSalary()">
 						<div id="salary_validation" class="error" ></div>
-				</div>
-				<div class="col-lg-offset-5">
-				<div class=" form-group col-lg-7">
-					<label class="label-name usertype required"> User Type</label> <select
-						id="list" class="lable-margin textbox form-control" >
-					</select>
-					</div>
-				</div>
 			</div>
-		<div id="results"><!-- Results are displayed here --></div>
+			</div>
+			</div>
+						
+		<div id="results"></div>
         <div id="fade"></div>
         <div id="modal">
-            <!-- <img id="loader" src="image/loading.gif" /> -->
+           <!--  <img id="loader" src="image/loading.gif" /> -->
         </div>	
-			<div align="center" class="submit">
-			<button type="button" class="label-size submit-button" data-toggle="modal" data-target="#myModal"onclick="addOrUpdateEmployee()">Submit</button> 
-				<!-- <input type="reset" value="Submit" class="label-size submit-button"onclick="addOrUpdateEmployee()">  -->
-				<!-- <div id="contents" class="loading">Loading&#8230;</div> -->
-				<input type="reset"value="Cancel"   class="cancel-btn submit-button" > <br> <br>
-				 
-			</div>
-			
-	</div>	
+        
 	<div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -204,11 +259,21 @@
       
     </div>
   </div> 
+  <div style="    margin-left: 120px;" >
+   <button id="submit" type="button" class="label-size submit-button " style="cursor:pointer" data-toggle="modal" data-target="#myModal"onclick="addOrUpdateEmployee();">Submit</button> 
+ <!-- <input type="button" value="Submit"data-target="#myModal"data-toggle="modal" class="label-size submit-button" onclick="addOrUpdateEmployeeAttendance();"> -->
+
+<div style="margin-left: 120px;margin-top: -60px;">
+<input type="reset" value="Cancel" class="cancel-btn submit-button"> 
+</div>
+</div>
+  </div>
+  </div>
+ </div>
+
 		</form>
 		
 	</fieldset>
-	</div>
-	</div>
 	</div>
 </body>
 </html> 
