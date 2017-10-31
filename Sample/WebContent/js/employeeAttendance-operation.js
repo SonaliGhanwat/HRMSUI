@@ -42,10 +42,6 @@ function addEmployeeAttendance() {
 			}else if(code===0){
 				document.getElementById("response").innerHTML = data;
 				getDataHtmlFieldId();
-				/*document.getElementById("list").value="";
-				document.getElementsByName("intime")[0].value="";
-				document.getElementsByName("outtime")[0].value="";
-				document.getElementsByName("date")[0].value="";*/
 			}
 			closeModal();
 		}

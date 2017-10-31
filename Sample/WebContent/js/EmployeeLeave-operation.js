@@ -40,7 +40,6 @@ function addEmployeeLeave() {
 			var code = json.code;
 			if(code===1){
 				document.getElementById("response").innerHTML = data;
-				
 			}else if(code===0){
 				document.getElementById("response").innerHTML = data;
 				getDataHtmlField();

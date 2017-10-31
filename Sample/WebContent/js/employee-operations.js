@@ -18,17 +18,11 @@ function displayEmployeeList() {
 
 	xhttp.open("GET", "http://localhost:8085/HRMS/employee/list", true);
 	xhttp.send();
-
 }
 
-
 function addEmployee() {
-	
 	var http = new XMLHttpRequest();
 	var employee = getEmployeeDataFromUI(data);
-	
-	//validate
-	
 	if(validateEmployee(employee)){
 		document.getElementById('results').innerHTML = '';
 		openModal();
