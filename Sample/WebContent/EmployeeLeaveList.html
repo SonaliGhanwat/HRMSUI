@@ -14,18 +14,18 @@
 <!-- <script src="EditEmployeeattendance.html"></script> -->
 </head>
 <header class="header" >
-<div id="main">
+<div id="main" style="height: 50px;">
 <!-- <a id="nav-toggle" class="hammenu active"   href="#">&#9776;</a> -->
 <span style="font-size:30px;cursor:pointer" onclick="sidebar()">&#9776; 
 	NexTech HRMS
 	</span>
 	 <i id="nav-toggle"  style="font-size: 20px;margin-left: 150px">&#x1F50D;</i>
 	 <input type="search" class="ZPselect" id="zpeople_search_box" placeholder="Search Employee" value="" name="Search" >
-	 <img style="height: 44px ; margin-left: 600px;" src="https://contacts.zoho.com/file?ID=654944339&amp;fs=thumb" empid="401583000000111005" imgtype="thumb" aria-expanded="false">
+	 <img style="height: 44px ; margin-left: 598px;" src="https://contacts.zoho.com/file?ID=654944339&amp;fs=thumb" empid="401583000000111005" imgtype="thumb" aria-expanded="false">
 </div>
 	</header>
 
-<div  id="myDIV" class="sidenav " style="margin-top: 45px">
+<div  id="myDIV" class="sidenav " style="margin-top: 49px">
  
 	<ul style="margin-top: -10px">
    <li>
@@ -88,13 +88,17 @@
             </ul>
             </div>
         </li>
-
+         <li>
+          <div class="dropdown">
+            <a href="#" class="dropbtn" onclick="approval()">Approvals</a>
+            </div>
+        </li>
 </ul>
 </div>
 <div class="scroll">
 <div class="well " style=" height: 65px;">
 <div class="row">
-<h4  style="margin-left: 500px;margin-top: 5px"> View Leave </h4>
+<h4 align="center" style="margin-top: 5px"> View Leave </h4>
 <form action="" name="Employee" onchange="displayEmployeeLeaveByDate()" method="GET" > 
  <input type="date" id="Date"  class=" textbox form-control" onload =" displayEmployeeLeaveByDate()" style="margin-left: 800px; width: 200px;margin-top: -35px;" placeholder="Filter by Date"><br>
  </form>

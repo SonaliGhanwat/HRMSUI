@@ -13,7 +13,7 @@ function isValidDate(date){
 	if (date.value == "") {
 		document.getElementById("date_validation").innerHTML = "Date Required";
 		date.style.borderColor = "red";
-		date.focus();
+		/*date.focus();*/
 		return false;
 	}
 	document.getElementById("date_validation").innerHTML = "";
@@ -25,14 +25,14 @@ function isValidTaskName(taskName){
 	if (taskName.value == "") {
 		document.getElementById("taskName_validation").innerHTML = "Task Name Required";
 		taskName.style.borderColor = "red";
-		taskName.focus();
+		/*taskName.focus();*/
 		return false;
 	}
 	var taskName_len = taskName.value.length;
 	if (taskName_len >= 8) {
 	}else{
 		document.getElementById("taskName_validation").innerHTML="Task Name should be 8 character";
-		taskName.focus();
+		/*taskName.focus();*/
 		return false;
 	}
 	document.getElementById("taskName_validation").innerHTML = "";
@@ -44,7 +44,7 @@ function isValidEstimationTime(estimationTime){
 	if (estimationTime.value == "") {
 		document.getElementById("estimationTime_validation").innerHTML = "Estimation Time Required";
 		estimationTime.style.borderColor = "red";
-		estimationTime.focus();
+	/*	estimationTime.focus();*/
 		return false;
 	}
 	document.getElementById("estimationTime_validation").innerHTML = "";
@@ -56,7 +56,7 @@ function isValidStartTime(starttime){
 	if (starttime.value == "") {
 		document.getElementById("starttime_validation").innerHTML = "Start Time Required";
 		starttime.style.borderColor = "red";
-		starttime.focus();
+		/*starttime.focus();*/
 		return false;
 	}
 	document.getElementById("starttime_validation").innerHTML = "";
@@ -68,7 +68,7 @@ function isValidEndTime(endtime){
 	if (endtime.value == "") {
 		document.getElementById("endtime_validation").innerHTML = "End Time Required";
 		endtime.style.borderColor = "red";
-		endtime.focus();
+		/*endtime.focus();*/
 		return false;
 	}
 	document.getElementById("endtime_validation").innerHTML = "";

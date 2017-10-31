@@ -12,7 +12,7 @@ function isvalidHolidayDate() {
 	if (holidayDate.value == "") {
 		document.getElementById("HolidayDate_validation").innerHTML = "Holiday Date Required";
 		holidayDate.style.borderColor = "red";
-		holidayDate.focus();
+		/*holidayDate.focus();*/
 		return false;
 	}
 	document.getElementById("HolidayDate_validation").innerHTML = "";
@@ -24,7 +24,7 @@ function isValidHolidayName(){
 	if (holidayName.value == "") {
 		document.getElementById("HolidayName_validation").innerHTML = "Holiday Name Required";
 		holidayName.style.borderColor = "red";
-		holidayName.focus();
+		/*holidayName.focus();*/
 		return false;
 	}
 	document.getElementById("HolidayName_validation").innerHTML = "";

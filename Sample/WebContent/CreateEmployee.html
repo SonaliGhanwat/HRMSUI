@@ -16,19 +16,19 @@
  <script type="text/javascript" src="js/index.js"></script>
 </head>
 <header class="header" >
-<div id="main">
+<div id="main" style="height: 50px;">
 <!-- <a id="nav-toggle" class="hammenu active"   href="#">&#9776;</a> -->
 <span style="font-size:30px;cursor:pointer" onclick="sidebar()">&#9776; 
 	NexTech HRMS
 	</span>
 	 <i id="nav-toggle"  style="font-size: 20px;margin-left: 150px">&#x1F50D;</i>
 	 <input type="search" class="ZPselect" id="zpeople_search_box" placeholder="Search Employee" value="" name="Search" >
-	 <img style="height: 44px ; margin-left: 614px;" src="https://contacts.zoho.com/file?ID=654944339&amp;fs=thumb" empid="401583000000111005" imgtype="thumb" aria-expanded="false">
+	 <img style="height: 44px ; margin-left: 598px;" src="https://contacts.zoho.com/file?ID=654944339&amp;fs=thumb" empid="401583000000111005" imgtype="thumb" aria-expanded="false">
 </div>
 	</header>
 
  <body onload="dropDownList()" style="background-color:#F8F8FF;" > 
-<div  id="myDIV" class="sidenav " style="margin-top: 45px">
+<div  id="myDIV" class="sidenav " style="margin-top: 49px">
  
 	<ul style="margin-top: -10px">
    <li>
@@ -90,13 +90,18 @@
             </ul>
             </div>
         </li>
+        <li>
+          <div class="dropdown">
+            <a href="#" class="dropbtn" onclick="approval()">Approvals</a>
+            </div>
+        </li>
 
 </ul>
 </div>
 <div class="scroll">
 <div class="well " style=" height: 65px;">
 <div class="row">
-<h4  style="margin-left: 500px;margin-top: 5px"> Add Employee </h4>
+<h4  align="center" style="margin-top: 5px"> Add Employee </h4>
 <button  type="button" class="btn btn-primary " style="margin-left: 1100px;margin-top: -60px;" onclick="location.href='EmployeeList.html'">
 View Employee
 </button>
@@ -115,14 +120,14 @@ View Employee
  <div class="row" style="    margin-top: 30px">
 				<div class=" form-group col-lg-6" style="margin-left: 35px;">
 					<label class="label-name required control-label"> User Id</label> <br>
-					<input type="text"   id="userid" name="userid" class="loginUserid" style="width: 250px" placeholder="Userid" onkeyup="isValidUserid()" onclick="isValidUserid()"> 
+					<input type="text"   id="userid" name="userid" class="loginUserid" style="width: 250px" placeholder="Userid" onkeyup="isValidUserid()" onblur="isValidUserid()"   > 
 					<div id="userid_validation" class="error"></div>
 				</div>
 
 				<div class="col-lg-offset-5">
 				<div class=" form-group col-lg-6" >
 					<label class="label-name required control-label "> Password</label> 
-					<input type="password" id="password" name="password" class="loginUserid" style="width: 250px" placeholder="Password" onkeyup="isValidPassword()"onclick="isValidPassword()" > 
+					<input type="password" id="password" name="password" class="loginUserid" style="width: 250px" placeholder="Password" onblur="isValidPassword()" onkeyup="isValidPassword()"> 
 					<div id="password_validation" class="passvalidation"></div>
 					</div>
 				</div>
@@ -131,13 +136,13 @@ View Employee
 				<div class=" form-group col-lg-6" style="margin-left: 35px;">
 					<label class="label-name required "> First Name</label> <input type="text"
 						id="firstName" name="firstName" class="loginUserid" style="width: 250px" placeholder="First Name" onkeyup="isValidFirstName()"
-							onkeypress='return event.charCode >= 65 && event.charCode <= 122'onclick="isValidFirstName()" >
+							onkeypress='return event.charCode >= 65 && event.charCode <= 122'onblur="isValidFirstName()" >
 					<div id="firstName_validation" class="error"></div>
 				</div>
 				<div class="col-lg-offset-5">
 				<div class=" form-group col-lg-6">
 					<label class="label-name required"> Last Name</label> <input type="text"
-						id="lastName" name="lastName" class="loginUserid" style="width: 250px" placeholder="Last Name" onkeyup="isValidLastName()"onkeypress='return event.charCode >= 65 && event.charCode <= 122'onclick="isValidLastName()">
+						id="lastName" name="lastName" class="loginUserid" style="width: 250px" placeholder="Last Name" onkeyup="isValidLastName()"onkeypress='return event.charCode >= 65 && event.charCode <= 122'onblur="isValidLastName()">
 					<div id="lastName_validation" class="passvalidation"></div>
 					</div>
 				</div>
@@ -145,7 +150,7 @@ View Employee
 			<div class="row" >
 				<div class=" form-group col-lg-6" style="margin-left: 35px;">
 				<label class="label-name required"> EmailId</label> <input
-						type="text" id="emailid" name="emailid"  class="loginUserid" style="width: 250px"  placeholder="Emailid" onkeyup="isValidEmailid()"onclick="isValidEmailid()"> 
+						type="text" id="emailid" name="emailid"  class="loginUserid" style="width: 250px"  placeholder="Emailid" onkeyup="isValidEmailid()"onblur="isValidEmailid()"> 
 						<div id="emailid_validation" class="passvalidation"></div>
 						</div>
 						</div>
@@ -156,7 +161,7 @@ View Employee
 			    <div class="row" style="    margin-top: 30px">
 				<div class=" form-group col-lg-6" style="margin-left: 35px;">
 				<label class="label-name required"> Department</label> 
-						<input type="text"id="department" name="department" class="loginUserid" style="width: 250px" placeholder="Department" onkeyup="isValidDepartment()"onkeypress='return event.charCode >= 65 && event.charCode <= 122'onclick="isValidDepartment()">
+						<input type="text"id="department" name="department" class="loginUserid" style="width: 250px" placeholder="Department" onkeyup="isValidDepartment()"onkeypress='return event.charCode >= 65 && event.charCode <= 122'onblur="isValidDepartment()">
 						<div id="department_validation" class="passvalidation"></div>
 						</div>
 				<div class="col-lg-offset-5">
@@ -174,7 +179,7 @@ View Employee
                 <div class="row" >
 				<div class=" form-group col-lg-6" style="margin-left: 35px;">
 				<label class="label-name required "> Date Of Joining</label> 
-					<input type="date" id="dateOfJoining" name="dateOfJoining" class="loginUserid" style="width: 250px;" onclick="isValidDateofJoining();validate_date()"onchange="isValidDateofJoining();validate_date()">
+					<input type="date" id="dateOfJoining" name="dateOfJoining" class="loginUserid" style="width: 250px;" onblur="isValidDateofJoining();validate_date()"onchange="isValidDateofJoining();validate_date()">
 						<div id="dateOfJoining_validation" class="error"></div>
 						</div>
 				<div class="col-lg-offset-5">
@@ -210,13 +215,13 @@ View Employee
 			     <div class="row" >
 				<div class=" form-group col-lg-6" style="margin-left: 35px;">
 				<label class="label-name required"> Mobile Number</label> 
-					<input type="text" id="phoneNumber" name="phoneNumber" maxlength="10" class="loginUserid" style="width: 250px"  placeholder="PhoneNumber" onkeyup="isValidPhoneNumber()"onkeypress='return event.charCode >= 48 && event.charCode <= 57'onclick="isValidPhoneNumber()"> 
+					<input type="text" id="phoneNumber" name="phoneNumber" maxlength="10" class="loginUserid" style="width: 250px"  placeholder="PhoneNumber" onkeyup="isValidPhoneNumber()"onkeypress='return event.charCode >= 48 && event.charCode <= 57'onblur="isValidPhoneNumber()"> 
 						<div id="phoneNumber_validation" class="error"></div>
 						</div>
 				 <div class="col-lg-offset-5">
 				<div class=" form-group col-lg-6" >
 				<label class="label-name required">Address</label> <input type="text"
-						id="address" name="address" class="loginUserid"style="width: 250px; height: 70px;" placeholder="Address" onkeyup="isValidAddress()"onclick="isValidAddress()" >
+						id="address" name="address" class="loginUserid"style="width: 250px; height: 70px;" placeholder="Address" onkeyup="isValidAddress()"onblur="isValidAddress()" >
 						<div id="address_validation" class="error"></div>
 			  </div>
 			  </div>
@@ -224,13 +229,13 @@ View Employee
 			  <div class="row" >
 				<div class=" form-group col-lg-6" style="margin-left: 35px;">
 				<label class="label-name required"> Date Of Birth</label>
-					 <input type="date" id="dateOfBirth" name="dateOfBirth" class="loginUserid" style="width: 250px;" onclick="isValidDateofBirth();dateOfBirthValidation()"onchange="isValidDateofBirth();dateOfBirthValidation()">
+					 <input type="date" id="dateOfBirth" name="dateOfBirth" class="loginUserid" style="width: 250px;" onblur="isValidDateofBirth();dateOfBirthValidation()"onchange="isValidDateofBirth();dateOfBirthValidation()">
 						<div id="dateOfBirth_validation" class="passvalidation" ></div>
 						</div>
 			 <div class="col-lg-offset-5">
 				<div class=" form-group col-lg-6" >
 				<label class="label-name required">Salary</label> <input type="number"
-						id="salary" name="salary" class="loginUserid" style="width: 250px;" placeholder="Salary" onkeyup="isValidSalary()"onclick="isValidSalary()">
+						id="salary" name="salary" class="loginUserid" style="width: 250px;" placeholder="Salary" onkeyup="isValidSalary()"onblur="isValidSalary()">
 						<div id="salary_validation" class="error" ></div>
 			</div>
 			</div>
@@ -260,11 +265,11 @@ View Employee
     </div>
   </div> 
   <div style="    margin-left: 120px;" >
-   <button id="submit" type="button" class="label-size submit-button " style="cursor:pointer" data-toggle="modal" data-target="#myModal"onclick="addOrUpdateEmployee();">Submit</button> 
+   <button id="submit" type="button" class="label-size submit-button btn" style="cursor:pointer" data-toggle="modal" data-target="#myModal"onclick="addOrUpdateEmployee();">Submit</button> 
  <!-- <input type="button" value="Submit"data-target="#myModal"data-toggle="modal" class="label-size submit-button" onclick="addOrUpdateEmployeeAttendance();"> -->
 
 <div style="margin-left: 120px;margin-top: -60px;">
-<input type="reset" value="Cancel" class="cancel-btn submit-button"> 
+<input type="reset" value="Cancel" class="cancel-btn submit-button btn"> 
 </div>
 </div>
   </div>

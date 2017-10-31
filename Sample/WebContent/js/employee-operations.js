@@ -338,3 +338,6 @@ function clearEmployeeForm(){
 	  sessionStorage.clear();
 	  window.location="CreateEmployee.html";
 }
+function sortListByDate(){
+	
+}

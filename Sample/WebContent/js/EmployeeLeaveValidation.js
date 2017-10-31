@@ -4,6 +4,7 @@ function validateEmployeeLeave(employeeLeave) {
 	isEmployeeLeaveDataValid = isValidLeaveDate(employeeLeave.leavedate) && isEmployeeLeaveDataValid ;
 	isEmployeeLeaveDataValid = isValidAfetrLeaveJoiningDate(employeeLeave.afterleavejoiningdate) && isEmployeeLeaveDataValid ;
 	isEmployeeLeaveDataValid = leaveDateValidation(employeeLeave.leavedate,employeeLeave.afterleavejoiningdate) && isEmployeeLeaveDataValid ;
+	isEmployeeLeaveDataValid = currentDateValidation(employeeLeave.leavedate) && isEmployeeLeaveDataValid ;
 	return isEmployeeLeaveDataValid;
 	
 }
@@ -13,7 +14,7 @@ function validSubject(){
 	if (subject.value == "") {
 		document.getElementById("subject_validation").innerHTML = "Subject Required";
 		subject.style.borderColor = "red";
-		subject.focus();
+		/*subject.focus();*/
 		return false;
 	}
 	document.getElementById("subject_validation").innerHTML = "";
@@ -25,7 +26,7 @@ function isValidLeaveDate(date) {
 	if (leavedate.value == "") {
 		document.getElementById("leavedate_validation").innerHTML = "Required";
 		leavedate.style.borderColor = "red";
-		leavedate.focus();
+		/*leavedate.focus();*/
 		return false;
 	}
 	document.getElementById("leavedate_validation").innerHTML = "";
@@ -38,7 +39,7 @@ function isValidAfetrLeaveJoiningDate(){
 	if (afterleavejoiningdate.value == "") {
 		document.getElementById("afterleavejoiningdate_validation").innerHTML = "Leave Date Required";
 		afterleavejoiningdate.style.borderColor = "red";
-		afterleavejoiningdate.focus();
+		/*afterleavejoiningdate.focus();*/
 		return false;
 	}
 	document.getElementById("afterleavejoiningdate_validation").innerHTML = "";
@@ -61,4 +62,25 @@ function leaveDateValidation(){
 	}
 	return true;
 	
+}
+function currentDateValidation(){
+	var joinDate = new Date();
+	 var getdate = joinDate.getDate();
+	 var getMonth = joinDate.getMonth()+1;
+	 var getYear = joinDate.getFullYear()
+	 var leavedate = document.getElementById("leavedate").value;
+	 var leaveDate = new Date(leavedate);
+	 var leavedate = leaveDate.getDate();
+	 var leavemonth = leaveDate.getMonth()+1;
+	 var leaveYear = leaveDate.getFullYear();
+	 var newdate = getYear + "-" + getMonth+"-"+ getdate;
+	 var leaveDate1 =  leaveYear + "-" + leavemonth+"-"+ leavedate;
+	 if (newdate ==leaveDate1 ) {
+			return true;
+		}else if(newdate < leaveDate1){
+			return true;
+		}else {
+			document.getElementById("leavedate_validation").innerHTML = "please do not enter past date";
+			return false;
+		}
 }

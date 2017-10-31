@@ -10,7 +10,7 @@ function isvalidUserTypeName() {
 	if (usertypeName.value == "") {
 		document.getElementById("usertypeName_validation").innerHTML = "User Type Required";
 		usertypeName.style.borderColor = "red";
-		usertypeName.focus();
+		/*usertypeName.focus();*/
 		return false;
 	}
 	document.getElementById("usertypeName_validation").innerHTML = "";
@@ -22,7 +22,7 @@ function isvalidUserTypeDescription(){
 	if (description.value == "") {
 		document.getElementById("Description_validation").innerHTML = "description Required";
 		description.style.borderColor = "red";
-		description.focus();
+		/*description.focus();*/
 		return false;
 	}
 	document.getElementById("Description_validation").innerHTML = "";

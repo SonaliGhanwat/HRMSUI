@@ -4,6 +4,7 @@ function validateEmployeeAttendance(employeeAttendence) {
 	isEmployeeAttendanceDataValid = isValidOutTime(employeeAttendence.outtime) && isEmployeeAttendanceDataValid ;
 	isEmployeeAttendanceDataValid = intimeValidation(employeeAttendence.intime,employeeAttendence.outtime) && isEmployeeAttendanceDataValid ;
 	isEmployeeAttendanceDataValid = isValidDate(employeeAttendence.date) && isEmployeeAttendanceDataValid ;
+	isEmployeeAttendanceDataValid = isValidCurrentDate(employeeAttendence.date) && isEmployeeAttendanceDataValid ;
 	return isEmployeeAttendanceDataValid;
 }
 
@@ -12,7 +13,7 @@ function isValidInTime(intime) {
 	if (intime.value == "") {
 		document.getElementById("intime_validation").innerHTML = "In Time Required";
 		intime.style.borderColor = "red";
-		intime.focus();
+		/*intime.focus();*/
 		return false;
 	}
 	document.getElementById("intime_validation").innerHTML = "";
@@ -24,7 +25,7 @@ function isValidOutTime(outtime) {
 	if (outtime.value == "") {
 		document.getElementById("outtime_validation").innerHTML = "Out Time Required";
 		outtime.style.borderColor = "red";
-		outtime.focus();
+	/*	outtime.focus();*/
 		return false;
 	}
 	document.getElementById("outtime_validation").innerHTML = "";
@@ -37,7 +38,7 @@ function isValidDate(date) {
 	if (date.value == "") {
 		document.getElementById("date_validation").innerHTML = "Date Required";
 		date.style.borderColor = "red";
-		date.focus();
+		/*date.focus();*/
 		return false;
 	}
 	document.getElementById("date_validation").innerHTML = "";
@@ -59,4 +60,17 @@ function intimeValidation(){
 		return false;
 	}
 	return true;
+}
+function isValidCurrentDate(){
+	 var getCurrentDate = new Date();
+	 var currentDate = getCurrentDate.getDate();
+	 var getdate = document.getElementById("date").value;
+	 var attendanceDate = new Date(getdate);
+	 var date = attendanceDate.getDate();
+	 if(currentDate==date){
+		 return true;
+	 }else if(date<=currentDate){
+		 document.getElementById("date_validation").innerHTML = "Please enter Today's Date";
+		 return false;
+	 }
 }

@@ -18,7 +18,7 @@ function displayHolidayList() {
 	xhttp.open("GET", "http://localhost:8085/HRMS/holiday/list", true);
 	xhttp.send();
 }
-function addHoliday() {
+/*function addHoliday() {
 	
 	var http = new XMLHttpRequest();
 	var holiday = getHolidayFromUI(data);
@@ -36,7 +36,6 @@ function addHoliday() {
 		http.onreadystatechange = function() {// Call a function when the state
 			closeModal();				// changes.
 			if (http.readyState == 4 && http.status == 200) {
-				myFunction();
 				var json = eval("(" + this.responseText + ")");
 				var data = json.message;
 				var code = json.code;
@@ -45,6 +44,36 @@ function addHoliday() {
 					
 				}
 				
+			}
+		}
+	
+		http.send(myJSON);
+	}
+}*/
+function addHoliday() {
+	
+	var http = new XMLHttpRequest();
+	var holiday = getHolidayFromUI(data);
+	if(validateHoliday(holiday)){
+		document.getElementById('results').innerHTML = '';
+		openModal();
+		var myJSON = JSON.stringify(holiday);
+		console.log(userType);
+		http.open("POST", "http://localhost:8085/HRMS/holiday/create", true);
+		http.setRequestHeader("Content-Type", "application/json; charset=utf8");
+		http.onreadystatechange = function() {// Call a function when the state
+			closeModal();				// changes.
+			if (http.readyState == 4 && http.status == 200) {
+				var json = eval("(" + this.responseText + ")");
+				var data = json.message;
+				var code = json.code;
+				if(code===1){
+					document.getElementById("response").innerHTML = data;
+					getDataHtmlField();
+				}else if(code===0){
+					document.getElementById("response").innerHTML = data;
+					
+				}
 			}
 		}
 	
@@ -136,9 +165,7 @@ function addOrUpdateHoliday(){
 		addHoliday();
 	}else if(flag==1){
 		updateHoliday();
-		
 	}else{
-		
 	}
 }
 function getHolidayIdFromHtml(){

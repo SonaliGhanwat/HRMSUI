@@ -50,6 +50,9 @@ function commonData(){
 		}
 	
 }
+function approval(){
+	window.location="Approvals.html";
+}
 function sidebar() {
     var x = document.getElementById("myDIV");
     if (x.style.display === "none") {

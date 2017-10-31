@@ -28,7 +28,6 @@ function addEmployeeLeave() {
 		openModal();
 	var myJSON = JSON.stringify(employeeLeave);
 	console.log(myJSON);
-
 	http.open("POST", "http://localhost:8085/HRMS/employeeleave/create", true);
 
 	http.setRequestHeader("Content-Type", "application/json; charset=utf8");
@@ -41,14 +40,14 @@ function addEmployeeLeave() {
 			var code = json.code;
 			if(code===1){
 				document.getElementById("response").innerHTML = data;
+				
 			}else if(code===0){
 				document.getElementById("response").innerHTML = data;
 				getDataHtmlField();
+				
 			}
-			
 		}
 	}
-
 	http.send(myJSON);
 	}
 }
@@ -162,6 +161,10 @@ function displayEmployeeLeaveByDate(){
 			document.getElementById("createTable").innerHTML = "";
 			var empData = JSON.parse(this.responseText);
 			createEmployeeLeaveTable(empData);
+			if(empData==0){
+				var message = document.getElementById("displayList").innerHTML = "We are sorry. This Employee does not Exist";
+				document.getElementById("displayList").innerHTML = message;
+			}
 		}
 	};
 

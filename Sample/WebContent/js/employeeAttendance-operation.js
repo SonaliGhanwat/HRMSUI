@@ -110,7 +110,7 @@ function updateEmployeeAttendance(){
 	var http = new XMLHttpRequest();
 	var employeeAttendance = getEmployeeAttendanceDataFromUI(data);
 	
-	if(validateEmployeeAttendance(employeeAttendance)){
+	//if(validateEmployeeAttendance(employeeAttendance)){
 		document.getElementById('results').innerHTML = '';
 		openModal();
 	var myJSON = JSON.stringify(employeeAttendance);
@@ -141,7 +141,7 @@ function updateEmployeeAttendance(){
 		
 		}
 	}
-	}
+	//}
 	http.send(myJSON);
 	}
 }
@@ -166,8 +166,8 @@ function displayEmployeeAttendanceByDate(){
 			var empData = JSON.parse(this.responseText);
 			createEmployeeAttendanceTable(empData);
 			if(empData==0){
-				var message = document.getElementById("response").innerHTML = "We are sorry. This Employee does not Exist";
-				document.getElementById("response").innerHTML = message;
+				var message = document.getElementById("displayList").innerHTML = "We are sorry. This Employee does not Exist";
+				document.getElementById("displayList").innerHTML = message;
 			}
 		}
 		
@@ -201,9 +201,7 @@ function dropDownList(){
 				}else if(flag==1){
 					document.getElementById("list").disabled = true;
 					document.getElementById("date").disabled = true;
-				}else{
 				}
-				
 				}
 		}
 	};
