@@ -161,8 +161,8 @@ function displayEmployeeLeaveByDate(){
 			var empData = JSON.parse(this.responseText);
 			createEmployeeLeaveTable(empData);
 			if(empData==0){
-				var message = document.getElementById("displayList").innerHTML = "We are sorry. This Employee does not Exist";
-				document.getElementById("displayList").innerHTML = message;
+				var message = document.getElementById("displayMessage").innerHTML = "We are sorry. This Employee does not Exist";
+				document.getElementById("displayMessage").innerHTML = message;
 			}
 		}
 	};

@@ -44,7 +44,6 @@ function addEmployeeDailyTask() {
 	
 	var http = new XMLHttpRequest();
 	var employeeDailyTask=getEmployeeDailyTaskDataFromUI(data);
-	
 	if(validateEmployeeDailyTask(employeeDailyTask)){
 		document.getElementById('results').innerHTML = '';
 		openModal(); 

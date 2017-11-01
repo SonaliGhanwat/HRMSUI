@@ -9,9 +9,22 @@ function displayEmployeeAttendanceList() {
 		if (this.readyState == 4 && this.status == 200) {
 			document.getElementById("createTable").innerHTML = "";
 			var empData = JSON.parse(this.responseText);
+			empData.sort(function (a, b) {
+			    var key1 = a.date;
+			    var key2 = b.date;
+
+			    if (key1 < key2) {
+			        return -1;
+			    } else if (key1 == key2) {
+			        return 0;
+			    } else {
+			        return 1;
+			    }
+			});
 			var tbody =  createEmployeeAttendanceTable(empData)
 			
 			closeModal();
+			var message = document.getElementById("displayMessage").innerHTML=""
 		}
 	};
 
@@ -162,8 +175,9 @@ function displayEmployeeAttendanceByDate(){
 			var empData = JSON.parse(this.responseText);
 			createEmployeeAttendanceTable(empData);
 			if(empData==0){
-				var message = document.getElementById("displayList").innerHTML = "We are sorry. This Employee does not Exist";
-				document.getElementById("displayList").innerHTML = message;
+				var message = document.getElementById("displayMessage").innerHTML = "We are sorry. This Employee does not Exist";
+				document.getElementById("displayMessage").innerHTML = message;
+				
 			}
 		}
 		
@@ -172,6 +186,27 @@ function displayEmployeeAttendanceByDate(){
 	xhttp.open("GET", "http://localhost:8085/HRMS/employeeattendance/getAttendanceByDate/"+dateVal, true);
 	xhttp.send();
 }
+function displayEmployeeAttendanceByUserId(){
+	var xhttp = new XMLHttpRequest();
+	var userid = document.getElementById("list").value;
+	console.log("dateVal:",userid);
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			document.getElementById("createTable").innerHTML = "";
+			var empData = JSON.parse(this.responseText);
+			createEmployeeAttendanceTable(empData);
+			if(empData==0){
+				var message = document.getElementById("displayMessage").innerHTML = "We are sorry. This Employee does not Exist";
+				document.getElementById("displayMessage").innerHTML = message;
+			}
+		}
+		
+	};
+
+	xhttp.open("GET", "http://localhost:8085/HRMS/employeeattendance/getAttendanceByUserid/"+userid, true);
+	xhttp.send();
+}
+
 function dropDownList(){
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
@@ -283,4 +318,24 @@ function getDataHtmlFieldId(){
 function clearAttendanceForm(){
 	  sessionStorage.clear();
 	window.location="CreateEmployeeAttendance.html";
+}
+function getUserId(){
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+
+		if (this.readyState == 4 && this.status == 200) {
+			document.getElementById("data").innerHTML = "";
+			var empData = JSON.parse(this.responseText);
+			var selectMenu="";
+			selectMenu+='<option value="">Select EmployeeId</option>'+"<br>";
+			for(var i = 0; i < empData.length; i++) {
+				selectMenu+='<option value='+empData[i].id +'>'+empData[i].userid +'</option>'+"<br>";
+			}
+			selectMenu+='</select>';
+			document.getElementById("list").innerHTML = selectMenu;
+		}
+	};
+
+	xhttp.open("GET", "http://localhost:8085/HRMS/employee/list", true);
+	xhttp.send();
 }
