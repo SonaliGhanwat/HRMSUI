@@ -47,7 +47,7 @@
             <div class="dropdown">
             <a href="#" onclick="attendanceFunction()" class="dropbtn"> Attendance <i class="down formdownarrow"></i> </a>
             <ul id="attendance" class=" dropdown-content">
-                <li><a onclick="clearAttendanceForm()" style=" min-width: 150px; cursor:pointer" >Add Employee Attendance</a></li>
+                <li><a href="CreateEmployeeAttendance.html" style=" min-width: 150px; cursor:pointer" >Add Employee Attendance</a></li>
                 <li><a href="EmployeeAttendanceList.html"style=" min-width: 150px">View Employee Attendance List</a></li>
             </ul>
            </div> 
@@ -95,10 +95,19 @@
         </li>
 </ul>
 </div>
+<p id="data"></p> 
+<body onmousedown="getUserId()"></body>
 <div class="scroll">
 <div class="well " style=" height: 65px;">
 <div class="row">
-<h4 align="center" style="margin-top: 5px"> View Leave </h4>
+<h4  style="margin-top: 5px;margin-left: 250px;"> View Leave </h4>
+<div style="margin-left: 550px;margin-top: -50px;"   >
+ <label  class="label-name "> Search By UserId:</label> 
+					 <select  id="list" name=employee class=" loginUserid" style="width: 200px;" onclick="displayLeaveByUserid()">
+        <option value="">Select EmployeeId</option>
+		</select>  
+		
+		</div>
 <form action="" name="Employee" onchange="displayEmployeeLeaveByDate()" method="GET" > 
  <input type="date" id="Date"  class=" textbox form-control" onload =" displayEmployeeLeaveByDate()" style="margin-left: 800px; width: 200px;margin-top: -35px;" placeholder="Filter by Date"><br>
  </form>
@@ -130,8 +139,10 @@ Apply Leave
 		
 		<th>EmployeeId</th>
 		<th>Subject</th>
-		<th>LeaveDate</th>
-		<th>AfterLeaveJoininigDate</th>
+		<th>Form Date</th>
+		<th>To Date</th>
+		 <th>Total Leave</th>
+		<th>Pending Leave</th> 
 		<th>Delete</th>
 		<th>Edit</th>
 		

@@ -62,7 +62,7 @@ function deleteEmployeeLeave(id) {
 			var json = eval("(" + this.responseText + ")");
 			var data = json.message;
 			document.getElementById("response").innerHTML = data;
-			displayEmployeeDailyTaskList();
+			
 			closeModal();
 			displayEmployeeLeaveList();
 		}
@@ -219,6 +219,10 @@ function createEmployeeLeaveTable(empData){
 		tbody += "<td>" + leavedate + "</td>"
 		var afterleavejoiningdate = empData[data].afterleavejoiningdate;
 		tbody += "<td>" + afterleavejoiningdate + "</td>"
+		var totalLeave = empData[data].totalCount;
+		tbody += "<td>" + totalLeave + "</td>"
+		var pendingLeave = empData[data].pendingLeave;
+		tbody += "<td>" + pendingLeave + "</td>"
 		tbody += "<td>" + "<button  value='Delete' onclick='deleteEmployeeLeave ("+id+")' >Delete</button>"
 		+ "</td>";
         tbody += "<td>" + "<button  value='Edit' onclick='editEmployeeLeave("+id+")' >Edit</button>"
@@ -281,4 +285,26 @@ function getSessionData(){
 function clearEmployeeLeaveForm(){
 	  sessionStorage.clear();
 	  window.location="CreateEmployeeLeave.html";
+}
+function displayLeaveByUserid() {
+	var xhttp = new XMLHttpRequest();
+	var userid = document.getElementById("list").value;
+	console.log("dateVal:",userid);
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			document.getElementById("createTable").innerHTML = "";
+			var empData = JSON.parse(this.responseText);
+			createEmployeeLeaveTable(empData);
+			if(empData==0){
+				var message = document.getElementById("displayMessage").innerHTML = "We are sorry. This Employee does not Exist";
+				document.getElementById("displayMessage").innerHTML = message;
+				
+			}
+		}
+		
+	};
+
+	xhttp.open("GET", "http://localhost:8085/HRMS/employeeleave/getLeaveByUserid/"+userid, true);
+	xhttp.send();
+	
 }

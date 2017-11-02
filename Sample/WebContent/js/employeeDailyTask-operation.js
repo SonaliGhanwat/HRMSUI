@@ -290,3 +290,25 @@ function clearEmployeeDailyTaskForm(){
 	  sessionStorage.clear();
 	  window.location="CreateEmployeeDailyTask.html";
 }
+
+function displayDailyTaskByUserid(){
+	var xhttp = new XMLHttpRequest();
+	var userid = document.getElementById("list").value;
+	console.log("dateVal:",userid);
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			document.getElementById("createTable").innerHTML = "";
+			var empData = JSON.parse(this.responseText);
+			createTable(empData);
+			if(empData==0){
+				var message = document.getElementById("displayMessage").innerHTML = "We are sorry. This Employee does not Exist";
+				document.getElementById("displayMessage").innerHTML = message;
+				
+			}
+		}
+		
+	};
+
+	xhttp.open("GET", "http://localhost:8085/HRMS/employeedailytask/getDailyTaskByUserid/"+userid, true);
+	xhttp.send();
+}

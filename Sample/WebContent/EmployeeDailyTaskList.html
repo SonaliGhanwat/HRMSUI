@@ -28,7 +28,8 @@ th {border:1px groove black; padding:7px; }
 	 <img style="height: 44px ; margin-left: 598px;" src="https://contacts.zoho.com/file?ID=654944339&amp;fs=thumb" empid="401583000000111005" imgtype="thumb" aria-expanded="false">
 </div>
 	</header>
-
+	<body onload="displayEmployeeDailyTaskList() " >
+	
 <div  id="myDIV" class="sidenav " style="margin-top: 49px">
  
 	<ul style="margin-top: -10px">
@@ -99,6 +100,8 @@ th {border:1px groove black; padding:7px; }
         </li>
 </ul>
 </div>
+<p id="data"></p> 
+<body onmousedown="getUserId()"></body>
 <div class="scroll">
 <div class="well " style=" height: 65px;">
 <div class="row">
@@ -106,6 +109,13 @@ th {border:1px groove black; padding:7px; }
 <!-- <form action="" name="Employee" onchange="displayEmployeeAttendanceByDate(Date)" method="GET" > 
  <input type="date" id="Date"  class=" textbox form-control" onload =" displayEmployeeAttendanceByDate(Date)" style="margin-left: 800px; width: 200px;margin-top: -35px;" placeholder="Filter by Date"><br>
  </form> -->
+ <div style="margin-left: 750px;margin-top: -50px;"   >
+ <label  class="label-name "> Search By UserId:</label> 
+					 <select  id="list" name=employee class=" loginUserid" style="width: 200px;" onload="displayDailyTaskByUserid()">
+        <option value="">Select EmployeeId</option>
+		</select>  
+		
+		</div>
 <button  type="button" class="btn btn-primary " style="margin-left: 1100px;margin-top: -60px;" onclick="location.href='CreateEmployeeDailyTask.html'">
 Add Task
 </button>
@@ -117,10 +127,6 @@ Add Task
         <div id="modal">
             <!-- <img id="loader" src="image/loading.gif" /> -->
         </div>
-        
-<body onload="displayEmployeeDailyTaskList() " >
-
-
 <p id="createTable"></p> 
 <table class="table table-bordered table table-hover"style="margin-left: 200px; width: 85%;margin-top: -20px;">
 <tr>
@@ -156,7 +162,5 @@ Add Task
       
     </div>
   </div> 
-  
-
 </body>
 </html>

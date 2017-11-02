@@ -96,23 +96,25 @@
 </ul>
 </div>
  <p id="data"></p> 
-<body onclick="getUserId()"></body>
+<body onmousedown="getUserId()"></body>
 <div class="scroll">
 <div class="well " style=" height: 65px;">
 <div class="row">
 <h4 style="margin-top: 5px;    margin-left: 250px;"> View Employee Attendance </h4>
  <div style="margin-left: 550px;margin-top: -50px;"   >
- <label  class="label-name required"> Filter By UserId:</label> 
+ <label  class="label-name "> Search By UserId:</label> 
 					 <select  id="list" name=employee class=" loginUserid" style="width: 200px;" onclick="displayEmployeeAttendanceByUserId()">
         <option value="">Select EmployeeId</option>
 		</select>  
 		
 		</div>
+		<div style="margin-left: 820px;margin-top: -55px;"   >
+		<label  class="label-name " > Search By Date:</label> 
 <form action="" name="Employee" onchange="displayEmployeeAttendanceByDate(Date)" method="GET" > 
- <input type="date" id="Date"  class=" textbox form-control" onload =" displayEmployeeAttendanceByDate(Date)" style="margin-left: 800px; width: 200px;margin-top: -35px;" placeholder="Filter by Date"><br>
+ <input type="date" id="Date"  class=" textbox form-control" onload =" displayEmployeeAttendanceByDate(Date)" onclick ="clearDisplayMessage()" style="width: 200px;margin-top: -4px;" ><br>
  </form>
-
-<button  type="button" class="btn btn-primary " style="margin-left: 1100px;margin-top: -100px;" onclick="location.href='CreateEmployeeAttendance.html'">
+</div>
+<button  type="button" class="btn btn-primary " style="margin-left: 1100px;margin-top: -110px;" onclick="location.href='CreateEmployeeAttendance.html'">
 Add Attendance
 </button>
 </div>

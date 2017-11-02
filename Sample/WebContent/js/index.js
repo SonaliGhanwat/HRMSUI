@@ -57,15 +57,13 @@ function sidebar() {
     var x = document.getElementById("myDIV");
     if (x.style.display === "none") {
         x.style.display = "block";
-        
-       
     } else {
         x.style.display = "none";
         
     }
 }
 
-function addAttendance() {
+/*function addAttendance() {
     var x = document.getElementById("MyDIV");
     if (x.style.display === "none") {
         x.style.display = "block";
@@ -75,11 +73,23 @@ function addAttendance() {
         x.style.display = "none";
         
     }
-}
-/*function openNav() {
-    document.getElementById("data").style.width = "100%";
-}
-
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
 }*/
+function getUserId(){
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+
+		if (this.readyState == 4 && this.status == 200) {
+			document.getElementById("data").innerHTML = "";
+			var empData = JSON.parse(this.responseText);
+			var selectMenu="";
+			selectMenu+='<option value="">Select EmployeeId</option>'+"<br>";
+			for(var i = 0; i < empData.length; i++) {
+				selectMenu+='<option value='+empData[i].id +'>'+empData[i].userid +'</option>'+"<br>";
+			}
+			selectMenu+='</select>';
+			document.getElementById("list").innerHTML = selectMenu;
+		}
+	};
+	xhttp.open("GET", "http://localhost:8085/HRMS/employee/list", true);
+	xhttp.send();
+}

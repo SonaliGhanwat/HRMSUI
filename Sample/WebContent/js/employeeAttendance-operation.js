@@ -175,7 +175,7 @@ function displayEmployeeAttendanceByDate(){
 			var empData = JSON.parse(this.responseText);
 			createEmployeeAttendanceTable(empData);
 			if(empData==0){
-				var message = document.getElementById("displayMessage").innerHTML = "We are sorry. This Employee does not Exist";
+				var message = document.getElementById("displayMessage").innerHTML = "We are sorry. In This Date Employee does not Exist";
 				document.getElementById("displayMessage").innerHTML = message;
 				
 			}
@@ -288,12 +288,10 @@ function createEmployeeAttendanceTable(empData){
 	document.getElementById("displayList").innerHTML = tbody;
 	tbody += "</table>"
 		return tbody
-	
 }
 function openModal() {
     document.getElementById('modal').style.display = 'block';
     document.getElementById('fade').style.display = 'block';
- 
 }
 
 function closeModal() {
@@ -335,7 +333,10 @@ function getUserId(){
 			document.getElementById("list").innerHTML = selectMenu;
 		}
 	};
-
 	xhttp.open("GET", "http://localhost:8085/HRMS/employee/list", true);
 	xhttp.send();
+}
+
+function clearDisplayMessage(){
+	document.getElementById("displayMessage").innerHTML=""
 }

@@ -73,8 +73,8 @@ function currentDateValidation(){
 	 var leavedate = leaveDate.getDate();
 	 var leavemonth = leaveDate.getMonth()+1;
 	 var leaveYear = leaveDate.getFullYear();
-	 var newdate = getYear + "-" + getMonth+"-"+ getdate;
-	 var leaveDate1 =  leaveYear + "-" + leavemonth+"-"+ leavedate;
+	 var newdate =  getMonth+"-"+ getdate;
+	 var leaveDate1 = leavemonth+"-"+ leavedate;
 	 if (newdate ==leaveDate1 ) {
 			return true;
 		}else if(newdate < leaveDate1){
