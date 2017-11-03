@@ -245,9 +245,9 @@ function getEmployeeAttendanceDataFromUI(data){
 	var id=sessionStorage.getItem("id");
 	var employee = document.getElementById("list").value;
 	var empid = parseInt(employee);
-	var intime = document.getElementsByName("intime")[0].value;
-	var outtime = document.getElementsByName("outtime")[0].value;
-	var date = document.getElementsByName("date")[0].value;
+	var intime = document.getElementById("intime").value + ':00';
+	var outtime = document.getElementById("outtime").value + ':00';
+	var date = document.getElementById("date").value;
 	var data = {
 			id:id,
 			employee:empid,
