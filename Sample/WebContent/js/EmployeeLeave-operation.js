@@ -282,10 +282,10 @@ function getSessionData(){
 	}	
 	return listEmpData;
 }
-function clearEmployeeLeaveForm(){
+/*function clearEmployeeLeaveForm(){
 	  sessionStorage.clear();
 	  window.location="CreateEmployeeLeave.html";
-}
+}*/
 function displayLeaveByUserid() {
 	var xhttp = new XMLHttpRequest();
 	var userid = document.getElementById("list").value;

@@ -7,7 +7,7 @@ function validateEmployee(employee) {
 		isEmployeeDataValid = isValidLastName(employee.lastName) && isEmployeeDataValid;
 		isEmployeeDataValid = isValidPhoneNumber(employee.phoneNumber) && isEmployeeDataValid ;
 		isEmployeeDataValid = isValidEmailid(employee.emailid) && isEmployeeDataValid ;
-		isEmployeeDataValid = validate_date(employee.dateOfBirth) && isEmployeeDataValid ;
+		/*isEmployeeDataValid = validate_date(employee.dateOfBirth) && isEmployeeDataValid ;*/
 		isEmployeeDataValid = dateOfBirthValidation(employee.dateOfBirth,employee.dateOfJoining) && isEmployeeDataValid ;
 		isEmployeeDataValid = isValidDateofJoining(employee.dateOfJoining) && isEmployeeDataValid ;
 		isEmployeeDataValid = isValidDateofBirth(employee.dateOfBirth) && isEmployeeDataValid ;
@@ -87,7 +87,7 @@ function isValidLastName() {
 		return false;
 	}
 	var lastName_len = lastName.value.length;
-	if (lastName_len >= 3) {
+	if (lastName_len <= 3) {
 		document.getElementById("lastName_validation").innerHTML="Last Name should be 3 character";
 		return false;
 	}
@@ -146,8 +146,8 @@ function isValidDateofJoining() {
 	}
 	document.getElementById("dateOfJoining_validation").innerHTML = "";
 	dateOfJoining.style.borderColor = "";
-	validate_date();
-	return true;
+/*	validate_date();
+*/	return true;
 	
 }
 

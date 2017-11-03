@@ -236,8 +236,11 @@ function getEmployeeDailyTaskDataFromUI(data){
 	var date = document.getElementsByName("date")[0].value;
 	var taskName = document.getElementsByName("taskName")[0].value;
 	var estimationTime = document.getElementsByName("estimationTime")[0].value;
+	/*var settime = estimationTime+":"+ 00;*/
 	var starttime = document.getElementsByName("starttime")[0].value;
+	/*var setStartTime = starttime+":"+ 00;*/
 	var endtime = document.getElementsByName("endtime")[0].value;
+	/*var setEndTime = endtime+":"+ 00;*/
 	
 	
 	
@@ -286,10 +289,10 @@ function getSessionData(){
 	}	
 	return listEmpData;
 }
-function clearEmployeeDailyTaskForm(){
+/*function clearEmployeeDailyTaskForm(){
 	  sessionStorage.clear();
 	  window.location="CreateEmployeeDailyTask.html";
-}
+}*/
 
 function displayDailyTaskByUserid(){
 	var xhttp = new XMLHttpRequest();

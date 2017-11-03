@@ -40,7 +40,7 @@ function addEmployeeAttendance() {
 		openModal();
 	var myJSON = JSON.stringify(employeeAttendance);
 	console.log(myJSON);
-
+	closeModal();
 	http.open("POST", "http://localhost:8085/HRMS/employeeattendance/create", true);
 
 	http.setRequestHeader("Content-Type", "application/json; charset=utf8");
@@ -56,7 +56,7 @@ function addEmployeeAttendance() {
 				document.getElementById("response").innerHTML = data;
 				getDataHtmlFieldId();
 			}
-			closeModal();
+			
 		}
 	}
 
@@ -245,8 +245,10 @@ function getEmployeeAttendanceDataFromUI(data){
 	var id=sessionStorage.getItem("id");
 	var employee = document.getElementById("list").value;
 	var empid = parseInt(employee);
-	var intime = document.getElementsByName("intime")[0].value;
+	var intime = document.getElementsByName("intime")[0].value
+	/*var setIntime = intime+":"+ 00;*/
 	var outtime = document.getElementsByName("outtime")[0].value;
+	/*var setOutTime = outtime+":"+ 00;*/
 	var date = document.getElementsByName("date")[0].value;
 	var data = {
 			id:id,

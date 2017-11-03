@@ -209,3 +209,8 @@ function getSessionData(){
 	}	
 	return listUserTypeData;
 }
+
+/*function clearUserTypeForm(){
+	  sessionStorage.clear();
+	  window.location="CreateUserType.html";
+}*/

@@ -93,3 +93,27 @@ function getUserId(){
 	xhttp.open("GET", "http://localhost:8085/HRMS/employee/list", true);
 	xhttp.send();
 }
+function clearEmployeeForm(){
+	  sessionStorage.clear();
+	  window.location="CreateEmployee.html";
+}
+function clearAttendanceForm(){
+	  sessionStorage.clear();
+	window.location="CreateEmployeeAttendance.html";
+}
+function clearEmployeeDailyTaskForm(){
+	  sessionStorage.clear();
+	  window.location="CreateEmployeeDailyTask.html";
+}
+function clearEmployeeLeaveForm(){
+	  sessionStorage.clear();
+	  window.location="CreateEmployeeLeave.html";
+}
+function clearHolidayForm(){
+	  sessionStorage.clear();
+	  window.location="CreateHoliday.html";
+}
+function clearUserTypeForm(){
+	  sessionStorage.clear();
+	  window.location="CreateUserType.html";
+}
