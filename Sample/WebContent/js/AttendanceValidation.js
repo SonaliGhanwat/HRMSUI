@@ -62,15 +62,22 @@ function intimeValidation(){
 	return true;
 }
 function isValidCurrentDate(){
-	 var getCurrentDate = new Date();
-	 var currentDate = getCurrentDate.getDate();
-	 var getdate = document.getElementById("date").value;
-	 var attendanceDate = new Date(getdate);
-	 var date = attendanceDate.getDate();
-	 if(currentDate==date){
-		 return true;
-	 }else if(date<=currentDate){
-		 document.getElementById("date_validation").innerHTML = "Please enter Today's Date";
-		 return false;
-	 }
+	var joinDate = new Date();
+	 var getdate = joinDate.getDate();
+	 var getMonth = joinDate.getMonth()+1;
+	 var getAttendncedate = document.getElementById("date").value;
+	 var attendanceDate = new Date(getAttendncedate);
+	 var getAttendate = attendanceDate.getDate();
+	 var getAttenMonth = attendanceDate.getMonth()+1;
+	 var newdate =  getMonth+"-"+ getdate;
+	 var AttendanceDate1 = getAttenMonth+"-"+ getAttendate;
+	 if (newdate ==AttendanceDate1 ) {
+			return true;
+		}else if(newdate < AttendanceDate1){
+			document.getElementById("date_validation").innerHTML = "please do not enter past date";
+			return false;
+		}else if(newdate > AttendanceDate1){
+			document.getElementById("date_validation").innerHTML = "please do not enter past date";
+			return false;
+		}
 }

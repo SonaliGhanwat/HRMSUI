@@ -239,7 +239,7 @@ function getSessionData(){
 	}	
 	return listEmpData;
 }
-function clearHolidayForm(){
+/*function clearHolidayForm(){
 	  sessionStorage.clear();
 	  window.location="CreateHoliday.html";
-}
+}*/

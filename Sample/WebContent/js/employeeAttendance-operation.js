@@ -40,7 +40,7 @@ function addEmployeeAttendance() {
 		openModal();
 	var myJSON = JSON.stringify(employeeAttendance);
 	console.log(myJSON);
-
+	closeModal();
 	http.open("POST", "http://localhost:8085/HRMS/employeeattendance/create", true);
 
 	http.setRequestHeader("Content-Type", "application/json; charset=utf8");
@@ -56,7 +56,7 @@ function addEmployeeAttendance() {
 				document.getElementById("response").innerHTML = data;
 				getDataHtmlFieldId();
 			}
-			closeModal();
+			
 		}
 	}
 
@@ -254,10 +254,9 @@ function getEmployeeAttendanceDataFromUI(data){
 			intime : intime,
 			outtime : outtime,
 			date : date
-			
-	}
+	};
 
-	return data
+	return data;
 	
 }
 
