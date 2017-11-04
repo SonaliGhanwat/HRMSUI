@@ -236,14 +236,23 @@ function getEmployeeDailyTaskDataFromUI(data){
 	var date = document.getElementsByName("date")[0].value;
 	var taskName = document.getElementsByName("taskName")[0].value;
 	var estimationTime = document.getElementsByName("estimationTime")[0].value;
-	/*var settime = estimationTime+":"+ 00;*/
+	if(estimationTime.split(":").length===2){
+		estimationTime = document.getElementById("estimationTime").value + ':00';
+	}else{
+		estimationTime = document.getElementById("estimationTime").value ;
+	}
 	var starttime = document.getElementsByName("starttime")[0].value;
-	/*var setStartTime = starttime+":"+ 00;*/
+	if(starttime.split(":").length===2){
+		starttime = document.getElementById("starttime").value + ':00';
+	}else{
+		starttime = document.getElementById("starttime").value ;
+	}
 	var endtime = document.getElementsByName("endtime")[0].value;
-	/*var setEndTime = endtime+":"+ 00;*/
-	
-	
-	
+	if(endtime.split(":").length===2){
+		endtime = document.getElementById("endtime").value + ':00';
+	}else{
+		endtime = document.getElementById("endtime").value ;
+	}
 	var data = {
 			id:id,
 			employee:empid,
@@ -252,15 +261,12 @@ function getEmployeeDailyTaskDataFromUI(data){
 			estimationTime : estimationTime,
 			starttime : starttime,
 			endtime : endtime
-			
 	}
 	return data
-	
 }
 function openModal() {
     document.getElementById('modal').style.display = 'block';
     document.getElementById('fade').style.display = 'block';
- 
 }
 
 function closeModal() {

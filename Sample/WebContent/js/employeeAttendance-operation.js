@@ -241,12 +241,22 @@ function dropDownList(){
 	xhttp.send();
 }
 function getEmployeeAttendanceDataFromUI(data){
-	//var url = "http://localhost:8085/HRMS/employeeleave/create";
+	var flag= sessionStorage.getItem("flag");
 	var id=sessionStorage.getItem("id");
 	var employee = document.getElementById("list").value;
 	var empid = parseInt(employee);
-	var intime = document.getElementById("intime").value + ':00';
-	var outtime = document.getElementById("outtime").value + ':00';
+	var intime = document.getElementById("intime").value ;
+	if(intime.split(":").length===2){
+		intime = document.getElementById("intime").value + ':00';
+	}else{
+		 intime = document.getElementById("intime").value ;
+	}
+	var outtime = document.getElementById("outtime").value ;
+	if(outtime.split(":").length===2){
+		outtime = document.getElementById("outtime").value + ':00';
+	}else{
+		 outtime = document.getElementById("outtime").value ;
+	}
 	var date = document.getElementById("date").value;
 	var data = {
 			id:id,
@@ -288,15 +298,7 @@ function createEmployeeAttendanceTable(empData){
 	tbody += "</table>"
 		return tbody
 }
-function openModal() {
-    document.getElementById('modal').style.display = 'block';
-    document.getElementById('fade').style.display = 'block';
-}
 
-function closeModal() {
-document.getElementById('modal').style.display = 'none';
-document.getElementById('fade').style.display = 'none';
-}
 function getSessionData(){
 	var inTime=sessionStorage.getItem("intime");
 	var outtime=sessionStorage.getItem("outtime");
@@ -312,10 +314,10 @@ function getDataHtmlFieldId(){
 	document.getElementsByName("outtime")[0].value="";
 	document.getElementsByName("date")[0].value="";
 }
-function clearAttendanceForm(){
+/*function clearAttendanceForm(){
 	  sessionStorage.clear();
 	window.location="CreateEmployeeAttendance.html";
-}
+}*/
 function getUserId(){
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
@@ -336,6 +338,15 @@ function getUserId(){
 	xhttp.send();
 }
 
+function openModal() {
+    document.getElementById('modal').style.display = 'block';
+    document.getElementById('fade').style.display = 'block';
+}
+
+function closeModal() {
+document.getElementById('modal').style.display = 'none';
+document.getElementById('fade').style.display = 'none';
+}
 function clearDisplayMessage(){
 	document.getElementById("displayMessage").innerHTML=""
 }

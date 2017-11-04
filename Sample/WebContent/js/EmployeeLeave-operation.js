@@ -29,12 +29,12 @@ function addEmployeeLeave() {
 	var myJSON = JSON.stringify(employeeLeave);
 	console.log(myJSON);
 	http.open("POST", "http://localhost:8085/HRMS/employeeleave/create", true);
-
+	closeModal();
 	http.setRequestHeader("Content-Type", "application/json; charset=utf8");
 	http.onreadystatechange = function() {// Call a function when the state
 											// changes.
 		if (http.readyState == 4 && http.status == 200) {
-			closeModal();
+			
 			var json = eval("(" + this.responseText + ")");
 			var data = json.message;
 			var code = json.code;
@@ -84,16 +84,16 @@ function editEmployeeLeave(id) {
 					id:empData.id,
 					employee:empData.employee.id,
 					subject : empData.subject,
-					leavedate : empData.leavedate,
-					afterleavejoiningdate : empData.afterleavejoiningdate
+					fromDate : empData.fromDate,
+					toDate : empData.toDate
 			};
 			
 			sessionStorage.setItem("flag", 1)
 			sessionStorage.setItem("id", empData.id)
 			sessionStorage.setItem("userid", empData.employee.id)
 			sessionStorage.setItem("subject", empData.subject);
-			sessionStorage.setItem("leavedate", empData.leavedate);
-			sessionStorage.setItem("afterleavejoiningdate", empData.afterleavejoiningdate);
+			sessionStorage.setItem("leavedate", empData.fromDate);
+			sessionStorage.setItem("afterleavejoiningdate", empData.toDate);
 			window.location="CreateEmployeeLeave.html";
 		}
 	}
@@ -109,12 +109,12 @@ function updateEmployeeLeave(){
 		openModal();
 	var myJSON = JSON.stringify(employeeLeave);
 	var subject=employeeLeave.subject;
-	var leavedate= employeeLeave.leavedate;
-	var afterleavejoiningdate=employeeLeave.afterleavejoiningdate;
+	var fromDate= employeeLeave.fromDate;
+	var toDate=employeeLeave.toDate;
 	var getUIEmpData={
 			subject:subject,
-			 leavedate:leavedate,
-			 afterleavejoiningdate:afterleavejoiningdate
+			fromDate:fromDate,
+			toDate:toDate
 	}
 	closeModal();		
 	getSessionData();
@@ -215,10 +215,10 @@ function createEmployeeLeaveTable(empData){
 		tbody += "<td>" + employeeid + "</td>"
 		var subject = empData[data].subject;
 		tbody += "<td>" + subject + "</td>"
-		var leavedate = empData[data].leavedate;
-		tbody += "<td>" + leavedate + "</td>"
-		var afterleavejoiningdate = empData[data].afterleavejoiningdate;
-		tbody += "<td>" + afterleavejoiningdate + "</td>"
+		var fromDate = empData[data].fromDate;
+		tbody += "<td>" + fromDate + "</td>"
+		var toDate = empData[data].toDate;
+		tbody += "<td>" + toDate + "</td>"
 		var totalLeave = empData[data].totalCount;
 		tbody += "<td>" + totalLeave + "</td>"
 		var pendingLeave = empData[data].pendingLeave;
@@ -242,14 +242,14 @@ function getEmployeeLeaveDataFromUI(data){
 	var employee = document.getElementById("list").value;
 	var empid = parseInt(employee);
 	var subject = document.getElementsByName("subject")[0].value;
-	var leavedate = document.getElementsByName("leavedate")[0].value;
-	var afterleavejoiningdate = document.getElementsByName("afterleavejoiningdate")[0].value;
+	var fromDate = document.getElementsByName("leavedate")[0].value;
+	var toDate = document.getElementsByName("afterleavejoiningdate")[0].value;
 	var data = {
 			id:id,
 			employee:empid,
 			subject : subject,
-			leavedate : leavedate,
-			afterleavejoiningdate : afterleavejoiningdate
+			fromDate : fromDate,
+			toDate : toDate
 	}
 	return data
 	
@@ -272,13 +272,13 @@ function getDataHtmlField(){
 }
 function getSessionData(){
 	var subject = sessionStorage.getItem("subject");
-	var leavedate = sessionStorage.getItem("leavedate");
-	var afterleavejoiningdate = sessionStorage.getItem("afterleavejoiningdate");
+	var fromDate = sessionStorage.getItem("leavedate");
+	var toDate = sessionStorage.getItem("afterleavejoiningdate");
 	 listEmpData={
 			 
 			 subject:subject,
-			 leavedate:leavedate,
-			 afterleavejoiningdate:afterleavejoiningdate
+			 fromDate:fromDate,
+			 toDate:toDate
 	}	
 	return listEmpData;
 }

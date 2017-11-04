@@ -2,15 +2,19 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Employee Daily Task  Form</title>
+<title>Employee Registration Form</title>
+<meta charset="ISO-8859-1">
+<title>EmployeeRegistrationForm</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"></link>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- <script type="text/javascript" src="js/DailyTaskValidation.js"></script> 
-<script type="text/javascript" src="js/employeeDailyTask-operation.js"></script>
- <script type="text/javascript" src="js/index.js"></script>
+  <script type="text/javascript" src="js/UserTypeValidation.js"></script> 
+<script type="text/javascript" src="js/usertype-operation.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<body onload="getUserTypeIdFromHtml();">
+
 </head>
 <header class="header" >
 <div id="main" style="height: 50px;">
@@ -46,7 +50,7 @@
             <div class="dropdown">
             <a href="#" onclick="attendanceFunction()" class="dropbtn"> Attendance <i class="down formdownarrow"></i> </a>
             <ul id="attendance" class=" dropdown-content">
-                <li><a onclick="clearAttendanceForm()" style=" min-width: 150px; cursor:pointer" >Add Employee Attendance</a></li>
+                <li><a onclick="clearAttendanceForm()"  style=" min-width: 150px; cursor:pointer" >Add Employee Attendance</a></li>
                 <li><a href="EmployeeAttendanceList.html"style=" min-width: 150px">View Employee Attendance List</a></li>
             </ul>
            </div> 
@@ -73,7 +77,7 @@
          <div class="dropdown">
             <a href="#"onclick="userTypeFunction()" class="dropbtn">User Type <i class="down formdownarrow"></i></a>
             <ul id="userType" class=" dropdown-content">
-                <li><a href="CreateUserType.html"style=" min-width: 150px;cursor:pointer">Add User Type</a></li>
+                <li><a onclick="clearUserTypeForm()"style=" min-width: 150px;cursor:pointer">Add User Type</a></li>
                 <li><a href="UserTypeList.html"style=" min-width: 150px">View All User Type</a></li>
             </ul>
             </div>
@@ -82,7 +86,7 @@
           <div class="dropdown">
             <a href="#"onclick="holidayFunction()" class="dropbtn">Holiday <i class="down formdownarrow"></i></a>
             <ul id="holiday" class=" dropdown-content">
-                <li><a href="CreateHoliday.html"style=" min-width: 200px;cursor:pointer">Add Holiday</a></li>
+                <li><a onclick="clearHolidayForm()"style=" min-width: 200px;cursor:pointer">Add Holiday</a></li>
                 <li><a href="HolidayList.html"style=" min-width: 200px">View All Holiday</a></li>
             </ul>
             </div>
@@ -97,74 +101,30 @@
 <div class="scroll">
 <div class="well " style=" height: 65px;">
 <div class="row">
-<h4 align="center" style="margin-top: 5px"> Add Daily Task</h4>
-<button  type="button" class="btn btn-primary " style="margin-left: 1100px;margin-top: -60px;" onclick="location.href='EmployeeDailyTaskList.html'">
-View Task
+<h4  align="center" style="margin-top: 5px"> Add User Type</h4>
+<button  type="button" class="btn btn-primary " style="margin-left: 1100px;margin-top: -60px;" onclick="location.href='UserTypeList.html'">
+View User Type
 </button>
 </div>
 </div>
-<fieldset >
-<p id="data"></p> 
-<form action="" name="Employee"  class="employee-form"  method="POST" >
-<div class="col-lg-12" >
+
+<fieldset>
+		<p id="data"></p>
+		<form action="" name="Employee" class="employee-form" method="POST">
+		 <div class="col-lg-12" >
 <div class=" form-group col-lg-7" style="color: White ">
-<div class=" form-control "style="margin-left: 70px;width: 700px;height: 800px ;border: 1px solid transparent;">
- <div class="row" style="margin-top: 40px;margin-left: 20px;">
- <div class="form-group ">
- <div class=" form-group col-lg-6"style="margin-left: 100px;">
-         <label  class="label-name required"> Date:</label>
-         <input type="date" id="date" name="date" class="loginUserid" onblur="isValidDate()" onchange="isValidDate()" >
-         <div id="date_validation" class="error"></div>
-      </div>
-      </div>
-      
-				<div class="form-group ">
-				<div class=" form-group col-lg-6 "style="margin-right: 30px;margin-left: 100px;">
-         <label  class="label-name required"> Task Name:</label>
-         <input type="text" id="taskName" name="taskName" class="loginUserid" placeholder="Task Name" onkeyup="isValidTaskName()"onblur="isValidTaskName()">
-         <div id="taskName_validation" class="passvalidation"></div>
-         </div>
-     </div>
-     <div class="form-group ">
-				<div class=" form-group col-lg-6 "style="margin-right: 30px;margin-left: 100px;">
-         <label  class="label-name "> Description:</label>
-         <textarea rows="4" cols="50" name="comment" form="usrform">
-Enter text here...</textarea>
-         <div id="taskName_validation" class="passvalidation"></div>
-         </div>
-     </div>
-    
- <div class="form-group ">
- <div class=" form-group col-lg-6"style="margin-left: 100px;">
-         <label  class="label-name required"> Estimation Time:</label>
-         <input type="time" id="estimationTime" style="width: 300px;" step="0" name="estimationTime" class="loginUserid" onkeyup="isValidEstimationTime()"onblur="isValidEstimationTime()">
-         <div id="estimationTime_validation" class="error"></div>
-      </div>
-       <div class="form-group ">
-				<div class=" form-group col-lg-6 "style="margin-right: 30px;margin-left: 100px;">
-         <label  class="label-name required"> Start Time:</label>
-         <input type="time" id="starttime" style="width: 300px;"name="starttime" class="loginUserid" step="0" onkeyup="isValidStartTime()"onblur="isValidStartTime()">
-         <div id="starttime_validation" class="passvalidation"></div>
-         </div>
-      </div>
-     </div>
+<div class=" form-control "style="margin-left: 70px;width: 700px;height: 700px ;border: 1px solid transparent;">
+ <div class="row">
+ <div class=" form-group col-lg-6" style="margin-top: 50px;">
   <div class="form-group ">
- <div class=" form-group col-lg-6"style="margin-left: 100px;">
-         <label  class="label-name required"> EndTime:</label>
-         <input type="time" id="endtime"  style="width: 300px;"name="endtime" class="loginUserid" step="0" onkeyup="isValidEndTime()"onblur="isValidEndTime()">
-         <div id="endtime_validation" class="error"></div>
-      </div>
-       
-    <div class="form-group ">
-				<div class=" form-group col-lg-6 "style="margin-right: 30px;margin-left: 100px;">
-         <label  class="label-name required"> EmployeeId:</label>
-        <select  id="list" class=" loginUserid" >
-		</select>  
-		</div>
-		</div>
-		</div>
-		
-    <div id="results"><!-- Results are displayed here --></div>
+                   <div class=" form-group col-lg-6"style="margin-left: 100px;">
+					<label class="label-name required "> LeaveType Name</label> 
+					<input type="text"id="leavetypename" name="leavetypename" class="loginUserid" placeholder="Leave Type Name" >
+					<div id="leavetypename_validation" class="error"></div>
+				</div>
+				</div>
+			</div>
+			 <div id="results"><!-- Results are displayed here --></div>
         <div id="fade"></div>
         <div id="modal">
             <!-- <img id="loader" src="image/loading.gif" /> -->
@@ -174,10 +134,10 @@ Enter text here...</textarea>
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h3 class="modal-title" >Employee Daily Task</h3>
+          <h3 class="modal-title" >User Type</h3>
         </div>
             <div class="modal-body">
-             <p id="response" style="font-size: 15px">Please Enter Employee Daily Task Information</p> 
+             <p id="response" style="font-size: 15px">Please Enter User Type Information</p> 
             </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -186,21 +146,19 @@ Enter text here...</textarea>
       
     </div>
   </div> 
-   <div >
-   <button id="submit" type="button" class="label-size submit-button btn" data-toggle="modal" data-target="#myModal" onclick="addOrUpdateEmployeeDailyTask();">Submit</button>  
- <!-- <input type="button" value="Submit"data-target="#myModal"data-toggle="modal" class="label-size submit-button" onclick="addOrUpdateEmployeeDailyTask();">  -->
+			<div >
+   <button id="submit" type="button" class="label-size submit-button btn" data-toggle="modal" data-target="#myModal"onclick="addOrUpdateUserType();">Submit</button> 
+ <!-- <input type="button" value="Submit"data-target="#myModal"data-toggle="modal" class="label-size submit-button" onclick="addOrUpdateEmployeeAttendance();"> -->
 </div>
 <div style="margin-left: 120px;margin-top: -60px;">
 <input type="reset" value="Cancel" class="cancel-btn submit-button btn"> 
 </div>
-   
-</div>
-</div>
-</div>
-</div>
+			</div>
+			</div>
+			</div>
+			</div>
 </form>
-
-</fieldset> 
+</fieldset>
 </div>
 
 </body>
