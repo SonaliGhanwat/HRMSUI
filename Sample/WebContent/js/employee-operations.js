@@ -173,6 +173,8 @@ function getEmployeeDataFromUI(){
 	var salary = document.getElementsByName("salary")[0].value;
 	var usertype = document.getElementById("list").value;
 	var userTypeid = parseInt(usertype);
+	var employeeType = document.getElementById("employeeType").value;
+	var employeeTypeid = parseInt(employeeType);
 
 	 getUIEmployeeData = {
 			id:id,
@@ -187,7 +189,8 @@ function getEmployeeDataFromUI(){
 		address : address,
 		department : department,
 		salary : salary,
-		usertype : userTypeid
+		usertype : userTypeid,
+		employeeTypeId : employeeTypeid
 	}
 	 return getUIEmployeeData
 }
@@ -332,6 +335,25 @@ function getDataHtmlFieldId(){
 	  sessionStorage.clear();
 	  window.location="CreateEmployee.html";
 }*/
-function sortListByDate(){
-	
+function employeeTypeList(){
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			document.getElementById("data").innerHTML = "";
+			var empData = JSON.parse(this.responseText);
+			var selectMenu="";
+			selectMenu+='<option value="">Select Employee Type</option>'+"<br>";
+			for(var i = 0; i < empData.length; i++) {
+				selectMenu+='<option value="'+empData[i].id +'">'+empData[i].type +'</option>'+"<br>";
+				
+				//document.getElementById("list").innerHTML.selectedIndex = selectMenu;
+			}
+			selectMenu+='</select>';
+			document.getElementById("employeeType").innerHTML = selectMenu;
+			
+		}
+	};
+
+	xhttp.open("GET", "http://localhost:8085/HRMS/employeetype/list", true);
+	xhttp.send();
 }

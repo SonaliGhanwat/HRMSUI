@@ -27,7 +27,7 @@
 </div>
 	</header>
 
- <body onload="dropDownList()" style="background-color:#F8F8FF;" > 
+ <body onload="dropDownList();employeeTypeList()" style="background-color:#F8F8FF;" > 
 <div  id="myDIV" class="sidenav " style="margin-top: 49px">
  
 	<ul style="margin-top: -10px">
@@ -39,6 +39,7 @@
             <ul id="employee" class=" dropdown-content">
                 <li><a onclick="clearEmployeeForm()" style=" min-width: 150px;cursor:pointer">Add Employee</a></li>
                 <li><a href="EmployeeList.html" style=" min-width: 150px">View All Employee</a></li>
+                 <li><a href="CreateEmployeeType.html" style=" min-width: 150px">Add Employee Type</a></li>
             </ul>
            </div> 
         </li>
@@ -69,6 +70,7 @@
             <ul id="leave" class=" dropdown-content">
                 <li><a onclick="clearEmployeeLeaveForm()"style=" min-width: 150px;cursor:pointer">Add Employee Leave</a></li>
                 <li><a href="EmployeeLeaveList.html"style=" min-width: 150px">View All Employee Leave</a></li>
+                <li><a href="CreateLeaveType.html"style=" min-width: 150px">Add Leave Type</a></li>
             </ul>
             </div>
         </li>
@@ -185,12 +187,8 @@ View Employee
 				<div class="col-lg-offset-5">
 				<div class=" form-group col-lg-6" >
 				<label class="label-name "> Employee type</label> 
-						<select class="loginUserid" style="width: 250px" >
-                         <option value="">Select</option>
-                         <option value="Permanent">Permanent</option>
-                         <option value="On Contract">On Contract</option>
-                         <option value="Temporary">Temporary</option>
-                          <option value="Trainee">Trainee</option>
+						<select id ="employeeType" class="loginUserid" style="width: 250px" >
+                         
                      </select>
                   </div>
                   </div>

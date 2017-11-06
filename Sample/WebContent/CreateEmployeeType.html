@@ -11,9 +11,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/UserTypeValidation.js"></script> 
-<script type="text/javascript" src="js/usertype-operation.js"></script>
+<script type="text/javascript" src="js/employeeType-operation.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
-<body onload="getUserTypeIdFromHtml();">
+<body onload="getEmployeeTypeIdFromHtml();">
 
 </head>
 <header class="header" >
@@ -103,9 +103,9 @@
 <div class="scroll">
 <div class="well " style=" height: 65px;">
 <div class="row">
-<h4  align="center" style="margin-top: 5px"> Add User Type</h4>
-<button  type="button" class="btn btn-primary " style="margin-left: 1100px;margin-top: -60px;" onclick="location.href='UserTypeList.html'">
-View User Type
+<h4  align="center" style="margin-top: 5px"> Add Employee Type</h4>
+<button  type="button" class="btn btn-primary " style="margin-left: 1100px;margin-top: -60px;" onclick="location.href='EmployeeTypeList.html'">
+View Employee Type
 </button>
 </div>
 </div>
@@ -120,16 +120,16 @@ View User Type
  <div class=" form-group col-lg-6" style="margin-top: 50px;">
   <div class="form-group ">
                    <div class=" form-group col-lg-6"style="margin-left: 100px;">
-					<label class="label-name required "> UserType Name</label> 
-					<input type="text"id="usertypeName" name="usertypeName" class="loginUserid" placeholder="UserType Name"onkeyup="isvalidUserTypeName()"onblur="isvalidUserTypeName()" >
-					<div id="usertypeName_validation" class="error"></div>
+					<label class="label-name required "> Employee Type Name</label> 
+					<input type="text"id="employeetypeName" name="employeetypeName" class="loginUserid" placeholder=" Employee Type Name" >
+					<div id="employeetypeName_validation" class="error"></div>
 				</div>
 				</div>
 				 <div class="form-group ">
                    <div class=" form-group col-lg-6 "style="margin-right: 30px;margin-left: 100px;">
-					<label class="label-name required"> Description</label> <input type="text"
-						id="description" name="description" class="loginUserid" placeholder="Description"onkeyup="isvalidUserTypeDescription()"onblur="isvalidUserTypeDescription()" >
-					<div id="Description_validation" class="passvalidation"></div>
+					<label class="label-name required"> No Of Leaves</label> <input type="number"
+						id="noofleaves" name="noofleaves" class="loginUserid" placeholder="no_of_leaves">
+					<div id="noofleaves_validation" class="passvalidation"></div>
 				</div>
 				</div>
 			</div>
@@ -156,7 +156,7 @@ View User Type
     </div>
   </div> 
 			<div >
-   <button id="submit" type="button" class="label-size submit-button btn" data-toggle="modal" data-target="#myModal"onclick="addOrUpdateUserType();">Submit</button> 
+   <button id="submit" type="button" class="label-size submit-button btn" data-toggle="modal" data-target="#myModal"onclick="addOrUpdateEmployeeType();">Submit</button> 
  <!-- <input type="button" value="Submit"data-target="#myModal"data-toggle="modal" class="label-size submit-button" onclick="addOrUpdateEmployeeAttendance();"> -->
 </div>
 <div style="margin-left: 120px;margin-top: -60px;">

@@ -1,6 +1,6 @@
-var listLeaveTypeData = "";
-var getUILeaveTypeData = "";
-function displayLeaveTypeList() {
+var listEmployeeTypeData = "";
+var getUIEmployeeTypeData = "";
+function displayEmployeeTypeList() {
 	document.getElementById('results').innerHTML = '';
 	openModal();
 	var xhttp = new XMLHttpRequest();
@@ -9,28 +9,26 @@ function displayLeaveTypeList() {
 		if (this.readyState == 4 && this.status == 200) {
 			document.getElementById("createTable").innerHTML = "";
 			var empData = JSON.parse(this.responseText);
-			var tbody =  createLeaveTable(empData);
+			var tbody =  createEmployeeTypeTable(empData);
 			document.getElementById("displayList").innerHTML = tbody;
 			closeModal();
 		}
 	};
 
-	xhttp.open("GET", "http://localhost:8085/HRMS/leavetype/list", true);
+	xhttp.open("GET", "http://localhost:8085/HRMS/employeetype/list", true);
 	xhttp.send();
 
 }
 
-function addLeaveType() {
+function addEmployeeType() {
 	
 	var http = new XMLHttpRequest();
-	var leaveType = getLeaveTypeFromUI(data);
+	var employeeType = getEmployeeTypeFromUI(data);
 	//if(validateUserType(userType)){
 		document.getElementById('results').innerHTML = '';
 		openModal();
-		var myJSON = JSON.stringify(leaveType);
-		console.log(userType);
-		http.open("POST", "http://localhost:8085/HRMS/leavetype/create", true);
-	
+		var myJSON = JSON.stringify(employeeType);
+		http.open("POST", "http://localhost:8085/HRMS/employeetype/create", true);
 		http.setRequestHeader("Content-Type", "application/json; charset=utf8");
 		http.onreadystatechange = function() {// Call a function when the state
 			closeModal();				// changes.
@@ -44,13 +42,16 @@ function addLeaveType() {
 					document.getElementById("response").innerHTML = data;
 					getDataHtmlField();
 				}
+				
+				
+				
 			}
 		}
 	
 		http.send(myJSON);
 	//}
 }
-function deleteLeaveType(id) {
+function deleteEmployeeType(id) {
 	document.getElementById('results').innerHTML = '';
 	openModal();
 	var xhttp = new XMLHttpRequest();
@@ -62,15 +63,15 @@ function deleteLeaveType(id) {
 			var data = json.message;
 			document.getElementById("response").innerHTML = data;
 			closeModal();
-			displayLeaveTypeList();
+			displayEmployeeTypeList();
 		}
 	}
-	xhttp.open("DELETE", "http://localhost:8085/HRMS/leavetype/delete/"
+	xhttp.open("DELETE", "http://localhost:8085/HRMS/employeetype/delete/"
 			+ id, true);
 	xhttp.send();
 
 }
-function editLeaveType(id) {
+function editEmployeeType(id) {
 	
 	var xhttp = new XMLHttpRequest();
 	
@@ -81,37 +82,37 @@ function editLeaveType(id) {
 			//updatedisplayTable(empData);
 			var employeeData = {
 					id:empData.id,
-					name : empData.name,
-					
+					type : empData.type,
+					noOfLeves : empData.noOfLeves,
 			};
 			
 			sessionStorage.setItem("flag", 1)
 			sessionStorage.setItem("id", empData.id)
-			sessionStorage.setItem("name", empData.name)
-		
+			sessionStorage.setItem("type", empData.type)
+			sessionStorage.setItem("noOfLeves", empData.noOfLeves);
 			
-			window.location="CreateLeaveType.html";
+			window.location="CreateEmployeeType.html";
 		}
 	}
-	xhttp.open("GET", "http://localhost:8085/HRMS/leavetype/"+id, true);
+	xhttp.open("GET", "http://localhost:8085/HRMS/employeetype/"+id, true);
 	xhttp.send();
 }
-function updateLeaveType(){
+function updateEmployeeType(){
 	var http = new XMLHttpRequest();
-	var leaveType = getLeaveTypeFromUI(data);
+	var employeeType = getEmployeeTypeFromUI(data);
 	
 	//if(validateUserType(userType)){
 		document.getElementById('results').innerHTML = '';
 		openModal();
-	var myJSON = JSON.stringify(leaveType);
+	var myJSON = JSON.stringify(employeeType);
 	console.log(myJSON);
 	closeModal();
-	getLeaveTypeFromUI();
+	getEmployeeTypeFromUI();
 	getSessionData();
-	if(JSON.stringify(listLeaveTypeData) === JSON.stringify(getUILeaveTypeData) ){
+	if(JSON.stringify(listEmployeeTypeData) === JSON.stringify(getUIEmployeeTypeData) ){
 		document.getElementById("response").innerHTML ="Please Do Some Changes" ;
 	}else{
-	http.open("PUT", "http://localhost:8085/HRMS/leavetype/update", true);
+	http.open("PUT", "http://localhost:8085/HRMS/employeetype/update", true);
 
 	http.setRequestHeader("Content-Type", "application/json; charset=utf8");
 	http.onreadystatechange = function() {// Call a function when the state
@@ -129,48 +130,52 @@ function updateLeaveType(){
 	http.send(myJSON);
 //}
 }
-function addOrUpdateLeaveType(){
+function addOrUpdateEmployeeType(){
 	var flag= sessionStorage.getItem("flag");
 	if(flag==null){
-		addLeaveType();
+		addEmployeeType();
 	}else if(flag==1){
-		updateLeaveType();
+		updateEmployeeType();
 	}else{
 		
 	}
 }
-function getLeaveTypeIdFromHtml(){
+function getEmployeeTypeIdFromHtml(){
 	document.getElementById("data").value = sessionStorage.getItem("id");
-	document.getElementById("leavetypename").value = sessionStorage.getItem("name");
-	
+	document.getElementById("employeetypeName").value = sessionStorage.getItem("type");
+	document.getElementById("noofleaves").value = sessionStorage.getItem("noOfLeves");
 	
 }
-function getLeaveTypeFromUI(){
+function getEmployeeTypeFromUI(){
 	//var url = "http://localhost:8085/HRMS/employee/create";
 	var id=sessionStorage.getItem("id");
-	var laeavetypeName = document.getElementsByName("leavetypename")[0].value;
-	 getUILeaveTypeData = {
+	var type = document.getElementsByName("employeetypeName")[0].value;
+	var noofleaves = document.getElementsByName("noofleaves")[0].value;
+	 getUIEmployeeTypeData = {
 			id:id,
-			name : laeavetypeName,
+			type : type,
+			noOfLeves : noofleaves,
 	}
-	 return getUILeaveTypeData;
+	 return getUIEmployeeTypeData;
 }
 
-function createLeaveTable(empData){
+function createEmployeeTypeTable(empData){
 	var tbody = "";
 
 	for ( var data in empData) {
 		tbody += "<tr>"
 		var id = empData[data].id;
 		/*tbody += "<td>" + id + "</td>"*/
-		var name = empData[data].name;
-		tbody += "<td>" + name + "</td>"
+		var type = empData[data].type;
+		tbody += "<td>" + type + "</td>"
 		/*var password = empData[data].password;
 		tbody += "<td>" + password + "</td>"*/
+		var noOfLeves = empData[data].noOfLeves;
+		tbody += "<td>" + noOfLeves + "</td>"
 		
-		tbody += "<td>" + "<button  value='Delete' onclick='deleteLeaveType (" +id+ ")' >Delete</button>"
+		tbody += "<td>" + "<button  value='Delete' onclick='deleteEmployeeType(" +id+ ")' >Delete</button>"
 				+ "</td>";
-		tbody += "<td>" + "<button  value='Edit' onclick='editLeaveType(" +id+ ")' >Edit</button>"
+		tbody += "<td>" + "<button  value='Edit' onclick='editEmployeeType(" +id+ ")' >Edit</button>"
 		+ "</td>";
 		tbody += "<tr>";
 
@@ -188,16 +193,22 @@ document.getElementById('modal').style.display = 'none';
 document.getElementById('fade').style.display = 'none';
 }
 function getDataHtmlField(){
-	document.getElementsByName("leavetypename")[0].value="";
+	document.getElementsByName("employeetypeName")[0].value="";
+	document.getElementsByName("noofleaves")[0].value="";
 }
 function getSessionData(){
 	var id=sessionStorage.getItem("id");
-	var leavetypeName = sessionStorage.getItem("name");
-	 listLeaveTypeData={
+	var type = sessionStorage.getItem("type");
+	var noOfLeves = sessionStorage.getItem("noOfLeves");
+	listEmployeeTypeData={
 			 id:id,
-			 name:leavetypeName,
+			 type:type,
+			 noOfLeves:noOfLeves
 	}	
-	return listLeaveTypeData;
+	return listEmployeeTypeData;
 }
 
-
+/*function clearUserTypeForm(){
+	  sessionStorage.clear();
+	  window.location="CreateUserType.html";
+}*/
