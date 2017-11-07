@@ -95,7 +95,9 @@ function editEmployee(id) {
 					address : empData.address,
 					department : empData.department,
 					salary : empData.salary,
-					usertype : empData.usertype.id
+					usertype : empData.usertype.id,
+					employeeType : empData.employeetype.id,
+					designation : empData.designation.id
 			};
 			sessionStorage.setItem("flag", 1)
 			sessionStorage.setItem("id", employeeData.id)
@@ -111,6 +113,8 @@ function editEmployee(id) {
 			sessionStorage.setItem("department", employeeData.department);
 			sessionStorage.setItem("salary", employeeData.salary);
 			sessionStorage.setItem("usertype", employeeData.usertype);
+			sessionStorage.setItem("employeeType", employeeData.employeeType);
+			sessionStorage.setItem("designation", employeeData.designation);
 			window.location="CreateEmployee.html";
 		}
 	}
@@ -120,12 +124,11 @@ function editEmployee(id) {
 function updateEmployee(){
 	var http = new XMLHttpRequest();
 	var employee = getEmployeeDataFromUI(data);
-	
+
 	if(validateEmployee(employee)){
 		
 	var myJSON = JSON.stringify(employee);
 	console.log(myJSON);
-	getEmployeeDataFromUI();
 	getSessionData();
 	if(JSON.stringify(employeeData) === JSON.stringify(getUIEmployeeData) ){
 		document.getElementById("response").innerHTML ="Please Do Some Changes" ;
@@ -175,6 +178,8 @@ function getEmployeeDataFromUI(){
 	var userTypeid = parseInt(usertype);
 	var employeeType = document.getElementById("employeeType").value;
 	var employeeTypeid = parseInt(employeeType);
+	var getDesignationid = document.getElementById("designation").value;
+	var designationid = parseInt(getDesignationid);
 
 	 getUIEmployeeData = {
 			id:id,
@@ -190,7 +195,8 @@ function getEmployeeDataFromUI(){
 		department : department,
 		salary : salary,
 		usertype : userTypeid,
-		employeeTypeId : employeeTypeid
+		employeetype : employeeTypeid,
+		designation : designationid
 	}
 	 return getUIEmployeeData
 }
@@ -300,6 +306,10 @@ function getSessionData(){
 	var salary = sessionStorage.getItem("salary");
 	var usertype = sessionStorage.getItem("usertype");
 	var userTypeid = parseInt(usertype);
+	var employeeType = sessionStorage.getItem("employeeType");
+	var employeeTypeid = parseInt(employeeType);
+	var getDesignationid =sessionStorage.getItem("designation");
+	var designationid = parseInt(getDesignationid);
 	 employeeData = {
 			id:id,
 		userid : userid,
@@ -313,7 +323,9 @@ function getSessionData(){
 		address : address,
 		department : department,
 		salary : salary,
-		usertype : userTypeid
+		usertype : userTypeid,
+		employeetype : employeeTypeid,
+		designation : designationid
 	}
 	 return employeeData
 }
@@ -329,7 +341,9 @@ function getDataHtmlFieldId(){
 	document.getElementsByName("address")[0].value = "";
 	document.getElementsByName("department")[0].value = "";
 	document.getElementsByName("salary")[0].value = "";
-	document.getElementById("list")[0].value;
+	document.getElementById("list").value="";
+	document.getElementById("employeeType").value= "";
+	document.getElementById("designation").value="";
 }
 /*function clearEmployeeForm(){
 	  sessionStorage.clear();
@@ -350,10 +364,31 @@ function employeeTypeList(){
 			}
 			selectMenu+='</select>';
 			document.getElementById("employeeType").innerHTML = selectMenu;
+			document.getElementById("employeeType").value = sessionStorage.getItem("employeeType");
 			
 		}
 	};
 
 	xhttp.open("GET", "http://localhost:8085/HRMS/employeetype/list", true);
+	xhttp.send();
+}
+function designationList(){
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			document.getElementById("data").innerHTML = "";
+			var empData = JSON.parse(this.responseText);
+			var selectMenu="";
+			selectMenu+='<option value="">Select Designation</option>'+"<br>";
+			for(var i = 0; i < empData.length; i++) {
+				selectMenu+='<option value="'+empData[i].id +'">'+empData[i].name +'</option>'+"<br>";
+			}
+			selectMenu+='</select>';
+			document.getElementById("designation").innerHTML = selectMenu;
+			document.getElementById("designation").value = sessionStorage.getItem("designation");
+		}
+	};
+
+	xhttp.open("GET", "http://localhost:8085/HRMS/designation/list", true);
 	xhttp.send();
 }

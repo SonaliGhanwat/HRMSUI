@@ -481,9 +481,9 @@ background-color: #fff;
 
 .dropdown li a:hover {
 	
-	background-color: #808080;
+	 background-color: #111; 
 	width: 200px;
-	    border-top: 1px solid #777
+	/*  border-top: 1px solid #777 */
 	
 	}
 
@@ -501,7 +501,7 @@ background-color: #fff;
     top: 0;
     left: 0;
     background-color: white;
-    overflow-x: hidden;
+   overflow-x: hidden; 
     transition: 0.5s;
     padding-top: 60px;
 }

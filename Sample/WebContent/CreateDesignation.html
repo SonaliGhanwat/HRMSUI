@@ -1,21 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<title>Employee List</title>
-<style type="text/css">
-table {table-collapse:collapse; border-spacing:0}
-td {border:1px groove black; padding:7px; }
-th {border:1px groove black; padding:7px; }
-.ctr {text-align:center}
-</style>
+<title>Employee Registration Form</title>
+</head>
+<body>
+<head>
+<meta charset="ISO-8859-1">
+<title>EmployeeAttendanceForm</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"></link>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/employeeDailyTask-operation.js"></script>
+<script type="text/javascript" src="js/AttendanceValidation.js"></script>
+<script type="text/javascript" src="js/Designation-operation.js"></script>
  <script type="text/javascript" src="js/index.js"></script>
+ <body onload="getDesignationIdFromHtml();">
 </head>
 <header class="header" >
 <div id="main" style="height: 50px;">
@@ -28,8 +29,8 @@ th {border:1px groove black; padding:7px; }
 	 <img style="height: 44px ; margin-left: 598px;" src="https://contacts.zoho.com/file?ID=654944339&amp;fs=thumb" empid="401583000000111005" imgtype="thumb" aria-expanded="false">
 </div>
 	</header>
-	<body onload="displayEmployeeDailyTaskList() " >
-	
+
+ <body  style="background-color:#F8F8FF;" > 
 <div  id="myDIV" class="sidenav " style="margin-top: 49px">
  
 	<ul style="margin-top: -10px">
@@ -42,8 +43,7 @@ th {border:1px groove black; padding:7px; }
                 <li><a onclick="clearEmployeeForm()" style=" min-width: 150px;cursor:pointer">Add Employee</a></li>
                 <li><a href="EmployeeList.html" style=" min-width: 150px">View All Employee</a></li>
                  <li><a href="CreateEmployeeType.html" style=" min-width: 150px">Add Employee Type</a></li>
-                    <li><a href="CreateDesignation.html" style=" min-width: 150px">Add Designation </a></li>
-                
+                 <li><a href="CreateDesignation.html" style=" min-width: 150px">Add Designation </a></li>
             </ul>
            </div> 
         </li>
@@ -103,60 +103,58 @@ th {border:1px groove black; padding:7px; }
         </li>
 </ul>
 </div>
-<p id="data"></p> 
-<body onmousedown="getUserId()"></body>
 <div class="scroll">
 <div class="well " style=" height: 65px;">
 <div class="row">
-<h4  align="center" style="margin-top: 5px"> View Task </h4>
-<!-- <form action="" name="Employee" onchange="displayEmployeeAttendanceByDate(Date)" method="GET" > 
- <input type="date" id="Date"  class=" textbox form-control" onload =" displayEmployeeAttendanceByDate(Date)" style="margin-left: 800px; width: 200px;margin-top: -35px;" placeholder="Filter by Date"><br>
- </form> -->
- <div style="margin-left: 750px;margin-top: -50px;"   >
- <label  class="label-name "> Search By UserId:</label> 
-					 <select  id="list" name=employee class=" loginUserid" style="width: 200px;" onload="displayDailyTaskByUserid()">
-        <option value="">Select EmployeeId</option>
-		</select>  
-		
-		</div>
-<button  type="button" class="btn btn-primary " style="margin-left: 1100px;margin-top: -60px;" onclick="location.href='CreateEmployeeDailyTask.html'">
-Add Task
+<h4   align="center" style="margin-top: 5px"> Add Designation </h4>
+<button  type="button" class="btn btn-primary " style="margin-left: 1100px;margin-top: -60px;" onclick="location.href='DesignationList.html'">
+View Designation 
 </button>
 </div>
 </div>
-</div>
-<div id="results"><!-- Results are displayed here --></div>
+<fieldset>
+ <p id="data"></p> 
+<form action="" name="Employee"  class="employee-form"   method="POST" >
+ <div class="col-lg-12" >
+<div class=" form-group col-lg-7" style="color: White ">
+<div class=" form-control "style="margin-left: 70px;width: 700px;height: 700px ;border: 1px solid transparent;">
+ <div class="row">
+ <div class=" form-group col-lg-6" style="margin-top: 50px;">
+  <div class="form-group ">
+                   <div class=" form-group col-lg-6"style="margin-left: 100px;">
+					   <label  class="label-name required" style="margin-top: -15px;"> Designation Name:</label>
+					 <input type="text" id="designationName" name="designationName"  class="loginUserid" >
+                </div>
+                <div class="form-group ">
+                   <div class=" form-group col-lg-6 "style="margin-right: 30px;margin-left: 100px;">
+                    <label  class="label-name required" style="margin-top: -15px;"> Band:</label>
+					 <input type="number" id="band" name="band"  class="loginUserid"  >
+					<div id="intime_validation" class="passvalidation" ></div>
+                </div>
+                </div>
+ 
+  <div class="form-group ">
+ <div class=" form-group col-lg-6"style="margin-left: 100px;">
+         <label  class="label-name required"> Level</label>
+         <input type="number" id="level" name="level" class="loginUserid"  >
+         <div id="outtime_validation" class="error"></div>
+      </div>
+      </div>
+     
+       <div id="results"></div>
         <div id="fade"></div>
         <div id="modal">
-            <!-- <img id="loader" src="image/loading.gif" /> -->
+            <img id="loader" src="image/loading.gif" />
         </div>
-<p id="createTable"></p> 
-<table class="table table-bordered table table-hover"style="margin-left: 200px; width: 85%;margin-top: -20px;">
-<tr>
-        
-		<th>Employeeid</th>
-		<th>Date</th>
-		<th>TaskName</th>
-		<th>EstimationTime</th>
-		<th>StartTime</th>
-		<th>EndTime</th>
-		<th>TakenTime</th>
-		<th>Delete</th>
-		<th>Edit</th>
-		
-		</tr> 
-<tbody id="displayList" ></tbody>
-</table>
-<div data-toggle="modal" data-target="#myModal"></div>
-<div class="modal fade" id="myModal" role="dialog">
+        <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h3 class="modal-title" >Employee Daily Task</h3>
+          <h3 class="modal-title" >Employee Attendance</h3>
         </div>
             <div class="modal-body">
-             <p id="response" style="font-size: 15px"></p> 
+             <p id="response" style="font-size: 15px">Please Enter Employee Attendance Information</p> 
             </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -165,5 +163,27 @@ Add Task
       
     </div>
   </div> 
+  
+  
+    <div >
+   <button id="submit" type="button" class="label-size submit-button btn" data-toggle="modal" data-target="#myModal"onclick="addOrUpdateDesignation();">Submit</button> 
+ <!-- <input type="button" value="Submit"data-target="#myModal"data-toggle="modal" class="label-size submit-button" onclick="addOrUpdateEmployeeAttendance();"> -->
+</div>
+<div style="margin-left: 120px;margin-top: -60px;">
+<input type="reset" value="Cancel" class="cancel-btn submit-button btn"> 
+</div>
+ 
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</form>
+</fieldset>
+</div>
+
+</body>
 </body>
 </html>

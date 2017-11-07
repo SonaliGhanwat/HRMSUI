@@ -1,21 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html >
 <head>
 <meta charset="ISO-8859-1">
 <title>Employee List</title>
-<style type="text/css">
-table {table-collapse:collapse; border-spacing:0}
-td {border:1px groove black; padding:7px; }
-th {border:1px groove black; padding:7px; }
-.ctr {text-align:center}
-</style>
+
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/employeeDailyTask-operation.js"></script>
- <script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" src="js/Designation-operation.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+
+<!-- <script src="EditEmployeeattendance.html"></script> -->
 </head>
 <header class="header" >
 <div id="main" style="height: 50px;">
@@ -28,8 +25,7 @@ th {border:1px groove black; padding:7px; }
 	 <img style="height: 44px ; margin-left: 598px;" src="https://contacts.zoho.com/file?ID=654944339&amp;fs=thumb" empid="401583000000111005" imgtype="thumb" aria-expanded="false">
 </div>
 	</header>
-	<body onload="displayEmployeeDailyTaskList() " >
-	
+
 <div  id="myDIV" class="sidenav " style="margin-top: 49px">
  
 	<ul style="margin-top: -10px">
@@ -39,10 +35,10 @@ th {border:1px groove black; padding:7px; }
            <div class="dropdown">
             <a href="#" onclick="employeeFunction()" class="dropbtn">Employee <span class="down formdownarrow" ></span></a>
             <ul id="employee" class=" dropdown-content">
-                <li><a onclick="clearEmployeeForm()" style=" min-width: 150px;cursor:pointer">Add Employee</a></li>
+                <li><a href="CreateEmployee.html" style=" min-width: 150px;cursor:pointer">Add Employee</a></li>
                 <li><a href="EmployeeList.html" style=" min-width: 150px">View All Employee</a></li>
                  <li><a href="CreateEmployeeType.html" style=" min-width: 150px">Add Employee Type</a></li>
-                    <li><a href="CreateDesignation.html" style=" min-width: 150px">Add Designation </a></li>
+                 <li><a href="CreateDesignation.html" style=" min-width: 150px">Add Designation </a></li>
                 
             </ul>
            </div> 
@@ -82,7 +78,7 @@ th {border:1px groove black; padding:7px; }
          <div class="dropdown">
             <a href="#"onclick="userTypeFunction()" class="dropbtn">User Type <i class="down formdownarrow"></i></a>
             <ul id="userType" class=" dropdown-content">
-                <li><a href="CreateUserType.html"style=" min-width: 150px;cursor:pointer">Add User Type</a></li>
+                <li><a onclick="clearUserTypeForm()"style=" min-width: 150px;cursor:pointer">Add User Type</a></li>
                 <li><a href="UserTypeList.html"style=" min-width: 150px">View All User Type</a></li>
             </ul>
             </div>
@@ -91,7 +87,7 @@ th {border:1px groove black; padding:7px; }
           <div class="dropdown">
             <a href="#"onclick="holidayFunction()" class="dropbtn">Holiday <i class="down formdownarrow"></i></a>
             <ul id="holiday" class=" dropdown-content">
-                <li><a href="CreateHoliday.html"style=" min-width: 200px;cursor:pointer">Add Holiday</a></li>
+                <li><a onclick="clearHolidayForm()"style=" min-width: 200px;cursor:pointer">Add Holiday</a></li>
                 <li><a href="HolidayList.html"style=" min-width: 200px">View All Holiday</a></li>
             </ul>
             </div>
@@ -103,49 +99,40 @@ th {border:1px groove black; padding:7px; }
         </li>
 </ul>
 </div>
-<p id="data"></p> 
-<body onmousedown="getUserId()"></body>
 <div class="scroll">
 <div class="well " style=" height: 65px;">
 <div class="row">
-<h4  align="center" style="margin-top: 5px"> View Task </h4>
-<!-- <form action="" name="Employee" onchange="displayEmployeeAttendanceByDate(Date)" method="GET" > 
- <input type="date" id="Date"  class=" textbox form-control" onload =" displayEmployeeAttendanceByDate(Date)" style="margin-left: 800px; width: 200px;margin-top: -35px;" placeholder="Filter by Date"><br>
+<h4  align="center" style="margin-top: 5px"> View Designation  </h4>
+<!-- <form action="" name="Employee" onchange="displayEmployeeLeaveByDate()" method="GET" > 
+ <input type="date" id="Date"  class=" textbox form-control" onload =" displayEmployeeLeaveByDate()" style="margin-left: 800px; width: 200px;margin-top: -35px;" placeholder="Filter by Date"><br>
  </form> -->
- <div style="margin-left: 750px;margin-top: -50px;"   >
- <label  class="label-name "> Search By UserId:</label> 
-					 <select  id="list" name=employee class=" loginUserid" style="width: 200px;" onload="displayDailyTaskByUserid()">
-        <option value="">Select EmployeeId</option>
-		</select>  
-		
-		</div>
-<button  type="button" class="btn btn-primary " style="margin-left: 1100px;margin-top: -60px;" onclick="location.href='CreateEmployeeDailyTask.html'">
-Add Task
+<button  type="button" class="btn btn-primary " style="margin-left: 1100px;margin-top: -60px;" onclick="location.href='CreateDesignation.html'">
+Add Designation 
 </button>
 </div>
 </div>
 </div>
-<div id="results"><!-- Results are displayed here --></div>
+<div id="results"></div>
         <div id="fade"></div>
         <div id="modal">
             <!-- <img id="loader" src="image/loading.gif" /> -->
         </div>
+<body onload="displayDesignationList() " >
+
 <p id="createTable"></p> 
-<table class="table table-bordered table table-hover"style="margin-left: 200px; width: 85%;margin-top: -20px;">
+<table class="table table-bordered table table-hover"  style="margin-top: -20px; width: 85%;margin-left: 200px;">
 <tr>
         
-		<th>Employeeid</th>
-		<th>Date</th>
-		<th>TaskName</th>
-		<th>EstimationTime</th>
-		<th>StartTime</th>
-		<th>EndTime</th>
-		<th>TakenTime</th>
+		
+		<th>Designation </th>
+		<th>Band</th>
+		<th>Level</th>
 		<th>Delete</th>
 		<th>Edit</th>
 		
+		
 		</tr> 
-<tbody id="displayList" ></tbody>
+<tbody id="displayList"></tbody>
 </table>
 <div data-toggle="modal" data-target="#myModal"></div>
 <div class="modal fade" id="myModal" role="dialog">
@@ -153,7 +140,7 @@ Add Task
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h3 class="modal-title" >Employee Daily Task</h3>
+          <h3 class="modal-title" >User Type</h3>
         </div>
             <div class="modal-body">
              <p id="response" style="font-size: 15px"></p> 
@@ -165,5 +152,6 @@ Add Task
       
     </div>
   </div> 
+  
 </body>
 </html>

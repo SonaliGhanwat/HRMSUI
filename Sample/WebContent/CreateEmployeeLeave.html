@@ -23,7 +23,7 @@
 </div>
 	</header>
 
- <body onload="dropDownList()" style="background-color:#F8F8FF;" > 
+ <body onload="dropDownList();LeaveTypeList()" style="background-color:#F8F8FF;" > 
 <div  id="myDIV" class="sidenav " style="margin-top: 49px">
  
 	<ul style="margin-top: -10px">
@@ -36,6 +36,7 @@
                 <li><a onclick="clearEmployeeForm()" style=" min-width: 150px;cursor:pointer">Add Employee</a></li>
                 <li><a href="EmployeeList.html" style=" min-width: 150px">View All Employee</a></li>
                  <li><a href="CreateEmployeeType.html" style=" min-width: 150px">Add Employee Type</a></li>
+                 <li><a href="CreateDesignation.html" style=" min-width: 150px">Add Designation </a></li>
             </ul>
            </div> 
         </li>
@@ -135,11 +136,8 @@ Enter text here...</textarea> -->
    <div class="form-group ">
                    <div class=" form-group col-lg-6 "style="margin-right: 30px;margin-left: 100px;">
          <label  class="label-name  "> Leave type:</label>
-         <select class=" loginUserid">
-          <option value="">Select</option>
-            <option value="volvo">Sick Leave</option>
-            <option value="saab">Study Leave</option>
-            <option value="opel">Leave for Emergency Services</option>
+         <select id ="leavetype" name="leavetype" class=" loginUserid">
+          
          </select>
          
          </div>

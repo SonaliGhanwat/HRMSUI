@@ -57,6 +57,7 @@ function sidebar() {
     var x = document.getElementById("myDIV");
     if (x.style.display === "none") {
         x.style.display = "block";
+        
     } else {
         x.style.display = "none";
         
@@ -116,4 +117,7 @@ function clearHolidayForm(){
 function clearUserTypeForm(){
 	  sessionStorage.clear();
 	  window.location="CreateUserType.html";
+}
+function constantHeader(){
+	window.location="menu.html";
 }

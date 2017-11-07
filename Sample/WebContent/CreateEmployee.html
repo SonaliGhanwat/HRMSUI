@@ -27,7 +27,7 @@
 </div>
 	</header>
 
- <body onload="dropDownList();employeeTypeList()" style="background-color:#F8F8FF;" > 
+ <body onload="dropDownList();employeeTypeList();designationList();" style="background-color:#F8F8FF;" > 
 <div  id="myDIV" class="sidenav " style="margin-top: 49px">
  
 	<ul style="margin-top: -10px">
@@ -40,6 +40,7 @@
                 <li><a onclick="clearEmployeeForm()" style=" min-width: 150px;cursor:pointer">Add Employee</a></li>
                 <li><a href="EmployeeList.html" style=" min-width: 150px">View All Employee</a></li>
                  <li><a href="CreateEmployeeType.html" style=" min-width: 150px">Add Employee Type</a></li>
+                 <li><a href="CreateDesignation.html" style=" min-width: 150px">Add Designation </a></li>
             </ul>
            </div> 
         </li>
@@ -187,7 +188,7 @@ View Employee
 				<div class="col-lg-offset-5">
 				<div class=" form-group col-lg-6" >
 				<label class="label-name "> Employee type</label> 
-						<select id ="employeeType" class="loginUserid" style="width: 250px" >
+						<select id ="employeeType" name="employeeType"class="loginUserid" style="width: 250px" >
                          
                      </select>
                   </div>
@@ -206,7 +207,22 @@ View Employee
 			</div>
 			</div>
 			</div>
-			
+			 <div class="row" >
+				<div class=" form-group col-lg-6" style="margin-left: 35px;">
+				<label class="label-name required ">Designation </label> 
+					<select id ="designation" name="designation" class="loginUserid" style="width: 250px" >
+                         
+                     </select>
+						</div>
+				<div class="col-lg-offset-5">
+				<div class=" form-group col-lg-6" >
+				<label class="label-name "> Report To</label> 
+						<select id ="reportto" class="loginUserid" style="width: 250px" >
+                         
+                     </select>
+                  </div>
+                  </div>
+                  </div>
 			<h6 class=" form-horizontal">
 				<span class="basicinfo">Personal</span>
 			    </h6>

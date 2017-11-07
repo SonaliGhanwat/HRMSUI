@@ -85,7 +85,8 @@ function editEmployeeLeave(id) {
 					employee:empData.employee.id,
 					subject : empData.subject,
 					fromDate : empData.fromDate,
-					toDate : empData.toDate
+					toDate : empData.toDate,
+					leavetype : empData.leavetype
 			};
 			
 			sessionStorage.setItem("flag", 1)
@@ -94,6 +95,7 @@ function editEmployeeLeave(id) {
 			sessionStorage.setItem("subject", empData.subject);
 			sessionStorage.setItem("leavedate", empData.fromDate);
 			sessionStorage.setItem("afterleavejoiningdate", empData.toDate);
+			sessionStorage.setItem("leavetype", empData.leavetype.id);
 			window.location="CreateEmployeeLeave.html";
 		}
 	}
@@ -104,17 +106,19 @@ function updateEmployeeLeave(){
 	var http = new XMLHttpRequest();
 	var employeeLeave = getEmployeeLeaveDataFromUI(data);
 	
-	if(validateEmployeeLeave(employeeLeave)){
+	//if(validateEmployeeLeave(employeeLeave)){
 		document.getElementById('results').innerHTML = '';
 		openModal();
 	var myJSON = JSON.stringify(employeeLeave);
 	var subject=employeeLeave.subject;
 	var fromDate= employeeLeave.fromDate;
 	var toDate=employeeLeave.toDate;
+	var leavetype=employeeLeave.leavetype;
 	var getUIEmpData={
 			subject:subject,
 			fromDate:fromDate,
-			toDate:toDate
+			toDate:toDate,
+			leavetype:leavetype
 	}
 	closeModal();		
 	getSessionData();
@@ -138,7 +142,7 @@ function updateEmployeeLeave(){
 	}
 	}
 	http.send(myJSON);
-	}
+	//}
 }
 function addOrUpdateEmployeeLeave(){
 	var flag= sessionStorage.getItem("flag");
@@ -191,6 +195,7 @@ function dropDownList(index){
 				document.getElementById("subject").value = sessionStorage.getItem("subject");
 				document.getElementById("leavedate").value = sessionStorage.getItem("leavedate");
 				document.getElementById("afterleavejoiningdate").value = sessionStorage.getItem("afterleavejoiningdate");
+				/*document.getElementById("leavetype").value = sessionStorage.getItem("leavetype");*/
 				var flag= sessionStorage.getItem("flag");
 				if(flag==null){
 				}else if(flag==1){
@@ -244,12 +249,15 @@ function getEmployeeLeaveDataFromUI(data){
 	var subject = document.getElementsByName("subject")[0].value;
 	var fromDate = document.getElementsByName("leavedate")[0].value;
 	var toDate = document.getElementsByName("afterleavejoiningdate")[0].value;
+	var getleavetype = document.getElementById("leavetype").value;
+	var leavetypeid = parseInt(getleavetype);
 	var data = {
 			id:id,
 			employee:empid,
 			subject : subject,
 			fromDate : fromDate,
-			toDate : toDate
+			toDate : toDate,
+			leavetype : leavetypeid
 	}
 	return data
 	
@@ -269,16 +277,20 @@ function getDataHtmlField(){
 	document.getElementsByName("subject")[0].value="";
 	document.getElementsByName("leavedate")[0].value="";
 	document.getElementsByName("afterleavejoiningdate")[0].value="";
+	document.getElementsByName("leavetype")[0].value="";
 }
 function getSessionData(){
 	var subject = sessionStorage.getItem("subject");
 	var fromDate = sessionStorage.getItem("leavedate");
 	var toDate = sessionStorage.getItem("afterleavejoiningdate");
+	var getleavetype = sessionStorage.getItem("leavetype");
+	var leavetypeid = parseInt(getleavetype);
 	 listEmpData={
 			 
 			 subject:subject,
 			 fromDate:fromDate,
-			 toDate:toDate
+			 toDate:toDate,
+			 leavetype:leavetypeid
 	}	
 	return listEmpData;
 }
@@ -307,4 +319,24 @@ function displayLeaveByUserid() {
 	xhttp.open("GET", "http://localhost:8085/HRMS/employeeleave/getLeaveByUserid/"+userid, true);
 	xhttp.send();
 	
+}
+function LeaveTypeList(){
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			document.getElementById("data").innerHTML = "";
+			var empData = JSON.parse(this.responseText);
+			var selectMenu="";
+			selectMenu+='<option value="">Select Leave Type</option>'+"<br>";
+			for(var i = 0; i < empData.length; i++) {
+				selectMenu+='<option value="'+empData[i].id +'">'+empData[i].name +'</option>'+"<br>";
+			}
+			selectMenu+='</select>';
+			document.getElementById("leavetype").innerHTML = selectMenu;
+			document.getElementById("leavetype").value = sessionStorage.getItem("leavetype");
+		}
+	};
+
+	xhttp.open("GET", "http://localhost:8085/HRMS/leavetype/list", true);
+	xhttp.send();
 }
