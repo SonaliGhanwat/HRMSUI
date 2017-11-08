@@ -180,7 +180,7 @@ function getEmployeeDataFromUI(){
 	var employeeTypeid = parseInt(employeeType);
 	var getDesignationid = document.getElementById("designation").value;
 	var designationid = parseInt(getDesignationid);
-
+     sessionStorage.setItem("designation", designationid);
 	 getUIEmployeeData = {
 			id:id,
 		userid : userid,
@@ -390,5 +390,26 @@ function designationList(){
 	};
 
 	xhttp.open("GET", "http://localhost:8085/HRMS/designation/list", true);
+	xhttp.send();
+}
+function reportTo(){
+	var getData = sessionStorage.getItem("designation");
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			document.getElementById("data").innerHTML = "";
+			var empData = JSON.parse(this.responseText);
+			var selectMenu="";
+			selectMenu+='<option value="">Select Designation</option>'+"<br>";
+			for(var i = 0; i < empData.data.length; i++) {
+				selectMenu+='<option value="'+empData.data[i].id +'">'+empData.data[i].name +'</option>'+"<br>";
+			}
+			selectMenu+='</select>';
+			document.getElementById("reportto").innerHTML = selectMenu;
+			document.getElementById("reportto").value = sessionStorage.getItem("reportto");
+		}
+	};
+
+	xhttp.open("GET", "http://localhost:8085/HRMS/designation/reportTo/"+getData, true);
 	xhttp.send();
 }

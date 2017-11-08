@@ -24,7 +24,7 @@ function addEmployeeType() {
 	
 	var http = new XMLHttpRequest();
 	var employeeType = getEmployeeTypeFromUI(data);
-	//if(validateUserType(userType)){
+	if(validateEmployeeType(employeeType)){
 		document.getElementById('results').innerHTML = '';
 		openModal();
 		var myJSON = JSON.stringify(employeeType);
@@ -49,7 +49,7 @@ function addEmployeeType() {
 		}
 	
 		http.send(myJSON);
-	//}
+	}
 }
 function deleteEmployeeType(id) {
 	document.getElementById('results').innerHTML = '';

@@ -24,7 +24,7 @@ function addLeaveType() {
 	
 	var http = new XMLHttpRequest();
 	var leaveType = getLeaveTypeFromUI(data);
-	//if(validateUserType(userType)){
+	if(validateLeaveType(leaveType)){
 		document.getElementById('results').innerHTML = '';
 		openModal();
 		var myJSON = JSON.stringify(leaveType);
@@ -48,7 +48,7 @@ function addLeaveType() {
 		}
 	
 		http.send(myJSON);
-	//}
+	}
 }
 function deleteLeaveType(id) {
 	document.getElementById('results').innerHTML = '';

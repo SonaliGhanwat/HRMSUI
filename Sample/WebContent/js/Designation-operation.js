@@ -24,7 +24,7 @@ function addDesignation() {
 	
 	var http = new XMLHttpRequest();
 	var designation  = getDesignationFromUI(data);
-	//if(validateUserType(userType)){
+	if(validateDesignation(designation)){
 		document.getElementById('results').innerHTML = '';
 		openModal();
 		var myJSON = JSON.stringify(designation );
@@ -42,14 +42,11 @@ function addDesignation() {
 					document.getElementById("response").innerHTML = data;
 					getDataHtmlField();
 				}
-				
-				
-				
 			}
 		}
 	
 		http.send(myJSON);
-	//}
+	}
 }
 function deleteDesignation(id) {
 	document.getElementById('results').innerHTML = '';

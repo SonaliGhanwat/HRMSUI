@@ -224,10 +224,10 @@ function createEmployeeLeaveTable(empData){
 		tbody += "<td>" + fromDate + "</td>"
 		var toDate = empData[data].toDate;
 		tbody += "<td>" + toDate + "</td>"
-		var totalLeave = empData[data].totalCount;
+		/*var totalLeave = empData[data].totalCount;
 		tbody += "<td>" + totalLeave + "</td>"
 		var pendingLeave = empData[data].pendingLeave;
-		tbody += "<td>" + pendingLeave + "</td>"
+		tbody += "<td>" + pendingLeave + "</td>"*/
 		tbody += "<td>" + "<button  value='Delete' onclick='deleteEmployeeLeave ("+id+")' >Delete</button>"
 		+ "</td>";
         tbody += "<td>" + "<button  value='Edit' onclick='editEmployeeLeave("+id+")' >Edit</button>"

@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/AttendanceValidation.js"></script>
+<script type="text/javascript" src="js/DesignationValidaion.js"></script>
 <script type="text/javascript" src="js/Designation-operation.js"></script>
  <script type="text/javascript" src="js/index.js"></script>
  <body onload="getDesignationIdFromHtml();">
@@ -123,21 +123,22 @@ View Designation
   <div class="form-group ">
                    <div class=" form-group col-lg-6"style="margin-left: 100px;">
 					   <label  class="label-name required" style="margin-top: -15px;"> Designation Name:</label>
-					 <input type="text" id="designationName" name="designationName"  class="loginUserid" >
+					 <input type="text" id="designationName" name="designationName" onkeypress='return event.charCode >= 65 && event.charCode <= 122' class="loginUserid" onkeyup="isvalidDesignationName()"onblur="isvalidDesignationName()" >
+                <div id="designationName_validation" class="passvalidation" ></div>
                 </div>
                 <div class="form-group ">
                    <div class=" form-group col-lg-6 "style="margin-right: 30px;margin-left: 100px;">
                     <label  class="label-name required" style="margin-top: -15px;"> Band:</label>
-					 <input type="number" id="band" name="band"  class="loginUserid"  >
-					<div id="intime_validation" class="passvalidation" ></div>
+					 <input type="number" id="band" name="band" onkeypress='return event.charCode >= 48 && event.charCode <= 57'  class="loginUserid" onkeyup="isvalidBand()"onblur="isvalidBand()" >
+					<div id="band_validation" class="passvalidation" ></div>
                 </div>
                 </div>
  
   <div class="form-group ">
  <div class=" form-group col-lg-6"style="margin-left: 100px;">
          <label  class="label-name required"> Level</label>
-         <input type="number" id="level" name="level" class="loginUserid"  >
-         <div id="outtime_validation" class="error"></div>
+         <input type="number" id="level" onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="level" class="loginUserid"  onkeyup="isvalidLevel()"onblur="isvalidLevel()" >
+         <div id="level_validation" class="error"></div>
       </div>
       </div>
      

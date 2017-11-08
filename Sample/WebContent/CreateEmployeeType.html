@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="js/UserTypeValidation.js"></script> 
+  <script type="text/javascript" src="js/EmployeeTypeValidation.js"></script> 
 <script type="text/javascript" src="js/employeeType-operation.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <body onload="getEmployeeTypeIdFromHtml();">
@@ -122,14 +122,14 @@ View Employee Type
   <div class="form-group ">
                    <div class=" form-group col-lg-6"style="margin-left: 100px;">
 					<label class="label-name required "> Employee Type Name</label> 
-					<input type="text"id="employeetypeName" name="employeetypeName" class="loginUserid" placeholder=" Employee Type Name" >
+					<input type="text"id="employeetypeName" name="employeetypeName" onkeypress='return event.charCode >= 65 && event.charCode <= 122' class="loginUserid" placeholder=" Employee Type Name" onkeyup="isvalidEmployeeTypeName()"onblur="isvalidEmployeeTypeName()" >
 					<div id="employeetypeName_validation" class="error"></div>
 				</div>
 				</div>
 				 <div class="form-group ">
                    <div class=" form-group col-lg-6 "style="margin-right: 30px;margin-left: 100px;">
-					<label class="label-name required"> No Of Leaves</label> <input type="number"
-						id="noofleaves" name="noofleaves" class="loginUserid" placeholder="no_of_leaves">
+					<label class="label-name required"> No Of Leaves</label> <input type="text"
+						id="noofleaves" name="noofleaves" class="loginUserid" maxlength="2" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="no_of_leaves" onkeyup="isvalidNOofLeaves()"onblur="isvalidNOofLeaves()" >
 					<div id="noofleaves_validation" class="passvalidation"></div>
 				</div>
 				</div>

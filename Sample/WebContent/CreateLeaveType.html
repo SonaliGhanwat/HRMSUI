@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="js/UserTypeValidation.js"></script> 
+  <script type="text/javascript" src="js/LeaveTypeValidation.js"></script> 
 <script type="text/javascript" src="js/LeaveType-operation.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <body onload="getLeaveTypeIdFromHtml();">
@@ -123,7 +123,7 @@ View Leave Type
   <div class="form-group ">
                    <div class=" form-group col-lg-6"style="margin-left: 100px;">
 					<label class="label-name required "> LeaveType Name</label> 
-					<input type="text"id="leavetypename" name="leavetypename" class="loginUserid" placeholder="Leave Type Name" >
+					<input type="text"id="leavetypename" name="leavetypename" class="loginUserid" onkeypress='return event.charCode >= 65 && event.charCode <= 122' placeholder="Leave Type Name" onkeyup="isvalidLeaveTypeName()"onblur="isvalidLeaveTypeName()" >
 					<div id="leavetypename_validation" class="error"></div>
 				</div>
 				</div>
