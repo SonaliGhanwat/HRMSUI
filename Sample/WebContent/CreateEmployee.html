@@ -98,7 +98,6 @@
             <a href="#" class="dropbtn" onclick="approval()">Approvals</a>
             </div>
         </li>
-
 </ul>
 </div>
 <div class="scroll">
@@ -187,7 +186,7 @@ View Employee
 						</div>
 				<div class="col-lg-offset-5">
 				<div class=" form-group col-lg-6" >
-				<label class="label-name "> Employee type</label> 
+				<label class="label-name required"> Employee type</label> 
 						<select id ="employeeType" name="employeeType"class="loginUserid" style="width: 250px" >
                          
                      </select>
@@ -210,15 +209,13 @@ View Employee
 			 <div class="row" >
 				<div class=" form-group col-lg-6" style="margin-left: 35px;">
 				<label class="label-name required ">Designation </label> 
-					<select id ="designation" name="designation" class="loginUserid" style="width: 250px" >
-                         
+					<select id ="designation" name="designation" class="loginUserid" style="width: 250px">
                      </select>
 						</div>
 				<div class="col-lg-offset-5">
 				<div class=" form-group col-lg-6" >
-				<label class="label-name "> Report To</label> 
-						<select id ="reportto" class="loginUserid" style="width: 250px" >
-                         
+				<label class="label-name required"> Report To</label> 
+						<select id ="reportto" class="loginUserid" style="width: 250px" onmousedown="reportTo();">
                      </select>
                   </div>
                   </div>

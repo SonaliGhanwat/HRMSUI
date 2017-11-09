@@ -97,7 +97,9 @@ function editEmployee(id) {
 					salary : empData.salary,
 					usertype : empData.usertype.id,
 					employeeType : empData.employeetype.id,
-					designation : empData.designation.id
+					designation : empData.designation.id,
+					reportTo : empData.reportTo
+					
 			};
 			sessionStorage.setItem("flag", 1)
 			sessionStorage.setItem("id", employeeData.id)
@@ -115,6 +117,7 @@ function editEmployee(id) {
 			sessionStorage.setItem("usertype", employeeData.usertype);
 			sessionStorage.setItem("employeeType", employeeData.employeeType);
 			sessionStorage.setItem("designation", employeeData.designation);
+			sessionStorage.setItem("reportTo", employeeData.reportTo)
 			window.location="CreateEmployee.html";
 		}
 	}
@@ -180,7 +183,8 @@ function getEmployeeDataFromUI(){
 	var employeeTypeid = parseInt(employeeType);
 	var getDesignationid = document.getElementById("designation").value;
 	var designationid = parseInt(getDesignationid);
-     sessionStorage.setItem("designation", designationid);
+	var getReportTo = document.getElementById("reportto").value;
+	var reportToid = parseInt(getReportTo);
 	 getUIEmployeeData = {
 			id:id,
 		userid : userid,
@@ -196,7 +200,8 @@ function getEmployeeDataFromUI(){
 		salary : salary,
 		usertype : userTypeid,
 		employeetype : employeeTypeid,
-		designation : designationid
+		designation : designationid,
+		reportTo:reportToid
 	}
 	 return getUIEmployeeData
 }
@@ -231,6 +236,7 @@ function dropDownList(index){
 				document.getElementsByName("department")[0].value = sessionStorage.getItem("department");
 				document.getElementsByName("salary")[0].value = sessionStorage.getItem("salary");
 				document.getElementById("list").value = sessionStorage.getItem("usertype");
+				document.getElementById("reportto").value = sessionStorage.getItem("reportTo")
 			}
 			
 		}
@@ -310,6 +316,8 @@ function getSessionData(){
 	var employeeTypeid = parseInt(employeeType);
 	var getDesignationid =sessionStorage.getItem("designation");
 	var designationid = parseInt(getDesignationid);
+	var getReportTo = sessionStorage.getItem("reportTo");
+	var reportToid = parseInt(getReportTo);
 	 employeeData = {
 			id:id,
 		userid : userid,
@@ -325,7 +333,8 @@ function getSessionData(){
 		salary : salary,
 		usertype : userTypeid,
 		employeetype : employeeTypeid,
-		designation : designationid
+		designation : designationid,
+		reportTo : reportToid
 	}
 	 return employeeData
 }
@@ -344,6 +353,7 @@ function getDataHtmlFieldId(){
 	document.getElementById("list").value="";
 	document.getElementById("employeeType").value= "";
 	document.getElementById("designation").value="";
+	document.getElementById("reportto").value="";
 }
 /*function clearEmployeeForm(){
 	  sessionStorage.clear();
@@ -393,7 +403,9 @@ function designationList(){
 	xhttp.send();
 }
 function reportTo(){
-	var getData = sessionStorage.getItem("designation");
+	/*var getData = sessionStorage.getItem("designation");*/
+	var getDesignationid = document.getElementById("designation").value;
+	var designationid = parseInt(getDesignationid);
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
@@ -410,6 +422,6 @@ function reportTo(){
 		}
 	};
 
-	xhttp.open("GET", "http://localhost:8085/HRMS/designation/reportTo/"+getData, true);
+	xhttp.open("GET", "http://localhost:8085/HRMS/designation/reportTo/"+designationid, true);
 	xhttp.send();
 }
