@@ -56,7 +56,6 @@ function addEmployeeAttendance() {
 				document.getElementById("response").innerHTML = data;
 				getDataHtmlFieldId();
 			}
-			
 		}
 	}
 
@@ -349,4 +348,19 @@ document.getElementById('fade').style.display = 'none';
 }
 function clearDisplayMessage(){
 	document.getElementById("displayMessage").innerHTML=""
+}
+
+function uploadExcel(){
+	
+	var xhttp = new XMLHttpRequest();
+	var formData = new FormData();
+	formData.append("myFile", document.getElementById("fileUpload").files[0]);
+	console.log("formData",formData);
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			var empData = JSON.parse(this.responseText);
+		}
+	}
+	xhttp.open("POST", "http://localhost:8085/HRMS/employeeattendance/createExcel", true);
+	xhttp.send(formData);
 }

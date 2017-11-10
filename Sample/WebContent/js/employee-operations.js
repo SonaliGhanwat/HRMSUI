@@ -414,7 +414,7 @@ function reportTo(){
 			var selectMenu="";
 			selectMenu+='<option value="">Select Designation</option>'+"<br>";
 			for(var i = 0; i < empData.data.length; i++) {
-				selectMenu+='<option value="'+empData.data[i].id +'">'+empData.data[i].name +'</option>'+"<br>";
+				selectMenu+='<option value="'+empData.data[i].id +'">'+empData.data[i].firstName+' '+empData.data[i].lastName +'</option>'+"<br>";
 			}
 			selectMenu+='</select>';
 			document.getElementById("reportto").innerHTML = selectMenu;

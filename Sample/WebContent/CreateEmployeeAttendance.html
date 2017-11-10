@@ -113,7 +113,7 @@ View Attendance
 </div>
 <fieldset>
  <p id="data"></p> 
-<form action="" name="Employee"  class="employee-form"   method="POST" >
+<form action="" name="Employee"  class="employee-form"   method="POST"  enctype="multipart/form-data">
  <div class="col-lg-12" >
 <div class=" form-group col-lg-7" style="color: White ">
 <div class=" form-control "style="margin-left: 70px;width: 700px;height: 700px ;border: 1px solid transparent;">
@@ -174,7 +174,8 @@ View Attendance
     </div>
   </div> 
   
-  
+   <input type="file" id="fileUpload" name="myFile" />
+<input type="button" id="upload" value="Upload" onclick="uploadExcel()">
     <div >
    <button id="submit" type="button" class="label-size submit-button btn" data-toggle="modal" data-target="#myModal"onclick="addOrUpdateEmployeeAttendance();">Submit</button> 
  <!-- <input type="button" value="Submit"data-target="#myModal"data-toggle="modal" class="label-size submit-button" onclick="addOrUpdateEmployeeAttendance();"> -->
