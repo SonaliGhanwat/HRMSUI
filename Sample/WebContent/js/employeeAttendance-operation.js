@@ -352,15 +352,55 @@ function clearDisplayMessage(){
 
 function uploadExcel(){
 	
-	var xhttp = new XMLHttpRequest();
-	var formData = new FormData();
-	formData.append("myFile", document.getElementById("fileUpload").files[0]);
-	console.log("formData",formData);
-	xhttp.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			var empData = JSON.parse(this.responseText);
+		var fileUpload = document.getElementById("fileUpload");
+		var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.xlsx)$/;
+		if (regex.test(fileUpload.value.toLowerCase())) {
+			if (typeof (FileReader) != "undefined") {
+				reader = new FileReader();
+				reader.onload = function(e) {
+					var data = [];
+			var header = ['id','employeeid','intime', 'outtime' , 'date'];
+					var rows = e.target.result.split("\n");
+					console.log(rows);
+					/* var header = rows.shift().split('|');*/
+					for (var index = 0; index < rows.length; index++) {
+						var cells = rows[index]
+								.split("|");
+						var rowObject = {};
+						for (var cellIndex = 0; cellIndex < cells.length; cellIndex++) {
+							rowObject[header[cellIndex]] = cells[cellIndex];
+						}
+						data.push(rowObject);
+					}
+					 console.log("data....",data)
+					 var wsData = {
+						 attendanceList : data
+					 }   
+					 var xhttp = new XMLHttpRequest();
+					 xhttp.open("POST","http://localhost:8085/HRMS/employeeattendance/createExcel", true);
+				     xhttp.send(wsData);
+				}
+				reader.readAsText(fileUpload.files[0]);
+			} else {
+				alert("This browser does not support HTML5.");
+			}
+		} else {
+			alert("Please upload a valid CSV file.");
 		}
-	}
-	xhttp.open("POST", "http://localhost:8085/HRMS/employeeattendance/createExcel", true);
-	xhttp.send(formData);
+	
+					
+
+
+		
+	
+	/*
+	 * var xhttp = new XMLHttpRequest(); var formData = new FormData();
+	 * formData.append("myFile",
+	 * document.getElementById("fileUpload").files[0]);
+	 * console.log("formData",formData); xhttp.onreadystatechange = function() {
+	 * if (this.readyState == 4 && this.status == 200) { var empData =
+	 * JSON.parse(this.responseText); } } xhttp.open("POST",
+	 * "http://localhost:8085/HRMS/employeeattendance/createExcel", true);
+	 * xhttp.send(formData);
+	 */
 }
