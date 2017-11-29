@@ -268,8 +268,8 @@ function createEmployeeTable(empData){
 		tbody += "<td>" + DateOfJoining + "</td>"
 		var DateOfBirth = empData[data].dateOfBirth;
 		tbody += "<td>" + DateOfBirth + "</td>"
-		var address = empData[data].address;
-		tbody += "<td>" + address + "</td>"
+		/*var address = empData[data].address;
+		tbody += "<td>" + address + "</td>"*/
 		/*var department = empData[data].department;
 		tbody += "<td>" + department + "</td>"*/
 		/*var salary = empData[data].salary;
@@ -412,7 +412,7 @@ function reportTo(){
 			document.getElementById("data").innerHTML = "";
 			var empData = JSON.parse(this.responseText);
 			var selectMenu="";
-			selectMenu+='<option value="">Select Designation</option>'+"<br>";
+			selectMenu+='<option value="">Select ReportTo</option>'+"<br>";
 			for(var i = 0; i < empData.data.length; i++) {
 				selectMenu+='<option value="'+empData.data[i].id +'">'+empData.data[i].firstName+' '+empData.data[i].lastName +'</option>'+"<br>";
 			}

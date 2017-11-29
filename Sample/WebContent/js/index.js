@@ -32,8 +32,6 @@ function holidayFunction() {
     document.getElementById("holiday").classList.toggle("show");
     commonData();
 }
-
-
 function commonData(){
 	window.onclick = function(event) {
 		  if (!event.target.matches('.dropbtn')) {
@@ -48,7 +46,6 @@ function commonData(){
 		    }
 		  }
 		}
-	
 }
 function approval(){
 	window.location="Approvals.html";

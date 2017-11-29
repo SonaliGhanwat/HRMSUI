@@ -117,7 +117,7 @@ function updateEmployeeDailyTask(){
 	var starttime=employeeDailyTask.starttime;
 	var endtime= employeeDailyTask.endtime;
 	var getUIEmpData={
-			taskName:taskName,
+			 taskName:taskName,
 			 estimationTime:estimationTime,
 			 starttime:starttime,
 			 endtime:endtime
@@ -312,10 +312,8 @@ function displayDailyTaskByUserid(){
 			if(empData==0){
 				var message = document.getElementById("displayMessage").innerHTML = "We are sorry. This Employee does not Exist";
 				document.getElementById("displayMessage").innerHTML = message;
-				
 			}
 		}
-		
 	};
 
 	xhttp.open("GET", "http://localhost:8085/HRMS/employeedailytask/getDailyTaskByUserid/"+userid, true);

@@ -152,15 +152,24 @@ View Employee
 			<div class="row" >
 				<div class=" form-group col-lg-6" style="margin-left: 35px;">
 				<label class="label-name required"> EmailId</label> <input
-						type="text" id="emailid" name="emailid"  class="loginUserid" style="width: 250px"  placeholder="Emailid" onkeyup="isValidEmailid()"onblur="isValidEmailid()"> 
+						type="text" id="emailid" name="emailid"  class="loginUserid" style="width: 250px"  placeholder="abc@gmail.com" onkeyup="isValidEmailid()"onblur="isValidEmailid()"> 
 						<div id="emailid_validation" class="passvalidation"></div>
 						</div>
-						</div>
+						<div class="col-lg-offset-5">
+				<div class=" form-group col-lg-6">
+					<label class="label-name "> Gender :</label> 
+					<div style="margin-left: 10px;">
+					<input type="radio" name="gender" value="male"> Male<br>
+                    <input type="radio" name="gender" value="female"> Female<br>
+                    </div>
+					</div>
+				</div>
+				</div>
 
 				<h6 class=" form-horizontal">
 				<span class="basicinfo">Work</span>
 			    </h6>
-			    <div class="row" style="    margin-top: 30px">
+			    <div class="row" style="margin-top: 30px">
 				<div class=" form-group col-lg-6" style="margin-left: 35px;">
 				<label class="label-name required"> Department</label> 
 						<input type="text"id="department" name="department" class="loginUserid" style="width: 250px" placeholder="Department" onkeyup="isValidDepartment()"onkeypress='return event.charCode >= 65 && event.charCode <= 122'onblur="isValidDepartment()">
