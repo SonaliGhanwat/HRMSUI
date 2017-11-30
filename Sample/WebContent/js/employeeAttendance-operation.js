@@ -176,10 +176,8 @@ function displayEmployeeAttendanceByDate(){
 			if(empData==0){
 				var message = document.getElementById("displayMessage").innerHTML = "We are sorry. In This Date Employee does not Exist";
 				document.getElementById("displayMessage").innerHTML = message;
-				
 			}
 		}
-		
 	};
 
 	xhttp.open("GET", "http://localhost:8085/HRMS/employeeattendance/getAttendanceByDate/"+dateVal, true);
@@ -199,7 +197,6 @@ function displayEmployeeAttendanceByUserId(){
 				document.getElementById("displayMessage").innerHTML = message;
 			}
 		}
-		
 	};
 
 	xhttp.open("GET", "http://localhost:8085/HRMS/employeeattendance/getAttendanceByUserid/"+userid, true);
@@ -264,9 +261,7 @@ function getEmployeeAttendanceDataFromUI(data){
 			outtime : outtime,
 			date : date
 	};
-
 	return data;
-	
 }
 
 function createEmployeeAttendanceTable(empData){
@@ -312,7 +307,6 @@ function getDataHtmlFieldId(){
 	document.getElementsByName("intime")[0].value="";
 	document.getElementsByName("outtime")[0].value="";
 	document.getElementsByName("date")[0].value="";
-	
 }
 /*function clearAttendanceForm(){
 	  sessionStorage.clear();

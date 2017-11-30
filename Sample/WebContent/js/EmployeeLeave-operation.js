@@ -173,7 +173,6 @@ function displayEmployeeLeaveByDate(){
 
 	xhttp.open("GET", "http://localhost:8085/HRMS/employeeleave/getEmployeeLeave/"+dateVal, true);
 	xhttp.send();
-
 }
 function dropDownList(index){
 	var xhttp = new XMLHttpRequest();
@@ -257,7 +256,8 @@ function getEmployeeLeaveDataFromUI(data){
 			subject : subject,
 			fromDate : fromDate,
 			toDate : toDate,
-			leavetype : leavetypeid
+			leavetype : leavetypeid,
+		
 	}
 	return data
 	

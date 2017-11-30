@@ -114,7 +114,18 @@ function clearHolidayForm(){
 function clearUserTypeForm(){
 	  sessionStorage.clear();
 	  window.location="CreateUserType.html";
+	  
 }
 function constantHeader(){
 	window.location="menu.html";
 }
+
+/*function checkIfContinue(){
+	 if(confirm("Do you want to continue?")) {
+		 
+         window.setTimeout('checkIfContinue()', 60000);  
+     }else
+     {
+         window.location = 'index.html';
+     }
+}*/
