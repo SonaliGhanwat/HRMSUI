@@ -114,7 +114,6 @@ function clearHolidayForm(){
 function clearUserTypeForm(){
 	  sessionStorage.clear();
 	  window.location="CreateUserType.html";
-	  
 }
 function constantHeader(){
 	window.location="menu.html";

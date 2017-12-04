@@ -31,7 +31,7 @@ function addEmployee() {
 		http.open("POST", "http://localhost:8085/HRMS/employee/create", true);
 	
 		http.setRequestHeader("Content-Type", "application/json; charset=utf8");
-		http.onreadystatechange = function() {
+		http.onreadystatechange = function() { 
 			closeModal();
 			if (http.readyState == 4 && http.status == 200) {
 				var json = eval("(" + this.responseText + ")");
@@ -236,9 +236,8 @@ function dropDownList(index){
 				document.getElementsByName("department")[0].value = sessionStorage.getItem("department");
 				document.getElementsByName("salary")[0].value = sessionStorage.getItem("salary");
 				document.getElementById("list").value = sessionStorage.getItem("usertype");
-				document.getElementById("reportto").value = sessionStorage.getItem("reportTo")
+				document.getElementById("reportto").value = sessionStorage.getItem("reportTo");
 			}
-			
 		}
 	};
 

@@ -306,7 +306,7 @@ function getDataHtmlFieldId(){
 	document.getElementById("list").value="";
 	document.getElementsByName("intime")[0].value="";
 	document.getElementsByName("outtime")[0].value="";
-	document.getElementsByName("date")[0].value="";
+	document.getElementsByName('date')[0].value="";
 }
 /*function clearAttendanceForm(){
 	  sessionStorage.clear();

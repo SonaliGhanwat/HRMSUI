@@ -142,8 +142,6 @@ function addOrUpdateLeaveType(){
 function getLeaveTypeIdFromHtml(){
 	document.getElementById("data").value = sessionStorage.getItem("id");
 	document.getElementById("leavetypename").value = sessionStorage.getItem("name");
-	
-	
 }
 function getLeaveTypeFromUI(){
 	//var url = "http://localhost:8085/HRMS/employee/create";
