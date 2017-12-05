@@ -155,25 +155,7 @@ function addOrUpdateEmployeeLeave(){
 	}
 }
 
-function displayEmployeeLeaveByDate(){
-	var xhttp = new XMLHttpRequest();
-	var dateVal = document.getElementById("Date").value;
-	console.log("dateVal:",dateVal);
-	xhttp.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			document.getElementById("createTable").innerHTML = "";
-			var empData = JSON.parse(this.responseText);
-			createEmployeeLeaveTable(empData);
-			if(empData==0){
-				var message = document.getElementById("displayMessage").innerHTML = "We are sorry. This Employee does not Exist";
-				document.getElementById("displayMessage").innerHTML = message;
-			}
-		}
-	};
 
-	xhttp.open("GET", "http://localhost:8085/HRMS/employeeleave/getEmployeeLeave/"+dateVal, true);
-	xhttp.send();
-}
 function dropDownList(index){
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
@@ -298,6 +280,25 @@ function getSessionData(){
 	  sessionStorage.clear();
 	  window.location="CreateEmployeeLeave.html";
 }*/
+function displayEmployeeLeaveByDate(){
+	var xhttp = new XMLHttpRequest();
+	var dateVal = document.getElementById("Date").value;
+	console.log("dateVal:",dateVal);
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			document.getElementById("createTable").innerHTML = "";
+			var empData = JSON.parse(this.responseText);
+			createEmployeeLeaveTable(empData);
+			if(empData==0){
+				var message = document.getElementById("displayMessage").innerHTML = "We are sorry. This Employee does not Exist";
+				document.getElementById("displayMessage").innerHTML = message;
+			}
+		}
+	};
+
+	xhttp.open("GET", "http://localhost:8085/HRMS/employeeleave/getEmployeeLeave/"+dateVal, true);
+	xhttp.send();
+}
 function displayLeaveByUserid() {
 	var xhttp = new XMLHttpRequest();
 	var userid = document.getElementById("list").value;

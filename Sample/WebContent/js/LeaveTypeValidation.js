@@ -4,12 +4,13 @@ function validateLeaveType(LeaveType) {
 	return isLeaveTypeDataValid;
 	
 }
-function isvalidLeaveTypeName() {
-	var leavetypename = document.getElementById("leavetypename");
-	if (leavetypename.value == "") {
+
+
+function isvalidLeaveTypeName(){
+	var leaveTypeName = document.getElementById("leavetypename");
+	if(leaveTypeName.value ==""){
 		document.getElementById("leavetypename_validation").innerHTML = "Leave Type Required";
 		leavetypename.style.borderColor = "red";
-		/*usertypeName.focus();*/
 		return false;
 	}
 	document.getElementById("leavetypename_validation").innerHTML = "";
