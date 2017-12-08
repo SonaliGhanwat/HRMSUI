@@ -413,14 +413,13 @@ function reportTo(){
 			var selectMenu="";
 			selectMenu+='<option value="">Select ReportTo</option>'+"<br>";
 			for(var i = 0; i < empData.data.length; i++) {
-				selectMenu+='<option value="'+empData.data[i].id +'">'+empData.data[i].firstName+' '+empData.data[i].lastName +'</option>'+"<br>";
+				selectMenu+='<option value="'+empData.data[i].id +'">'+empData.data[i].firstName+' '+empData.data[i].lastName +' ('+empData.data[i].userid +')</option>'+"<br>";
 			}
 			selectMenu+='</select>';
 			document.getElementById("reportto").innerHTML = selectMenu;
 			document.getElementById("reportto").value = sessionStorage.getItem("reportto");
 		}
 	};
-
 	xhttp.open("GET", "http://localhost:8085/HRMS/designation/reportTo/"+designationid, true);
 	xhttp.send();
 }

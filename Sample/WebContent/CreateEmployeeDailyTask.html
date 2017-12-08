@@ -113,6 +113,13 @@ View Task
 <div class=" form-group col-lg-7" style="color: White ">
 <div class=" form-control "style="margin-left: 70px;width: 700px;height: 800px ;border: 1px solid transparent;">
  <div class="row" style="margin-top: 40px;margin-left: 20px;">
+  <div class="form-group ">
+				<div class=" form-group col-lg-6 "style="margin-right: 30px;margin-left: 100px;">
+         <label  class="label-name required"> EmployeeId:</label>
+        <select  id="list" class=" loginUserid" >
+		</select>  
+		</div>
+		</div>
  <div class="form-group ">
  <div class=" form-group col-lg-6"style="margin-left: 100px;">
          <label  class="label-name required"> Date:</label>
@@ -160,8 +167,12 @@ Enter text here...</textarea>
        
     <div class="form-group ">
 				<div class=" form-group col-lg-6 "style="margin-right: 30px;margin-left: 100px;">
-         <label  class="label-name required"> EmployeeId:</label>
-        <select  id="list" class=" loginUserid" >
+         <label  class="label-name required"> Status:</label>
+        <select  id="status" class=" loginUserid" >
+         <option value="">--Select--</option>
+         <option value="Completed">Completed</option>
+         <option value="InComplete">InComplete</option>
+                         
 		</select>  
 		</div>
 		</div>

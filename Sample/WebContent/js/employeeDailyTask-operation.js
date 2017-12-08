@@ -86,7 +86,8 @@ function editEmployeeDailyTask(id) {
 					taskName : empData.taskName,
 					estimationTime : empData.estimationTime,
 					starttime : empData.starttime,
-					endtime : empData.endtime
+					endtime : empData.endtime,
+					status : empData.status
 			};
 			
 			sessionStorage.setItem("flag", 1)
@@ -97,6 +98,7 @@ function editEmployeeDailyTask(id) {
 			sessionStorage.setItem("estimationTime", empData.estimationTime);
 			sessionStorage.setItem("starttime", empData.starttime);
 			sessionStorage.setItem("endtime", empData.endtime);
+			sessionStorage.setItem("status", empData.status);
 			window.location="CreateEmployeeDailyTask.html";
 		}
 	}
@@ -116,11 +118,13 @@ function updateEmployeeDailyTask(){
 	var estimationTime= employeeDailyTask.estimationTime;
 	var starttime=employeeDailyTask.starttime;
 	var endtime= employeeDailyTask.endtime;
+	var status= employeeDailyTask.status;
 	var getUIEmpData={
 			 taskName:taskName,
 			 estimationTime:estimationTime,
 			 starttime:starttime,
-			 endtime:endtime
+			 endtime:endtime,
+			 status:status
 	}
 	closeModal();		
 	getSessionData();
@@ -180,6 +184,7 @@ function dropDownList(index){
 				document.getElementById("estimationTime").value = sessionStorage.getItem("estimationTime");
 				document.getElementById("starttime").value = sessionStorage.getItem("starttime");
 				document.getElementById("endtime").value = sessionStorage.getItem("endtime");
+				document.getElementById("status").value = sessionStorage.getItem("status");
 				var flag= sessionStorage.getItem("flag");
 				if(flag==null){
 				}else if(flag==1){
@@ -217,6 +222,8 @@ function createTable(empData){
 		tbody += "<td>" + endTime + "</td>"
 		var takenTime = empData[data].takenTime;
 		tbody += "<td>" + takenTime + "</td>"
+		var status = empData[data].status;
+		tbody += "<td>" + status + "</td>"
 		tbody += "<td>" + "<button  value='Delete' onclick='deleteEmployeeDailyTask ("+id+")' >Delete</button>"
 				+ "</td>";
 		tbody += "<td>" + "<button  value='Edit' onclick='editEmployeeDailyTask("+id+")'>Edit</button>"
@@ -253,6 +260,7 @@ function getEmployeeDailyTaskDataFromUI(data){
 	}else{
 		endtime = document.getElementById("endtime").value ;
 	}
+	var status = document.getElementById("status").value;
 	var data = {
 			id:id,
 			employee:empid,
@@ -260,7 +268,8 @@ function getEmployeeDailyTaskDataFromUI(data){
 			taskName : taskName,
 			estimationTime : estimationTime,
 			starttime : starttime,
-			endtime : endtime
+			endtime : endtime,
+			status : status
 	}
 	return data
 }
@@ -281,17 +290,20 @@ function getDataHtmlField(){
 	document.getElementsByName("estimationTime")[0].value="";
 	document.getElementsByName("starttime")[0].value="";
 	document.getElementsByName("endtime")[0].value="";
+	document.getElementById("status").value="";
 }
 function getSessionData(){
 	var taskName = sessionStorage.getItem("taskName");
 	var estimationTime = sessionStorage.getItem("estimationTime");
 	var starttime = sessionStorage.getItem("starttime");
 	var endtime = sessionStorage.getItem("endtime");
+	var status = sessionStorage.getItem("status");
 	 listEmpData={
 			 taskName:taskName,
 			 estimationTime:estimationTime,
 			 starttime:starttime,
-			 endtime:endtime
+			 endtime:endtime,
+			 status : status
 	}	
 	return listEmpData;
 }

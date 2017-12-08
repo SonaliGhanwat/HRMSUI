@@ -119,12 +119,11 @@ function constantHeader(){
 	window.location="menu.html";
 }
 
-/*function checkIfContinue(){
+function checkIfContinue(){
 	 if(confirm("Do you want to continue?")) {
-		 
-         window.setTimeout('checkIfContinue()', 60000);  
+		 window.setTimeout('checkIfContinue()', 60000);
      }else
      {
          window.location = 'index.html';
      }
-}*/
+}
