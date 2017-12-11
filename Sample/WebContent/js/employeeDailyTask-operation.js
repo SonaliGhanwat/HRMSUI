@@ -87,7 +87,8 @@ function editEmployeeDailyTask(id) {
 					estimationTime : empData.estimationTime,
 					starttime : empData.starttime,
 					endtime : empData.endtime,
-					status : empData.status
+					status : empData.status,
+					description : empData.description
 			};
 			
 			sessionStorage.setItem("flag", 1)
@@ -99,6 +100,7 @@ function editEmployeeDailyTask(id) {
 			sessionStorage.setItem("starttime", empData.starttime);
 			sessionStorage.setItem("endtime", empData.endtime);
 			sessionStorage.setItem("status", empData.status);
+			sessionStorage.setItem("description", empData.description);
 			window.location="CreateEmployeeDailyTask.html";
 		}
 	}
@@ -119,12 +121,14 @@ function updateEmployeeDailyTask(){
 	var starttime=employeeDailyTask.starttime;
 	var endtime= employeeDailyTask.endtime;
 	var status= employeeDailyTask.status;
+	var description= employeeDailyTask.description;
 	var getUIEmpData={
 			 taskName:taskName,
 			 estimationTime:estimationTime,
 			 starttime:starttime,
 			 endtime:endtime,
-			 status:status
+			 status:status,
+			 description:description
 	}
 	closeModal();		
 	getSessionData();
@@ -176,7 +180,9 @@ function dropDownList(index){
 			}
 			selectMenu+='</select>';
 			document.getElementById("list").innerHTML = selectMenu;
-			if(isEdit==true){
+			var flag= sessionStorage.getItem("flag");
+			if(flag==null){
+			}else if(flag==1){
 				document.getElementById("data").value = sessionStorage.getItem("id");
 				document.getElementById("list").value = sessionStorage.getItem("userid");
 				document.getElementById("date").value = sessionStorage.getItem("date");
@@ -185,15 +191,14 @@ function dropDownList(index){
 				document.getElementById("starttime").value = sessionStorage.getItem("starttime");
 				document.getElementById("endtime").value = sessionStorage.getItem("endtime");
 				document.getElementById("status").value = sessionStorage.getItem("status");
-				var flag= sessionStorage.getItem("flag");
-				if(flag==null){
+				//var getData = sessionStorage.getItem("description");
+				//document.getElementById("editUpload").src=getData;
+				document.getElementById("editUpload").src="image/Chrysanthemum.jpg";
 				}else if(flag==1){
 					document.getElementById("list").disabled = true;
 					document.getElementById("date").disabled = true;
 				}else{
 					
-				}
-				
 				}
 		}
 	};
@@ -224,6 +229,8 @@ function createTable(empData){
 		tbody += "<td>" + takenTime + "</td>"
 		var status = empData[data].status;
 		tbody += "<td>" + status + "</td>"
+		var description = empData[data].description;
+		tbody += "<td>" + description + "</td>"
 		tbody += "<td>" + "<button  value='Delete' onclick='deleteEmployeeDailyTask ("+id+")' >Delete</button>"
 				+ "</td>";
 		tbody += "<td>" + "<button  value='Edit' onclick='editEmployeeDailyTask("+id+")'>Edit</button>"
@@ -261,6 +268,8 @@ function getEmployeeDailyTaskDataFromUI(data){
 		endtime = document.getElementById("endtime").value ;
 	}
 	var status = document.getElementById("status").value;
+	var description = document.getElementById("upload").src;
+	
 	var data = {
 			id:id,
 			employee:empid,
@@ -269,7 +278,8 @@ function getEmployeeDailyTaskDataFromUI(data){
 			estimationTime : estimationTime,
 			starttime : starttime,
 			endtime : endtime,
-			status : status
+			status : status,
+			description : description
 	}
 	return data
 }
@@ -291,6 +301,7 @@ function getDataHtmlField(){
 	document.getElementsByName("starttime")[0].value="";
 	document.getElementsByName("endtime")[0].value="";
 	document.getElementById("status").value="";
+	document.getElementById("upload").src="";
 }
 function getSessionData(){
 	var taskName = sessionStorage.getItem("taskName");
@@ -298,12 +309,14 @@ function getSessionData(){
 	var starttime = sessionStorage.getItem("starttime");
 	var endtime = sessionStorage.getItem("endtime");
 	var status = sessionStorage.getItem("status");
+	var description = sessionStorage.getItem("description");
 	 listEmpData={
 			 taskName:taskName,
 			 estimationTime:estimationTime,
 			 starttime:starttime,
 			 endtime:endtime,
-			 status : status
+			 status : status,
+			 description : description
 	}	
 	return listEmpData;
 }
