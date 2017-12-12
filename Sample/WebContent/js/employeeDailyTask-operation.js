@@ -193,7 +193,7 @@ function dropDownList(index){
 				document.getElementById("status").value = sessionStorage.getItem("status");
 				//var getData = sessionStorage.getItem("description");
 				//document.getElementById("editUpload").src=getData;
-				document.getElementById("editUpload").src="image/Chrysanthemum.jpg";
+				document.getElementById("editUpload").src="image/Desert.jpg";
 				}else if(flag==1){
 					document.getElementById("list").disabled = true;
 					document.getElementById("date").disabled = true;
@@ -268,7 +268,7 @@ function getEmployeeDailyTaskDataFromUI(data){
 		endtime = document.getElementById("endtime").value ;
 	}
 	var status = document.getElementById("status").value;
-	var description = document.getElementById("upload").src;
+	var description = document.getElementById("editUpload").value;
 	
 	var data = {
 			id:id,
@@ -283,6 +283,7 @@ function getEmployeeDailyTaskDataFromUI(data){
 	}
 	return data
 }
+
 function openModal() {
     document.getElementById('modal').style.display = 'block';
     document.getElementById('fade').style.display = 'block';
@@ -316,7 +317,7 @@ function getSessionData(){
 			 starttime:starttime,
 			 endtime:endtime,
 			 status : status,
-			 description : description
+		     description : description
 	}	
 	return listEmpData;
 }
@@ -344,3 +345,14 @@ function displayDailyTaskByUserid(){
 	xhttp.open("GET", "http://localhost:8085/HRMS/employeedailytask/getDailyTaskByUserid/"+userid, true);
 	xhttp.send();
 }
+var openFile = function(event) {
+    var input = event.target;
+
+    var reader = new FileReader();
+    reader.onload = function(){
+      var dataURL = reader.result;
+      var output = document.getElementById('editUpload');
+      output.src = dataURL;
+    };
+    reader.readAsDataURL(input.files[0]);
+  };
