@@ -126,11 +126,27 @@ View Employee Type
 					<div id="employeetypeName_validation" class="error"></div>
 				</div>
 				</div>
-				 <div class="form-group ">
+				<div class="form-group ">
+                   <div class=" form-group col-lg-6"style="margin-left: 100px;">
+					<label class="label-name required "> Seek Leave</label> 
+					<input type="number"id="seekleave" name="seekleave" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="loginUserid" placeholder="Seek leave" onkeyup="isvalidSeekLeave()" onblur="isvalidSeekLeave()" >
+					<div id="seekleave_validation" class="error"></div>
+				</div>
+				</div>
+				<div class="form-group ">
+                   <div class=" form-group col-lg-6"style="margin-left: 100px;">
+					<label class="label-name required "> Paid Leave</label> 
+					<input type="number"id="paidleave" name="paidleave" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="loginUserid" placeholder="Paid leave" onkeyup="isvalidPaidLeave()" onblur="isvalidPaidLeave()">
+					<div id="paidleave_validation" class="error"></div>
+				</div>
+				</div>
+				 <div class="form-group" >
                    <div class=" form-group col-lg-6 "style="margin-right: 30px;margin-left: 100px;">
-					<label class="label-name required"> No Of Leaves</label> <input type="text"
-						id="noofleaves" name="noofleaves" class="loginUserid" maxlength="2" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="no_of_leaves" onkeyup="isvalidNOofLeaves()"onblur="isvalidNOofLeaves()" >
-					<div id="noofleaves_validation" class="passvalidation"></div>
+					<label class="label-name required"> Total_Leaves</label>
+					<!-- <div id="totalleaves"  class="loginUserid"  onclick="totalLeave()" > </div>  -->
+					 <!-- <input type="text" id="totalleaves" name="totalleaves" class="loginUserid"  onclick="totalLeave()" >  -->
+				<span  class="loginUserid"  id = "totalleaves" onclick="totalLeave()" ></span>  
+					<div id="totalleaves_validation" class="passvalidation"></div>
 				</div>
 				</div>
 			</div>

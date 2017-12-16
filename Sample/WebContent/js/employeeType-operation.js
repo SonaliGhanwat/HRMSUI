@@ -83,13 +83,17 @@ function editEmployeeType(id) {
 			var employeeData = {
 					id:empData.id,
 					type : empData.type,
-					noOfLeves : empData.noOfLeves,
+					seekLeave : empData.seekLeave,
+					paidLeave : empData.paidLeave,
+					totalLeave : empData.totalLeave,
 			};
 			
-			sessionStorage.setItem("flag", 1)
-			sessionStorage.setItem("id", empData.id)
-			sessionStorage.setItem("type", empData.type)
-			sessionStorage.setItem("noOfLeves", empData.noOfLeves);
+			sessionStorage.setItem("flag", 1);
+			sessionStorage.setItem("id", empData.id);
+			sessionStorage.setItem("type", empData.type);
+			sessionStorage.setItem("seekleave", empData.seekLeave);
+			sessionStorage.setItem("paidleave", empData.paidLeave);
+			sessionStorage.setItem("totalleaves", empData.totalLeave);
 			
 			window.location="CreateEmployeeType.html";
 		}
@@ -143,18 +147,26 @@ function addOrUpdateEmployeeType(){
 function getEmployeeTypeIdFromHtml(){
 	document.getElementById("data").value = sessionStorage.getItem("id");
 	document.getElementById("employeetypeName").value = sessionStorage.getItem("type");
-	document.getElementById("noofleaves").value = sessionStorage.getItem("noOfLeves");
+	document.getElementById("seekleave").value = sessionStorage.getItem("seekleave");
+	document.getElementById("paidleave").value = sessionStorage.getItem("paidleave");
+	document.getElementById("totalleaves").value = sessionStorage.getItem("totalleaves");
+	
 	
 }
 function getEmployeeTypeFromUI(){
 	//var url = "http://localhost:8085/HRMS/employee/create";
 	var id=sessionStorage.getItem("id");
 	var type = document.getElementsByName("employeetypeName")[0].value;
-	var noofleaves = document.getElementsByName("noofleaves")[0].value;
+	var seekleave = document.getElementsByName("seekleave")[0].value;
+	var paidleave = document.getElementsByName("paidleave")[0].value;
+	var totalleaves = sessionStorage.getItem("totalleaves")
+	
 	 getUIEmployeeTypeData = {
 			id:id,
 			type : type,
-			noOfLeves : noofleaves,
+			seekLeave : seekleave,
+			paidLeave : paidleave,
+			totalLeave : totalleaves,
 	}
 	 return getUIEmployeeTypeData;
 }
@@ -170,8 +182,12 @@ function createEmployeeTypeTable(empData){
 		tbody += "<td>" + type + "</td>"
 		/*var password = empData[data].password;
 		tbody += "<td>" + password + "</td>"*/
-		var noOfLeves = empData[data].noOfLeves;
-		tbody += "<td>" + noOfLeves + "</td>"
+		var seekleave = empData[data].seekLeave;
+		tbody += "<td>" + seekleave + "</td>"
+		var paidleave = empData[data].paidLeave;
+		tbody += "<td>" + paidleave + "</td>"
+		var totalleaves = empData[data].totalLeave;
+		tbody += "<td>" + totalleaves + "</td>"
 		
 		tbody += "<td>" + "<button  value='Delete' onclick='deleteEmployeeType(" +id+ ")' >Delete</button>"
 				+ "</td>";
@@ -194,16 +210,23 @@ document.getElementById('fade').style.display = 'none';
 }
 function getDataHtmlField(){
 	document.getElementsByName("employeetypeName")[0].value="";
-	document.getElementsByName("noofleaves")[0].value="";
+	document.getElementsByName("seekleave")[0].value="";
+	document.getElementsByName("paidleave")[0].value="";
+	document.getElementById("totalleaves").value="";
 }
 function getSessionData(){
 	var id=sessionStorage.getItem("id");
 	var type = sessionStorage.getItem("type");
-	var noOfLeves = sessionStorage.getItem("noOfLeves");
+	var seekleave = sessionStorage.getItem("seekleave");
+	var paidleave = sessionStorage.getItem("paidleave");
+	var totalleaves = sessionStorage.getItem("totalleaves");
+	
 	listEmployeeTypeData={
 			 id:id,
 			 type:type,
-			 noOfLeves:noOfLeves
+			 seekLeave:seekleave,
+			 paidLeave:paidleave,
+			 totalLeave:totalleaves
 	}	
 	return listEmployeeTypeData;
 }
@@ -212,3 +235,9 @@ function getSessionData(){
 	  sessionStorage.clear();
 	  window.location="CreateUserType.html";
 }*/
+function totalLeave(){
+	var seekleave = document.getElementsByName("seekleave")[0].value;
+	var paidleave = document.getElementsByName("paidleave")[0].value;
+	var totalLeave = document.getElementById("totalleaves").innerHTML = Number(seekleave) + Number(paidleave);
+	sessionStorage.setItem("totalleaves", totalLeave)
+}

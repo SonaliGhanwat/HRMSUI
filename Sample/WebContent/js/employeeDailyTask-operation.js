@@ -34,8 +34,7 @@ function deleteEmployeeDailyTask(id) {
 			closeModal();
 		}
 	}
-	xhttp.open("DELETE", "http://localhost:8085/HRMS/employeedailytask/delete/"
-			+ id, true);
+	xhttp.open("DELETE", "http://localhost:8085/HRMS/employeedailytask/delete/"+ id, true);
 	xhttp.send();
 
 }
@@ -53,8 +52,8 @@ function addEmployeeDailyTask() {
 	http.open("POST", "http://localhost:8085/HRMS/employeedailytask/create", true);
 
 	http.setRequestHeader("Content-Type", "application/json; charset=utf8");
-	http.onreadystatechange = function() {// Call a function when the state
-		closeModal();			// changes.
+	http.onreadystatechange = function() {
+		closeModal();			
 		if (http.readyState == 4 && http.status == 200) {
 			var json = eval("(" + this.responseText + ")");
 			var data = json.message;
@@ -89,6 +88,7 @@ function editEmployeeDailyTask(id) {
 					endtime : empData.endtime,
 					status : empData.status,
 					description : empData.description
+					
 			};
 			
 			sessionStorage.setItem("flag", 1)
@@ -191,9 +191,9 @@ function dropDownList(index){
 				document.getElementById("starttime").value = sessionStorage.getItem("starttime");
 				document.getElementById("endtime").value = sessionStorage.getItem("endtime");
 				document.getElementById("status").value = sessionStorage.getItem("status");
-				//var getData = sessionStorage.getItem("description");
+				var getData = sessionStorage.getItem("description");
 				//document.getElementById("editUpload").src=getData;
-				document.getElementById("editUpload").src="image/Desert.jpg";
+				document.getElementById("editUpload").src=getData;
 				}else if(flag==1){
 					document.getElementById("list").disabled = true;
 					document.getElementById("date").disabled = true;
@@ -268,7 +268,7 @@ function getEmployeeDailyTaskDataFromUI(data){
 		endtime = document.getElementById("endtime").value ;
 	}
 	var status = document.getElementById("status").value;
-	var description = document.getElementById("editUpload").value;
+	var description = document.getElementById("editUpload").src;
 	
 	var data = {
 			id:id,
@@ -281,7 +281,7 @@ function getEmployeeDailyTaskDataFromUI(data){
 			status : status,
 			description : description
 	}
-	return data
+	return data;
 }
 
 function openModal() {
@@ -302,7 +302,7 @@ function getDataHtmlField(){
 	document.getElementsByName("starttime")[0].value="";
 	document.getElementsByName("endtime")[0].value="";
 	document.getElementById("status").value="";
-	document.getElementById("upload").src="";
+	document.getElementById("editUpload").src="";
 }
 function getSessionData(){
 	var taskName = sessionStorage.getItem("taskName");
@@ -353,6 +353,8 @@ var openFile = function(event) {
       var dataURL = reader.result;
       var output = document.getElementById('editUpload');
       output.src = dataURL;
+      sessionStorage.setItem("editUpload", dataURL);
     };
     reader.readAsDataURL(input.files[0]);
   };
+ 
