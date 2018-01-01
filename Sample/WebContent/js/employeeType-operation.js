@@ -42,9 +42,6 @@ function addEmployeeType() {
 					document.getElementById("response").innerHTML = data;
 					getDataHtmlField();
 				}
-				
-				
-				
 			}
 		}
 	
@@ -178,6 +175,8 @@ function createEmployeeTypeTable(empData){
 		tbody += "<tr>"
 		var id = empData[data].id;
 		/*tbody += "<td>" + id + "</td>"*/
+		/*var employeeid = empData[data].employee.userid;
+		tbody += "<td>" + employeeid + "</td>"*/
 		var type = empData[data].type;
 		tbody += "<td>" + type + "</td>"
 		/*var password = empData[data].password;
@@ -240,4 +239,35 @@ function totalLeave(){
 	var paidleave = document.getElementsByName("paidleave")[0].value;
 	var totalLeave = document.getElementById("totalleaves").innerHTML = Number(seekleave) + Number(paidleave);
 	sessionStorage.setItem("totalleaves", totalLeave)
+}
+function dropDownList(){
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+
+		if (this.readyState == 4 && this.status == 200) {
+			document.getElementById("data").innerHTML = "";
+			var empData = JSON.parse(this.responseText);
+			var selectMenu="";
+			selectMenu+='<option value="">Select EmployeeId</option>'+"<br>";
+			for(var i = 0; i < empData.length; i++) {
+				selectMenu+='<option value='+empData[i].id +'>'+empData[i].userid +'</option>'+"<br>";
+				console.log("empData[i].userid:",empData[i].userid)
+				console.log("selectMenu:",selectMenu);
+				//document.getElementById("list").innerHTML.selectedIndex = selectMenu;
+			}
+			selectMenu+='</select>';
+			document.getElementById("list").innerHTML = selectMenu;
+			var flag= sessionStorage.getItem("flag");
+			if(flag==1){
+				document.getElementById("data").value = sessionStorage.getItem("id");
+				document.getElementById("employeetypeName").value = sessionStorage.getItem("type");
+				document.getElementById("seekleave").value = sessionStorage.getItem("seekleave");
+				document.getElementById("paidleave").value = sessionStorage.getItem("paidleave");
+				document.getElementById("totalleaves").value = sessionStorage.getItem("totalleaves");
+				}
+		}
+	};
+
+	xhttp.open("GET", "http://localhost:8085/HRMS/employee/list", true);
+	xhttp.send();
 }

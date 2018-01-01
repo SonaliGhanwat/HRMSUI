@@ -268,7 +268,7 @@ function getEmployeeDailyTaskDataFromUI(data){
 		endtime = document.getElementById("endtime").value ;
 	}
 	var status = document.getElementById("status").value;
-	var description = document.getElementById("editUpload").src;
+	var description = document.getElementById("upload").value;
 	
 	var data = {
 			id:id,
